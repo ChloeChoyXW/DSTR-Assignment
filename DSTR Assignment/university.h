@@ -1,6 +1,6 @@
-#pragma once
-
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 struct Uni {
@@ -8,54 +8,56 @@ struct Uni {
 	string instName;
 	string locationCode;
 	string location;
-	int academicScore;
+	float academicScore;
 	int academicRank;
-	int employerRepScore;
+	float employerRepScore;
 	int employerRepRank;
-	int facultyStuRIScore;
+	float facultyStuRIScore;
 	int facultyStuRIRank;
-	int citePerFacultyScore;
+	float citePerFacultyScore;
 	int citePerFacultyRank;
-	int intFacultyRIScore;
+	float intFacultyRIScore;
 	int intFacultyRIRank;
-	int intStuRIScore;
+	float intStuRIScore;
 	int intStuRIRank;
-	int intResearchNetScore;
+	float intResearchNetScore;
 	int intResearchNetRank;
-	int employOutcomeScore;
+	float employOutcomeScore;
 	int employOutcomeRank;
-	int scoreScale;
+	float scoreScale;
 	string uniReview;
 	Uni* nextAdd;
 	Uni* prevAdd;
 };
 
 class UniList {
-	struct Uni unilist[1442];
+	//struct Uni unilist[1442];
 	Uni* head = NULL;
 	Uni* tail = NULL;
-	string uniListName = "";
+	string uniListName;
 
 
 public:
 	//constructor for doubly linked list
 	UniList(string uniListname);
 
-	Uni* createNewNode(int rank, string instName, string locationCode, string location, int academicScore, int academicRank,
-		int employerRepScore, int employerRepRank, int acultyStuRIScore, int facultyStuRIRank, int citePerFacultyScore,
-		int citePerFacultyRank, int intFacultyRIScore, int intFacultyRIRank, int intStuRIScore, int intStuRIRank,
-		int intResearchNetScore, int intResearchNetRank, int employOutcomeScore, int employOutcomeRank, int scoreScale);
+	Uni* createNewNode(int rank, string instName, string locationCode, string location, float academicScore, int academicRank,
+		float employerRepScore, int employerRepRank, float facultyStuRIScore, int facultyStuRIRank, float citePerFacultyScore,
+		int citePerFacultyRank, float intFacultyRIScore, int intFacultyRIRank, float intStuRIScore, int intStuRIRank,
+		float intResearchNetScore, int intResearchNetRank, float employOutcomeScore, int employOutcomeRank, float scoreScale);
 
-	void insertToEndOfUniLinkedList(int rank, string instName, string locationCode, string location, int academicScore, int academicRank,
-		int employerRepScore, int employerRepRank, int acultyStuRIScore, int facultyStuRIRank, int citePerFacultyScore,
-		int citePerFacultyRank, int intFacultyRIScore, int intFacultyRIRank, int intStuRIScore, int intStuRIRank,
-		int intResearchNetScore, int intResearchNetRank, int employOutcomeScore, int employOutcomeRank, int scoreScale);
+	void insertToEndOfUniLinkedList(int rank, string instName, string locationCode, string location, float academicScore, int academicRank,
+		float employerRepScore, int employerRepRank, float acultyStuRIScore, int facultyStuRIRank, float citePerFacultyScore,
+		int citePerFacultyRank, float intFacultyRIScore, int intFacultyRIRank, float intStuRIScore, int intStuRIRank,
+		float intResearchNetScore, int intResearchNetRank, float employOutcomeScore, int employOutcomeRank, float scoreScale);
+
+	void readFromFile();
 
 	void searchUni(string searchCondition);
 
 	void insertUniArray();
 
-	void sortUni(string sortCondition);
+	void insertionSortUniDoublyLinkedList(int sortCondition);
 
 	void displayList();
 };
