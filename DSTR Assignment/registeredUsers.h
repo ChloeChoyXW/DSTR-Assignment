@@ -1,10 +1,13 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+
 using namespace std;
 
 struct regUsers {
 	string userID;
 	string name;
-	int phoneNum;
+	string phoneNum;
 	string email;
 	string pw;
 	tm loginTime;
@@ -21,20 +24,26 @@ public:
 	//constructor
 	regUsersList(string regUsersListName);
 
-	regUsers* createNewNode(string userID, string name, string pw, int phoneNum, string email);
+	regUsers* createNewNode(string userID, string name, string pw, string phoneNum, string email);
 
 	regUsers* createNewNode(string userID, tm loginTime);
 
-	void insertToFrontOfRegUsersList(string userID, string name, string pw, int phoneNum, string email);
+	void insertToEndOfRegUsersList(string userID, string name, string pw, string phoneNum, string email);
 
-	void insertToFrontOfRegUsersList(string userID, tm loginTime);
+	void insertToFrontOfRegUsersLoginList(string userID, tm loginTime);
 
 	void deleteFromRegUsersList(string userID);
 	
-	void searchAndModifyRegistUsersDetails(string userID);
+	void linearsearchAndModifyRegistUsersDetails(string userID);
+
+	void linearsearchAndDisplayRegistUsersDetails(int choice);
 
 	void sortRegUsersList(string sortCondition);
 
 	void displayRegUsersList();
+
+	void readRegUsersFile();
+
+	void writeRegUsersFile();
 
 };
