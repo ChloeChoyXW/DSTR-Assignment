@@ -1,8 +1,10 @@
 #include <iostream>
+#include <fstream>
+#include <string>
 using namespace std;
 
 struct admin {
-	string adminID;
+	int adminID;
 	string name;
 	string pw;
 	int phoneNum;
@@ -20,9 +22,17 @@ public:
 	//constructor
 	adminList(string adminListName);
 
-	admin* createNewNode(string adminID, string name, int phoneNum, string email);
+	admin* createNewNode(int adminID, string name, int phoneNum, string email);
 
-	void insertToEndOfAdminList(string adminID, string name, int phoneNum, string email);
+	void insertToEndOfAdminList(int adminID, string name, int phoneNum, string email);
 
-	void searchAdmin(string adminID);
+	void searchAdmin(int adminID);
+
+	void readAdminFile();
+
+	void adminQuickSort();
+
+	void displayList();
+
+	void deleteFromAdminList(string userID);
 };
