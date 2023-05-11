@@ -42,18 +42,18 @@ void adminList::insertToEndOfAdminList(int adminID, string name, string pw, int 
 
 }
 
-void adminList::deleteFromAdminList(string userID)
+void adminList::deleteFromAdminList(int adminID)
 {
 	if (head == NULL)
 		return;
-	if (head->userID == userID)
+	if (head->adminID == adminID)
 	{
 		admin* current = head;
 		head = head->nextAdd;
 		cout << "Deleted: Admin ID of " << current->adminID << endl;
 		delete current;
 	}
-	else if (tail->userID == userID)
+	else if (tail->adminID == adminID)
 	{
 		admin* current = tail;
 		tail = tail->prevAdd;
@@ -83,7 +83,7 @@ void adminList::deleteFromAdminList(string userID)
 			current = current->nextAdd;
 		}
 		if(!found)
-			cout << userID << " is not in the list!" << endl;
+			cout << adminID << " is not in the list!" << endl;
 	}
 }
 
