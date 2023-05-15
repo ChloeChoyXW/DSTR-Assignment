@@ -143,6 +143,10 @@
     <ClInclude Include="userFavUni.h" />
     <ClInclude Include="userUniReview.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="2023_QS_World_University_Rankings.csv" />
+    <None Include="regusers.csv" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

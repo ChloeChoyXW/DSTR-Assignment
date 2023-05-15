@@ -57,4 +57,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="regusers.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="2023_QS_World_University_Rankings.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

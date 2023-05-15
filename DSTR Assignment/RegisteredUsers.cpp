@@ -1,4 +1,5 @@
 ﻿#include "registeredUsers.h"
+#include <sstream>
 
 
 regUsersList::regUsersList(string regUsersListName) : regUsersListName(regUsersListName) {};
@@ -199,26 +200,28 @@ void regUsersList::displayRegUsersList()
 
 void regUsersList::readRegUsersFile()
 {
-	head = NULL;
-	string userID, name, pw, phoneNum, email;
+	string filename = "regusers.csv";
+	ifstream file(filename);
 
-	ifstream file("regusers.csv");
-
-	while (file.good())
+	if (!file.is_open())
 	{
-		getline(file, userID, ',');
-		getline(file, name, ',');
-		getline(file, pw, ',');
-		getline(file, phoneNum, ',');
-		getline(file, email, ',');
+		cout << "File " << filename << "unable to found!" << endl;
+	}
+
+	string line;
+	while (getline(file, line))
+	{
+		stringstream b(line);  //used for breaking words
+		string userID, name, pw, phoneNum, email;
+		getline(b, userID, ',');
+		getline(b, name, ',');
+		getline(b, pw, ',');
+		getline(b, phoneNum, ',');
+		getline(b, email, ',');
 		insertToEndOfRegUsersList(userID, name, pw, phoneNum, email);
 	}
 
 	file.close();
-
-	//insertToEndOfRegUsersList("1", "John", "930213", "0123232", "joqdion@gmail.com");
-	//insertToEndOfRegUsersList("2", "Jennie", "930213", "0123232", "4298402n@gmail.com");
-	//insertToEndOfRegUsersList("3", "Jack", "930213", "0123232", "jfwfwfon@gmail.com");
 }
 
 void regUsersList::writeRegUsersFile()
