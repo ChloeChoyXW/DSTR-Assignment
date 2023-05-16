@@ -1,6 +1,9 @@
 #pragma once
 
 #include <iostream>
+#include <fstream>
+#include <string>
+
 using namespace std;
 
 struct userFavUni {
@@ -9,6 +12,7 @@ struct userFavUni {
 	userFavUni* nextAdd;
 	userFavUni* prevAdd;
 };
+
 
 class userFavUniList {
 	userFavUni* head = NULL;
@@ -24,6 +28,8 @@ public:
 	void insertToEndOfUserFavUniList(string userID, string uniName);
 
 	void deleteFromUserFavUniList(string uniName);
+
+	void JumpSearchFavUni();
 
 	void sortUserFavUniList(string sortCondition);
 

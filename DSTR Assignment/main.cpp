@@ -2,7 +2,7 @@
 #include <iostream>
 #include "university.h"
 #include "registeredUsers.h"
-
+#include "userFavUni.h"
 
 using namespace std;
 
@@ -21,6 +21,9 @@ int main() {
 	cout << "1. User ID" << endl << "2. User Name";
 	getline(cin, ans);
 	regUser.linearsearchAndDisplayRegistUsersDetails(stoi(ans));
- 
+
+	userFavUniList favUni = userFavUniList("Favourite University List");
+	favUni.displayUserFavUniList();
+
 	return 0;
 }

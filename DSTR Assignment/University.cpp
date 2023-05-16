@@ -7,7 +7,7 @@ Uni* UniList::createNewNode(int rank, string instName, string locationCode, stri
 	float employerRepScore, int employerRepRank, float facultyStuRIScore, int facultyStuRIRank, float citePerFacultyScore,
 	int citePerFacultyRank, float intFacultyRIScore, int intFacultyRIRank, float intStuRIScore, int intStuRIRank,
 	float intResearchNetScore, int intResearchNetRank, float employOutcomeScore, int employOutcomeRank, float scoreScale) {
-	
+
 	Uni* newnode = new Uni;
 
 	newnode->rank = rank;
@@ -23,7 +23,7 @@ Uni* UniList::createNewNode(int rank, string instName, string locationCode, stri
 	newnode->citePerFacultyScore = citePerFacultyScore;
 	newnode->citePerFacultyRank = citePerFacultyRank;
 	newnode->intFacultyRIScore = facultyStuRIScore;
-	newnode->intFacultyRIRank = intFacultyRIRank; 
+	newnode->intFacultyRIRank = intFacultyRIRank;
 	newnode->intStuRIScore = intStuRIScore;
 	newnode->intStuRIRank = intStuRIRank;
 	newnode->intResearchNetScore = intResearchNetScore;
@@ -41,7 +41,7 @@ void UniList::insertToEndOfUniLinkedList(int rank, string instName, string locat
 	float employerRepScore, int employerRepRank, float facultyStuRIScore, int facultyStuRIRank, float citePerFacultyScore,
 	int citePerFacultyRank, float intFacultyRIScore, int intFacultyRIRank, float intStuRIScore, int intStuRIRank,
 	float intResearchNetScore, int intResearchNetRank, float employOutcomeScore, int employOutcomeRank, float scoreScale) {
-	
+
 	Uni* newnode = createNewNode(rank, instName, locationCode, location, academicScore, academicRank,
 		employerRepScore, employerRepRank, facultyStuRIScore, facultyStuRIRank, citePerFacultyScore,
 		citePerFacultyRank, intFacultyRIScore, intFacultyRIRank, intStuRIScore, intStuRIRank,
@@ -99,23 +99,23 @@ void UniList::readFromFile() {
 		{
 			break;
 		}*/
-		
+
 		//try {
 			/*insertToEndOfUniLinkedList(stoi(rank), instName, locationCode, location, stof(academicScore), stoi(academicRank), stof(employerRepScore),
 				stoi(employerRepRank), stof(facultyStuRIScore), stoi(facultyStuRIRank), stof(citePerFacultyScore), stoi(citePerFacultyRank),
 				stof(intFacultyRIScore), stoi(intFacultyRIRank), stof(intStuRIScore), stoi(intStuRIRank), stof(intResearchNetScore),
 				stoi(intResearchNetRank), stof(employOutcomeScore), stoi(employOutcomeRank), stof(scoreScale));*/
-			insertToEndOfUniLinkedList(3, "instNameD", "RlocationCode", "locXation", 10, 21, 101,	78, 81, 91, 81, 11, 781, 531, 561, 31, 321,167, 421,145, 21);
-			insertToEndOfUniLinkedList(2, "instNameA", "YlocationCode", "locLation", 9, 122, 22, 23, 42, 21, 28, 22, 42, 42, 32, 12, 892, 242, 426, 223, 24);
-			insertToEndOfUniLinkedList(1, "instNameH", "HlocationCode", "locJation", 31, 13, 31, 73, 36, 63, 83, 34, 543, 243, 33, 83, 93, 43, 53, 637, 234);
-			insertToEndOfUniLinkedList(4, "instNameO", "JlocationCode", "locWation", 1, 143, 10, 91, 11, 71, 71, 15, 91, 132, 31, 91, 91, 18, 16, 414, 112);
-			insertToEndOfUniLinkedList(5, "instNameE", "KlocationCode", "locEation", 16, 10, 8, 13, 21, 94, 11, 17, 81, 16, 671, 11, 41, 18, 16, 31, 31);
+	insertToEndOfUniLinkedList(3, "instNameD", "RlocationCode", "locXation", 10, 21, 101, 78, 81, 91, 81, 11, 781, 531, 561, 31, 321, 167, 421, 145, 21);
+	insertToEndOfUniLinkedList(2, "instNameA", "YlocationCode", "locLation", 9, 122, 22, 23, 42, 21, 28, 22, 42, 42, 32, 12, 892, 242, 426, 223, 24);
+	insertToEndOfUniLinkedList(1, "instNameH", "HlocationCode", "locJation", 31, 13, 31, 73, 36, 63, 83, 34, 543, 243, 33, 83, 93, 43, 53, 637, 234);
+	insertToEndOfUniLinkedList(4, "instNameO", "JlocationCode", "locWation", 1, 143, 10, 91, 11, 71, 71, 15, 91, 132, 31, 91, 91, 18, 16, 414, 112);
+	insertToEndOfUniLinkedList(5, "instNameE", "KlocationCode", "locEation", 16, 10, 8, 13, 21, 94, 11, 17, 81, 16, 671, 11, 41, 18, 16, 31, 31);
 
-		/*}
-		catch(exception e){
-			cout << "Error occured. Please try again later." << endl;
-		}*/
-		
+	/*}
+	catch(exception e){
+		cout << "Error occured. Please try again later." << endl;
+	}*/
+
 	//}
 }
 
@@ -136,7 +136,7 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 
 	switch (sortCondition) {
 	case 1:
-		
+
 		// if list is empty
 		if (*head == NULL) {
 			*head = newNode;
@@ -573,20 +573,20 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 }
 
 void UniList::insertionSortUniDoublyLinkedList(int sortCondition) {
-//	/*1 = rank
-//	2 = instName,
-//	3 = location,
-//	4 = academicRank
-//	5 = employerRepRank
-//	6 = facultyStuRIRank
-//	7 = citePerFacultyRank
-//	8 = intFacultyRIRank
-//	9 = intStuRIRank
-//	10 = intResearchNetRank
-//	11 = employOutcomeRank
-//	12 = scoreScale*/
-	//insertionSort(&head, sortCondition);
-	// Initialize 'sorted' - a sorted doubly linked list
+	//	/*1 = rank
+	//	2 = instName,
+	//	3 = location,
+	//	4 = academicRank
+	//	5 = employerRepRank
+	//	6 = facultyStuRIRank
+	//	7 = citePerFacultyRank
+	//	8 = intFacultyRIRank
+	//	9 = intStuRIRank
+	//	10 = intResearchNetRank
+	//	11 = employOutcomeRank
+	//	12 = scoreScale*/
+		//insertionSort(&head, sortCondition);
+		// Initialize 'sorted' - a sorted doubly linked list
 	Uni* sorted = NULL;
 
 	// Traverse the given doubly linked list and
@@ -610,7 +610,7 @@ void UniList::insertionSortUniDoublyLinkedList(int sortCondition) {
 
 	// Update head_ref to point to sorted doubly linked list
 	head = sorted;
-	
+
 
 }
 
@@ -648,5 +648,5 @@ void UniList::displayList() {
 		//move to next address
 		current = current->nextAdd;
 	}
-	cout << "List ended here."<<endl;
+	cout << "List ended here." << endl;
 }
