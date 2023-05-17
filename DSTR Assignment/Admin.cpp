@@ -1,4 +1,5 @@
 #include "admin.hpp"
+#include <sstream>
 
 using namespace std;
 
@@ -19,11 +20,14 @@ admin* adminList::createNewNode(int adminID, string name, string pw, int phoneNu
 
 }
 
-admin* adminList::createNewNode(int adminID, string name)
+admin* adminList::createNewNode(int adminID, string name, string pw, int phoneNum, string email)
 {
 	admin* newnode = new admin;
 	newnode->adminID = adminID;
 	newnode->name = name;
+	newnode -> pw = pw;
+	newnode -> phoneNum = phoneNum;
+	newnode -> email = email;
 	return newnode; 
 }
 
@@ -40,6 +44,22 @@ void adminList::insertToEndOfAdminList(int adminID, string name, string pw, int 
 		tail = newnode;
 	}
 
+}
+
+void adminList::insertToFrontOfAdminList(int adminID, string name, string pw, int phoneNum, string email)
+{
+	admin* newnode = createNewNode(adminID, name, pw, phoneNum, email);
+
+	if (head == NULL)
+	{
+		head = tail = newnode;
+	}
+	else
+	{
+		newnode->nextAdd = head;
+		head->prevAdd = newnode;
+		head = newnode;
+	}
 }
 
 void adminList::deleteFromAdminList(int adminID)
@@ -84,6 +104,82 @@ void adminList::deleteFromAdminList(int adminID)
 		}
 		if(!found)
 			cout << adminID << " is not in the list!" << endl;
+	}
+}
+
+//======================================================================================================
+//Linear search
+
+void adminList::linearsearchAndModifyAdminDetails(int adminID)
+{
+	if (head == NULL)
+		return;
+
+	admin* current = head;
+	while (current != NULL)
+	{
+		if (current->adminID == adminID)
+		{
+			cout << "Please enter name: ";
+			cin >> current->name;
+			return;
+		}
+		current = current->nextAdd;
+	}
+}
+
+void adminList::linearsearchAndDisplayAdminDetails(int choice)
+{
+	if (head == NULL)
+		return;
+	bool found = false;
+	admin* current = head;
+	int adminID;
+	string name;
+	switch (choice)
+	{
+	case 1:
+		cout << "Enter Admin ID: ";
+		cin >> adminID;
+		while (current != NULL)
+		{
+			if (current-> adminID == adminID)
+			{
+				found = true;
+				cout << "Admin ID:  " << current->adminID << endl;
+				cout << "Name:  " << current->name << endl;
+				cout << "Password:  " << current->pw << endl;
+				cout << "Phone No.:  " << current->phoneNum << endl;
+				cout << "Email:  " << current->email << endl;
+				cout << string(55, '=') << endl;
+				return;
+			}
+			current = current->nextAdd;
+		}
+		if (!found)
+			cout << "User not found" << endl;
+		break;
+	case 2:
+		cout << "Enter User Name: ";
+		cin >> name;
+		while (current != NULL)
+		{
+			if (current->name == name)
+			{
+				found = true;
+				cout << "User ID:  " << current->adminID << endl;
+				cout << "Name:  " << current->name << endl;
+				cout << "Password:  " << current->pw << endl;
+				cout << "Phone No.:  " << current->phoneNum << endl;
+				cout << "Email:  " << current->email << endl;
+				cout << string(55, '=') << endl;
+				return;
+			}
+			current = current->nextAdd;
+		}
+		if (!found)
+			cout << "User not found" << endl;
+		break;
 	}
 }
 
@@ -303,21 +399,27 @@ void adminList::displayList() {
 //======================================================================================================
 //Reading from file
 
-
 void adminList::readAdminFile()
 {
-	head = NULL;
-	string adminID, name, pw, phoneNum, email;
+	string filename = "admin.csv";
+	ifstream file(filename);
 
-	ifstream file("admin.csv");
-
-	while (file.good())
+	if (!file.is_open())
 	{
-		getline(file, adminID, ',');
-		getline(file, name, ',');
-		getline(file, pw, ',');
-		getline(file, phoneNum, ',');
-		getline(file, email, ',');
+		cout << "File " << filename << "unable to found!" << endl;
+	}
+
+	string line;
+	while (getline(file, line))
+	{
+		stringstream b(line);  //used for breaking words
+		int adminID, phoneNum;
+		string name, pw, email;
+		getline(b, adminID, ',');
+		getline(b, name, ',');
+		getline(b, pw, ',');
+		getline(b, phoneNum, ',');
+		getline(b, email, ',');
 		insertToEndOfAdminList(adminID, name, pw, phoneNum, email);
 	}
 
