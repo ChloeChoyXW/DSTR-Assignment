@@ -22,9 +22,11 @@ public:
 	//constructor
 	adminList(string adminListName);
 
-	admin* createNewNode(int adminID, string name, int phoneNum, string email);
+	admin* createNewNode(int adminID, string name, string pw, int phoneNum, string email);
 
-	void insertToEndOfAdminList(int adminID, string name, int phoneNum, string email);
+	void insertToEndOfAdminList(int adminID, string name, string pw, int phoneNum, string email);
+
+	void insertToFrontOfAdminList(int adminID, string name, string pw, int phoneNum, string email);
 
 	void searchAdmin(int adminID);
 
@@ -34,5 +36,9 @@ public:
 
 	void displayList();
 
-	void deleteFromAdminList(string userID);
+	void deleteFromAdminList(int adminID);
+
+	void linearsearchAndModifyAdminDetails(int adminID);
+
+	void linearsearchAndDisplayAdminDetails(int choice);
 };
