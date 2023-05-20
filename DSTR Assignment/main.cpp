@@ -18,12 +18,17 @@ int main() {
 	regUsersList regUser = regUsersList("Registered Users List");
 	regUser.readRegUsersFile();
 	regUser.displayRegUsersList();
-	cout << "1. User ID" << endl << "2. User Name";
-	getline(cin, ans);
-	regUser.linearsearchAndDisplayRegistUsersDetails(stoi(ans));
+	regUser.insertToEndOfRegUsersList("6", "lisa", "abc", "0012391", "demkwomdo@iqdon");
+	cout << "-------------------------------------------------\n";
+	regUser.writeRegUsersFile();
+	regUser.readRegUsersFile();
+	regUser.displayRegUsersList();
+	//cout << "1. User ID" << endl << "2. User Name";
+	//getline(cin, ans);
+	//regUser.linearsearchAndDisplayRegistUsersDetails(stoi(ans));
 
-	userFavUniList favUni = userFavUniList("Favourite University List");
-	favUni.displayUserFavUniList();
+	//userFavUniList favUni = userFavUniList("Favourite University List");
+	//favUni.displayUserFavUniList();
 
 	return 0;
 }

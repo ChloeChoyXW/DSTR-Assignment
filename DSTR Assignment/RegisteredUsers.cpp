@@ -226,5 +226,17 @@ void regUsersList::readRegUsersFile()
 
 void regUsersList::writeRegUsersFile()
 {
+	regUsers* current = head;
 	ofstream file("regusers.csv");
+	if (!file)
+	{
+		cout << "File unable to open!" << endl;
+	}
+
+	while (current != nullptr)
+	{
+		file << current->userID << ',' << current->name << ',' << current->pw << ',' << current->phoneNum << ',' << current->email << "\n";
+		current = current->nextAdd;
+	}
+	file.close();
 }
