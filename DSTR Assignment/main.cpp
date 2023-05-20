@@ -27,8 +27,10 @@ int main() {
 	//getline(cin, ans);
 	//regUser.linearsearchAndDisplayRegistUsersDetails(stoi(ans));
 
-	//userFavUniList favUni = userFavUniList("Favourite University List");
-	//favUni.displayUserFavUniList();
+	userFavUniList favUni = userFavUniList("Favourite University List");
+	favUni.readFavUniFile();
+	favUni.displayUserFavUniList();
+	
 
 	return 0;
 }

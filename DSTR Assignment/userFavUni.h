@@ -1,4 +1,4 @@
-#pragma once
+
 
 #include <iostream>
 #include <fstream>
@@ -29,9 +29,13 @@ public:
 
 	void deleteFromUserFavUniList(string uniName);
 
-	void JumpSearchFavUni();
+	int JumpSearchFavUni(userFavUni* head, string uniName);
 
 	void sortUserFavUniList(string sortCondition);
 
 	void displayUserFavUniList();
+
+	void readFavUniFile();
+
+	void writeFavUniFile();
 };
