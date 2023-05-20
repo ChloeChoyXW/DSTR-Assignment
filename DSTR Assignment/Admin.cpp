@@ -412,14 +412,20 @@ void adminList::readAdminFile()
 	string line;
 	while (getline(file, line))
 	{
-		stringstream b(line);  //used for breaking words
-		int adminID, phoneNum;
-		string name, pw, email;
-		getline(b, adminID, ',');
-		getline(b, name, ',');
-		getline(b, pw, ',');
-		getline(b, phoneNum, ',');
-		getline(b, email, ',');
+		stringstream b(line);  // used for breaking words
+		//adminID and phoneNum changed into string to read file
+        string adminIDStr, phoneNumStr;
+        string name, pw, email;
+        getline(b, adminIDStr, ',');
+        getline(b, name, ',');
+        getline(b, pw, ',');
+        getline(b, phoneNumStr, ',');
+        getline(b, email, ',');
+
+        // Convert adminIDStr and phoneNumStr to integers to insert into the list
+        int adminID = std::stoi(adminIDStr);
+        int phoneNum = std::stoi(phoneNumStr);
+
 		insertToEndOfAdminList(adminID, name, pw, phoneNum, email);
 	}
 
