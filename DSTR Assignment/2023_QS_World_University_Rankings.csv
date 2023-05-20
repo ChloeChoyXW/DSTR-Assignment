@@ -378,7 +378,7 @@
 377,University Ulm,DE,Germany,7.6,501,3.2,501,80.6,133,34.4,398,42.7,394,23,492,60.7,561,7.5,601,29.8
 378,Czech Technical University in Prague,CZ,Czech Republic,19.9,427,33.2,292,68.9,194,4.9,601,23.7,536,47.3,306,75,392,8.7,601,29.7
 379,Nankai University,CN,China (Mainland),21.2,393,5,501,28.7,533,70.5,144,11,601,3.7,601,39.1,601,24.2,503,29.7
-380,Sharif University of Technology,IR,"Iran, Islamic Republic of",11.6,501,31.8,309,7.7,601,98.3,23,8,601,1.3,601,52.3,601,82,97,29.6
+380,Sharif University of Technology,IR, Islamic Republic of Iran,11.6,501,31.8,309,7.7,601,98.3,23,8,601,1.3,601,52.3,601,82,97,29.6
 381,University of Hawai'i at Manoa,US,United States,15.6,501,14.3,501,45.4,339,46.1,291,55.4,330,14.2,601,84.8,245,10.2,601,29.6
 382,Peter the Great St. Petersburg Polytechnic University,RU,Russia,15,501,10.4,501,81.4,127,3.7,601,16.4,601,89.3,111,45.4,601,18.7,601,29.5
 383,Pontificia Universidad Javeriana,CO,Colombia,41,203,82.4,67,20.1,601,1.8,601,4.9,601,1.9,601,27.6,601,37.2,350,29.5
@@ -441,7 +441,7 @@
 440,Wake Forest University,US,United States,5.4,501,7.3,501,100,13,12.6,601,6,601,12.9,601,50.8,601,43,296,26.5
 441,Universidade Federal de Sao Paulo,BR,Brazil,11.3,501,4.8,501,98.2,47,6.6,601,5.6,601,1.5,601,45.3,601,3.1,601,26.4
 442,Universitat des Saarlandes,DE,Germany,10.2,501,7.5,501,86.8,101,9,601,5.5,601,41,340,80.3,319,23.6,513,26.4
-443,Amirkabir University of Technology,IR,"Iran, Islamic Republic of",5,501,23.4,410,4.9,601,99.6,14,15.7,601,2.4,601,62.6,538,39.9,327,26.3
+443,Amirkabir University of Technology,IR, Islamic Republic of Iran,5,501,23.4,410,4.9,601,99.6,14,15.7,601,2.4,601,62.6,538,39.9,327,26.3
 444,Auezov South Kazakhstan University (SKU),KZ,Kazakhstan,11.8,501,13.7,501,90.5,85,1,601,15,601,21.3,522,2.7,601,10.8,601,26.3
 445,Beihang University (former BUAA),CN,China (Mainland),13.1,501,4.4,501,31,500,67.8,160,8.3,601,5.5,601,52.1,601,13.8,601,26.3
 446,Illinois Institute of Technology,US,United States,14.8,501,8.2,501,14.7,601,52.9,242,23.7,535,95,81,31.3,601,22.8,532,26.3
@@ -510,7 +510,7 @@
 509,University of Aveiro,PT,Portugal,13.1,501,6.3,501,18.4,601,68.9,152,4.8,601,8.1,601,92.4,117,8,601,-1
 510,University of St.Gallen (HSG),CH,Switzerland,8.8,501,38.6,244,6.7,601,29.3,437,100,51,85.2,133,8,601,98.5,28,-1
 511,University of Stirling,UK,United Kingdom,10.8,501,12.1,501,13.5,601,41.2,344,70,258,77.8,162,59.5,574,23.2,521,-1
-512,University of Tehran,IR,"Iran, Islamic Republic of",22.6,370,27.5,349,4.2,601,55.8,220,2,601,2,601,80.2,321,28.5,444,-1
+512,University of Tehran,IR,Islamic Republic of Iran,22.6,370,27.5,349,4.2,601,55.8,220,2,601,2,601,80.2,321,28.5,444,-1
 513,Yokohama City University,JP,Japan,3.5,501,2.7,501,99.2,37,10.3,601,4.1,601,2.7,601,14.9,601,5.6,601,-1
 514,Abai Kazakh National Pedagogical University,KZ,Kazakhstan,19.4,444,17.1,501,60.1,261,1.1,601,37.7,422,3.2,601,3.2,601,13.7,601,-1
 515,Florida State University,US,United States,26.7,319,37.1,256,8.2,601,33.1,413,15,601,4.2,601,72.8,427,22.3,546,-1
@@ -533,7 +533,7 @@
 532,Warsaw University of Technology,PL,Poland,22.2,374,58.5,133,35.1,442,4.8,601,2,601,11.5,601,63.5,527,17.2,601,-1
 533,Hitotsubashi University,JP,Japan,13.9,501,84.3,63,30.7,504,2.4,601,21.2,565,21.9,507,6.4,601,64.5,169,-1
 534,Inha University,KR,South Korea,8.7,501,13.7,501,73.4,167,12,601,8.4,601,15.4,601,29.4,601,17.9,601,-1
-535,Iran University of Science and Technology,IR,"Iran, Islamic Republic of",6.7,501,15.2,501,2.7,601,89.7,66,-1,-1,1.5,601,48.7,601,25.4,485,-1
+535,Iran University of Science and Technology,IR,Islamic Republic of Iran,6.7,501,15.2,501,2.7,601,89.7,66,-1,-1,1.5,601,48.7,601,25.4,485,-1
 536,Sabanci University,TR,Turkey,16.2,501,27.4,350,37,420,18.1,580,40.5,402,17,582,24.3,601,46.9,269,-1
 537,Saint Joseph University of Beirut (USJ) ,LB,Lebanon,9.1,501,27.1,355,52.3,301,2.8,601,88.8,181,19.2,550,19.5,601,8.4,601,-1
 538,Universidad Central NA Marta Abreu de Las Villas,CU,Cuba,6,501,1.4,501,100,19,1.2,601,1.1,601,1.5,601,13.2,601,46.8,271,-1
@@ -779,7 +779,7 @@
 778,Pontificia Universidad Catolica de Valparaiso,CL,Chile,25.2,335,25,382,5.7,601,6.6,601,12.3,601,1.6,601,44.7,601,4,601,-1
 779,Riga Technical University,LV,Latvia,11.8,501,22.4,421,22.6,601,3,601,15.9,601,57.5,249,30,601,61,186,-1
 780,Saint Petersburg Electrotechnical University ETUNALETI,RU,Russia,4.1,501,3.9,501,53.4,294,1.8,601,5.4,601,51.5,284,11,601,4.3,601,-1
-781,Shiraz University,IR,"Iran, Islamic Republic of",7.3,501,6,501,5.9,601,53.4,240,1.1,601,1.7,601,48.8,601,26.1,474,-1
+781,Shiraz University,IR,Islamic Republic of Iran,7.3,501,6,501,5.9,601,53.4,240,1.1,601,1.7,601,48.8,601,26.1,474,-1
 782,Syracuse University,US,United States,13.6,501,15.9,501,14.6,601,17,596,5.4,601,41.4,333,48.9,601,51.9,238,-1
 783,Temple University,US,United States,12.6,501,9.1,501,24.7,591,19.4,568,4.4,601,6.1,601,81.2,300,22.8,534,-1
 784,Universidad Adolfo Ibanez,CL,Chile,17,496,58.5,132,4,601,5.2,601,37.8,420,4.8,601,14.1,601,17.6,601,-1
@@ -1008,13 +1008,13 @@
 1007,Yeungnam University ,KR,South Korea,4.4,501,3.5,501,15.6,601,22,529,32.8,454,6.5,601,28.7,601,3.5,601,-1
 1008,Yokohama National University,JP,Japan,10.3,501,17.1,501,17.8,601,9.9,601,9.8,601,11,601,36.8,601,16.6,601,-1
 1009,Zhengzhou University,CN,China (Mainland),4.9,501,17.3,501,5.2,601,46.6,286,-1,-1,2.7,601,30.6,601,4.5,601,-1
-1010,Al Quds University The Arab University in Jerusalem,PS,"Palestinian Territory, Occupied",3.2,501,6.3,501,14.7,601,1.6,601,48.3,363,6.6,601,21.3,601,46.8,270,-1
+1010,Al Quds University The Arab University in Jerusalem,PS,Occupied Palestinian Territory,3.2,501,6.3,501,14.7,601,1.6,601,48.3,363,6.6,601,21.3,601,46.8,270,-1
 1011,Alexandria University ,EG,Egypt,19.6,436,10.4,501,6.2,601,1.9,601,2.4,601,3.4,601,62.2,543,4.7,601,-1
 1012,Aligarh Muslim University,IN,India,8.3,501,3.5,501,24.5,595,9,601,1.2,601,2,601,38.6,601,5.6,601,-1
 1013,Amity University,IN,India,6.6,501,6.4,501,13.5,601,4.4,601,3.5,601,19.7,542,58,591,9.4,601,-1
 1014,Amrita Vishwa Vidyapeetham,IN,India,3.3,501,4.1,501,27.4,553,4.7,601,38.7,411,1.8,601,26.1,601,5.5,601,-1
 1015,Ankara universitesi,TR,Turkey,16.6,501,10.8,501,10.3,601,2.7,601,2.8,601,6.1,601,59.3,577,21,565,-1
-1016,AnNANajah National University,PS,"Palestinian Territory, Occupied",4.8,501,18,498,7.5,601,2.2,601,34.7,445,18.4,555,26.7,601,38.1,339,-1
+1016,AnNANajah National University,PS,Occupied Palestinian Territory,4.8,501,18,498,7.5,601,2.2,601,34.7,445,18.4,555,26.7,601,38.1,339,-1
 1017,Asia University Taiwan,TW,Taiwan,5.4,501,1.9,501,3.8,601,25.2,486,10.5,601,3.9,601,35.6,601,6.7,601,-1
 1018,Assiut University ,EG,Egypt,9.5,501,5.4,501,16.3,601,2.3,601,18.8,595,2.7,601,69.3,466,5.1,601,-1
 1019,Athens University of Economics and Business,GR,Greece,6.7,501,38,248,1.5,601,19,574,1.8,601,4.6,601,9.4,601,13.9,601,-1
@@ -1089,7 +1089,7 @@
 1088,Sathyabama Institute of Science and Technology (deemed to be university),IN,India,4,501,11.3,501,27.8,541,4.1,601,8.3,601,5.4,601,18.7,601,8,601,-1
 1089,Seattle University,US,United States,4.6,501,3.9,501,33.5,459,3.3,601,1.5,601,12.6,601,6.9,601,13.5,601,-1
 1090,Seoul National University of Science and Technology,KR,South Korea,5.7,501,3.5,501,9.5,601,9.9,601,11,601,14,601,11.6,601,6.3,601,-1
-1091,Shahid Beheshti University (SBU),IR,"Iran, Islamic Republic of",8.5,501,7.3,501,4.4,601,25.8,481,1.7,601,1.8,601,53.5,601,23.2,522,-1
+1091,Shahid Beheshti University (SBU),IR, Islamic Republic of Iran,8.5,501,7.3,501,4.4,601,25.8,481,1.7,601,1.8,601,53.5,601,23.2,522,-1
 1092,Shanghai International Studies University,CN,China (Mainland),4.3,501,2.3,501,19.2,601,1.5,601,30,476,31.9,417,3.3,601,3.8,601,-1
 1093,Sheffield Hallam University,UK,United Kingdom,6.1,501,14.2,501,9.9,601,5.4,601,30.6,468,20.9,526,52.7,601,5.4,601,-1
 1094,Siberian Federal University NA SibFU,RU,Russia,7,501,3.9,501,12.9,601,3.1,601,47.6,368,23.2,488,30.6,601,4.3,601,-1
@@ -1211,7 +1211,7 @@
 1210,Anadolu University,TR,Turkey,3.2,501,4.7,501,15.5,601,3.4,601,2,601,3.5,601,15.6,601,9.1,601,-1
 1211,Aoyama Gakuin University,JP,Japan,5.8,501,12.9,501,5.9,601,2.3,601,17.8,601,3,601,10.3,601,8.8,601,-1
 1212,Bahauddin Zakariya University ,PK,Pakistan,4.8,501,6.3,501,1.9,601,9.6,601,-1,-1,1,601,29.6,601,10.8,601,-1
-1213,Birzeit university,PS,"Palestinian Territory, Occupied",5.1,501,11.8,501,5.3,601,2.5,601,15.7,601,4.8,601,22.1,601,44.7,285,-1
+1213,Birzeit university,PS,Occupied Palestinian Territory,5.1,501,11.8,501,5.3,601,2.5,601,15.7,601,4.8,601,22.1,601,44.7,285,-1
 1214,British University in Egypt,EG,Egypt,4.5,501,3.5,501,20.7,601,2,601,2.9,601,2.9,601,9.6,601,7.5,601,-1
 1215,California Polytechnic State University,US,United States,3.1,501,10.8,501,7.7,601,3.8,601,-1,-1,-1,-1,27.6,601,26,477,-1
 1216,California State University NA Los Angeles,US,United States,4.4,501,2.5,501,3.8,601,3.4,601,5.2,601,6.8,601,7.1,601,5.3,601,-1

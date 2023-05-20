@@ -126,9 +126,7 @@ void UniList::readFromFile() {
 
 		}
 		catch (exception e) {
-			cout << "Exception:" << e.what()<<endl;
-			cout << instName << endl << rank <<endl<< endl;
-			//cout << "Error occured. Please try again later." << endl;
+			cout << "Error occured. Please try again later." << endl;
 		}
 
 	}
