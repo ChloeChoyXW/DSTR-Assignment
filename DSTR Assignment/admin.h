@@ -4,10 +4,10 @@
 using namespace std;
 
 struct admin {
-	string adminID;
+	int adminID;
 	string name;
 	string pw;
-	string phoneNum;
+	int phoneNum;
 	string email;
 	admin* nextAdd;
 	admin* prevAdd;
@@ -22,13 +22,13 @@ public:
 	//constructor
 	adminList(string adminListName);
 
-	admin* createNewNode(string adminID, string name, string pw, string phoneNum, string email);
+	admin* createNewNode(int adminID, string name, string pw, int phoneNum, string email);
 
-	void insertToEndOfAdminList(string adminID, string name, string pw, string phoneNum, string email);
+	void insertToEndOfAdminList(int adminID, string name, string pw, int phoneNum, string email);
 
-	void insertToFrontOfAdminList(string adminID, string name, string pw, string phoneNum, string email);
+	void insertToFrontOfAdminList(int adminID, string name, string pw, int phoneNum, string email);
 
-	void searchAdmin(string adminID);
+	void searchAdmin(int adminID);
 
 	void readAdminFile();
 
@@ -36,9 +36,9 @@ public:
 
 	void displayList();
 
-	void deleteFromAdminList(string adminID);
+	void deleteFromAdminList(int adminID);
 
-	void linearsearchAndModifyAdminDetails(string adminID);
+	void linearsearchAndModifyAdminDetails(int adminID);
 
-	void linearsearchAndDisplayAdminDetails(string choice);
+	void linearsearchAndDisplayAdminDetails(int choice);
 };
