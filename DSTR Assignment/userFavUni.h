@@ -1,5 +1,4 @@
 
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -25,11 +24,13 @@ public:
 
 	userFavUni* createNewNode(string userID, string uniName);
 
+	void insertToFrontOfUserFavUniList(string userID, string uniName);
+
 	void insertToEndOfUserFavUniList(string userID, string uniName);
 
 	void deleteFromUserFavUniList(string uniName);
 
-	int JumpSearchFavUni(userFavUni* head, string uniName);
+	int JumpSearchFavUni(const std::string& uniName);
 
 	void sortUserFavUniList(string sortCondition);
 

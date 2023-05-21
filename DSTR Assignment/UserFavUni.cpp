@@ -1,8 +1,9 @@
 #include "userFavUni.h"
-
+#include <cmath>
 #include <sstream>
 
 using namespace std;
+//userFavUniList::userFavUniList(string userFavUniListName) : userFavUniListName(userFavUniListName), head(NULL) {}
 
 userFavUniList::userFavUniList(string userFavUniListName) : userFavUniListName(userFavUniListName) {};
 
@@ -14,6 +15,22 @@ userFavUni* userFavUniList::createNewNode(string userID, string uniName)
 	newnode->nextAdd = NULL;
 	newnode->prevAdd = NULL;
 	return newnode;
+}
+
+void userFavUniList::insertToFrontOfUserFavUniList(string userID, string uniName)
+{
+	userFavUni* newnode = createNewNode(userID, uniName);
+
+	if (head == NULL)
+	{
+		head = tail = newnode;
+	}
+	else
+	{
+		newnode->nextAdd = head;
+		head->prevAdd = newnode;
+		head = newnode;
+	}
 }
 
 void userFavUniList::insertToEndOfUserFavUniList(string userID, string uniName)
@@ -77,8 +94,14 @@ void userFavUniList::deleteFromUserFavUniList(string uniName)
 	}
 }
 
-int userFavUniList::JumpSearchFavUni(userFavUni* head, string uniName)
-{
+int userFavUniList::JumpSearchFavUni(const std::string& uniName) {
+	if (head == NULL) {
+		cout << "The favorite university list is empty." << endl;
+		return -1;  // Target element not found
+	}
+	userFavUni* current = head;
+
+
 	// Finding the block size to be jumped
 	int step = 0;
 	while (step * step < 2)
@@ -86,8 +109,8 @@ int userFavUniList::JumpSearchFavUni(userFavUni* head, string uniName)
 
 	// Finding the block where the target element belongs
 	int prev = 0;
-	userFavUni* current = head;
-	while (current && current->uniName < uniName) {
+	//userFavUni* current = head;
+	while (current && current->uniName.compare(uniName) < 0) {
 		prev++;
 		current = current->nextAdd;
 		if (prev * step >= 2)
@@ -96,16 +119,23 @@ int userFavUniList::JumpSearchFavUni(userFavUni* head, string uniName)
 
 	// Linear search within the block
 	for (int i = 0; i < step; i++) {
-		if (current && current->uniName == uniName)
+		if (current && current->uniName == uniName) {
+			std::cout << "The university '" << uniName << "' is found in the favorite list." << std::endl;
 			return i;  // Target element found
-		current = current->nextAdd;
+		}
+		if (current)
+			current = current->nextAdd;
 	}
+
+	std::cout << "The university '" << uniName << "' is not found in the favorite list." << std::endl;
 	return -1;  // Target element not found
-	cout << "The university is not in the favourite list." << endl;
+}
+
+void userFavUniList::sortUserFavUniList(string sortCondition)
+{
 }
 
 
-void sortUserFavUniList(string sortCondition) {};
 
 void userFavUniList::displayUserFavUniList()
 {
@@ -113,47 +143,55 @@ void userFavUniList::displayUserFavUniList()
 
 	while (current != NULL)
 	{
-		cout << "Favourite University:  " << current->uniName << endl;
-		cout << string(55, '=') << endl;
+		cout << "\n" << "User ID:  " << current->userID << endl;
+		cout << "Favourite University:  " << current->uniName << "\n" << endl;
+		cout << string(55, '=') <<  endl;
 
 		current = current->nextAdd;
 	}
-	cout << "List ended here." << endl;
+	cout << "List ended here." <<  endl;
 }
 
 
-void userFavUniList::readFavUniFile() {
-	int count = 0;
+void userFavUniList::readFavUniFile()
+{
+	string filename = "favuni.csv";
+	ifstream file(filename);
 
-	string userID, uniName;
-
-	ifstream file("2023_QS_World_University_Rankings.csv");
-	string line;
-
-	while (file.good())
+	if (!file.is_open())
 	{
-		stringstream d(line);
-		getline(file, userID, ',');
-		getline(file, uniName, ',');
-
-		if (count == 0)
-		{
-			count += 1;
-			continue;
-		}
-		else if (uniName == "")
-		{
-			break;
-		}
-
-		try {
-			insertToEndOfUserFavUniList(userID,uniName);
-
-		}
-		catch (exception e) {
-			cout << "Error occured. Please try again later." << endl;
-		}
-
+		cout << "File " << filename << "unable to found!" << endl;
+		return;
 	}
 
+	string line;
+	while (getline(file, line))
+	{
+		stringstream d(line);
+		string userID, uniName;
+		getline(d, userID, ',');
+		getline(d, uniName, ',');
+		insertToEndOfUserFavUniList(userID, uniName);
+	}
+
+	file.close();
 }
+
+void userFavUniList::writeFavUniFile()
+{
+	ofstream file("favuni.csv");
+	if (!file)
+	{
+		cout << "File unable to open!" << endl;
+		return;
+	}
+
+	userFavUni* current = head;
+	while (current != nullptr)
+	{
+		file << current->userID << ',' << current->uniName << "\n";
+		current = current->nextAdd;
+	}
+	file.close();
+}
+
