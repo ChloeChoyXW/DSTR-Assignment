@@ -53,7 +53,7 @@ public:
 
 	void readFromFile();
 
-	void searchUni(string searchCondition);
+	void linearSearchUniAndDisplay(int searchCondition);
 
 	void insertUniArray();
 
