@@ -28,32 +28,6 @@ struct Uni {
 	string uniReview;
 	Uni* nextAdd;
 	Uni* prevAdd;
-
-	//===================================
-	/*string rank;
-	string instName;
-	string locationCode;
-	string location;
-	string academicScore;
-	string academicRank;
-	string employerRepScore;
-	string employerRepRank;
-	string facultyStuRIScore;
-	string facultyStuRIRank;
-	string citePerFacultyScore;
-	string citePerFacultyRank;
-	string intFacultyRIScore;
-	string intFacultyRIRank;
-	string intStuRIScore;
-	string intStuRIRank;
-	string intResearchNetScore;
-	string intResearchNetRank;
-	string employOutcomeScore;
-	string employOutcomeRank;
-	string scoreScale;
-	string uniReview;
-	Uni* nextAdd;
-	Uni* prevAdd;*/
 };
 
 class UniList {
@@ -72,26 +46,17 @@ public:
 		int citePerFacultyRank, float intFacultyRIScore, int intFacultyRIRank, float intStuRIScore, int intStuRIRank,
 		float intResearchNetScore, int intResearchNetRank, float employOutcomeScore, int employOutcomeRank, float scoreScale);
 
-	/*Uni* createNewNode(string rank, string instName, string locationCode, string location, string academicScore, string academicRank,
-		string employerRepScore, string employerRepRank, string facultyStuRIScore, string facultyStuRIRank, string citePerFacultyScore,
-		string citePerFacultyRank, string intFacultyRIScore, string intFacultyRIRank, string intStuRIScore, string intStuRIRank,
-		string intResearchNetScore, string intResearchNetRank, string employOutcomeScore, string employOutcomeRank, string scoreScale);*/
-
 	void insertToEndOfUniLinkedList(int rank, string instName, string locationCode, string location, float academicScore, int academicRank,
 		float employerRepScore, int employerRepRank, float acultyStuRIScore, int facultyStuRIRank, float citePerFacultyScore,
 		int citePerFacultyRank, float intFacultyRIScore, int intFacultyRIRank, float intStuRIScore, int intStuRIRank,
 		float intResearchNetScore, int intResearchNetRank, float employOutcomeScore, int employOutcomeRank, float scoreScale);
-
-	/*void insertToEndOfUniLinkedList(string rank, string instName, string locationCode, string location, string academicScore, string academicRank,
-		string employerRepScore, string employerRepRank, string facultyStuRIScore, string facultyStuRIRank, string citePerFacultyScore,
-		string citePerFacultyRank, string intFacultyRIScore, string intFacultyRIRank, string intStuRIScore, string intStuRIRank,
-		string intResearchNetScore, string intResearchNetRank, string employOutcomeScore, string employOutcomeRank, string scoreScale);*/
 
 	void readFromFile();
 
 	void searchUni(string searchCondition);
 
 	void insertUniArray();
+
 
 	void insertionSortUniDoublyLinkedList(int sortCondition);
 
