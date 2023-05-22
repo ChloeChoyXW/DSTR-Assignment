@@ -64,5 +64,8 @@
     <None Include="2023_QS_World_University_Rankings.csv">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="favuni.csv">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

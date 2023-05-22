@@ -20,17 +20,6 @@ admin* adminList::createNewNode(int adminID, string name, string pw, int phoneNu
 
 }
 
-//admin* adminList::createNewNode(int adminID, string name, string pw, int phoneNum, string email)
-//{
-//	admin* newnode = new admin;
-//	newnode->adminID = adminID;
-//	newnode->name = name;
-//	newnode -> pw = pw;
-//	newnode -> phoneNum = phoneNum;
-//	newnode -> email = email;
-//	return newnode; 
-//}
-
 void adminList::insertToEndOfAdminList(int adminID, string name, string pw, int phoneNum, string email) {
 	
 	admin* newnode = createNewNode(adminID, name, pw, phoneNum, email);
@@ -184,8 +173,7 @@ void adminList::linearsearchAndDisplayAdminDetails(int choice)
 }
 
 //======================================================================================================
-// function to insert a new node in sorted way in
-// a sorted doubly linked list
+// function to insert a new node in sorted way in a sorted doubly linked list
 void sortedInsert(admin** head, admin* newNode, int sortCondition)
 {
 	admin* current;
@@ -304,6 +292,41 @@ void sortedInsert(admin** head, admin* newNode, int sortCondition)
 }
 }
 
+void adminList::insertionSortAdminDoublyLinkedList(int sortCondition) {
+	//	/*1 = adminID
+	//	2 = name,
+	//	3 = pw,
+	//	4 = phoneNum
+	//	5 = email
+
+	//insertionSort(&head, sortCondition);
+	// Initialize 'sorted' - a sorted doubly linked list
+	admin* sorted = NULL;
+
+	// Traverse the given doubly linked list and
+	// insert every node to 'sorted'
+	admin* current = head;
+	while (current != NULL) {
+
+		// Store next for next iteration
+		admin* next = current->nextAdd;
+
+		// removing all the links so as to create 'current'
+		// as a new node for insertion
+		current->prevAdd = current->nextAdd = NULL;
+
+		// insert current in 'sorted' doubly linked list
+		sortedInsert(&sorted, current, sortCondition);
+
+		// Update current
+		current = next;
+	}
+
+	// Update head_ref to point to sorted doubly linked list
+	head = sorted;
+
+
+}
 
 //======================================================================================================
 //Quick Sort Algorithm

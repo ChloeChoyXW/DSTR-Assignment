@@ -3,7 +3,6 @@
 #include "university.h"
 #include "registeredUsers.h"
 #include "userFavUni.h"
-#include "admin.h"
 
 using namespace std;
 
@@ -26,12 +25,12 @@ int main() {
 	//regUser.writeRegUsersFile();
 	//regUser.readRegUsersFile();
 	//regUser.displayRegUsersList();
-	////cout << "1. User ID" << endl << "2. User Name";
-	////getline(cin, ans);
-	////regUser.linearsearchAndDisplayRegistUsersDetails(stoi(ans));
+	//cout << "1. User ID" << endl << "2. User Name";
+	//getline(cin, ans);
+	//regUser.linearsearchAndDisplayRegistUsersDetails(stoi(ans));
 
-	//userFavUniList favUni = userFavUniList("Favourite University List");
-	//favUni.readFavUniFile();
+	userFavUniList favUni = userFavUniList("Favourite University List");
+	favUni.readFavUniFile();
 	//favUni.displayUserFavUniList();
 
 	/*adminList admin = adminList("Admin");
@@ -40,6 +39,14 @@ int main() {
 	admin.adminQuickSort();
 	admin.displayList();*/
 	
+	//favUni.insertToFrontOfUserFavUniList();
+	//favUni.insertToEndOfUserFavUniList();
+	string uniName;
+	cout << "Enter the university name to search: ";
+	cin >> uniName;
 
-	return 0;
+	favUni.JumpSearchFavUni(uniName);
+	//favUni.writeFavUniFile();
+	favUni.readFavUniFile();
+	//favUni.displayUserFavUniList();
 }
