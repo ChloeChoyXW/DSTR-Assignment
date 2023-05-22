@@ -57,6 +57,7 @@ public:
 
 	void insertUniArray();
 
+	void uniQuickSort(int searchCondition);
 
 	void insertionSortUniDoublyLinkedList(int sortCondition);
 

@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 
+//using namespace std;
 
 UniList::UniList(string uniListname) : uniListName(uniListName) {};
 //create an empty new node
@@ -129,6 +130,7 @@ void UniList::readFromFile() {
 	}
 	
 }
+
 
 void UniList::linearSearchUniAndDisplay(int searchCondition) {
 	if (head == NULL)
@@ -584,22 +586,21 @@ void UniList::insertUniArray() {
 
 }
 
-//======================================================================================================
-// function to insert a new node in sorted way in
-// a sorted doubly linked list
+//============================Insertion Sort==========================================================================
+// function to insert a new node in sorted way in a sorted doubly linked list
 void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 {
 	Uni* current;
 
 	switch (sortCondition) {
+	//	1 = rank
 	case 1:
 
 		// if list is empty
 		if (*head == NULL) {
 			*head = newNode;
 		}
-		// if the node is to be inserted at the beginning
-		// of the doubly linked list
+		// if the node is to be inserted at the beginning of the doubly linked list
 		else if ((*head)->rank >= newNode->rank) {
 			newNode->nextAdd = *head;
 			newNode->nextAdd->prevAdd = newNode;
@@ -609,18 +610,14 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 		else {
 			current = *head;
 
-			// locate the node after which the new node
-			// is to be inserted
+			// locate the node after which the new node is to be inserted
 			while (current->nextAdd != NULL &&
 				current->nextAdd->rank < newNode->rank)
 				current = current->nextAdd;
 
-			/*Make the appropriate links */
-
 			newNode->nextAdd = current->nextAdd;
 
-			// if the new node is not inserted
-			// at the end of the list
+			// if the new node is not inserted at the end of the list
 			if (current->nextAdd != NULL)
 				newNode->nextAdd->prevAdd = newNode;
 
@@ -630,13 +627,12 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 
 		break;
 
+	//	2 = instName,
 	case 2:
-		// if list is empty
 		if (*head == NULL) {
 			*head = newNode;
 		}
-		// if the node is to be inserted at the beginning
-		// of the doubly linked list
+
 		else if ((*head)->instName >= newNode->instName) {
 			newNode->nextAdd = *head;
 			newNode->nextAdd->prevAdd = newNode;
@@ -646,18 +642,12 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 		else {
 			current = *head;
 
-			// locate the node after which the new node
-			// is to be inserted
 			while (current->nextAdd != NULL &&
 				current->nextAdd->instName < newNode->instName)
 				current = current->nextAdd;
 
-			/*Make the appropriate links */
-
 			newNode->nextAdd = current->nextAdd;
 
-			// if the new node is not inserted
-			// at the end of the list
 			if (current->nextAdd != NULL)
 				newNode->nextAdd->prevAdd = newNode;
 
@@ -665,14 +655,13 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 			newNode->prevAdd = current;
 		}
 		break;
-
+		
+	//	3 = location,
 	case 3:
-		// if list is empty
 		if (*head == NULL) {
 			*head = newNode;
 		}
-		// if the node is to be inserted at the beginning
-		// of the doubly linked list
+
 		else if ((*head)->location >= newNode->location) {
 			newNode->nextAdd = *head;
 			newNode->nextAdd->prevAdd = newNode;
@@ -682,18 +671,12 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 		else {
 			current = *head;
 
-			// locate the node after which the new node
-			// is to be inserted
 			while (current->nextAdd != NULL &&
 				current->nextAdd->location < newNode->location)
 				current = current->nextAdd;
 
-			/*Make the appropriate links */
-
 			newNode->nextAdd = current->nextAdd;
 
-			// if the new node is not inserted
-			// at the end of the list
 			if (current->nextAdd != NULL)
 				newNode->nextAdd->prevAdd = newNode;
 
@@ -701,14 +684,14 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 			newNode->prevAdd = current;
 		}
 		break;
-
+		
+	//	4 = academicRank
 	case 4:
-		// if list is empty
+
 		if (*head == NULL) {
 			*head = newNode;
 		}
-		// if the node is to be inserted at the beginning
-		// of the doubly linked list
+
 		else if ((*head)->academicRank >= newNode->academicRank) {
 			newNode->nextAdd = *head;
 			newNode->nextAdd->prevAdd = newNode;
@@ -718,18 +701,12 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 		else {
 			current = *head;
 
-			// locate the node after which the new node
-			// is to be inserted
 			while (current->nextAdd != NULL &&
 				current->nextAdd->academicRank < newNode->academicRank)
 				current = current->nextAdd;
 
-			/*Make the appropriate links */
-
 			newNode->nextAdd = current->nextAdd;
 
-			// if the new node is not inserted
-			// at the end of the list
 			if (current->nextAdd != NULL)
 				newNode->nextAdd->prevAdd = newNode;
 
@@ -737,14 +714,14 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 			newNode->prevAdd = current;
 		}
 		break;
-
+		
+	//	5 = employerRepRank
 	case 5:
-		// if list is empty
+
 		if (*head == NULL) {
 			*head = newNode;
 		}
-		// if the node is to be inserted at the beginning
-		// of the doubly linked list
+
 		else if ((*head)->employerRepRank >= newNode->employerRepRank) {
 			newNode->nextAdd = *head;
 			newNode->nextAdd->prevAdd = newNode;
@@ -754,18 +731,12 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 		else {
 			current = *head;
 
-			// locate the node after which the new node
-			// is to be inserted
 			while (current->nextAdd != NULL &&
 				current->nextAdd->employerRepRank < newNode->employerRepRank)
 				current = current->nextAdd;
 
-			/*Make the appropriate links */
-
 			newNode->nextAdd = current->nextAdd;
 
-			// if the new node is not inserted
-			// at the end of the list
 			if (current->nextAdd != NULL)
 				newNode->nextAdd->prevAdd = newNode;
 
@@ -773,14 +744,14 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 			newNode->prevAdd = current;
 		}
 		break;
-
+		
+	//	6 = facultyStuRIRank
 	case 6:
-		// if list is empty
+
 		if (*head == NULL) {
 			*head = newNode;
 		}
-		// if the node is to be inserted at the beginning
-		// of the doubly linked list
+
 		else if ((*head)->facultyStuRIRank >= newNode->facultyStuRIRank) {
 			newNode->nextAdd = *head;
 			newNode->nextAdd->prevAdd = newNode;
@@ -790,18 +761,12 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 		else {
 			current = *head;
 
-			// locate the node after which the new node
-			// is to be inserted
 			while (current->nextAdd != NULL &&
 				current->nextAdd->facultyStuRIRank < newNode->facultyStuRIRank)
 				current = current->nextAdd;
 
-			/*Make the appropriate links */
-
 			newNode->nextAdd = current->nextAdd;
 
-			// if the new node is not inserted
-			// at the end of the list
 			if (current->nextAdd != NULL)
 				newNode->nextAdd->prevAdd = newNode;
 
@@ -809,14 +774,14 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 			newNode->prevAdd = current;
 		}
 		break;
-
+		
+	//	7 = citePerFacultyRank
 	case 7:
-		// if list is empty
+
 		if (*head == NULL) {
 			*head = newNode;
 		}
-		// if the node is to be inserted at the beginning
-		// of the doubly linked list
+
 		else if ((*head)->citePerFacultyRank >= newNode->citePerFacultyRank) {
 			newNode->nextAdd = *head;
 			newNode->nextAdd->prevAdd = newNode;
@@ -826,18 +791,13 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 		else {
 			current = *head;
 
-			// locate the node after which the new node
-			// is to be inserted
 			while (current->nextAdd != NULL &&
 				current->nextAdd->citePerFacultyRank < newNode->citePerFacultyRank)
 				current = current->nextAdd;
 
-			/*Make the appropriate links */
 
 			newNode->nextAdd = current->nextAdd;
 
-			// if the new node is not inserted
-			// at the end of the list
 			if (current->nextAdd != NULL)
 				newNode->nextAdd->prevAdd = newNode;
 
@@ -845,14 +805,14 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 			newNode->prevAdd = current;
 		}
 		break;
-
+		
+	//	8 = intFacultyRIRank
 	case 8:
-		// if list is empty
+
 		if (*head == NULL) {
 			*head = newNode;
 		}
-		// if the node is to be inserted at the beginning
-		// of the doubly linked list
+
 		else if ((*head)->intFacultyRIRank >= newNode->intFacultyRIRank) {
 			newNode->nextAdd = *head;
 			newNode->nextAdd->prevAdd = newNode;
@@ -862,18 +822,12 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 		else {
 			current = *head;
 
-			// locate the node after which the new node
-			// is to be inserted
 			while (current->nextAdd != NULL &&
 				current->nextAdd->intFacultyRIRank < newNode->intFacultyRIRank)
 				current = current->nextAdd;
 
-			/*Make the appropriate links */
-
 			newNode->nextAdd = current->nextAdd;
 
-			// if the new node is not inserted
-			// at the end of the list
 			if (current->nextAdd != NULL)
 				newNode->nextAdd->prevAdd = newNode;
 
@@ -881,14 +835,14 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 			newNode->prevAdd = current;
 		}
 		break;
-
+		
+	//	9 = intStuRIRank
 	case 9:
-		// if list is empty
+
 		if (*head == NULL) {
 			*head = newNode;
 		}
-		// if the node is to be inserted at the beginning
-		// of the doubly linked list
+
 		else if ((*head)->intStuRIRank >= newNode->intStuRIRank) {
 			newNode->nextAdd = *head;
 			newNode->nextAdd->prevAdd = newNode;
@@ -898,18 +852,13 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 		else {
 			current = *head;
 
-			// locate the node after which the new node
-			// is to be inserted
 			while (current->nextAdd != NULL &&
 				current->nextAdd->intStuRIRank < newNode->intStuRIRank)
 				current = current->nextAdd;
 
-			/*Make the appropriate links */
 
 			newNode->nextAdd = current->nextAdd;
 
-			// if the new node is not inserted
-			// at the end of the list
 			if (current->nextAdd != NULL)
 				newNode->nextAdd->prevAdd = newNode;
 
@@ -918,13 +867,13 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 		}
 		break;
 
+		
+	//	10 = intResearchNetRank
 	case 10:
-		// if list is empty
 		if (*head == NULL) {
 			*head = newNode;
 		}
-		// if the node is to be inserted at the beginning
-		// of the doubly linked list
+
 		else if ((*head)->intResearchNetRank >= newNode->intResearchNetRank) {
 			newNode->nextAdd = *head;
 			newNode->nextAdd->prevAdd = newNode;
@@ -934,18 +883,12 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 		else {
 			current = *head;
 
-			// locate the node after which the new node
-			// is to be inserted
 			while (current->nextAdd != NULL &&
 				current->nextAdd->intResearchNetRank < newNode->intResearchNetRank)
 				current = current->nextAdd;
 
-			/*Make the appropriate links */
-
 			newNode->nextAdd = current->nextAdd;
 
-			// if the new node is not inserted
-			// at the end of the list
 			if (current->nextAdd != NULL)
 				newNode->nextAdd->prevAdd = newNode;
 
@@ -953,14 +896,13 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 			newNode->prevAdd = current;
 		}
 		break;
-
+ 
+	//	11 = employOutcomeRank
 	case 11:
-		// if list is empty
 		if (*head == NULL) {
 			*head = newNode;
 		}
-		// if the node is to be inserted at the beginning
-		// of the doubly linked list
+
 		else if ((*head)->employOutcomeRank >= newNode->employOutcomeRank) {
 			newNode->nextAdd = *head;
 			newNode->nextAdd->prevAdd = newNode;
@@ -970,18 +912,12 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 		else {
 			current = *head;
 
-			// locate the node after which the new node
-			// is to be inserted
 			while (current->nextAdd != NULL &&
 				current->nextAdd->employOutcomeRank < newNode->employOutcomeRank)
 				current = current->nextAdd;
 
-			/*Make the appropriate links */
-
 			newNode->nextAdd = current->nextAdd;
 
-			// if the new node is not inserted
-			// at the end of the list
 			if (current->nextAdd != NULL)
 				newNode->nextAdd->prevAdd = newNode;
 
@@ -989,14 +925,12 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 			newNode->prevAdd = current;
 		}
 		break;
-
+		
+	//	12 = scoreScale
 	case 12:
-		// if list is empty
 		if (*head == NULL) {
 			*head = newNode;
 		}
-		// if the node is to be inserted at the beginning
-		// of the doubly linked list
 		else if ((*head)->scoreScale >= newNode->scoreScale) {
 			newNode->nextAdd = *head;
 			newNode->nextAdd->prevAdd = newNode;
@@ -1006,18 +940,13 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 		else {
 			current = *head;
 
-			// locate the node after which the new node
-			// is to be inserted
 			while (current->nextAdd != NULL &&
 				current->nextAdd->scoreScale < newNode->scoreScale)
 				current = current->nextAdd;
 
-			/*Make the appropriate links */
 
 			newNode->nextAdd = current->nextAdd;
 
-			// if the new node is not inserted
-			// at the end of the list
 			if (current->nextAdd != NULL)
 				newNode->nextAdd->prevAdd = newNode;
 
@@ -1029,34 +958,19 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
 
 }
 
-void UniList::insertionSortUniDoublyLinkedList(int sortCondition) {
-	//	/*1 = rank
-	//	2 = instName,
-	//	3 = location,
-	//	4 = academicRank
-	//	5 = employerRepRank
-	//	6 = facultyStuRIRank
-	//	7 = citePerFacultyRank
-	//	8 = intFacultyRIRank
-	//	9 = intStuRIRank
-	//	10 = intResearchNetRank
-	//	11 = employOutcomeRank
-	//	12 = scoreScale*/
-	// 
-		//insertionSort(&head, sortCondition);
-		// Initialize 'sorted' - a sorted doubly linked list
+void UniList::insertionSortUniDoublyLinkedList(int sortCondition) { 
+
+		// Initialize a sorted doubly linked list
 	Uni* sorted = NULL;
 
-	// Traverse the given doubly linked list and
-	// insert every node to 'sorted'
+	// Traverse the given doubly linked list and insert every node to sorted doubly linked list
 	Uni* current = head;
 	while (current != NULL) {
 
 		// Store next for next iteration
 		Uni* next = current->nextAdd;
 
-		// removing all the links so as to create 'current'
-		// as a new node for insertion
+		// removing all the links so as to create 'current' as a new node for insertion
 		current->prevAdd = current->nextAdd = NULL;
 
 		// insert current in 'sorted' doubly linked list
@@ -1072,6 +986,295 @@ void UniList::insertionSortUniDoublyLinkedList(int sortCondition) {
 
 }
 
+
+//=======================Quick sort============================================
+//From https://www.geeksforgeeks.org/quicksort-for-linked-list/
+
+/* A utility function to swap two elements */
+void uniSwap(string* a, string* b)
+{
+	string t = *a; *a = *b; *b = t;
+}
+
+void uniSwap(int* a, int* b)
+{
+	int t = *a; *a = *b; *b = t;
+}
+
+void uniSwap(float* a, float* b)
+{
+	float t = *a; *a = *b; *b = t;
+}
+
+// A utility function to find
+// last node of linked list
+Uni* lastNode(Uni* end)
+{
+	while (end && end->nextAdd)
+		end = end->nextAdd;
+	return end;
+}
+
+void swappingValue(Uni* i, Uni* j) {
+	uniSwap(&(i->rank), &(j->rank));
+	uniSwap(&(i->instName), &(j->instName));
+	uniSwap(&(i->locationCode), &(j->locationCode));
+	uniSwap(&(i->location), &(j->location));
+	uniSwap(&(i->academicScore), &(j->academicScore));
+	uniSwap(&(i->academicRank), &(j->academicRank));
+	uniSwap(&(i->employerRepScore), &(j->employerRepScore));
+	uniSwap(&(i->employerRepRank), &(j->employerRepRank));
+	uniSwap(&(i->facultyStuRIScore), &(j->facultyStuRIScore));
+	uniSwap(&(i->facultyStuRIRank), &(j->facultyStuRIRank));
+	uniSwap(&(i->citePerFacultyScore), &(j->citePerFacultyScore));
+	uniSwap(&(i->citePerFacultyRank), &(j->citePerFacultyRank));
+	uniSwap(&(i->intFacultyRIScore), &(j->intFacultyRIScore));
+	uniSwap(&(i->intFacultyRIRank), &(j->intFacultyRIRank));
+	uniSwap(&(i->intStuRIScore), &(j->intStuRIScore));
+	uniSwap(&(i->intStuRIRank), &(j->intStuRIRank));
+	uniSwap(&(i->intResearchNetScore), &(j->intResearchNetScore));
+	uniSwap(&(i->intResearchNetRank), &(j->intResearchNetRank));
+	uniSwap(&(i->employOutcomeScore), &(j->employOutcomeScore));
+	uniSwap(&(i->employOutcomeRank), &(j->employOutcomeRank));
+	uniSwap(&(i->scoreScale), &(j->scoreScale));
+}
+
+/* Considers last element as pivot,
+places the pivot element at its
+correct position in sorted array,
+and places all smaller (smaller than
+pivot) to left of pivot and all greater
+elements to right of pivot */
+Uni* partition(Uni* l, Uni* h, int searchCondition){
+	Uni* i = l->prevAdd;
+	string y;
+	int x;
+	//	1 = rank
+	//	2 = instName,
+	//	3 = location,
+	//	4 = academicRank
+	//	5 = employerRepRank
+	//	6 = facultyStuRIRank
+	//	7 = citePerFacultyRank
+	//	8 = intFacultyRIRank
+	//	9 = intStuRIRank
+	//	10 = intResearchNetRank
+	//	11 = employOutcomeRank
+	//	12 = scoreScale
+	switch (searchCondition) {
+	case 1:
+		// set pivot as h element
+		x = h->rank;
+
+		// Similar to "for (int j = l; j <= h- 1; j++)"
+		for (Uni* j = l; j != h; j = j->nextAdd)
+		{
+			if (j->rank <= x)
+			{
+				// Similar to i++ for array
+				i = (i == NULL) ? l : i->nextAdd;
+				swappingValue(i, j);
+			}
+		}
+		i = (i == NULL) ? l : i->nextAdd; // Similar to i++
+		swappingValue(i, h);
+		return i;
+
+	case 2:
+		y = h->instName;
+		for (Uni* j = l; j != h; j = j->nextAdd)
+		{
+			if (j->instName <= y)
+			{
+				// Similar to i++ for array
+				i = (i == NULL) ? l : i->nextAdd;
+				swappingValue(i, j);
+			}
+		}
+		i = (i == NULL) ? l : i->nextAdd; // Similar to i++
+		swappingValue(i, h);
+		return i;
+
+	case 3:
+		y = h->location;
+		for (Uni* j = l; j != h; j = j->nextAdd)
+		{
+			if (j->location <= y)
+			{
+				// Similar to i++ for array
+				i = (i == NULL) ? l : i->nextAdd;
+				swappingValue(i, j);
+			}
+		}
+		i = (i == NULL) ? l : i->nextAdd; // Similar to i++
+		swappingValue(i, h);
+		return i;
+
+	case 4:
+		x = h->academicRank;
+		for (Uni* j = l; j != h; j = j->nextAdd)
+		{
+			if (j->academicRank <= x)
+			{
+				// Similar to i++ for array
+				i = (i == NULL) ? l : i->nextAdd;
+				swappingValue(i, j);
+			}
+		}
+		i = (i == NULL) ? l : i->nextAdd; // Similar to i++
+		swappingValue(i, h);
+		return i;
+
+	case 5:
+		x = h->employerRepRank;
+		for (Uni* j = l; j != h; j = j->nextAdd)
+		{
+			if (j->employerRepRank <= x)
+			{
+				// Similar to i++ for array
+				i = (i == NULL) ? l : i->nextAdd;
+				swappingValue(i, j);
+			}
+		}
+		i = (i == NULL) ? l : i->nextAdd; // Similar to i++
+		swappingValue(i, h);
+		return i;
+
+	case 6:
+		x = h->facultyStuRIRank;
+		for (Uni* j = l; j != h; j = j->nextAdd)
+		{
+			if (j->facultyStuRIRank <= x)
+			{
+				// Similar to i++ for array
+				i = (i == NULL) ? l : i->nextAdd;
+				swappingValue(i, j);
+			}
+		}
+		i = (i == NULL) ? l : i->nextAdd; // Similar to i++
+		swappingValue(i, h);
+		return i;
+
+	case 7:
+		x = h->citePerFacultyRank;
+		for (Uni* j = l; j != h; j = j->nextAdd)
+		{
+			if (j->citePerFacultyRank <= x)
+			{
+				// Similar to i++ for array
+				i = (i == NULL) ? l : i->nextAdd;
+				swappingValue(i, j);
+			}
+		}
+		i = (i == NULL) ? l : i->nextAdd; // Similar to i++
+		swappingValue(i, h);
+		return i;
+
+	case 8:
+		x = h->intFacultyRIRank;
+		for (Uni* j = l; j != h; j = j->nextAdd)
+		{
+			if (j->intFacultyRIRank <= x)
+			{
+				// Similar to i++ for array
+				i = (i == NULL) ? l : i->nextAdd;
+				swappingValue(i, j);
+			}
+		}
+		i = (i == NULL) ? l : i->nextAdd; // Similar to i++
+		swappingValue(i, h);
+		return i;
+
+	case 9:
+		x = h->intStuRIRank;
+		for (Uni* j = l; j != h; j = j->nextAdd)
+		{
+			if (j->intStuRIRank <= x)
+			{
+				// Similar to i++ for array
+				i = (i == NULL) ? l : i->nextAdd;
+				swappingValue(i, j);
+			}
+		}
+		i = (i == NULL) ? l : i->nextAdd; // Similar to i++
+		swappingValue(i, h);
+		return i;
+
+	case 10:
+		x = h->intResearchNetRank;
+		for (Uni* j = l; j != h; j = j->nextAdd)
+		{
+			if (j->intResearchNetRank <= x)
+			{
+				// Similar to i++ for array
+				i = (i == NULL) ? l : i->nextAdd;
+				swappingValue(i, j);
+			}
+		}
+		i = (i == NULL) ? l : i->nextAdd; // Similar to i++
+		swappingValue(i, h);
+		return i;
+
+	case 11:
+		x = h->employOutcomeRank;
+		for (Uni* j = l; j != h; j = j->nextAdd)
+		{
+			if (j->employOutcomeRank <= x)
+			{
+				// Similar to i++ for array
+				i = (i == NULL) ? l : i->nextAdd;
+				swappingValue(i, j);
+			}
+		}
+		i = (i == NULL) ? l : i->nextAdd; // Similar to i++
+		swappingValue(i, h);
+		return i;
+
+	case 12:
+		x = h->scoreScale;
+		for (Uni* j = l; j != h; j = j->nextAdd)
+		{
+			if (j->scoreScale <= x)
+			{
+				// Similar to i++ for array
+				i = (i == NULL) ? l : i->nextAdd;
+				swappingValue(i, j);
+			}
+		}
+		i = (i == NULL) ? l : i->nextAdd; // Similar to i++
+		swappingValue(i, h);
+		return i;
+	}	
+	
+}
+
+/* A recursive implementation
+of quicksort for linked list */
+void _quickSort(Uni* l, Uni* h, int searchCondition)
+{
+	if (h != NULL && l != h && l != h->nextAdd)
+	{
+		Uni* p = partition(l, h, searchCondition);
+		_quickSort(l, p->prevAdd, searchCondition);
+		_quickSort(p->nextAdd, h, searchCondition);
+	}
+}
+
+// The main function to sort a linked list.
+// It mainly calls _quickSort()
+void UniList::uniQuickSort(int searchCondition)
+{
+	Uni* current = head;
+	// Find last node
+	Uni* h = lastNode(current);
+
+	// Call the recursive QuickSort
+	_quickSort(current, h, searchCondition);
+}
+//=====================================================================================================
+
+
+//Display Uni List
 void UniList::displayList() {
 	Uni* current = head;
 	bool  contPrint = true;
@@ -1100,20 +1303,14 @@ void UniList::displayList() {
 			cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
 			cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
 			cout << "Score Scale: " << current->scoreScale << endl;
-			//cout << string(55, '=') << endl;
-			// 
+			cout << string(55, '=') << endl;
+			
 			//move to next address
 			current = current->nextAdd;
 		}
 		cout << "Do you want to continue printing? (Any key to continue, n to exit):" << endl;
 		cin >> cont;
-		//while(cont != "n" || cont != "y") {
-		//	cout << "Please enter a valid response!" << endl;
-		//	cout << "Do you want to continue printing? (y/n):" << endl;
-		//	cin.clear();
-		//	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		//	cin >> cont;
-		//}
+
 
 		if (cont == "n") {
 			break;
