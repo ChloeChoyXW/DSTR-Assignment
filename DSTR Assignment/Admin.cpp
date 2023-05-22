@@ -333,8 +333,19 @@ void adminList::insertionSortAdminDoublyLinkedList(int sortCondition) {
 //From https://www.geeksforgeeks.org/quicksort-for-linked-list/
 
 /* A utility function to swap two elements */
-void swap ( string* a, string* b )
+void adminswap ( string* a, string* b )
 { string t = *a; *a = *b; *b = t; }
+
+void adminswap ( int* a, int* b )
+{ int t = *a; *a = *b; *b = t; }
+
+void adminswapping(admin* i, admin* j){
+	adminswap(&(i->adminID), &(j->adminID));
+	adminswap(&(i->name), &(j->name));
+	adminswap(&(i->pw), &(j->pw));
+	adminswap(&(i->phoneNum), &(j->phoneNum));
+	adminswap(&(i->email), &(j->email));
+}
 
 // A utility function to find
 // last node of linked list
@@ -360,18 +371,18 @@ admin* partition(admin *l, admin *h)
 	admin *i = l->prevAdd;
 
 	// Similar to "for (int j = l; j <= h- 1; j++)"
-	for (admin *j = l; j != h; j = j->nextAdd)
+	for (admin* j = l; j != h; j = j->nextAdd)
 	{
 		if (j->name <= x)
 		{
 			// Similar to i++ for array
 			i = (i == NULL)? l : i->nextAdd;
 
-			swap(&(i->name), &(j->name));
+			adminswapping(i, j);
 		}
 	}
 	i = (i == NULL)? l : i->nextAdd; // Similar to i++
-	swap(&(i->name), &(h->name));
+	adminswapping(i, h);
 	return i;
 }
 
