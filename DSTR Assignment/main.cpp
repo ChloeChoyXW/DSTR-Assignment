@@ -8,11 +8,13 @@
 using namespace std;
 
 int main() {
-	//UniList university = UniList("University List");
-	//university.readFromFile();
+	UniList university = UniList("University List");
+	university.readFromFile();
 	//university.displayList();
 	//cout << string(22, '=')<< "Sorted List" << string(22, '=') << endl;
-	//university.insertionSortUniDoublyLinkedList('a');
+	//university.insertionSortUniDoublyLinkedList(2);
+	university.uniQuickSort(3);
+	university.displayList();
 	//university.displayList();
 	//string ans;
 	//regUsersList regUser = regUsersList("Registered Users List");
@@ -34,6 +36,18 @@ int main() {
 	//userFavUniList favUni = userFavUniList("Favourite University List");
 	//favUni.readFavUniFile();
 	//favUni.displayUserFavUniList();
+
+	/*adminList admin = adminList("Admin");
+	admin.readAdminFile();
+	admin.displayList();
+	admin.adminQuickSort();
+	admin.displayList();*/
+	
+	//favUni.insertToFrontOfUserFavUniList();
+	//favUni.insertToEndOfUserFavUniList();
+	string uniName;
+	cout << "Enter the university name to search: ";
+	cin >> uniName;
 	//
 
 	favUni.JumpSearchFavUni(uniName);

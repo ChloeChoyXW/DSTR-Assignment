@@ -20,17 +20,6 @@ admin* adminList::createNewNode(int adminID, string name, string pw, int phoneNu
 
 }
 
-//admin* adminList::createNewNode(int adminID, string name, string pw, int phoneNum, string email)
-//{
-//	admin* newnode = new admin;
-//	newnode->adminID = adminID;
-//	newnode->name = name;
-//	newnode -> pw = pw;
-//	newnode -> phoneNum = phoneNum;
-//	newnode -> email = email;
-//	return newnode; 
-//}
-
 void adminList::insertToEndOfAdminList(int adminID, string name, string pw, int phoneNum, string email) {
 	
 	admin* newnode = createNewNode(adminID, name, pw, phoneNum, email);
@@ -184,8 +173,7 @@ void adminList::linearsearchAndDisplayAdminDetails(int choice)
 }
 
 //======================================================================================================
-// function to insert a new node in sorted way in
-// a sorted doubly linked list
+// function to insert a new node in sorted way in a sorted doubly linked list
 void sortedInsert(admin** head, admin* newNode, int sortCondition)
 {
 	admin* current;
@@ -304,14 +292,60 @@ void sortedInsert(admin** head, admin* newNode, int sortCondition)
 }
 }
 
+void adminList::insertionSortAdminDoublyLinkedList(int sortCondition) {
+	//	/*1 = adminID
+	//	2 = name,
+	//	3 = pw,
+	//	4 = phoneNum
+	//	5 = email
+
+	//insertionSort(&head, sortCondition);
+	// Initialize 'sorted' - a sorted doubly linked list
+	admin* sorted = NULL;
+
+	// Traverse the given doubly linked list and
+	// insert every node to 'sorted'
+	admin* current = head;
+	while (current != NULL) {
+
+		// Store next for next iteration
+		admin* next = current->nextAdd;
+
+		// removing all the links so as to create 'current'
+		// as a new node for insertion
+		current->prevAdd = current->nextAdd = NULL;
+
+		// insert current in 'sorted' doubly linked list
+		sortedInsert(&sorted, current, sortCondition);
+
+		// Update current
+		current = next;
+	}
+
+	// Update head_ref to point to sorted doubly linked list
+	head = sorted;
+
+
+}
 
 //======================================================================================================
 //Quick Sort Algorithm
 //From https://www.geeksforgeeks.org/quicksort-for-linked-list/
 
 /* A utility function to swap two elements */
-void swap ( string* a, string* b )
+void adminswap ( string* a, string* b )
 { string t = *a; *a = *b; *b = t; }
+
+void adminswap ( int* a, int* b )
+{ int t = *a; *a = *b; *b = t; }
+
+void adminswapping(admin* i, admin* j){
+	adminswap(&(i->adminID), &(j->adminID));
+	adminswap(&(i->name), &(j->name));
+	adminswap(&(i->pw), &(j->pw));
+	adminswap(&(i->phoneNum), &(j->phoneNum));
+	adminswap(&(i->email), &(j->email));
+}
 
 // A utility function to find
 // last node of linked list
@@ -337,18 +371,18 @@ admin* partition(admin *l, admin *h)
 	admin *i = l->prevAdd;
 
 	// Similar to "for (int j = l; j <= h- 1; j++)"
-	for (admin *j = l; j != h; j = j->nextAdd)
+	for (admin* j = l; j != h; j = j->nextAdd)
 	{
 		if (j->name <= x)
 		{
 			// Similar to i++ for array
 			i = (i == NULL)? l : i->nextAdd;
 
-			swap(&(i->name), &(j->name));
+			adminswapping(i, j);
 		}
 	}
 	i = (i == NULL)? l : i->nextAdd; // Similar to i++
-	swap(&(i->name), &(h->name));
+	adminswapping(i, h);
 	return i;
 }
 
