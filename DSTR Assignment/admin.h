@@ -41,4 +41,6 @@ public:
 	void linearsearchAndModifyAdminDetails(int adminID);
 
 	void linearsearchAndDisplayAdminDetails(int choice);
+
+	void insertionSortAdminDoublyLinkedList(int sortCondition);
 };
