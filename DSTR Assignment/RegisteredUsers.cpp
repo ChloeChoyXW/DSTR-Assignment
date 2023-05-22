@@ -1,5 +1,4 @@
 ﻿#include "registeredUsers.h"
-#include <sstream>
 
 
 regUsersList::regUsersList(string regUsersListName) : regUsersListName(regUsersListName) {};
@@ -236,6 +235,27 @@ void regUsersList::writeRegUsersFile()
 	while (current != nullptr)
 	{
 		file << current->userID << ',' << current->name << ',' << current->pw << ',' << current->phoneNum << ',' << current->email << "\n";
+		current = current->nextAdd;
+	}
+	file.close();
+}
+
+void regUsersList::writeUsersLogFile()
+{
+	regUsers* current = head;
+	ofstream file("UsersLog.csv");
+	if (!file)
+	{
+		cout << "File unable to open!" << endl;
+	}
+
+	while (current != nullptr)
+	{
+		tm timeStruct{};
+		char buffer[9];
+		strftime(buffer, sizeof(buffer), "%H:%M:%S", &current->loginTime);
+		string time(buffer);
+		file << current->userID << ',' << time << ',' << "\n";
 		current = current->nextAdd;
 	}
 	file.close();

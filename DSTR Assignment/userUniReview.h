@@ -1,6 +1,12 @@
 #pragma once
 
 #include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <string>
+#include <sstream>
+#incldue <ctime>
+
 using namespace std;
 
 struct userUniReview {
@@ -22,15 +28,21 @@ public:
 	//constructor
 	userUniReviewList(string userUniReviewListName);
 
-	userUniReview* createNewNode(string userID, string uniName, tm reviewTime, string adminReply);
+	userUniReview* createNewNode(string userID, string uniName, string userReview, tm reviewTime, string adminReply);
 
-	void insertToEndOfUserUniReviewList(string userID, string uniName, tm reviewTime, string adminReply);
+	void insertToEndOfUserUniReviewList(string userID, string uniName, string userReview, tm reviewTime, string adminReply);
 
-	void deleteFromUserUniReviewList(string userTD, string uniName);
+	void deleteFromUserUniReviewList(string userID, string uniName);
 
 	void sortUserUniReviewList(string sortCondition);
 
 	void searchAndModifyUserUniReviewList(string userID, string uniName);
 
+	void searchAndDisplayUserUniReviewList(int choice);
+
 	void displayUserUniReviewList();
+
+	void readUserUniReviewFile();
+
+	void writeUserUniReviewFile();
 };

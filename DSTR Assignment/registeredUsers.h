@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
+
 
 using namespace std;
 
@@ -45,5 +47,7 @@ public:
 	void readRegUsersFile();
 
 	void writeRegUsersFile();
+
+	void writeUsersLogFile();
 
 };
