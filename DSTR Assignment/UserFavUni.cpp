@@ -94,45 +94,157 @@ void userFavUniList::deleteFromUserFavUniList(string uniName)
 	}
 }
 
-int userFavUniList::JumpSearchFavUni(const std::string& uniName) {
-	if (head == NULL) {
-		cout << "The favorite university list is empty." << endl;
-		return -1;  // Target element not found
-	}
+//int userFavUniList::JumpSearchFavUni(const std::string& uniName) {
+//	if (head == NULL) {
+//		cout << "The favorite university list is empty." << endl;
+//		return -1;  // Target element not found
+//	}
+//	userFavUni* current = head;
+//
+//
+//	// Finding the block size to be jumped
+//	int step = 0;
+//	while (step * step < 2)
+//		step++;
+//
+//	// Finding the block where the target element belongs
+//	int prev = 0;
+//	//userFavUni* current = head;
+//	while (current && current->uniName.compare(uniName) < 0) {
+//		prev++;
+//		current = current->nextAdd;
+//		if (prev * step >= 2)
+//			return -1;  // Target element not found
+//	}
+//
+//	// Linear search within the block
+//	for (int i = 0; i < step; i++) {
+//		if (current && current->uniName == uniName) {
+//			std::cout << "The university '" << uniName << "' is found in the favorite list." << std::endl;
+//			return i;  // Target element found
+//		}
+//		if (current)
+//			current = current->nextAdd;
+//	}
+//
+//	std::cout << "The university '" << uniName << "' is not found in the favorite list." << std::endl;
+//	return -1;  // Target element not found
+//}
+
+int userFavUniList::size() {
+	int count = 0;
 	userFavUni* current = head;
-
-
-	// Finding the block size to be jumped
-	int step = 0;
-	while (step * step < 2)
-		step++;
-
-	// Finding the block where the target element belongs
-	int prev = 0;
-	//userFavUni* current = head;
-	while (current && current->uniName.compare(uniName) < 0) {
-		prev++;
+	while (current != NULL) {
+		count++;
 		current = current->nextAdd;
-		if (prev * step >= 2)
-			return -1;  // Target element not found
+	}
+	return count;
+}
+
+//void userFavUniList::JumpSearchFavUni(string uniName)
+//{
+//	if (head == nullptr) {
+//			std::cout << "The favorite university list is empty." << std::endl;
+//			return -1;  // List is empty
+//	}
+//
+//	int listSize = size();
+//	int blockSize = static_cast<int>(std::sqrt(listSize));
+//
+//	userFavUni* current = head;
+//	userFavUni* prev = nullptr;
+//		// Finding the block where the target element belongs
+//	while (current && current->uniName < uniName) {
+//		prev = current;
+//		for (int i = 0; current && i < blockSize; ++i) {
+//			current = current->nextAdd;
+//		}
+//	}
+//
+//	// Linear search within the block
+//	while (current && current->uniName <= uniName) {
+//		if (current->uniName == uniName) {
+//			std::cout << "The university '" << uniName << "' is found in the favorite list." << std::endl;
+//			return getPosition(current);
+//		}
+//		current = current->nextAdd;
+//	}
+//
+//	std::cout << "The university '" << uniName << "' is not found in the favorite list." << std::endl;
+//	return -1;  // Target element not found
+//}
+
+
+
+int userFavUniList::JumpSearchFavUni(const std::string& uniName) {
+	if (head == nullptr) {
+		std::cout << "The favorite university list is empty." << std::endl;
+		return -1;  // List is empty
+	}
+
+	int listSize = size();
+	int blockSize = static_cast<int>(std::sqrt(listSize));
+
+	userFavUni* current = head;
+	userFavUni* prev = nullptr;
+	// Finding the block where the target element belongs
+	while (current && current->uniName < uniName) {
+		prev = current;
+		for (int i = 0; current && i < blockSize; ++i) {
+			current = current->nextAdd;
+		}
 	}
 
 	// Linear search within the block
-	for (int i = 0; i < step; i++) {
-		if (current && current->uniName == uniName) {
+	while (current && current->uniName <= uniName) {
+		if (current->uniName == uniName) {
 			std::cout << "The university '" << uniName << "' is found in the favorite list." << std::endl;
-			return i;  // Target element found
+			return getPosition(current);
 		}
-		if (current)
-			current = current->nextAdd;
+		current = current->nextAdd;
 	}
 
 	std::cout << "The university '" << uniName << "' is not found in the favorite list." << std::endl;
 	return -1;  // Target element not found
 }
 
+
+//int userFavUniList::JumpSearchFavUni(const std::string& uniName) {
+//	if (head == nullptr) {
+//		std::cout << "The favorite university list is empty." << std::endl;
+//		return -1;  // List is empty
+//	}
+//
+//	int listSize = size();
+//	int blockSize = static_cast<int>(std::sqrt(listSize));
+//
+//	userFavUni* current = head;
+//	userFavUni* prev = nullptr;
+//
+//	// Finding the block where the target element belongs
+//	while (current && current->uniName < uniName) {
+//		prev = current;
+//		for (int i = 0; current && i < blockSize; ++i) {
+//			current = current->nextAdd;
+//		}
+//	}
+//
+//	// Linear search within the block
+//	while (current && current->uniName <= uniName) {
+//		if (current->uniName == uniName) {
+//			std::cout << "The university '" << uniName << "' is found in the favorite list." << std::endl;
+//			return getPosition(current);
+//		}
+//		current = current->nextAdd;
+//	}
+//
+//	std::cout << "The university '" << uniName << "' is not found in the favorite list." << std::endl;
+//	return -1;  // Target element not found
+//}
+
 void userFavUniList::sortUserFavUniList(string sortCondition)
 {
+
 }
 
 

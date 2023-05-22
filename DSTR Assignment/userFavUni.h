@@ -30,7 +30,11 @@ public:
 
 	void deleteFromUserFavUniList(string uniName);
 
+	int size();
+
 	int JumpSearchFavUni(const std::string& uniName);
+
+	/*void JumpSearchFavUni(string uniName);*/
 
 	void sortUserFavUniList(string sortCondition);
 

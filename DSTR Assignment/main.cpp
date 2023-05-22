@@ -3,6 +3,7 @@
 #include "university.h"
 #include "registeredUsers.h"
 #include "userFavUni.h"
+#include "admin.h"
 
 using namespace std;
 
@@ -13,7 +14,6 @@ int main() {
 	//cout << string(22, '=')<< "Sorted List" << string(22, '=') << endl;
 	//university.insertionSortUniDoublyLinkedList('a');
 	//university.displayList();
-
 	//string ans;
 	//regUsersList regUser = regUsersList("Registered Users List");
 	//regUser.readRegUsersFile();
@@ -23,21 +23,23 @@ int main() {
 	//regUser.writeRegUsersFile();
 	//regUser.readRegUsersFile();
 	//regUser.displayRegUsersList();
-	//cout << "1. User ID" << endl << "2. User Name";
-	//getline(cin, ans);
-	//regUser.linearsearchAndDisplayRegistUsersDetails(stoi(ans));
-
-	userFavUniList favUni = userFavUniList("Favourite University List");
-	favUni.readFavUniFile();
+	////cout << "1. User ID" << endl << "2. User Name";
+	////getline(cin, ans);
+	////regUser.linearsearchAndDisplayRegistUsersDetails(stoi(ans));
+	//adminList admin = adminList("Admin");
+	//admin.readAdminFile();
+	//admin.displayList();
+	//admin.adminQuickSort();
+	//admin.displayList();
+	//userFavUniList favUni = userFavUniList("Favourite University List");
+	//favUni.readFavUniFile();
 	//favUni.displayUserFavUniList();
-	//favUni.insertToFrontOfUserFavUniList();
-	//favUni.insertToEndOfUserFavUniList();
-	string uniName;
-	cout << "Enter the university name to search: ";
-	cin >> uniName;
+	//
 
 	favUni.JumpSearchFavUni(uniName);
 	//favUni.writeFavUniFile();
 	favUni.readFavUniFile();
 	//favUni.displayUserFavUniList();
+
+	return 0;
 }
