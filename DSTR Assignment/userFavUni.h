@@ -30,11 +30,17 @@ public:
 
 	void deleteFromUserFavUniList(string uniName);
 
+	void insertionSort();
+
 	int size();
 
-	int JumpSearchFavUni(const std::string& uniName);
+	int getPosition(userFavUni* node);
 
-	/*void JumpSearchFavUni(string uniName);*/
+	int JumpSearchFavUni(const std::string& uniName);
+	
+	/*userFavUni* MiddleBinarySearch(userFavUni* start, userFavUni* last, string uniName);
+
+	void BinarySearchFavUni(string uniName);*/
 
 	void sortUserFavUniList(string sortCondition);
 
@@ -43,4 +49,5 @@ public:
 	void readFavUniFile();
 
 	void writeFavUniFile();
+
 };
