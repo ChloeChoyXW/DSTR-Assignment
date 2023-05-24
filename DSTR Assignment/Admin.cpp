@@ -1,6 +1,10 @@
 #include "admin.h"
 #include <sstream>
+#include <cmath>
 
+
+//======================================================================================================
+//Creating a new node
 
 adminList::adminList(string adminListname) : adminListName(adminListName) {};
 //create an empty new node
@@ -19,6 +23,9 @@ admin* adminList::createNewNode(int adminID, string name, string pw, int phoneNu
 	return newnode;
 
 }
+
+//======================================================================================================
+//Inserting into list
 
 void adminList::insertToEndOfAdminList(int adminID, string name, string pw, int phoneNum, string email) {
 	
@@ -50,6 +57,9 @@ void adminList::insertToFrontOfAdminList(int adminID, string name, string pw, in
 		head = newnode;
 	}
 }
+
+//======================================================================================================
+//Deleting from list
 
 void adminList::deleteFromAdminList(int adminID)
 {
@@ -173,7 +183,72 @@ void adminList::linearsearchAndDisplayAdminDetails(int choice)
 }
 
 //======================================================================================================
-// function to insert a new node in sorted way in a sorted doubly linked list
+//Jump search
+
+int adminList::Adminsize() {
+	int count = 0;
+	admin* current = head;
+	while (current != NULL) {
+		count++;
+		current = current->nextAdd;
+	}
+	return count;
+}
+
+int adminList::AdmingetPosition(admin* node) {
+	int position = 0;
+	admin* current = head;
+
+	while (current != nullptr) {
+		if (current == node) {
+			return position;
+		}
+		current = current->nextAdd;
+		position++;
+	}
+
+	// Node not found, return an invalid position
+	return -1;
+}
+
+int adminList::JumpSearchAdmin(const std::string& name) {
+
+
+	if (head == nullptr) {
+		std::cout << "The admin list is empty." << std::endl;
+		return -1;  // List is empty
+	}
+
+	int listSize = Adminsize();
+	int blockSize = static_cast<int>(std::sqrt(listSize));
+
+	admin* current = head;
+	admin* prev = nullptr;
+	// Finding the block where the target element belongs
+	while (current && current->name < name) {
+		prev = current;
+		for (int i = 0; current && i < blockSize; ++i) {
+			current = current->nextAdd;
+		}
+	}
+
+	// Linear search within the block
+	while (current && current->name <= name) {
+		if (current->name == name) {
+			std::cout << "The admin '" << name << "' is found in the favorite list." << std::endl;
+			return AdmingetPosition(current);
+		}
+		current = current->nextAdd;
+	}
+
+	std::cout << "The admin '" << name << "' is not found in the favorite list." << std::endl;
+	return -1;  // Target element not found
+}
+
+
+
+//======================================================================================================
+//Insert a new node in sorted way in a sorted doubly linked list
 void sortedInsert(admin** head, admin* newNode, int sortCondition)
 {
 	admin* current;
@@ -292,6 +367,9 @@ void sortedInsert(admin** head, admin* newNode, int sortCondition)
 }
 }
 
+//======================================================================================================
+//Insertion sort
+
 void adminList::insertionSortAdminDoublyLinkedList(int sortCondition) {
 	//	/*1 = adminID
 	//	2 = name,
@@ -329,7 +407,7 @@ void adminList::insertionSortAdminDoublyLinkedList(int sortCondition) {
 }
 
 //======================================================================================================
-//Quick Sort Algorithm
+//Quick Sort
 //From https://www.geeksforgeeks.org/quicksort-for-linked-list/
 
 /* A utility function to swap two elements */
@@ -471,5 +549,25 @@ void adminList::readAdminFile()
 		insertToEndOfAdminList(adminID, name, pw, phoneNum, email);
 	}
 
+	file.close();
+}
+
+//======================================================================================================
+//Writing to file
+
+void adminList::writeAdminFile()
+{
+	admin* current = head;
+	ofstream file("admin.csv");
+	if (!file)
+	{
+		cout << "File unable to open!" << endl;
+	}
+
+	while (current != nullptr)
+	{
+		file << current->adminID << ',' << current->name << ',' << current->pw << ',' << current->phoneNum << ',' << current->email << "\n";
+		current = current->nextAdd;
+	}
 	file.close();
 }
