@@ -43,4 +43,14 @@ public:
 	void linearsearchAndDisplayAdminDetails(int choice);
 
 	void insertionSortAdminDoublyLinkedList(int sortCondition);
+
+	int Adminsize();
+
+	int AdmingetPosition(admin* node);
+
+	int JumpSearchAdmin(const std::string& name);
+
+	void writeAdminFile();
+
+
 };
