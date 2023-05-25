@@ -32,6 +32,8 @@ public:
 
 	void insertionSort();
 
+	void FavUniQuickSort();
+
 	int size();
 
 	int getPosition(userFavUni* node);

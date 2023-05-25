@@ -41,23 +41,20 @@ int main() {
 
 	favUni.readFavUniFile();
 	//favUni.displayUserFavUniList();
-	//string uniName;
-	//cout << "Enter the university name to search: ";
-	//cin >> uniName;
-	
+
 	
 	//favUni.insertToFrontOfUserFavUniList("13","National University of Singapore (NUS)");
 	//favUni.insertToEndOfUserFavUniList("8","EPFL");
-
-
+	//favUni.insertionSort();
+	favUni.FavUniQuickSort();
+	//std::cout << "After sorting:" << std::endl;
+	//string uniName;
+	//cout << "Enter the university name to search: ";
+	//cin >> uniName;
 	//favUni.JumpSearchFavUni(uniName);
-
-	favUni.insertionSort();
-
-	std::cout << "After sorting:" << std::endl;
 	//favUni.BinarySearchFavUni(uniName);
-	favUni.writeFavUniFile();
-	favUni.readFavUniFile();
+	//favUni.writeFavUniFile();
+	//favUni.readFavUniFile();
 	favUni.displayUserFavUniList();
 	auto end = std::chrono::high_resolution_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();

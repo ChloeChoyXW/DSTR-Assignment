@@ -117,9 +117,6 @@ void userFavUniList::insertionSort() {
 	}
 	std::cout << "The favorite university list has been sorted in alphabetical order." << std::endl;
 }
-
-
-
 //=====================================JUMP SEARCH============================================
 
 int userFavUniList::size() {
