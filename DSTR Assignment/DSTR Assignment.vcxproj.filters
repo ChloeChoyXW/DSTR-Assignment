@@ -56,6 +56,9 @@
     <ClInclude Include="example.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="dateTime.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="regusers.csv">
@@ -65,6 +68,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="favuni.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UsersLog.csv">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

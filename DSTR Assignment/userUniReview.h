@@ -5,7 +5,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#incldue <ctime>
+#include <ctime>
 
 using namespace std;
 

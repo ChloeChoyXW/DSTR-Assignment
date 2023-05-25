@@ -118,13 +118,13 @@ void userUniReviewList::searchAndDisplayUserUniReviewList(int choice)
 			{
 				found = true;
 				tm timeStruct{};
-				char buffer[9];
-				strftime(buffer, sizeof(buffer), "%H:%M:%S", &current->reviewTime);
-				string time(buffer);
+				char buffer[20];
+				strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &current->reviewTime);
+				string dateTime(buffer);
 				cout << "User ID:  " << current->userID << endl;
 				cout << "University Name:  " << current->uniName << endl;
 				cout << "User Review:  " << current->userReview << endl;
-				cout << "Review Timw:  " << time << endl;
+				cout << "Review Timw:  " << dateTime << endl;
 				cout << "Admin Reply:  " << current->adminReply << endl;
 				cout << string(55, '=') << endl;
 				return;
@@ -143,13 +143,13 @@ void userUniReviewList::searchAndDisplayUserUniReviewList(int choice)
 			{
 				found = true;
 				tm timeStruct{};
-				char buffer[9];
-				strftime(buffer, sizeof(buffer), "%H:%M:%S", &current->reviewTime);
-				string time(buffer);
+				char buffer[20];
+				strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &current->reviewTime);
+				string dateTime(buffer);
 				cout << "User ID:  " << current->userID << endl;
 				cout << "University Name:  " << current->uniName << endl;
 				cout << "User Review:  " << current->userReview << endl;
-				cout << "Review Timw:  " << time << endl;
+				cout << "Review Timw:  " << dateTime << endl;
 				cout << "Admin Reply:  " << current->adminReply << endl;
 				cout << string(55, '=') << endl;
 				return;
@@ -170,12 +170,12 @@ void userUniReviewList::displayUserUniReviewList()
 	{
 		tm timeStruct{};
 		char buffer[9];
-		strftime(buffer, sizeof(buffer), "%H:%M:%S", &current->reviewTime);
-		string time(buffer);
+		strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &current->reviewTime);
+		string dateTime(buffer);
 		cout << "User ID:  " << current->userID << endl;
 		cout << "University Name:  " << current->uniName << endl;
 		cout << "User Review:  " << current->userReview << endl;
-		cout << "Review Timw:  " << time << endl;
+		cout << "Review Timw:  " << dateTime << endl;
 		cout << "Admin Reply:  " << current->adminReply << endl;
 		cout << string(55, '=') << endl;
 
@@ -207,7 +207,7 @@ void userUniReviewList::readUserUniReviewFile()
 
 		tm timeStruct{};
 		istringstream iss(reviewTime);
-		iss >> get_time(&timeStruct, "%H:%M:%S");
+		iss >> get_time(&timeStruct, "%Y-%m-%d %H:%M:%S");
 		insertToEndOfUserUniReviewList(userID, uniName, userReview, timeStruct, adminReply);
 	}
 
@@ -226,10 +226,10 @@ void userUniReviewList::writeUserUniReviewFile()
 	while (current != nullptr)
 	{
 		tm timeStruct{};
-		char buffer[9];
-		strftime(buffer, sizeof(buffer), "%H:%M:%S", &current->reviewTime);
-		string time(buffer);
-		file << current->userID << ',' << current->uniName << ',' << current->userReview << ',' << time << ',' << current->adminReply << "\n";
+		char buffer[20];
+		strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &current->reviewTime);
+		string dateTime(buffer);
+		file << current->userID << ',' << current->uniName << ',' << current->userReview << ',' << dateTime << ',' << current->adminReply << "\n";
 		current = current->nextAdd;
 	}
 	file.close();

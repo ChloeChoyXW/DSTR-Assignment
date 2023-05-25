@@ -137,6 +137,7 @@
     <ClCompile Include="UserUniReview.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dateTime.h" />
     <ClInclude Include="example.h" />
     <ClInclude Include="registeredUsers.h" />
     <ClInclude Include="university.h" />
@@ -147,6 +148,7 @@
     <None Include="2023_QS_World_University_Rankings.csv" />
     <None Include="favuni.csv" />
     <None Include="regusers.csv" />
+    <None Include="UsersLog.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,5 @@
 ﻿#include "registeredUsers.h"
+#include "dateTime.h"
 
 
 regUsersList::regUsersList(string regUsersListName) : regUsersListName(regUsersListName) {};
@@ -16,10 +17,11 @@ regUsers* regUsersList::createNewNode(string userID, string name, string pw, str
 	return newnode;
 }
 
-regUsers* regUsersList::createNewNode(string userID, tm loginTime)
+regUsers* regUsersList::createNewNode(string userID, tm loginDate, tm loginTime)
 {
 	regUsers* newnode = new regUsers;
 	newnode->userID = userID;
+	newnode->loginDate = loginDate;
 	newnode->loginTime = loginTime;
 	return newnode; 
 }
@@ -40,9 +42,9 @@ void regUsersList::insertToEndOfRegUsersList(string userID, string name, string 
 	}
 }
 
-void regUsersList::insertToFrontOfRegUsersLoginList(string userID, tm loginTime)
+void regUsersList::insertToFrontOfRegUsersLoginList(string userID, tm loginDate, tm loginTime)
 {
-	regUsers* newnode = createNewNode(userID, loginTime);
+	regUsers* newnode = createNewNode(userID, loginDate, loginTime);
 
 	if (head == NULL)
 	{
@@ -240,6 +242,36 @@ void regUsersList::writeRegUsersFile()
 	file.close();
 }
 
+void regUsersList::readUsersLogFile()
+{
+	string filename = "UsersLog.csv";
+	ifstream file(filename);
+
+	if (!file.is_open())
+	{
+		cout << "File " << filename << "unable to found!" << endl;
+	}
+
+	string line;
+	while (getline(file, line))
+	{
+		stringstream b(line);  //used for breaking words
+		string userID, loginDate, loginTime;
+		getline(b, userID, ',');
+		getline(b, loginDate, ',');
+		getline(b, loginTime, ',');
+
+		tm timeStruct{};
+		istringstream iss(loginDate);
+		iss >> get_time(&timeStruct, "%Y-%m-%d");
+
+		tm timeStruct2{};
+		istringstream iss2(loginTime);
+		iss >> get_time(&timeStruct2, "%H:%M:%S");
+		insertToFrontOfRegUsersLoginList(userID, timeStruct,timeStruct2);
+	}
+}
+
 void regUsersList::writeUsersLogFile()
 {
 	regUsers* current = head;
@@ -251,12 +283,52 @@ void regUsersList::writeUsersLogFile()
 
 	while (current != nullptr)
 	{
-		tm timeStruct{};
-		char buffer[9];
-		strftime(buffer, sizeof(buffer), "%H:%M:%S", &current->loginTime);
-		string time(buffer);
-		file << current->userID << ',' << time << ',' << "\n";
+		//tm timeStruct{};
+		//char buffer[20];
+		//strftime(buffer, sizeof(buffer), "%Y-%m-%d", &timeStruct);
+		//string date(buffer);
+
+		//tm timeStruct2{};
+		//char buffer2[20];
+		//strftime(buffer2, sizeof(buffer2), "%H:%M:%S", &current->loginTime);
+		//string time(buffer2);
+		string date = tmToString(current->loginDate, 1);
+		string time = tmToString(current->loginTime, 2);
+		file << current->userID << ',' << date << ',' << time << "\n";
 		current = current->nextAdd;
 	}
 	file.close();
 }
+
+//void regUsersList::displayUsersLog()
+//{
+//	regUsers* current = head;
+//
+//	while (current != NULL)
+//	{
+//		tm timeStruct{};
+//		char buffer[20];
+//		strftime(buffer, sizeof(buffer), "%Y-%m-%d", &current->loginDate);
+//		string date(buffer);
+//
+//		tm timeStruct2{};
+//		char buffer2[20];
+//		strftime(buffer2, sizeof(buffer2), "%H:%M:%S", &current->loginTime);
+//		string time(buffer2);
+//
+//		cout << "User ID:  " << current->userID << endl;
+//		cout << "Review Date:  " << date << endl;
+//		cout << "Review Time:  " << time << endl;
+//		cout << string(55, '=') << endl;
+//
+//		current = current->nextAdd;
+//	}
+//	cout << "List ended here." << endl;
+//}
+
+void regUsersList::removeInactiveUsers()
+{
+	readUsersLogFile();
+
+}
+
