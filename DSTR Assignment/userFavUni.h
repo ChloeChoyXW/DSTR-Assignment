@@ -38,11 +38,10 @@ public:
 
 	int getPosition(userFavUni* node);
 
-	int JumpSearchFavUni(const std::string& uniName);
+	//int JumpSearchFavUni(const std::string& uniName);
 	
-	/*userFavUni* MiddleBinarySearch(userFavUni* start, userFavUni* last, string uniName);
 
-	void BinarySearchFavUni(string uniName);*/
+	void BinarySearchFavUni(string userID, string uniName, int usertype);
 
 	void sortUserFavUniList(string sortCondition);
 
