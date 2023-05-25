@@ -41,6 +41,7 @@ int main() {
 
 	favUni.readFavUniFile();
 	//favUni.displayUserFavUniList();
+	//favUni.displayUserFavUniList();
 	//string uniName;
 	//cout << "Enter the university name to search: ";
 	//cin >> uniName;
@@ -56,8 +57,8 @@ int main() {
 
 	std::cout << "After sorting:" << std::endl;
 	//favUni.BinarySearchFavUni(uniName);
-	favUni.writeFavUniFile();
-	favUni.readFavUniFile();
+	/*favUni.writeFavUniFile();
+	favUni.readFavUniFile();*/
 	favUni.displayUserFavUniList();
 	auto end = std::chrono::high_resolution_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
