@@ -25,13 +25,12 @@ struct Uni {
 	float employOutcomeScore;
 	int employOutcomeRank;
 	float scoreScale;
-	string uniReview;
 	Uni* nextAdd;
 	Uni* prevAdd;
 };
 
 class UniList {
-	//struct Uni unilist[1442];
+	struct Uni uniArray[1422];
 	Uni* head = NULL;
 	Uni* tail = NULL;
 	string uniListName;
@@ -51,15 +50,24 @@ public:
 		int citePerFacultyRank, float intFacultyRIScore, int intFacultyRIRank, float intStuRIScore, int intStuRIRank,
 		float intResearchNetScore, int intResearchNetRank, float employOutcomeScore, int employOutcomeRank, float scoreScale);
 
-	void readFromFile();
+	void readFromFileDoubly();
 
-	void linearSearchUniAndDisplay(int searchCondition);
+	void insertUniArray(int loopNum, struct Uni array[], int rank, string instName, string locationCode, string location, float academicScore, int academicRank,
+		float employerRepScore, int employerRepRank, float facultyStuRIScore, int facultyStuRIRank, float citePerFacultyScore,
+		int citePerFacultyRank, float intFacultyRIScore, int intFacultyRIRank, float intStuRIScore, int intStuRIRank,
+		float intResearchNetScore, int intResearchNetRank, float employOutcomeScore, int employOutcomeRank, float scoreScale);
 
-	void insertUniArray();
+	void readFromFileArray();
+
+	void linearSearchUniAndDisplayArray();
+
+	void binarySearchUniAndDisplayArray();
 
 	void uniQuickSort(int searchCondition);
 
 	void insertionSortUniDoublyLinkedList(int sortCondition);
 
-	void displayList();
+	void displayListDoubly();
+
+	void displayListArray();
 };

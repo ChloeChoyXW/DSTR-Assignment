@@ -2,9 +2,10 @@
 #include <fstream>
 #include <sstream>
 
-//using namespace std;
+using namespace std;
 
 UniList::UniList(string uniListname) : uniListName(uniListName) {};
+
 //create an empty new node
 Uni* UniList::createNewNode(int rank, string instName, string locationCode, string location, float academicScore, int academicRank,
 	float employerRepScore, int employerRepRank, float facultyStuRIScore, int facultyStuRIRank, float citePerFacultyScore,
@@ -63,7 +64,8 @@ void UniList::insertToEndOfUniLinkedList(int rank, string instName, string locat
 
 }
 
-void UniList::readFromFile() {
+
+void UniList::readFromFileDoubly() {
 	head = NULL; //this list is empty now
 	int count = 0;
 
@@ -115,11 +117,6 @@ void UniList::readFromFile() {
 				stoi(employerRepRank), stof(facultyStuRIScore), stoi(facultyStuRIRank), stof(citePerFacultyScore), stoi(citePerFacultyRank),
 				stof(intFacultyRIScore), stoi(intFacultyRIRank), stof(intStuRIScore), stoi(intStuRIRank), stof(intResearchNetScore),
 				stoi(intResearchNetRank), stof(employOutcomeScore), stoi(employOutcomeRank), stof(scoreScale));
-
-			/*insertToEndOfUniLinkedList(rank, instName, locationCode, location, academicScore, academicRank, employerRepScore,
-				employerRepRank, facultyStuRIScore, facultyStuRIRank, citePerFacultyScore, citePerFacultyRank,
-				intFacultyRIScore, intFacultyRIRank, intStuRIScore, intStuRIRank, intResearchNetScore,
-				intResearchNetRank, employOutcomeScore, employOutcomeRank, scoreScale);*/
 			
 
 		}
@@ -132,85 +129,660 @@ void UniList::readFromFile() {
 }
 
 
-void UniList::linearSearchUniAndDisplay(int searchCondition) {
-	if (head == NULL)
-		return;
+void UniList::insertUniArray(int loopNum, struct Uni array[], int rank, string instName, string locationCode, string location, float academicScore, int academicRank,
+	float employerRepScore, int employerRepRank, float facultyStuRIScore, int facultyStuRIRank, float citePerFacultyScore,
+	int citePerFacultyRank, float intFacultyRIScore, int intFacultyRIRank, float intStuRIScore, int intStuRIRank,
+	float intResearchNetScore, int intResearchNetRank, float employOutcomeScore, int employOutcomeRank, float scoreScale){
+	array[loopNum].rank = rank;
+	array[loopNum].instName = instName;
+	array[loopNum].locationCode = locationCode;
+	array[loopNum].location = location;
+	array[loopNum].academicScore = academicScore;
+	array[loopNum].academicRank = academicRank;
+	array[loopNum].employerRepScore = employerRepScore;
+	array[loopNum].employerRepRank = employerRepRank;
+	array[loopNum].facultyStuRIScore = facultyStuRIScore;
+	array[loopNum].facultyStuRIRank = facultyStuRIRank;
+	array[loopNum].citePerFacultyScore = citePerFacultyScore;
+	array[loopNum].citePerFacultyRank = citePerFacultyRank;
+	array[loopNum].intFacultyRIScore = intFacultyRIScore;
+	array[loopNum].intFacultyRIRank = intFacultyRIRank;
+	array[loopNum].intStuRIScore = intStuRIScore;
+	array[loopNum].intStuRIRank = intStuRIRank;
+	array[loopNum].intResearchNetScore = intResearchNetScore;
+	array[loopNum].intResearchNetRank = intResearchNetRank;
+	array[loopNum].employOutcomeScore = employOutcomeScore;
+	array[loopNum].employOutcomeRank = employOutcomeRank;
+	array[loopNum].scoreScale = scoreScale;
+}
+
+void UniList::readFromFileArray() {
+	int count = 0;
+	int loopNum = 0;
+
+	string rank, instName, locationCode, location, academicScore, academicRank, employerRepScore, employerRepRank,
+		facultyStuRIScore, facultyStuRIRank, citePerFacultyScore, citePerFacultyRank, intFacultyRIScore, intFacultyRIRank,
+		intStuRIScore, intStuRIRank, intResearchNetScore, intResearchNetRank, employOutcomeScore, employOutcomeRank, scoreScale;
+
+	ifstream file("2023_QS_World_University_Rankings.csv");
+	string line;
+
+	//getline(file, line)
+	while (file.good())
+	{
+		stringstream ss(line);
+		getline(file, rank, ',');
+		getline(file, instName, ',');
+		getline(file, locationCode, ',');
+		getline(file, location, ',');
+		getline(file, academicScore, ',');
+		getline(file, academicRank, ',');
+		getline(file, employerRepScore, ',');
+		getline(file, employerRepRank, ',');
+		getline(file, facultyStuRIScore, ',');
+		getline(file, facultyStuRIRank, ',');
+		getline(file, citePerFacultyScore, ',');
+		getline(file, citePerFacultyRank, ',');
+		getline(file, intFacultyRIScore, ',');
+		getline(file, intFacultyRIRank, ',');
+		getline(file, intStuRIScore, ',');
+		getline(file, intStuRIRank, ',');
+		getline(file, intResearchNetScore, ',');
+		getline(file, intResearchNetRank, ',');
+		getline(file, employOutcomeScore, ',');
+		getline(file, employOutcomeRank, ',');
+		getline(file, scoreScale);
+
+		if (count == 0)
+		{
+			count += 1;
+			continue;
+		}
+		else if (rank == "")
+		{
+			break;
+		}
+
+		try {
+			insertUniArray(loopNum, uniArray, stoi(rank), instName, locationCode, location, stof(academicScore), stoi(academicRank), stof(employerRepScore),
+				stoi(employerRepRank), stof(facultyStuRIScore), stoi(facultyStuRIRank), stof(citePerFacultyScore), stoi(citePerFacultyRank),
+				stof(intFacultyRIScore), stoi(intFacultyRIRank), stof(intStuRIScore), stoi(intStuRIRank), stof(intResearchNetScore),
+				stoi(intResearchNetRank), stof(employOutcomeScore), stoi(employOutcomeRank), stof(scoreScale));
+
+			loopNum += 1;
+		}
+		catch (exception e) {
+			cout << "Error occured. Please try again later." << endl;
+		}
+
+	}
+
+}
+
+//void UniList::linearSearchUniAndDisplayArray(int searchCondition) {
+//	if (head == NULL)
+//		return;
+//	bool found = false;
+//	Uni* current = head;
+//	string locationCode, instName;
+//	int rank1, rank2;
+//	switch (searchCondition)
+//	{
+//	case 1:
+//		cout << "Enter Location: ";
+//		getline(cin, locationCode);
+//		while (current != NULL)	{
+//			if (current->locationCode == locationCode){	
+//				found = true;
+//				cout << endl << "University Name: " << current->instName << endl;
+//				cout << "Rank: " << current->rank << endl;
+//				cout << "Location Code: " << current->locationCode << endl;
+//				cout << "Location: " << current->location << endl;
+//				cout << "Academic Score " << current->academicScore << endl;
+//				cout << "Academic Rank: " << current->academicRank << endl;
+//				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
+//				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
+//				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
+//				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
+//				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
+//				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
+//				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
+//				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
+//				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
+//				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
+//				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
+//				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
+//				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
+//				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
+//				cout << "Score Scale: " << current->scoreScale << endl;
+//				cout << string(55, '=') << endl;
+//			}
+//			current = current->nextAdd;
+//		}
+//		if (!found)
+//			cout << "No university is found in "<< locationCode << "!" << endl;
+//		break;
+//	case 2:
+//		cout << "Enter Institution Name: ";
+//		getline(cin, instName);
+//		while (current != NULL) {
+//			if (current->instName == instName) {
+//				found = true;
+//				cout << endl << "University Name: " << current->instName << endl;
+//				cout << "Rank: " << current->rank << endl;
+//				cout << "Location Code: " << current->locationCode << endl;
+//				cout << "Location: " << current->location << endl;
+//				cout << "Academic Score " << current->academicScore << endl;
+//				cout << "Academic Rank: " << current->academicRank << endl;
+//				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
+//				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
+//				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
+//				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
+//				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
+//				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
+//				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
+//				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
+//				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
+//				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
+//				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
+//				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
+//				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
+//				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
+//				cout << "Score Scale: " << current->scoreScale << endl;
+//				cout << string(55, '=') << endl;
+//			}
+//			current = current->nextAdd;
+//		}
+//		if (!found)
+//			cout << "No university is found!" << endl;
+//		break;
+//
+//	case 3:
+//		cout << "Enter Highest Academic Rank: ";
+//		cin >> rank1;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		cout << "Enter Lowest Academic Rank: ";
+//		cin >> rank2;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		while (current != NULL) {
+//			if (rank1 <= current->academicRank && current->academicRank <= rank2) {
+//				found = true;
+//				cout << endl << "University Name: " << current->instName << endl;
+//				cout << "Rank: " << current->rank << endl;
+//				cout << "Location Code: " << current->locationCode << endl;
+//				cout << "Location: " << current->location << endl;
+//				cout << "Academic Score " << current->academicScore << endl;
+//				cout << "Academic Rank: " << current->academicRank << endl;
+//				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
+//				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
+//				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
+//				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
+//				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
+//				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
+//				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
+//				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
+//				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
+//				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
+//				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
+//				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
+//				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
+//				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
+//				cout << "Score Scale: " << current->scoreScale << endl;
+//				cout << string(55, '=') << endl;
+//			}
+//			current = current->nextAdd;
+//		}
+//		if (!found)
+//			cout << "No university is found!" << endl;
+//		break;
+//
+//	case 4:
+//		cout << "Enter Highest Employer Reputation Rank: ";
+//		cin >> rank1;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		cout << "Enter Lowest Employer Reputation Rank: ";
+//		cin >> rank2;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		while (current != NULL) {
+//			if (rank1 <= current->employerRepRank && current->employerRepRank <= rank2) {
+//				found = true;
+//				cout << endl << "University Name: " << current->instName << endl;
+//				cout << "Rank: " << current->rank << endl;
+//				cout << "Location Code: " << current->locationCode << endl;
+//				cout << "Location: " << current->location << endl;
+//				cout << "Academic Score " << current->academicScore << endl;
+//				cout << "Academic Rank: " << current->academicRank << endl;
+//				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
+//				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
+//				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
+//				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
+//				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
+//				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
+//				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
+//				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
+//				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
+//				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
+//				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
+//				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
+//				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
+//				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
+//				cout << "Score Scale: " << current->scoreScale << endl;
+//				cout << string(55, '=') << endl;
+//			}
+//			current = current->nextAdd;
+//		}
+//		if (!found)
+//			cout << "No university is found!" << endl;
+//		break;
+//
+//	case 5:
+//		cout << "Enter Highest Faculty/Student Ratio Rank: ";
+//		cin >> rank1;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		cout << "Enter Lowest Faculty/ZStudent Ratio Rank: ";
+//		cin >> rank2;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		while (current != NULL) {
+//			if (rank1 <= current->facultyStuRIRank && current->facultyStuRIRank <= rank2) {
+//				found = true;
+//				cout << endl << "University Name: " << current->instName << endl;
+//				cout << "Rank: " << current->rank << endl;
+//				cout << "Location Code: " << current->locationCode << endl;
+//				cout << "Location: " << current->location << endl;
+//				cout << "Academic Score " << current->academicScore << endl;
+//				cout << "Academic Rank: " << current->academicRank << endl;
+//				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
+//				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
+//				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
+//				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
+//				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
+//				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
+//				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
+//				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
+//				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
+//				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
+//				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
+//				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
+//				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
+//				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
+//				cout << "Score Scale: " << current->scoreScale << endl;
+//				cout << string(55, '=') << endl;
+//			}
+//			current = current->nextAdd;
+//		}
+//		if (!found)
+//			cout << "No university is found!" << endl;
+//		break;
+//
+//	case 6:
+//		cout << "Enter Highest Cite Per Faculty Rank: ";
+//		cin >> rank1;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		cout << "Enter Lowest Cite Per Faculty Rank: ";
+//		cin >> rank2;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		while (current != NULL) {
+//			if (rank1 <= current->citePerFacultyRank && current->citePerFacultyRank <= rank2) {
+//				found = true;
+//				cout << endl << "University Name: " << current->instName << endl;
+//				cout << "Rank: " << current->rank << endl;
+//				cout << "Location Code: " << current->locationCode << endl;
+//				cout << "Location: " << current->location << endl;
+//				cout << "Academic Score " << current->academicScore << endl;
+//				cout << "Academic Rank: " << current->academicRank << endl;
+//				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
+//				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
+//				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
+//				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
+//				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
+//				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
+//				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
+//				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
+//				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
+//				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
+//				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
+//				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
+//				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
+//				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
+//				cout << "Score Scale: " << current->scoreScale << endl;
+//				cout << string(55, '=') << endl;
+//			}
+//			current = current->nextAdd;
+//		}
+//		if (!found)
+//			cout << "No university is found!" << endl;
+//		break;
+//
+//	case 7:
+//		cout << "Enter Highest International Faculty Ratio Rank: ";
+//		cin >> rank1;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		cout << "Enter Lowest International Faculty Ratio Rank: ";
+//		cin >> rank2;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		while (current != NULL) {
+//			if (rank1 <= current->intFacultyRIRank && current->intFacultyRIRank <= rank2) {
+//				found = true;
+//				cout << endl << "University Name: " << current->instName << endl;
+//				cout << "Rank: " << current->rank << endl;
+//				cout << "Location Code: " << current->locationCode << endl;
+//				cout << "Location: " << current->location << endl;
+//				cout << "Academic Score " << current->academicScore << endl;
+//				cout << "Academic Rank: " << current->academicRank << endl;
+//				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
+//				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
+//				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
+//				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
+//				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
+//				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
+//				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
+//				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
+//				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
+//				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
+//				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
+//				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
+//				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
+//				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
+//				cout << "Score Scale: " << current->scoreScale << endl;
+//				cout << string(55, '=') << endl;
+//			}
+//			current = current->nextAdd;
+//		}
+//		if (!found)
+//			cout << "No university is found!" << endl;
+//		break;
+//
+//	case 8:
+//		cout << "Enter Highest International Student Ratio Rank: ";
+//		cin >> rank1;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		cout << "Enter Lowest International Student Ratio Rank: ";
+//		cin >> rank2;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		while (current != NULL) {
+//			if (rank1 <= current->intStuRIRank && current->intStuRIRank <= rank2) {
+//				found = true;
+//				cout << endl << "University Name: " << current->instName << endl;
+//				cout << "Rank: " << current->rank << endl;
+//				cout << "Location Code: " << current->locationCode << endl;
+//				cout << "Location: " << current->location << endl;
+//				cout << "Academic Score " << current->academicScore << endl;
+//				cout << "Academic Rank: " << current->academicRank << endl;
+//				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
+//				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
+//				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
+//				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
+//				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
+//				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
+//				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
+//				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
+//				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
+//				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
+//				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
+//				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
+//				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
+//				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
+//				cout << "Score Scale: " << current->scoreScale << endl;
+//				cout << string(55, '=') << endl;
+//			}
+//			current = current->nextAdd;
+//		}
+//		if (!found)
+//			cout << "No university is found!" << endl;
+//		break;
+//
+//	case 9:
+//		cout << "Enter Highest International Research Network Rank: ";
+//		cin >> rank1;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		cout << "Enter Lowest International Research Network Rank: ";
+//		cin >> rank2;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		while (current != NULL) {
+//			if (rank1 <= current->intResearchNetRank && current->intResearchNetRank <= rank2) {
+//				found = true;
+//				cout << endl << "University Name: " << current->instName << endl;
+//				cout << "Rank: " << current->rank << endl;
+//				cout << "Location Code: " << current->locationCode << endl;
+//				cout << "Location: " << current->location << endl;
+//				cout << "Academic Score " << current->academicScore << endl;
+//				cout << "Academic Rank: " << current->academicRank << endl;
+//				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
+//				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
+//				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
+//				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
+//				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
+//				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
+//				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
+//				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
+//				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
+//				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
+//				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
+//				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
+//				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
+//				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
+//				cout << "Score Scale: " << current->scoreScale << endl;
+//				cout << string(55, '=') << endl;
+//			}
+//			current = current->nextAdd;
+//		}
+//		if (!found)
+//			cout << "No university is found!" << endl;
+//		break;
+//
+//	case 10:
+//		cout << "Enter Highest Employment Outcome Rank: ";
+//		cin >> rank1;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		cout << "Enter Lowest Employment Outcome Rank: ";
+//		cin >> rank2;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		while (current != NULL) {
+//			if (rank1 <= current->employOutcomeRank && current->employOutcomeRank <= rank2) {
+//				found = true;
+//				cout << endl << "University Name: " << current->instName << endl;
+//				cout << "Rank: " << current->rank << endl;
+//				cout << "Location Code: " << current->locationCode << endl;
+//				cout << "Location: " << current->location << endl;
+//				cout << "Academic Score " << current->academicScore << endl;
+//				cout << "Academic Rank: " << current->academicRank << endl;
+//				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
+//				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
+//				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
+//				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
+//				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
+//				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
+//				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
+//				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
+//				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
+//				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
+//				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
+//				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
+//				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
+//				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
+//				cout << "Score Scale: " << current->scoreScale << endl;
+//				cout << string(55, '=') << endl;
+//			}
+//			current = current->nextAdd;
+//		}
+//		if (!found)
+//			cout << "No university is found!" << endl;
+//		break;
+//
+//	case 11:
+//		cout << "Enter Highest Rank: ";
+//		cin >> rank1;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		cout << "Enter Lowest Rank: ";
+//		cin >> rank2;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		while (current != NULL) {
+//			if (rank1 <= current->rank && current->rank <= rank2) {
+//				found = true;
+//				cout << endl << "University Name: " << current->instName << endl;
+//				cout << "Rank: " << current->rank << endl;
+//				cout << "Location Code: " << current->locationCode << endl;
+//				cout << "Location: " << current->location << endl;
+//				cout << "Academic Score " << current->academicScore << endl;
+//				cout << "Academic Rank: " << current->academicRank << endl;
+//				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
+//				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
+//				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
+//				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
+//				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
+//				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
+//				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
+//				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
+//				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
+//				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
+//				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
+//				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
+//				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
+//				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
+//				cout << "Score Scale: " << current->scoreScale << endl;
+//				cout << string(55, '=') << endl;
+//			}
+//			current = current->nextAdd;
+//		}
+//		if (!found)
+//			cout << "No university is found!" << endl;
+//		break;
+//	}
+
+
+
+//=============================Linear Search===================================================================
+//from: https://www.geeksforgeeks.org/linear-search/
+void UniList::linearSearchUniAndDisplayArray() {
+	string instName;
 	bool found = false;
-	Uni* current = head;
+	cout << "Enter Institution Name: ";
+	getline(cin, instName);
+	for (int i = 0; i < 1423; i++) {
+		if (uniArray[i].instName == instName) {
+			found = true;
+			cout << endl << "University Name: " << uniArray[i].instName << endl;
+			cout << "Rank: " << uniArray[i].rank << endl;
+			cout << "Location Code: " << uniArray[i].locationCode << endl;
+			cout << "Location: " << uniArray[i].location << endl;
+			cout << "Academic Score " << uniArray[i].academicScore << endl;
+			cout << "Academic Rank: " << uniArray[i].academicRank << endl;
+			cout << "Employer Reputation Score: " << uniArray[i].employerRepScore << endl;
+			cout << "Employer Reputation Rank: " << uniArray[i].employerRepRank << endl;
+			cout << "Faculty/Student Ratio Score: " << uniArray[i].facultyStuRIScore << endl;
+			cout << "Faculty/Student Ratio Rank: " << uniArray[i].facultyStuRIRank << endl;
+			cout << "Citations Per Faculty Score: " << uniArray[i].citePerFacultyScore << endl;
+			cout << "Citations Per Faculty Rank: " << uniArray[i].citePerFacultyRank << endl;
+			cout << "International Faculty Ratio Score: " << uniArray[i].intFacultyRIScore << endl;
+			cout << "International Faculty Ratio Rank: " << uniArray[i].intFacultyRIRank << endl;
+			cout << "International Student Ratio Score: " << uniArray[i].intStuRIScore << endl;
+			cout << "International Student Ratio Rank: " << uniArray[i].intStuRIRank << endl;
+			cout << "International Research Network Score: " << uniArray[i].intResearchNetScore << endl;
+			cout << "International Research Network Rank: " << uniArray[i].intResearchNetRank << endl;
+			cout << "Employment Outcome Score: " << uniArray[i].employOutcomeScore << endl;
+			cout << "Employment Outcome Rank: " << uniArray[i].employOutcomeRank << endl;
+			cout << "Score Scale: " << uniArray[i].scoreScale << endl;
+			cout << string(55, '=') << endl;
+		}
+	}
+	if (!found)
+		cout << "No university is found!" << endl;
+
+	/*bool found = false;
 	string locationCode, instName;
 	int rank1, rank2;
-	switch (searchCondition)
-	{
-	case 1:
-		cout << "Enter Location: ";
+	switch (searchCondition){
+	case 1: {
+		cout << "Enter Location Code: ";
 		getline(cin, locationCode);
-		while (current != NULL)	{
-			if (current->locationCode == locationCode){	
+		for (int i = 0; i < 1423; i++) {
+			if (uniArray[i].locationCode == locationCode) {
 				found = true;
-				cout << endl << "University Name: " << current->instName << endl;
-				cout << "Rank: " << current->rank << endl;
-				cout << "Location Code: " << current->locationCode << endl;
-				cout << "Location: " << current->location << endl;
-				cout << "Academic Score " << current->academicScore << endl;
-				cout << "Academic Rank: " << current->academicRank << endl;
-				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
-				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
-				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
-				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
-				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
-				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
-				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
-				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
-				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
-				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
-				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
-				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
-				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
-				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
-				cout << "Score Scale: " << current->scoreScale << endl;
+				cout << endl << "University Name: " << uniArray[i].instName << endl;
+				cout << "Rank: " << uniArray[i].rank << endl;
+				cout << "Location Code: " << uniArray[i].locationCode << endl;
+				cout << "Location: " << uniArray[i].location << endl;
+				cout << "Academic Score " << uniArray[i].academicScore << endl;
+				cout << "Academic Rank: " << uniArray[i].academicRank << endl;
+				cout << "Employer Reputation Score: " << uniArray[i].employerRepScore << endl;
+				cout << "Employer Reputation Rank: " << uniArray[i].employerRepRank << endl;
+				cout << "Faculty/Student Ratio Score: " << uniArray[i].facultyStuRIScore << endl;
+				cout << "Faculty/Student Ratio Rank: " << uniArray[i].facultyStuRIRank << endl;
+				cout << "Citations Per Faculty Score: " << uniArray[i].citePerFacultyScore << endl;
+				cout << "Citations Per Faculty Rank: " << uniArray[i].citePerFacultyRank << endl;
+				cout << "International Faculty Ratio Score: " << uniArray[i].intFacultyRIScore << endl;
+				cout << "International Faculty Ratio Rank: " << uniArray[i].intFacultyRIRank << endl;
+				cout << "International Student Ratio Score: " << uniArray[i].intStuRIScore << endl;
+				cout << "International Student Ratio Rank: " << uniArray[i].intStuRIRank << endl;
+				cout << "International Research Network Score: " << uniArray[i].intResearchNetScore << endl;
+				cout << "International Research Network Rank: " << uniArray[i].intResearchNetRank << endl;
+				cout << "Employment Outcome Score: " << uniArray[i].employOutcomeScore << endl;
+				cout << "Employment Outcome Rank: " << uniArray[i].employOutcomeRank << endl;
+				cout << "Score Scale: " << uniArray[i].scoreScale << endl;
 				cout << string(55, '=') << endl;
 			}
-			current = current->nextAdd;
+
 		}
+
 		if (!found)
-			cout << "No university is found in "<< locationCode << "!" << endl;
+			cout << "No university is found in " << locationCode << "!" << endl;
 		break;
-	case 2:
+	}
+
+	case 2: {
 		cout << "Enter Institution Name: ";
 		getline(cin, instName);
-		while (current != NULL) {
-			if (current->instName == instName) {
+		for (int i = 0; i < 1423; i++) {
+			if (uniArray[i].instName == instName) {
 				found = true;
-				cout << endl << "University Name: " << current->instName << endl;
-				cout << "Rank: " << current->rank << endl;
-				cout << "Location Code: " << current->locationCode << endl;
-				cout << "Location: " << current->location << endl;
-				cout << "Academic Score " << current->academicScore << endl;
-				cout << "Academic Rank: " << current->academicRank << endl;
-				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
-				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
-				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
-				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
-				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
-				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
-				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
-				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
-				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
-				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
-				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
-				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
-				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
-				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
-				cout << "Score Scale: " << current->scoreScale << endl;
+				cout << endl << "University Name: " << uniArray[i].instName << endl;
+				cout << "Rank: " << uniArray[i].rank << endl;
+				cout << "Location Code: " << uniArray[i].locationCode << endl;
+				cout << "Location: " << uniArray[i].location << endl;
+				cout << "Academic Score " << uniArray[i].academicScore << endl;
+				cout << "Academic Rank: " << uniArray[i].academicRank << endl;
+				cout << "Employer Reputation Score: " << uniArray[i].employerRepScore << endl;
+				cout << "Employer Reputation Rank: " << uniArray[i].employerRepRank << endl;
+				cout << "Faculty/Student Ratio Score: " << uniArray[i].facultyStuRIScore << endl;
+				cout << "Faculty/Student Ratio Rank: " << uniArray[i].facultyStuRIRank << endl;
+				cout << "Citations Per Faculty Score: " << uniArray[i].citePerFacultyScore << endl;
+				cout << "Citations Per Faculty Rank: " << uniArray[i].citePerFacultyRank << endl;
+				cout << "International Faculty Ratio Score: " << uniArray[i].intFacultyRIScore << endl;
+				cout << "International Faculty Ratio Rank: " << uniArray[i].intFacultyRIRank << endl;
+				cout << "International Student Ratio Score: " << uniArray[i].intStuRIScore << endl;
+				cout << "International Student Ratio Rank: " << uniArray[i].intStuRIRank << endl;
+				cout << "International Research Network Score: " << uniArray[i].intResearchNetScore << endl;
+				cout << "International Research Network Rank: " << uniArray[i].intResearchNetRank << endl;
+				cout << "Employment Outcome Score: " << uniArray[i].employOutcomeScore << endl;
+				cout << "Employment Outcome Rank: " << uniArray[i].employOutcomeRank << endl;
+				cout << "Score Scale: " << uniArray[i].scoreScale << endl;
 				cout << string(55, '=') << endl;
 			}
-			current = current->nextAdd;
 		}
 		if (!found)
 			cout << "No university is found!" << endl;
 		break;
+	}
 
-	case 3:
+	case 3: {
 		cout << "Enter Highest Academic Rank: ";
 		cin >> rank1;
 		cin.clear();
@@ -219,39 +791,39 @@ void UniList::linearSearchUniAndDisplay(int searchCondition) {
 		cin >> rank2;
 		cin.clear();
 		cin.ignore(10000, '\n');
-		while (current != NULL) {
-			if (rank1 <= current->academicRank && current->academicRank <= rank2) {
+		for (int i = 0; i < 1423; i++) {
+			if (rank1 <= uniArray[i].academicRank && uniArray[i].academicRank <= rank2) {
 				found = true;
-				cout << endl << "University Name: " << current->instName << endl;
-				cout << "Rank: " << current->rank << endl;
-				cout << "Location Code: " << current->locationCode << endl;
-				cout << "Location: " << current->location << endl;
-				cout << "Academic Score " << current->academicScore << endl;
-				cout << "Academic Rank: " << current->academicRank << endl;
-				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
-				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
-				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
-				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
-				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
-				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
-				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
-				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
-				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
-				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
-				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
-				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
-				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
-				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
-				cout << "Score Scale: " << current->scoreScale << endl;
+				cout << endl << "University Name: " << uniArray[i].instName << endl;
+				cout << "Rank: " << uniArray[i].rank << endl;
+				cout << "Location Code: " << uniArray[i].locationCode << endl;
+				cout << "Location: " << uniArray[i].location << endl;
+				cout << "Academic Score " << uniArray[i].academicScore << endl;
+				cout << "Academic Rank: " << uniArray[i].academicRank << endl;
+				cout << "Employer Reputation Score: " << uniArray[i].employerRepScore << endl;
+				cout << "Employer Reputation Rank: " << uniArray[i].employerRepRank << endl;
+				cout << "Faculty/Student Ratio Score: " << uniArray[i].facultyStuRIScore << endl;
+				cout << "Faculty/Student Ratio Rank: " << uniArray[i].facultyStuRIRank << endl;
+				cout << "Citations Per Faculty Score: " << uniArray[i].citePerFacultyScore << endl;
+				cout << "Citations Per Faculty Rank: " << uniArray[i].citePerFacultyRank << endl;
+				cout << "International Faculty Ratio Score: " << uniArray[i].intFacultyRIScore << endl;
+				cout << "International Faculty Ratio Rank: " << uniArray[i].intFacultyRIRank << endl;
+				cout << "International Student Ratio Score: " << uniArray[i].intStuRIScore << endl;
+				cout << "International Student Ratio Rank: " << uniArray[i].intStuRIRank << endl;
+				cout << "International Research Network Score: " << uniArray[i].intResearchNetScore << endl;
+				cout << "International Research Network Rank: " << uniArray[i].intResearchNetRank << endl;
+				cout << "Employment Outcome Score: " << uniArray[i].employOutcomeScore << endl;
+				cout << "Employment Outcome Rank: " << uniArray[i].employOutcomeRank << endl;
+				cout << "Score Scale: " << uniArray[i].scoreScale << endl;
 				cout << string(55, '=') << endl;
 			}
-			current = current->nextAdd;
 		}
 		if (!found)
 			cout << "No university is found!" << endl;
 		break;
+	}
 
-	case 4:
+	case 4: {
 		cout << "Enter Highest Employer Reputation Rank: ";
 		cin >> rank1;
 		cin.clear();
@@ -260,39 +832,39 @@ void UniList::linearSearchUniAndDisplay(int searchCondition) {
 		cin >> rank2;
 		cin.clear();
 		cin.ignore(10000, '\n');
-		while (current != NULL) {
-			if (rank1 <= current->employerRepRank && current->employerRepRank <= rank2) {
+		for (int i = 0; i < 1423; i++) {
+			if (rank1 <= uniArray[i].employerRepRank && uniArray[i].employerRepRank <= rank2) {
 				found = true;
-				cout << endl << "University Name: " << current->instName << endl;
-				cout << "Rank: " << current->rank << endl;
-				cout << "Location Code: " << current->locationCode << endl;
-				cout << "Location: " << current->location << endl;
-				cout << "Academic Score " << current->academicScore << endl;
-				cout << "Academic Rank: " << current->academicRank << endl;
-				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
-				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
-				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
-				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
-				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
-				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
-				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
-				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
-				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
-				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
-				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
-				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
-				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
-				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
-				cout << "Score Scale: " << current->scoreScale << endl;
+				cout << endl << "University Name: " << uniArray[i].instName << endl;
+				cout << "Rank: " << uniArray[i].rank << endl;
+				cout << "Location Code: " << uniArray[i].locationCode << endl;
+				cout << "Location: " << uniArray[i].location << endl;
+				cout << "Academic Score " << uniArray[i].academicScore << endl;
+				cout << "Academic Rank: " << uniArray[i].academicRank << endl;
+				cout << "Employer Reputation Score: " << uniArray[i].employerRepScore << endl;
+				cout << "Employer Reputation Rank: " << uniArray[i].employerRepRank << endl;
+				cout << "Faculty/Student Ratio Score: " << uniArray[i].facultyStuRIScore << endl;
+				cout << "Faculty/Student Ratio Rank: " << uniArray[i].facultyStuRIRank << endl;
+				cout << "Citations Per Faculty Score: " << uniArray[i].citePerFacultyScore << endl;
+				cout << "Citations Per Faculty Rank: " << uniArray[i].citePerFacultyRank << endl;
+				cout << "International Faculty Ratio Score: " << uniArray[i].intFacultyRIScore << endl;
+				cout << "International Faculty Ratio Rank: " << uniArray[i].intFacultyRIRank << endl;
+				cout << "International Student Ratio Score: " << uniArray[i].intStuRIScore << endl;
+				cout << "International Student Ratio Rank: " << uniArray[i].intStuRIRank << endl;
+				cout << "International Research Network Score: " << uniArray[i].intResearchNetScore << endl;
+				cout << "International Research Network Rank: " << uniArray[i].intResearchNetRank << endl;
+				cout << "Employment Outcome Score: " << uniArray[i].employOutcomeScore << endl;
+				cout << "Employment Outcome Rank: " << uniArray[i].employOutcomeRank << endl;
+				cout << "Score Scale: " << uniArray[i].scoreScale << endl;
 				cout << string(55, '=') << endl;
 			}
-			current = current->nextAdd;
 		}
 		if (!found)
 			cout << "No university is found!" << endl;
 		break;
+	}
 
-	case 5:
+	case 5: {
 		cout << "Enter Highest Faculty/Student Ratio Rank: ";
 		cin >> rank1;
 		cin.clear();
@@ -301,39 +873,39 @@ void UniList::linearSearchUniAndDisplay(int searchCondition) {
 		cin >> rank2;
 		cin.clear();
 		cin.ignore(10000, '\n');
-		while (current != NULL) {
-			if (rank1 <= current->facultyStuRIRank && current->facultyStuRIRank <= rank2) {
+		for (int i = 0; i < 1423; i++) {
+			if (rank1 <= uniArray[i].facultyStuRIRank && uniArray[i].facultyStuRIRank <= rank2) {
 				found = true;
-				cout << endl << "University Name: " << current->instName << endl;
-				cout << "Rank: " << current->rank << endl;
-				cout << "Location Code: " << current->locationCode << endl;
-				cout << "Location: " << current->location << endl;
-				cout << "Academic Score " << current->academicScore << endl;
-				cout << "Academic Rank: " << current->academicRank << endl;
-				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
-				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
-				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
-				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
-				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
-				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
-				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
-				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
-				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
-				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
-				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
-				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
-				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
-				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
-				cout << "Score Scale: " << current->scoreScale << endl;
-				cout << string(55, '=') << endl;
+				cout << endl << "University Name: " << uniArray[i].instName << endl;
+				cout << "Rank: " << uniArray[i].rank << endl;
+				cout << "Location Code: " << uniArray[i].locationCode << endl;
+				cout << "Location: " << uniArray[i].location << endl;
+				cout << "Academic Score " << uniArray[i].academicScore << endl;
+				cout << "Academic Rank: " << uniArray[i].academicRank << endl;
+				cout << "Employer Reputation Score: " << uniArray[i].employerRepScore << endl;
+				cout << "Employer Reputation Rank: " << uniArray[i].employerRepRank << endl;
+				cout << "Faculty/Student Ratio Score: " << uniArray[i].facultyStuRIScore << endl;
+				cout << "Faculty/Student Ratio Rank: " << uniArray[i].facultyStuRIRank << endl;
+				cout << "Citations Per Faculty Score: " << uniArray[i].citePerFacultyScore << endl;
+				cout << "Citations Per Faculty Rank: " << uniArray[i].citePerFacultyRank << endl;
+				cout << "International Faculty Ratio Score: " << uniArray[i].intFacultyRIScore << endl;
+				cout << "International Faculty Ratio Rank: " << uniArray[i].intFacultyRIRank << endl;
+				cout << "International Student Ratio Score: " << uniArray[i].intStuRIScore << endl;
+				cout << "International Student Ratio Rank: " << uniArray[i].intStuRIRank << endl;
+				cout << "International Research Network Score: " << uniArray[i].intResearchNetScore << endl;
+				cout << "International Research Network Rank: " << uniArray[i].intResearchNetRank << endl;
+				cout << "Employment Outcome Score: " << uniArray[i].employOutcomeScore << endl;
+				cout << "Employment Outcome Rank: " << uniArray[i].employOutcomeRank << endl;
+				cout << "Score Scale: " << uniArray[i].scoreScale << endl;
+				cout << string(55, '=') << endl; cout << string(55, '=') << endl;
 			}
-			current = current->nextAdd;
 		}
 		if (!found)
 			cout << "No university is found!" << endl;
 		break;
+	}
 
-	case 6:
+	case 6: {
 		cout << "Enter Highest Cite Per Faculty Rank: ";
 		cin >> rank1;
 		cin.clear();
@@ -342,39 +914,39 @@ void UniList::linearSearchUniAndDisplay(int searchCondition) {
 		cin >> rank2;
 		cin.clear();
 		cin.ignore(10000, '\n');
-		while (current != NULL) {
-			if (rank1 <= current->citePerFacultyRank && current->citePerFacultyRank <= rank2) {
+		for (int i = 0; i < 1423; i++) {
+			if (rank1 <= uniArray[i].citePerFacultyRank && uniArray[i].citePerFacultyRank <= rank2) {
 				found = true;
-				cout << endl << "University Name: " << current->instName << endl;
-				cout << "Rank: " << current->rank << endl;
-				cout << "Location Code: " << current->locationCode << endl;
-				cout << "Location: " << current->location << endl;
-				cout << "Academic Score " << current->academicScore << endl;
-				cout << "Academic Rank: " << current->academicRank << endl;
-				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
-				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
-				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
-				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
-				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
-				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
-				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
-				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
-				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
-				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
-				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
-				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
-				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
-				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
-				cout << "Score Scale: " << current->scoreScale << endl;
+				cout << endl << "University Name: " << uniArray[i].instName << endl;
+				cout << "Rank: " << uniArray[i].rank << endl;
+				cout << "Location Code: " << uniArray[i].locationCode << endl;
+				cout << "Location: " << uniArray[i].location << endl;
+				cout << "Academic Score " << uniArray[i].academicScore << endl;
+				cout << "Academic Rank: " << uniArray[i].academicRank << endl;
+				cout << "Employer Reputation Score: " << uniArray[i].employerRepScore << endl;
+				cout << "Employer Reputation Rank: " << uniArray[i].employerRepRank << endl;
+				cout << "Faculty/Student Ratio Score: " << uniArray[i].facultyStuRIScore << endl;
+				cout << "Faculty/Student Ratio Rank: " << uniArray[i].facultyStuRIRank << endl;
+				cout << "Citations Per Faculty Score: " << uniArray[i].citePerFacultyScore << endl;
+				cout << "Citations Per Faculty Rank: " << uniArray[i].citePerFacultyRank << endl;
+				cout << "International Faculty Ratio Score: " << uniArray[i].intFacultyRIScore << endl;
+				cout << "International Faculty Ratio Rank: " << uniArray[i].intFacultyRIRank << endl;
+				cout << "International Student Ratio Score: " << uniArray[i].intStuRIScore << endl;
+				cout << "International Student Ratio Rank: " << uniArray[i].intStuRIRank << endl;
+				cout << "International Research Network Score: " << uniArray[i].intResearchNetScore << endl;
+				cout << "International Research Network Rank: " << uniArray[i].intResearchNetRank << endl;
+				cout << "Employment Outcome Score: " << uniArray[i].employOutcomeScore << endl;
+				cout << "Employment Outcome Rank: " << uniArray[i].employOutcomeRank << endl;
+				cout << "Score Scale: " << uniArray[i].scoreScale << endl;
 				cout << string(55, '=') << endl;
 			}
-			current = current->nextAdd;
 		}
 		if (!found)
 			cout << "No university is found!" << endl;
 		break;
+	}
 
-	case 7:
+	case 7:{
 		cout << "Enter Highest International Faculty Ratio Rank: ";
 		cin >> rank1;
 		cin.clear();
@@ -383,39 +955,38 @@ void UniList::linearSearchUniAndDisplay(int searchCondition) {
 		cin >> rank2;
 		cin.clear();
 		cin.ignore(10000, '\n');
-		while (current != NULL) {
-			if (rank1 <= current->intFacultyRIRank && current->intFacultyRIRank <= rank2) {
+		for (int i = 0; i < 1423; i++) {
+			if (rank1 <= uniArray[i].intFacultyRIRank && uniArray[i].intFacultyRIRank <= rank2) {
 				found = true;
-				cout << endl << "University Name: " << current->instName << endl;
-				cout << "Rank: " << current->rank << endl;
-				cout << "Location Code: " << current->locationCode << endl;
-				cout << "Location: " << current->location << endl;
-				cout << "Academic Score " << current->academicScore << endl;
-				cout << "Academic Rank: " << current->academicRank << endl;
-				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
-				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
-				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
-				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
-				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
-				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
-				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
-				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
-				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
-				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
-				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
-				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
-				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
-				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
-				cout << "Score Scale: " << current->scoreScale << endl;
+				cout << endl << "University Name: " << uniArray[i].instName << endl;
+				cout << "Rank: " << uniArray[i].rank << endl;
+				cout << "Location Code: " << uniArray[i].locationCode << endl;
+				cout << "Location: " << uniArray[i].location << endl;
+				cout << "Academic Score " << uniArray[i].academicScore << endl;
+				cout << "Academic Rank: " << uniArray[i].academicRank << endl;
+				cout << "Employer Reputation Score: " << uniArray[i].employerRepScore << endl;
+				cout << "Employer Reputation Rank: " << uniArray[i].employerRepRank << endl;
+				cout << "Faculty/Student Ratio Score: " << uniArray[i].facultyStuRIScore << endl;
+				cout << "Faculty/Student Ratio Rank: " << uniArray[i].facultyStuRIRank << endl;
+				cout << "Citations Per Faculty Score: " << uniArray[i].citePerFacultyScore << endl;
+				cout << "Citations Per Faculty Rank: " << uniArray[i].citePerFacultyRank << endl;
+				cout << "International Faculty Ratio Score: " << uniArray[i].intFacultyRIScore << endl;
+				cout << "International Faculty Ratio Rank: " << uniArray[i].intFacultyRIRank << endl;
+				cout << "International Student Ratio Score: " << uniArray[i].intStuRIScore << endl;
+				cout << "International Student Ratio Rank: " << uniArray[i].intStuRIRank << endl;
+				cout << "International Research Network Score: " << uniArray[i].intResearchNetScore << endl;
+				cout << "International Research Network Rank: " << uniArray[i].intResearchNetRank << endl;
+				cout << "Employment Outcome Score: " << uniArray[i].employOutcomeScore << endl;
+				cout << "Employment Outcome Rank: " << uniArray[i].employOutcomeRank << endl;
+				cout << "Score Scale: " << uniArray[i].scoreScale << endl;
 				cout << string(55, '=') << endl;
 			}
-			current = current->nextAdd;
+			if (!found)
+				cout << "No university is found!" << endl;
+			break;
 		}
-		if (!found)
-			cout << "No university is found!" << endl;
-		break;
 
-	case 8:
+	case 8: {
 		cout << "Enter Highest International Student Ratio Rank: ";
 		cin >> rank1;
 		cin.clear();
@@ -424,39 +995,39 @@ void UniList::linearSearchUniAndDisplay(int searchCondition) {
 		cin >> rank2;
 		cin.clear();
 		cin.ignore(10000, '\n');
-		while (current != NULL) {
-			if (rank1 <= current->intStuRIRank && current->intStuRIRank <= rank2) {
+		for (int i = 0; i < 1423; i++) {
+			if (rank1 <= uniArray[i].intStuRIRank && uniArray[i].intStuRIRank <= rank2) {
 				found = true;
-				cout << endl << "University Name: " << current->instName << endl;
-				cout << "Rank: " << current->rank << endl;
-				cout << "Location Code: " << current->locationCode << endl;
-				cout << "Location: " << current->location << endl;
-				cout << "Academic Score " << current->academicScore << endl;
-				cout << "Academic Rank: " << current->academicRank << endl;
-				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
-				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
-				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
-				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
-				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
-				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
-				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
-				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
-				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
-				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
-				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
-				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
-				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
-				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
-				cout << "Score Scale: " << current->scoreScale << endl;
+				cout << endl << "University Name: " << uniArray[i].instName << endl;
+				cout << "Rank: " << uniArray[i].rank << endl;
+				cout << "Location Code: " << uniArray[i].locationCode << endl;
+				cout << "Location: " << uniArray[i].location << endl;
+				cout << "Academic Score " << uniArray[i].academicScore << endl;
+				cout << "Academic Rank: " << uniArray[i].academicRank << endl;
+				cout << "Employer Reputation Score: " << uniArray[i].employerRepScore << endl;
+				cout << "Employer Reputation Rank: " << uniArray[i].employerRepRank << endl;
+				cout << "Faculty/Student Ratio Score: " << uniArray[i].facultyStuRIScore << endl;
+				cout << "Faculty/Student Ratio Rank: " << uniArray[i].facultyStuRIRank << endl;
+				cout << "Citations Per Faculty Score: " << uniArray[i].citePerFacultyScore << endl;
+				cout << "Citations Per Faculty Rank: " << uniArray[i].citePerFacultyRank << endl;
+				cout << "International Faculty Ratio Score: " << uniArray[i].intFacultyRIScore << endl;
+				cout << "International Faculty Ratio Rank: " << uniArray[i].intFacultyRIRank << endl;
+				cout << "International Student Ratio Score: " << uniArray[i].intStuRIScore << endl;
+				cout << "International Student Ratio Rank: " << uniArray[i].intStuRIRank << endl;
+				cout << "International Research Network Score: " << uniArray[i].intResearchNetScore << endl;
+				cout << "International Research Network Rank: " << uniArray[i].intResearchNetRank << endl;
+				cout << "Employment Outcome Score: " << uniArray[i].employOutcomeScore << endl;
+				cout << "Employment Outcome Rank: " << uniArray[i].employOutcomeRank << endl;
+				cout << "Score Scale: " << uniArray[i].scoreScale << endl;
 				cout << string(55, '=') << endl;
 			}
-			current = current->nextAdd;
 		}
 		if (!found)
 			cout << "No university is found!" << endl;
 		break;
+	}
 
-	case 9:
+	case 9: {
 		cout << "Enter Highest International Research Network Rank: ";
 		cin >> rank1;
 		cin.clear();
@@ -465,39 +1036,39 @@ void UniList::linearSearchUniAndDisplay(int searchCondition) {
 		cin >> rank2;
 		cin.clear();
 		cin.ignore(10000, '\n');
-		while (current != NULL) {
-			if (rank1 <= current->intResearchNetRank && current->intResearchNetRank <= rank2) {
+		for (int i = 0; i < 1423; i++) {
+			if (rank1 <= uniArray[i].intResearchNetRank && uniArray[i].intResearchNetRank <= rank2) {
 				found = true;
-				cout << endl << "University Name: " << current->instName << endl;
-				cout << "Rank: " << current->rank << endl;
-				cout << "Location Code: " << current->locationCode << endl;
-				cout << "Location: " << current->location << endl;
-				cout << "Academic Score " << current->academicScore << endl;
-				cout << "Academic Rank: " << current->academicRank << endl;
-				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
-				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
-				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
-				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
-				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
-				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
-				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
-				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
-				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
-				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
-				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
-				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
-				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
-				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
-				cout << "Score Scale: " << current->scoreScale << endl;
+				cout << endl << "University Name: " << uniArray[i].instName << endl;
+				cout << "Rank: " << uniArray[i].rank << endl;
+				cout << "Location Code: " << uniArray[i].locationCode << endl;
+				cout << "Location: " << uniArray[i].location << endl;
+				cout << "Academic Score " << uniArray[i].academicScore << endl;
+				cout << "Academic Rank: " << uniArray[i].academicRank << endl;
+				cout << "Employer Reputation Score: " << uniArray[i].employerRepScore << endl;
+				cout << "Employer Reputation Rank: " << uniArray[i].employerRepRank << endl;
+				cout << "Faculty/Student Ratio Score: " << uniArray[i].facultyStuRIScore << endl;
+				cout << "Faculty/Student Ratio Rank: " << uniArray[i].facultyStuRIRank << endl;
+				cout << "Citations Per Faculty Score: " << uniArray[i].citePerFacultyScore << endl;
+				cout << "Citations Per Faculty Rank: " << uniArray[i].citePerFacultyRank << endl;
+				cout << "International Faculty Ratio Score: " << uniArray[i].intFacultyRIScore << endl;
+				cout << "International Faculty Ratio Rank: " << uniArray[i].intFacultyRIRank << endl;
+				cout << "International Student Ratio Score: " << uniArray[i].intStuRIScore << endl;
+				cout << "International Student Ratio Rank: " << uniArray[i].intStuRIRank << endl;
+				cout << "International Research Network Score: " << uniArray[i].intResearchNetScore << endl;
+				cout << "International Research Network Rank: " << uniArray[i].intResearchNetRank << endl;
+				cout << "Employment Outcome Score: " << uniArray[i].employOutcomeScore << endl;
+				cout << "Employment Outcome Rank: " << uniArray[i].employOutcomeRank << endl;
+				cout << "Score Scale: " << uniArray[i].scoreScale << endl;
 				cout << string(55, '=') << endl;
 			}
-			current = current->nextAdd;
 		}
 		if (!found)
 			cout << "No university is found!" << endl;
 		break;
+	}
 
-	case 10:
+	case 10: {
 		cout << "Enter Highest Employment Outcome Rank: ";
 		cin >> rank1;
 		cin.clear();
@@ -506,39 +1077,39 @@ void UniList::linearSearchUniAndDisplay(int searchCondition) {
 		cin >> rank2;
 		cin.clear();
 		cin.ignore(10000, '\n');
-		while (current != NULL) {
-			if (rank1 <= current->employOutcomeRank && current->employOutcomeRank <= rank2) {
+		for (int i = 0; i < 1423; i++) {
+			if (rank1 <= uniArray[i].employOutcomeRank && uniArray[i].employOutcomeRank <= rank2) {
 				found = true;
-				cout << endl << "University Name: " << current->instName << endl;
-				cout << "Rank: " << current->rank << endl;
-				cout << "Location Code: " << current->locationCode << endl;
-				cout << "Location: " << current->location << endl;
-				cout << "Academic Score " << current->academicScore << endl;
-				cout << "Academic Rank: " << current->academicRank << endl;
-				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
-				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
-				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
-				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
-				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
-				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
-				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
-				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
-				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
-				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
-				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
-				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
-				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
-				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
-				cout << "Score Scale: " << current->scoreScale << endl;
+				cout << endl << "University Name: " << uniArray[i].instName << endl;
+				cout << "Rank: " << uniArray[i].rank << endl;
+				cout << "Location Code: " << uniArray[i].locationCode << endl;
+				cout << "Location: " << uniArray[i].location << endl;
+				cout << "Academic Score " << uniArray[i].academicScore << endl;
+				cout << "Academic Rank: " << uniArray[i].academicRank << endl;
+				cout << "Employer Reputation Score: " << uniArray[i].employerRepScore << endl;
+				cout << "Employer Reputation Rank: " << uniArray[i].employerRepRank << endl;
+				cout << "Faculty/Student Ratio Score: " << uniArray[i].facultyStuRIScore << endl;
+				cout << "Faculty/Student Ratio Rank: " << uniArray[i].facultyStuRIRank << endl;
+				cout << "Citations Per Faculty Score: " << uniArray[i].citePerFacultyScore << endl;
+				cout << "Citations Per Faculty Rank: " << uniArray[i].citePerFacultyRank << endl;
+				cout << "International Faculty Ratio Score: " << uniArray[i].intFacultyRIScore << endl;
+				cout << "International Faculty Ratio Rank: " << uniArray[i].intFacultyRIRank << endl;
+				cout << "International Student Ratio Score: " << uniArray[i].intStuRIScore << endl;
+				cout << "International Student Ratio Rank: " << uniArray[i].intStuRIRank << endl;
+				cout << "International Research Network Score: " << uniArray[i].intResearchNetScore << endl;
+				cout << "International Research Network Rank: " << uniArray[i].intResearchNetRank << endl;
+				cout << "Employment Outcome Score: " << uniArray[i].employOutcomeScore << endl;
+				cout << "Employment Outcome Rank: " << uniArray[i].employOutcomeRank << endl;
+				cout << "Score Scale: " << uniArray[i].scoreScale << endl;
 				cout << string(55, '=') << endl;
 			}
-			current = current->nextAdd;
 		}
 		if (!found)
 			cout << "No university is found!" << endl;
 		break;
+	}
 
-	case 11:
+	case 11: {
 		cout << "Enter Highest Rank: ";
 		cin >> rank1;
 		cin.clear();
@@ -547,49 +1118,189 @@ void UniList::linearSearchUniAndDisplay(int searchCondition) {
 		cin >> rank2;
 		cin.clear();
 		cin.ignore(10000, '\n');
-		while (current != NULL) {
-			if (rank1 <= current->rank && current->rank <= rank2) {
+		for (int i = 0; i < 1423; i++) {
+			if (rank1 <= uniArray[i].rank && uniArray[i].rank <= rank2) {
 				found = true;
-				cout << endl << "University Name: " << current->instName << endl;
-				cout << "Rank: " << current->rank << endl;
-				cout << "Location Code: " << current->locationCode << endl;
-				cout << "Location: " << current->location << endl;
-				cout << "Academic Score " << current->academicScore << endl;
-				cout << "Academic Rank: " << current->academicRank << endl;
-				cout << "Employer Reputation Score: " << current->employerRepScore << endl;
-				cout << "Employer Reputation Rank: " << current->employerRepRank << endl;
-				cout << "Faculty/Student Ratio Score: " << current->facultyStuRIScore << endl;
-				cout << "Faculty/Student Ratio Rank: " << current->facultyStuRIRank << endl;
-				cout << "Citations Per Faculty Score: " << current->citePerFacultyScore << endl;
-				cout << "Citations Per Faculty Rank: " << current->citePerFacultyRank << endl;
-				cout << "International Faculty Ratio Score: " << current->intFacultyRIScore << endl;
-				cout << "International Faculty Ratio Rank: " << current->intFacultyRIRank << endl;
-				cout << "International Student Ratio Score: " << current->intStuRIScore << endl;
-				cout << "International Student Ratio Rank: " << current->intStuRIRank << endl;
-				cout << "International Research Network Score: " << current->intResearchNetScore << endl;
-				cout << "International Research Network Rank: " << current->intResearchNetRank << endl;
-				cout << "Employment Outcome Score: " << current->employOutcomeScore << endl;
-				cout << "Employment Outcome Rank: " << current->employOutcomeRank << endl;
-				cout << "Score Scale: " << current->scoreScale << endl;
+				cout << endl << "University Name: " << uniArray[i].instName << endl;
+				cout << "Rank: " << uniArray[i].rank << endl;
+				cout << "Location Code: " << uniArray[i].locationCode << endl;
+				cout << "Location: " << uniArray[i].location << endl;
+				cout << "Academic Score " << uniArray[i].academicScore << endl;
+				cout << "Academic Rank: " << uniArray[i].academicRank << endl;
+				cout << "Employer Reputation Score: " << uniArray[i].employerRepScore << endl;
+				cout << "Employer Reputation Rank: " << uniArray[i].employerRepRank << endl;
+				cout << "Faculty/Student Ratio Score: " << uniArray[i].facultyStuRIScore << endl;
+				cout << "Faculty/Student Ratio Rank: " << uniArray[i].facultyStuRIRank << endl;
+				cout << "Citations Per Faculty Score: " << uniArray[i].citePerFacultyScore << endl;
+				cout << "Citations Per Faculty Rank: " << uniArray[i].citePerFacultyRank << endl;
+				cout << "International Faculty Ratio Score: " << uniArray[i].intFacultyRIScore << endl;
+				cout << "International Faculty Ratio Rank: " << uniArray[i].intFacultyRIRank << endl;
+				cout << "International Student Ratio Score: " << uniArray[i].intStuRIScore << endl;
+				cout << "International Student Ratio Rank: " << uniArray[i].intStuRIRank << endl;
+				cout << "International Research Network Score: " << uniArray[i].intResearchNetScore << endl;
+				cout << "International Research Network Rank: " << uniArray[i].intResearchNetRank << endl;
+				cout << "Employment Outcome Score: " << uniArray[i].employOutcomeScore << endl;
+				cout << "Employment Outcome Rank: " << uniArray[i].employOutcomeRank << endl;
+				cout << "Score Scale: " << uniArray[i].scoreScale << endl;
 				cout << string(55, '=') << endl;
 			}
-			current = current->nextAdd;
 		}
 		if (!found)
 			cout << "No university is found!" << endl;
 		break;
 	}
+		}*/
+	//}
+}
+
+
+//=============================Binary Search===================================================================
+//from https://www.geeksforgeeks.org/insertion-sort/ & https://www.geeksforgeeks.org/binary-search-a-string/
+void insertionSortArray(struct Uni uniArray[]){
+	int i, j;
+	int rank;
+	string instName;
+	string locationCode;
+	string location;
+	float academicScore;
+	int academicRank;
+	float employerRepScore;
+	int employerRepRank;
+	float facultyStuRIScore;
+	int facultyStuRIRank;
+	float citePerFacultyScore;
+	int citePerFacultyRank;
+	float intFacultyRIScore;
+	int intFacultyRIRank;
+	float intStuRIScore;
+	int intStuRIRank;
+	float intResearchNetScore;
+	int intResearchNetRank;
+	float employOutcomeScore;
+	int employOutcomeRank;
+	float scoreScale;
+	for (i = 1; i < 1422; i++) {
+		rank = uniArray[i].rank;
+		instName = uniArray[i].instName;
+		locationCode = uniArray[i].locationCode;
+		location = uniArray[i].location;
+		academicScore = uniArray[i].academicScore;
+		academicRank = uniArray[i].academicRank;
+		employerRepScore = uniArray[i].employerRepScore;
+		employerRepRank = uniArray[i].employerRepRank;
+		facultyStuRIScore = uniArray[i].intFacultyRIScore;
+		facultyStuRIRank = uniArray[i].facultyStuRIRank;
+		citePerFacultyScore = uniArray[i].citePerFacultyScore;
+		citePerFacultyRank = uniArray[i].citePerFacultyRank;
+		intFacultyRIScore = uniArray[i].intFacultyRIScore;
+		intFacultyRIRank = uniArray[i].intFacultyRIRank;
+		intStuRIScore = uniArray[i].intStuRIScore;
+		intStuRIRank = uniArray[i].intStuRIRank;
+		intResearchNetScore = uniArray[i].intResearchNetScore;
+		intResearchNetRank = uniArray[i].intResearchNetRank;
+		employOutcomeScore = uniArray[i].employOutcomeScore;
+		employOutcomeRank = uniArray[i].employOutcomeRank;
+		scoreScale = uniArray[i].scoreScale;
+
+		j = i - 1;
+
+		// Move elements of arr[0..i-1], 
+		// that are greater than key, to one
+		// position ahead of their
+		// current position
+		while (j >= 0 && uniArray[j].instName > instName)
+		{
+			uniArray[j + 1] = uniArray[j];
+			
+			j = j - 1;
+		}
+		
+		uniArray[j + 1].rank = rank;
+		uniArray[j + 1].instName = instName;
+		uniArray[j + 1].locationCode = locationCode;
+		uniArray[j + 1].location = location;
+		uniArray[j + 1].academicScore = academicScore;
+		uniArray[j + 1].academicRank = academicRank;
+		uniArray[j + 1].employerRepScore = employerRepScore;
+		uniArray[j + 1].employerRepRank = employerRepRank;
+		uniArray[j + 1].facultyStuRIScore =intFacultyRIScore;
+		uniArray[j + 1].facultyStuRIRank = facultyStuRIRank;
+		uniArray[j + 1].citePerFacultyScore = citePerFacultyScore;
+		uniArray[j + 1].citePerFacultyRank = citePerFacultyRank;
+		uniArray[j + 1].intFacultyRIScore = intFacultyRIScore;
+		uniArray[j + 1].intFacultyRIRank = intFacultyRIRank;
+		uniArray[j + 1].intStuRIScore = intStuRIScore;
+		uniArray[j + 1].intStuRIRank = intStuRIRank;
+		uniArray[j + 1].intResearchNetScore = intResearchNetScore;
+		uniArray[j + 1].intResearchNetRank = intResearchNetRank;
+		uniArray[j + 1].employOutcomeScore = employOutcomeScore;
+		uniArray[j + 1].employOutcomeRank = employOutcomeRank;
+		uniArray[j + 1].scoreScale = scoreScale;
+	}
 
 }
 
-void UniList::insertUniArray() {
+void UniList::binarySearchUniAndDisplayArray(){
+	insertionSortArray(uniArray);
+	int r = 1422 - 1;
+	int l = 0;
+	string x;
+	int y;
+	cout << "Enter Institution Name: ";
+	getline(cin, x);
+	while (l <= r)
+	{
+		int mid = l + (r - l) / 2;
+		int res = -1000;   //some random value assigned because if res is already 0 then
+		//it will always return 0    
+		if (x == (uniArray[mid].instName)) {
+			res = 0;	
+		}
+
+		// Check if x is present at mid
+		if (res == 0) {
+			cout << endl << "University Name: " << uniArray[mid].instName << endl;
+			cout << "Rank: " << uniArray[mid].rank << endl;
+			cout << "Location Code: " << uniArray[mid].locationCode << endl;
+			cout << "Location: " << uniArray[mid].location << endl;
+			cout << "Academic Score " << uniArray[mid].academicScore << endl;
+			cout << "Academic Rank: " << uniArray[mid].academicRank << endl;
+			cout << "Employer Reputation Score: " << uniArray[mid].employerRepScore << endl;
+			cout << "Employer Reputation Rank: " << uniArray[mid].employerRepRank << endl;
+			cout << "Faculty/Student Ratio Score: " << uniArray[mid].facultyStuRIScore << endl;
+			cout << "Faculty/Student Ratio Rank: " << uniArray[mid].facultyStuRIRank << endl;
+			cout << "Citations Per Faculty Score: " << uniArray[mid].citePerFacultyScore << endl;
+			cout << "Citations Per Faculty Rank: " << uniArray[mid].citePerFacultyRank << endl;
+			cout << "International Faculty Ratio Score: " << uniArray[mid].intFacultyRIScore << endl;
+			cout << "International Faculty Ratio Rank: " << uniArray[mid].intFacultyRIRank << endl;
+			cout << "International Student Ratio Score: " << uniArray[mid].intStuRIScore << endl;
+			cout << "International Student Ratio Rank: " << uniArray[mid].intStuRIRank << endl;
+			cout << "International Research Network Score: " << uniArray[mid].intResearchNetScore << endl;
+			cout << "International Research Network Rank: " << uniArray[mid].intResearchNetRank << endl;
+			cout << "Employment Outcome Score: " << uniArray[mid].employOutcomeScore << endl;
+			cout << "Employment Outcome Rank: " << uniArray[mid].employOutcomeRank << endl;
+			cout << "Score Scale: " << uniArray[mid].scoreScale << endl;
+			cout << string(55, '=') << endl;
+		}
+
+		// If x greater, ignore left half
+		if (x > (uniArray[mid].instName)) {
+			l = mid + 1;
+		}
+
+		// If x is smaller, ignore right half
+		else {
+			r = mid - 1;
+		}
+	}
 
 }
+
+
 
 //============================Insertion Sort==========================================================================
 // function to insert a new node in sorted way in a sorted doubly linked list
-void sortedInsert(Uni** head, Uni* newNode, int sortCondition)
-{
+void sortedInsert(Uni** head, Uni* newNode, int sortCondition){
 	Uni* current;
 
 	switch (sortCondition) {
@@ -1275,7 +1986,7 @@ void UniList::uniQuickSort(int searchCondition)
 
 
 //Display Uni List
-void UniList::displayList() {
+void UniList::displayListDoubly() {
 	Uni* current = head;
 	bool  contPrint = true;
 	string cont = "y";
@@ -1317,4 +2028,50 @@ void UniList::displayList() {
 		}	
 	}
 	cout << "List ended here." << endl;
+}
+
+void UniList::displayListArray() {
+	string cont;
+	int k = 49;
+	int i = 0;
+	//for (int i = 0; i < 1422; i++) {
+		while(i<1423) {
+			cout << endl << "University Name: " << uniArray[i].instName << endl;
+			cout << "Rank: " << uniArray[i].rank << endl;
+			cout << "Location Code: " << uniArray[i].locationCode << endl;
+			cout << "Location: " << uniArray[i].location << endl;
+			cout << "Academic Score " << uniArray[i].academicScore << endl;
+			cout << "Academic Rank: " << uniArray[i].academicRank << endl;
+			cout << "Employer Reputation Score: " << uniArray[i].employerRepScore << endl;
+			cout << "Employer Reputation Rank: " << uniArray[i].employerRepRank << endl;
+			cout << "Faculty/Student Ratio Score: " << uniArray[i].facultyStuRIScore << endl;
+			cout << "Faculty/Student Ratio Rank: " << uniArray[i].facultyStuRIRank << endl;
+			cout << "Citations Per Faculty Score: " << uniArray[i].citePerFacultyScore << endl;
+			cout << "Citations Per Faculty Rank: " << uniArray[i].citePerFacultyRank << endl;
+			cout << "International Faculty Ratio Score: " << uniArray[i].intFacultyRIScore << endl;
+			cout << "International Faculty Ratio Rank: " << uniArray[i].intFacultyRIRank << endl;
+			cout << "International Student Ratio Score: " << uniArray[i].intStuRIScore << endl;
+			cout << "International Student Ratio Rank: " << uniArray[i].intStuRIRank << endl;
+			cout << "International Research Network Score: " << uniArray[i].intResearchNetScore << endl;
+			cout << "International Research Network Rank: " << uniArray[i].intResearchNetRank << endl;
+			cout << "Employment Outcome Score: " << uniArray[i].employOutcomeScore << endl;
+			cout << "Employment Outcome Rank: " << uniArray[i].employOutcomeRank << endl;
+			cout << "Score Scale: " << uniArray[i].scoreScale << endl;
+			cout << string(55, '=') << endl;
+
+			if (i == k) {
+				cout << "Do you want to continue printing? (Any key to continue, n to exit):" << endl;
+				cin >> cont;
+
+				if (cont == "n") {
+					break;
+				}
+				k = k + 50;				
+			}
+			i += 1;
+			
+			
+		}
+		
+	//}
 }

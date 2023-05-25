@@ -16,6 +16,20 @@ using namespace std;
 //2.6 Read the feedback reply from the MoHE based on latest date.
 
 int haha() {
+	cout << "Please enter the condition for sorting: \n 1.University Rank  2.Institution Name  3.Location  4.Academic Rank  5.Employer Reputation Rank  6.Faculty/Student Ratio Rank\n "<<
+		"7.Citation Per Faculty Rank  8.International Faculty Ratio Rank  9.International Student Ratio Rank  10.Interational Research Natwork Rank  11.Employment Outcome Rank  12.Score Scale  ";
+	//	1 = rank
+	//	2 = instName,
+	//	3 = location,
+	//	4 = academicRank
+	//	5 = employerRepRank
+	//	6 = facultyStuRIRank
+	//	7 = citePerFacultyRank
+	//	8 = intFacultyRIRank
+	//	9 = intStuRIRank
+	//	10 = intResearchNetRank
+	//	11 = employOutcomeRank
+	//	12 = scoreScale
 
 	return 0;
 }
