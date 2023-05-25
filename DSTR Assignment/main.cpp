@@ -41,6 +41,9 @@ int main() {
 
 	favUni.readFavUniFile();
 	//favUni.displayUserFavUniList();
+	//string uniName;
+	//cout << "Enter the university name to search: ";
+	//cin >> uniName;
 
 	
 	//favUni.insertToFrontOfUserFavUniList("13","National University of Singapore (NUS)");

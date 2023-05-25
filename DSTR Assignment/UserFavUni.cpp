@@ -94,6 +94,58 @@ void userFavUniList::deleteFromUserFavUniList(string uniName)
 }
 //=====================================INSERTION SORT============================================
 
+void sortedInsert(userFavUni** head, userFavUni* newNode) {
+	userFavUni* current;
+	if (*head == NULL) {
+		//std::cout << "The favorite university list is empty." << std::endl;
+		*head = newNode;
+		
+		return;
+	}
+	else if ((*head)->uniName >= newNode->uniName) {
+		newNode->nextAdd = *head; 
+		newNode->nextAdd->prevAdd = newNode;
+		*head = newNode;
+	}
+	else {
+		current = *head;
+		while (current->nextAdd != NULL &&	current->nextAdd->uniName < newNode->uniName)
+			current = current->nextAdd;
+		newNode->nextAdd = current->nextAdd;
+
+		// if the new node is not inserted at the end of the list
+		if (current->nextAdd != NULL)
+			newNode->nextAdd->prevAdd = newNode;
+
+		current->nextAdd = newNode;
+		newNode->prevAdd = current;
+	}
+}
+
+
+//void userFavUniList::insertionSort() {
+//	userFavUni* sorted = NULL;
+//	userFavUni* current = head;
+//	while (current != NULL) {
+//
+//		// Store next for next iteration
+//		userFavUni* next = current->nextAdd;
+//
+//		// removing all the links so as to create 'current' as a new node for insertion
+//		current->prevAdd = current->nextAdd = NULL;
+//
+//		// insert current in 'sorted' doubly linked list
+//		sortedInsert(&sorted, current);
+//
+//		// Update current
+//		current = next;
+//	}
+//
+//	// Update head_ref to point to sorted doubly linked list
+//	head = sorted;
+//
+//}
+
 void userFavUniList::insertionSort() {
 	if (head == nullptr) {
 		std::cout << "The favorite university list is empty." << std::endl;
@@ -117,6 +169,9 @@ void userFavUniList::insertionSort() {
 	}
 	std::cout << "The favorite university list has been sorted in alphabetical order." << std::endl;
 }
+
+
+
 //=====================================JUMP SEARCH============================================
 
 int userFavUniList::size() {
