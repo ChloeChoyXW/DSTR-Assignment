@@ -59,6 +59,8 @@ public:
 
 	void readFromFileArray();
 
+	void linearSearchUniAndDisplayDoubly(int searchCondition);
+
 	void linearSearchUniAndDisplayArray();
 
 	void binarySearchUniAndDisplayArray();

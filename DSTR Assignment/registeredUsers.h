@@ -50,4 +50,6 @@ public:
 
 	void writeUsersLogFile();
 
+	string login();
+
 };

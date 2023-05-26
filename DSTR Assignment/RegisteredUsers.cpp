@@ -125,7 +125,7 @@ void regUsersList::linearsearchAndDisplayRegistUsersDetails(int choice)
 		return;
 	bool found = false;
 	regUsers* current = head;
-	string userID, name;
+	string userID, name, email, pw;
 	switch (choice)
 	{
 	case 1:
@@ -170,6 +170,33 @@ void regUsersList::linearsearchAndDisplayRegistUsersDetails(int choice)
 		if (!found)
 			cout << "User not found" << endl;
 		break;
+	}
+}
+
+string regUsersList::login() {
+	if (head == NULL) {
+		return NULL;
+	}
+	bool found = false;
+	regUsers* current = head;
+	string userID, name, email, pw;
+
+	//for user login purpo
+	cout << "Enter Email: ";
+	cin >> email;
+	cout << "Enter Password: ";
+	cin >> pw;
+	while (current != NULL)
+	{
+		if (current->email == email && current->pw == pw)
+		{
+			found = true;
+			return current->userID;
+		}
+		current = current->nextAdd;
+	}
+	if (!found){
+		return "User not found";
 	}
 }
 
