@@ -1,14 +1,11 @@
 #include <string>
 #include <iostream>
 #include <chrono>
-#include <ctime>
-#include <sstream>
+#include <stdio.h>
 #include "university.h"
 #include "registeredUsers.h"
 #include "userFavUni.h"
 #include "admin.h"
-
-
 
 using namespace std;
 
@@ -35,88 +32,42 @@ int main() {
 	////regUser.linearsearchAndDisplayRegistUsersDetails(stoi(ans));
 	//
 	//adminList admin = adminList("Admin");
-	////university.displayList();
-	//
-	////adminList admin = adminList("Admin");
-	////admin.readAdminFile();
-	////admin.displayList();
-	////admin.adminQuickSort();
-	////admin.displayList();
-	//userFavUniList favUni = userFavUniList("Favourite University List");
-	//favUni.readFavUniFile();
-	////favUni.displayUserFavUniList();
-
-	///*adminList admin = adminList("Admin");
 	//admin.readAdminFile();
 	//admin.displayList();
 	//admin.adminQuickSort();
 	//admin.displayList();
 	// 
-	/*userFavUniList favUni = userFavUniList("Favourite University List");
-	auto start = std::chrono::high_resolution_clock::now();
+	//userFavUniList favUni = userFavUniList("Favourite University List");
+	//auto start = std::chrono::high_resolution_clock::now();
 
-	favUni.readFavUniFile();*/
-	//favUni.displayUserFavUniList();
-	//string uniName;
-	//cout << "Enter the university name to search: ";
-	//cin >> uniName;
-	
-	
-	//favUni.insertToFrontOfUserFavUniList("13","National University of Singapore (NUS)");
-	//favUni.insertToEndOfUserFavUniList("8","EPFL");
-
-
-	//favUni.JumpSearchFavUni(uniName);
-
-	//favUni.insertionSort();
-
-	//std::cout << "After sorting:" << std::endl;
-	////favUni.BinarySearchFavUni(uniName);
-	//favUni.writeFavUniFile();
 	//favUni.readFavUniFile();
-	//favUni.displayUserFavUniList();
+	////favUni.displayUserFavUniList();
+	////char str[20];
+	//string ans;
+	//cout << "Press 1 as User, Press 2 as Admin: ";
+	//getline(cin, ans);
+	////fgets(str, 20, stdin);
+
+
+	////cin.clear();
+	////cin.ignore();
+	//
+	////favUni.insertToFrontOfUserFavUniList("13","National University of Singapore (NUS)");
+	////favUni.insertToEndOfUserFavUniList("18", "Tsinghua University");
+	////favUni.insertionSort();
+	////favUni.FavUniQuickSort();
+	////std::cout << "After sorting:" << std::endl;
+	//favUni.LinearSearchandDisplay(stoi(ans));
+	////favUni.JumpSearchFavUni(uniName);
+	////favUni.BinarySearchFavUni("6", uniName,2);
+	////favUni.displayUserFavUniList();
+	////favUni.writeFavUniFile();
+
+	//
 	//auto end = std::chrono::high_resolution_clock::now();
 	//auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 	//std::cout << "Execution time: " << duration << " milliseconds" << std::endl;
 
-	//admin.displayList();*/
-	//
-	////favUni.insertToFrontOfUserFavUniList();
-	////favUni.insertToEndOfUserFavUniList();
-	//string uniName;
-	//cout << "Enter the university name to search: ";
-	//cin >> uniName;
-	////
-
-	//favUni.JumpSearchFavUni(uniName);
-	////favUni.writeFavUniFile();
-	//favUni.readFavUniFile();
-	////favUni.displayUserFavUniList();
-
-
-	regUsersList regUsers = regUsersList("User Login");
-	regUsers.userLogin("1");
-	regUsers.writeUsersLogFile();
-
-
-
-
-
-	//istringstream iss(currentDate);
-	//istringstream iss2(currentTime);
-	//tm dateTm = {};
-	//tm timeTm = {};
-
-	//iss >> std::get_time(&dateTm, "%Y-%m-%d");
-	//iss2 >> std::get_time(&timeTm, "%H:%M:%S");
-	//regUsers.insertToFrontOfRegUsersLoginList("1", dateTm, );
-	//regUsers.writeUsersLogFile();
-
-	//regUsers.readUsersLogFile();
-	//regUsers.displayUsersLog();
-	
-
-	
 
 	return 0;
 }
