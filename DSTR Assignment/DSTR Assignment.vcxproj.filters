@@ -42,6 +42,9 @@
     <ClCompile Include="donottouchregusers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="plztouchadmin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="registeredUsers.h">
@@ -57,9 +60,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="example.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="dateTime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

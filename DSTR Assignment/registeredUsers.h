@@ -32,7 +32,7 @@ public:
 
 	regUsers* createNewNode(string userID, tm loginDate, tm loginTime);
 
-	//void insertToEndOfRegUsersList(string userID, string name, string pw, string phoneNum, string email);
+	void insertToEndOfRegUsersList(string userID, string name, string pw, string phoneNum, string email);
 
 	void insertToFrontOfRegUsersLoginList(string userID, tm loginDate, tm loginTime);
 
@@ -44,9 +44,9 @@ public:
 
 	//void sortRegUsersList(string sortCondition);
 
-	//void displayRegUsersList();
+	void displayRegUsersList();
 
-	//void readRegUsersFile();
+	void readRegUsersFile();
 
 	//void writeRegUsersFile();
 

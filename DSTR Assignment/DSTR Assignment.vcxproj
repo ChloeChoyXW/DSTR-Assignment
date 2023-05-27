@@ -132,13 +132,13 @@
     <ClCompile Include="donottouchregusers.cpp" />
     <ClCompile Include="example.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="plztouchadmin.cpp" />
     <ClCompile Include="RegisteredUsers.cpp" />
     <ClCompile Include="University.cpp" />
     <ClCompile Include="UserFavUni.cpp" />
     <ClCompile Include="UserUniReview.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dateTime.h" />
     <ClInclude Include="example.h" />
     <ClInclude Include="registeredUsers.h" />
     <ClInclude Include="university.h" />

@@ -96,22 +96,22 @@ regUsers* regUsersList::createNewNode(string userID, tm loginDate, tm loginTime)
 	return newnode; 
 }
 
-//void regUsersList::insertToEndOfRegUsersList(string userID, string name, string pw, string phoneNum, string email)
-//{
-//	regUsers* newnode = createNewNode(userID, name, pw, phoneNum, email);
-//
-//	if (head == NULL)
-//	{
-//		newnode->nextAdd = NULL;
-//		taik = newnode;
-//	}
-//	else
-//	{
-//		newnode->nextAdd = head;
-//		head->prevAdd = newnode;
-//	}
-//	head = newnode;
-//}
+void regUsersList::insertToEndOfRegUsersList(string userID, string name, string pw, string phoneNum, string email)
+{
+	regUsers* newnode = createNewNode(userID, name, pw, phoneNum, email);
+
+	if (head == NULL)
+	{
+		newnode->nextAdd = NULL;
+		taik = newnode;
+	}
+	else
+	{
+		newnode->nextAdd = head;
+		head->prevAdd = newnode;
+	}
+	head = newnode;
+}
 
 void regUsersList::insertToFrontOfRegUsersLoginList(string userID, tm loginDate, tm loginTime)
 {
@@ -281,48 +281,48 @@ void regUsersList::insertToFrontOfRegUsersLoginList(string userID, tm loginDate,
 //}
 //
 //
-//void regUsersList::displayRegUsersList()
-//{
-//	regUsers* current = head;
+void regUsersList::displayRegUsersList()
+{
+	regUsers* current = head;
+
+	while (current != NULL)
+	{
+		cout << "User ID:  " << current->userID << endl;
+		cout << "Name:  " << current->name << endl;
+		cout << "Password:  " << current->pw << endl;
+		cout << "Phone No.:  " << current->phoneNum << endl;
+		cout << "Email:  " << current->email << endl;
+		cout << string(55, '=') << endl;
+
+		current = current->nextAdd;
+	}
+	cout << "List ended here." << endl;
+}
 //
-//	while (current != NULL)
-//	{
-//		cout << "User ID:  " << current->userID << endl;
-//		cout << "Name:  " << current->name << endl;
-//		cout << "Password:  " << current->pw << endl;
-//		cout << "Phone No.:  " << current->phoneNum << endl;
-//		cout << "Email:  " << current->email << endl;
-//		cout << string(55, '=') << endl;
 //
-//		current = current->nextAdd;
-//	}
-//	cout << "List ended here." << endl;
-//}
-//
-//
-//void regUsersList::readRegUsersFile()
-//{
-//	string filename = "regusers.csv";
-//	ifstream file(filename);
-//
-//	if (!file.is_open())
-//	{
-//		cout << "File " << filename << "unable to found!" << endl;
-//	}
-//
-//	string line;
-//	while (getline(file, line))
-//	{
-//		stringstream b(line);  //used for breaking words
-//		string userID, name, pw, phoneNum, email;
-//		getline(b, userID, ',');
-//		getline(b, name, ',');
-//		getline(b, pw, ',');
-//		getline(b, phoneNum, ',');
-//		getline(b, email, ',');
-//		insertToEndOfRegUsersList(userID, name, pw, phoneNum, email);
-//	}
-//
+void regUsersList::readRegUsersFile()
+{
+	string filename = "regusers.csv";
+	ifstream file(filename);
+
+	if (!file.is_open())
+	{
+		cout << "File " << filename << "unable to found!" << endl;
+	}
+
+	string line;
+	while (getline(file, line))
+	{
+		stringstream b(line);  //used for breaking words
+		string userID, name, pw, phoneNum, email;
+		getline(b, userID, ',');
+		getline(b, name, ',');
+		getline(b, pw, ',');
+		getline(b, phoneNum, ',');
+		getline(b, email, ',');
+		insertToEndOfRegUsersList(userID, name, pw, phoneNum, email);
+	}
+
 //	file.close();
 //}
 //
@@ -343,30 +343,30 @@ void regUsersList::insertToFrontOfRegUsersLoginList(string userID, tm loginDate,
 //	file.close();
 //}
 
-void regUsersList::readUsersLogFile()
-{
-	string filename = "UsersLog.csv";
-	ifstream file(filename);
-
-	if (!file.is_open())
-	{
-		cout << "File " << filename << "unable to found!" << endl;
-	}
-
-	string line;
-	while (getline(file, line))
-	{
-		stringstream b(line);  //used for breaking words
-		string userID, loginDate, loginTime;
-		getline(b, userID, ',');
-		getline(b, loginDate, ',');
-		getline(b, loginTime, ',');
-
-		tm date = stringToTm(loginDate, 1);
-		tm time = stringToTm(loginTime, 2);
-		insertToFrontOfRegUsersLoginList(userID, date, time);
-	}
-}
+//void regUsersList::readUsersLogFile()
+//{
+//	string filename = "UsersLog.csv";
+//	ifstream file(filename);
+//
+//	if (!file.is_open())
+//	{
+//		cout << "File " << filename << "unable to found!" << endl;
+//	}
+//
+//	string line;
+//	while (getline(file, line))
+//	{
+//		stringstream b(line);  //used for breaking words
+//		string userID, loginDate, loginTime;
+//		getline(b, userID, ',');
+//		getline(b, loginDate, ',');
+//		getline(b, loginTime, ',');
+//
+//		tm date = stringToTm(loginDate, 1);
+//		tm time = stringToTm(loginTime, 2);
+//		insertToFrontOfRegUsersLoginList(userID, date, time);
+//	}
+//}
 
 
 void regUsersList::writeUsersLogFile()
@@ -455,6 +455,7 @@ void regUsersList::removeInactiveUsers()
 	}
 	cout << "Delete Complete!" << endl;
 }
+
 
 void regUsersList::userLoginlog(string userID)  
 {
