@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="admin.h" />
     <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="donottouchregusers.cpp" />
     <ClCompile Include="example.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RegisteredUsers.cpp" />

@@ -175,6 +175,120 @@ void regUsersList::insertToFrontOfRegUsersLoginList(string userID, tm loginDate,
 //	}
 //}
 
+void regUsersList::linearsearchAndDisplayRegistUsersDetails(int choice)
+{
+	if (head == NULL)
+		return;
+	bool found = false;
+	regUsers* current = head;
+	string userID, name, email, pw;
+	switch (choice)
+	{
+	case 1:
+		cout << "Enter User ID: ";
+		cin >> userID;
+		while (current != NULL)
+		{
+			if (current->userID == userID)
+			{
+				found = true;
+				cout << "User ID:  " << current->userID << endl;
+				cout << "Name:  " << current->name << endl;
+				cout << "Password:  " << current->pw << endl;
+				cout << "Phone No.:  " << current->phoneNum << endl;
+				cout << "Email:  " << current->email << endl;
+				cout << string(55, '=') << endl;
+				return;
+			}
+			current = current->nextAdd;
+		}
+		if (!found)
+			cout << "User not found" << endl;
+		break;
+	case 2:
+		cout << "Enter User Name: ";
+		cin >> name;
+		while (current != NULL)
+		{
+			if (current->name == name)
+			{
+				found = true;
+				cout << "User ID:  " << current->userID << endl;
+				cout << "Name:  " << current->name << endl;
+				cout << "Password:  " << current->pw << endl;
+				cout << "Phone No.:  " << current->phoneNum << endl;
+				cout << "Email:  " << current->email << endl;
+				cout << string(55, '=') << endl;
+				return;
+			}
+			current = current->nextAdd;
+		}
+		if (!found)
+			cout << "User not found" << endl;
+		break;
+	}
+}
+
+string regUsersList::login() {
+	if (head == NULL) {
+		return NULL;
+	}
+	bool found = false;
+	regUsers* current = head;
+	string userID, name, email, pw;
+
+	//for user login purpo
+	cout << "Enter Email: ";
+	cin >> email;
+	cout << "Enter Password: ";
+	cin >> pw;
+	while (current != NULL)
+	{
+		if (current->email == email && current->pw == pw)
+		{
+			found = true;
+			return current->userID;
+		}
+		current = current->nextAdd;
+	}
+	if (!found){
+		return "User not found";
+	}
+}
+
+void regUsersList::sortRegUsersList(string sortCondition)
+{
+
+}
+
+
+void regUsersList::displayRegUsersList()
+{
+	regUsers* current = head;
+
+	while (current != NULL)
+	{
+		cout << "User ID:  " << current->userID << endl;
+		cout << "Name:  " << current->name << endl;
+		cout << "Password:  " << current->pw << endl;
+		cout << "Phone No.:  " << current->phoneNum << endl;
+		cout << "Email:  " << current->email << endl;
+		cout << string(55, '=') << endl;
+
+		current = current->nextAdd;
+	}
+	cout << "List ended here." << endl;
+}
+
+void regUsersList::readRegUsersFile()
+{
+	string filename = "regusers.csv";
+	ifstream file(filename);
+
+	if (!file.is_open())
+	{
+		cout << "File " << filename << "unable to found!" << endl;
+	}
 //void regUsersList::sortRegUsersList(string sortCondition)
 //{
 //

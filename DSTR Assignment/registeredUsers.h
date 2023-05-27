@@ -55,6 +55,8 @@ public:
 
 	void writeUsersLogFile();
 
+	string login();
+
 	//void displayUsersLog();
 
 	//void removeInactiveUsers();
