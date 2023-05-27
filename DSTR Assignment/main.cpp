@@ -70,13 +70,16 @@ int main() {
 
 
 	regUsersList regUser = regUsersList("Registered Users List");
-	regUser.userLoginlog("1");
-	regUser.userLoginlog("2");
-	regUser.userLoginlog("3");
-	regUser.displayUsersLog();
+	//regUser.userLoginlog("1");
+	//regUser.userLoginlog("2");
+	//regUser.userLoginlog("3");
+	//regUser.userLoginlog("4");
+	//regUser.userLoginlog("5");
+	//regUser.userLoginlog("6");
 	//regUser.writeUsersLogFile();
+	regUser.removeInactiveUsers();
 	//regUser.readUsersLogFile();
-	//regUser.displayUsersLog();
+	regUser.displayUsersLog();
 
 	return 0;
 }
