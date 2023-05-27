@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 #include <sstream>
 #include <ctime>
@@ -53,11 +52,12 @@ string tmToString(tm dateTime, int x)
 	{
 		strftime(buffer, sizeof(buffer), "%Y-%m-%d", &timeStruct);
 		string date(buffer);
+		return date;
 	}
 	else
 	{
 		strftime(buffer, sizeof(buffer), "%H:%M:%S", &timeStruct);
 		string time(buffer);
+		return time;
 	}
-	return buffer;
 }

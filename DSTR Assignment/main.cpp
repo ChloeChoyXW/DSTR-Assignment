@@ -7,7 +7,8 @@
 #include "registeredUsers.h"
 #include "userFavUni.h"
 #include "admin.h"
-#include "dateTime.h"
+
+
 
 using namespace std;
 
@@ -51,10 +52,10 @@ int main() {
 	//admin.adminQuickSort();
 	//admin.displayList();
 	// 
-	userFavUniList favUni = userFavUniList("Favourite University List");
+	/*userFavUniList favUni = userFavUniList("Favourite University List");
 	auto start = std::chrono::high_resolution_clock::now();
 
-	favUni.readFavUniFile();
+	favUni.readFavUniFile();*/
 	//favUni.displayUserFavUniList();
 	//string uniName;
 	//cout << "Enter the university name to search: ";
@@ -67,16 +68,16 @@ int main() {
 
 	//favUni.JumpSearchFavUni(uniName);
 
-	favUni.insertionSort();
+	//favUni.insertionSort();
 
-	std::cout << "After sorting:" << std::endl;
-	//favUni.BinarySearchFavUni(uniName);
-	favUni.writeFavUniFile();
-	favUni.readFavUniFile();
-	favUni.displayUserFavUniList();
-	auto end = std::chrono::high_resolution_clock::now();
-	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-	std::cout << "Execution time: " << duration << " milliseconds" << std::endl;
+	//std::cout << "After sorting:" << std::endl;
+	////favUni.BinarySearchFavUni(uniName);
+	//favUni.writeFavUniFile();
+	//favUni.readFavUniFile();
+	//favUni.displayUserFavUniList();
+	//auto end = std::chrono::high_resolution_clock::now();
+	//auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+	//std::cout << "Execution time: " << duration << " milliseconds" << std::endl;
 
 	//admin.displayList();*/
 	//
@@ -94,14 +95,10 @@ int main() {
 
 
 	regUsersList regUsers = regUsersList("User Login");
-	//string currentDate = getCurrentDate();
-	//string currentTime = getCurrentTime();
-	//tm date = stringToTm(currentDate, 1);
-	//tm time = stringToTm(currentTime, 2);
-	//regUsers.insertToFrontOfRegUsersLoginList("1", date, time);
-	//regUsers.writeUsersLogFile();
+	regUsers.userLogin("1");
+	regUsers.writeUsersLogFile();
 
-	regUsers.readRegUsersFile();
+
 
 
 

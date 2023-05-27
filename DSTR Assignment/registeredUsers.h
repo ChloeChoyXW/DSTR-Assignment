@@ -4,8 +4,7 @@
 #include <string>
 #include <sstream>
 #include <ctime>
-
-
+#include "dateTime.h"
 
 using namespace std;
 
@@ -30,34 +29,35 @@ public:
 	//constructor
 	regUsersList(string regUsersListName);
 
-	regUsers* createNewNode(string userID, string name, string pw, string phoneNum, string email);
+	//regUsers* createNewNode(string userID, string name, string pw, string phoneNum, string email);
 
 	regUsers* createNewNode(string userID, tm loginDate, tm loginTime);
 
-	void insertToEndOfRegUsersList(string userID, string name, string pw, string phoneNum, string email);
+	//void insertToEndOfRegUsersList(string userID, string name, string pw, string phoneNum, string email);
 
 	void insertToFrontOfRegUsersLoginList(string userID, tm loginDate, tm loginTime);
 
-	void deleteFromRegUsersList(string userID);
+	//void deleteFromRegUsersList(string userID);
 
-	void linearsearchAndModifyRegistUsersDetails(string userID);
+	//void linearsearchAndModifyRegistUsersDetails(string userID);
 
-	void linearsearchAndDisplayRegistUsersDetails(int choice);
+	//void linearsearchAndDisplayRegistUsersDetails(int choice);
 
-	void sortRegUsersList(string sortCondition);
+	//void sortRegUsersList(string sortCondition);
 
-	void displayRegUsersList();
+	//void displayRegUsersList();
 
-	void readRegUsersFile();
+	//void readRegUsersFile();
 
-	void writeRegUsersFile();
+	//void writeRegUsersFile();
 
-	void readUsersLogFile();
+	//void readUsersLogFile();
 
 	void writeUsersLogFile();
 
-	void displayUsersLog();
+	//void displayUsersLog();
 
-	void removeInactiveUsers();
+	//void removeInactiveUsers();
 
+	void userLogin(string userID);
 };
