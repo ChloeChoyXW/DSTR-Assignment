@@ -4,7 +4,6 @@
 #include <string>
 #include <sstream>
 #include <ctime>
-#include "dateTime.h"
 
 using namespace std;
 
@@ -14,8 +13,8 @@ struct regUsers {
 	string phoneNum;
 	string email;
 	string pw;
-	tm loginDate;
-	tm loginTime;
+	string loginDate;
+	string loginTime;
 	regUsers* nextAdd;
 	regUsers* prevAdd;
 };
@@ -31,11 +30,11 @@ public:
 
 	//regUsers* createNewNode(string userID, string name, string pw, string phoneNum, string email);
 
-	regUsers* createNewNode(string userID, tm loginDate, tm loginTime);
+	regUsers* createNewNode(string userID, string loginDate, string loginTime);
 
 	//void insertToEndOfRegUsersList(string userID, string name, string pw, string phoneNum, string email);
 
-	void insertToFrontOfRegUsersLoginList(string userID, tm loginDate, tm loginTime);
+	void insertToFrontOfRegUsersLoginList(string userID, string loginDate, string loginTime);
 
 	//void deleteFromRegUsersList(string userID);
 
@@ -53,13 +52,14 @@ public:
 
 	//void readUsersLogFile();
 
-	void writeUsersLogFile();
+	//void writeUsersLogFile();
 
-	string login();
+	//string login();
 
-	//void displayUsersLog();
+	void displayUsersLog();
 
 	//void removeInactiveUsers();
 
-	void userLogin(string userID);
+	void userLoginlog(string userID);  //used to stored users' login date and time
+
 };

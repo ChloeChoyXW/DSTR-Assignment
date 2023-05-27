@@ -14,6 +14,7 @@ struct userUniReview {
 	string uniName;
 	string userReview;
 	string adminReply;
+	tm reviewDate;
 	tm reviewTime;
 	userUniReview* nextAdd;
 	userUniReview* prevAdd;
@@ -28,9 +29,9 @@ public:
 	//constructor
 	userUniReviewList(string userUniReviewListName);
 
-	userUniReview* createNewNode(string userID, string uniName, string userReview, tm reviewTime, string adminReply);
+	userUniReview* createNewNode(string userID, string uniName, string userReview, tm reviewDate, tm reviewTime, string adminReply);
 
-	void insertToEndOfUserUniReviewList(string userID, string uniName, string userReview, tm reviewTime, string adminReply);
+	void insertToEndOfUserUniReviewList(string userID, string uniName, string userReview, tm reviewDate, tm reviewTime, string adminReply);
 
 	void deleteFromUserUniReviewList(string userID, string uniName);
 

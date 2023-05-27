@@ -1,6 +1,5 @@
 #include <string>
 #include <iostream>
-#include <chrono>
 #include <stdio.h>
 #include "university.h"
 #include "registeredUsers.h"
@@ -68,6 +67,16 @@ int main() {
 	//auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 	//std::cout << "Execution time: " << duration << " milliseconds" << std::endl;
 
+
+
+	regUsersList regUser = regUsersList("Registered Users List");
+	regUser.userLoginlog("1");
+	regUser.userLoginlog("2");
+	regUser.userLoginlog("3");
+	regUser.displayUsersLog();
+	//regUser.writeUsersLogFile();
+	//regUser.readUsersLogFile();
+	//regUser.displayUsersLog();
 
 	return 0;
 }
