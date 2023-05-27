@@ -37,36 +37,36 @@ int main() {
 	//admin.adminQuickSort();
 	//admin.displayList();
 	// 
-	userFavUniList favUni = userFavUniList("Favourite University List");
-	auto start = std::chrono::high_resolution_clock::now();
+	//userFavUniList favUni = userFavUniList("Favourite University List");
+	//auto start = std::chrono::high_resolution_clock::now();
 
-	favUni.readFavUniFile();
-	//favUni.displayUserFavUniList();
-	//char str[20];
-	string ans;
-	cout << "Press 1 as User, Press 2 as Admin: ";
-	getline(cin, ans);
-	//fgets(str, 20, stdin);
+	//favUni.readFavUniFile();
+	////favUni.displayUserFavUniList();
+	////char str[20];
+	//string ans;
+	//cout << "Press 1 as User, Press 2 as Admin: ";
+	//getline(cin, ans);
+	////fgets(str, 20, stdin);
 
 
-	//cin.clear();
-	//cin.ignore();
-	
-	//favUni.insertToFrontOfUserFavUniList("13","National University of Singapore (NUS)");
-	//favUni.insertToEndOfUserFavUniList("18", "Tsinghua University");
-	//favUni.insertionSort();
-	//favUni.FavUniQuickSort();
-	//std::cout << "After sorting:" << std::endl;
-	favUni.LinearSearchandDisplay(stoi(ans));
-	//favUni.JumpSearchFavUni(uniName);
-	//favUni.BinarySearchFavUni("6", uniName,2);
-	//favUni.displayUserFavUniList();
-	//favUni.writeFavUniFile();
+	////cin.clear();
+	////cin.ignore();
+	//
+	////favUni.insertToFrontOfUserFavUniList("13","National University of Singapore (NUS)");
+	////favUni.insertToEndOfUserFavUniList("18", "Tsinghua University");
+	////favUni.insertionSort();
+	////favUni.FavUniQuickSort();
+	////std::cout << "After sorting:" << std::endl;
+	//favUni.LinearSearchandDisplay(stoi(ans));
+	////favUni.JumpSearchFavUni(uniName);
+	////favUni.BinarySearchFavUni("6", uniName,2);
+	////favUni.displayUserFavUniList();
+	////favUni.writeFavUniFile();
 
-	
-	auto end = std::chrono::high_resolution_clock::now();
-	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-	std::cout << "Execution time: " << duration << " milliseconds" << std::endl;
+	//
+	//auto end = std::chrono::high_resolution_clock::now();
+	//auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+	//std::cout << "Execution time: " << duration << " milliseconds" << std::endl;
 
 
 	return 0;
