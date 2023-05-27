@@ -40,8 +40,8 @@ public:
 
 	//int JumpSearchFavUni(const std::string& uniName);
 	
-
-	void BinarySearchFavUni(string userID, string uniName, int usertype);
+	void LinearSearchandDisplay(int choice);
+	//void BinarySearchFavUni(string userID, string uniName, int usertype);
 
 	void sortUserFavUniList(string sortCondition);
 

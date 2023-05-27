@@ -291,79 +291,134 @@ void userFavUniList::FavUniQuickSort()
 //	return -1;  // Target element not found
 //}
 
+//=====================================LINEAR SEARCH============================================
 
+void userFavUniList::LinearSearchandDisplay(int choice) //1.User 2.Admin
+{
+	if (head == NULL)
+		return;
+	bool found = false;
+	userFavUni* current = head;
+	string userID, uniName;
 
+	switch (choice)
+	{
+	case 1:
+		cout << "Enter User ID: ";
+		cin >> userID;
+		while (current != NULL)
+		{
+			if (current->userID == userID)
+			{
+				found = true;
+				cout << "User ID:  " << current->userID << endl;
+				cout << "Favourite University:\n ";
+				userFavUni* user = current;
+				while (user != NULL && user->userID == userID)
+				{
+					cout << user->uniName << endl;
+					user = user->nextAdd;
+				}
+				cout << string(55, '=') << endl;
+				return;
+			}
+			current = current->nextAdd;
+		}
+		if (!found)
+			cout << "User not found" << endl;
+		break;
+	case 2:
+		cout << "Enter University Name: ";
+		cin >> uniName;
+		while (current != NULL)
+		{
+			if (current->uniName == uniName)
+			{
+				found = true;
+				cout << "User ID:  " << current->userID << endl;
+				cout << "Favourite University:  " << current->uniName << endl;
+				cout << string(55, '=') << endl;
+				return;
+			}
+			current = current->nextAdd;
+		}
+		if (!found)
+			cout << "University not found" << endl;
+		break;
+	}
+}
+//how to print out multiple uniName when a same "userID" has different favourite university with the code below
 
 //=====================================BINARY SEARCH============================================
 
-userFavUni* MiddleBinarySearch(userFavUni* start, userFavUni* last, string uniName)
-{
-	if (start == nullptr || last == nullptr)
-		return nullptr;
-
-	while (start != last)
-	{
-		userFavUni* mid = start;
-		int count = 0;
-		while (mid != last)
-		{
-			mid = mid->nextAdd;
-			count++;
-		}
-		mid = start;
-		for (int i = 0; i < count / 2; i++)
-			mid = mid->nextAdd;
-
-		if (mid->uniName == uniName)
-			return mid;
-		else if (mid->uniName < uniName)
-			start = mid->nextAdd;
-		else
-			last = mid->prevAdd;
-	}
-
-	return nullptr;
-}
-
-
-void userFavUniList::BinarySearchFavUni(string userID, string uniName, int usertype) //1.User 2.Admin
-{
-	userFavUni* current = head;
-
-	userFavUni* result = MiddleBinarySearch(head, tail, uniName);
-
-	if (result != nullptr) {
-		//cout << "Found: " << result->uniName << endl;
-		if (usertype == 1) {
-
-			while (current != NULL)
-			{
-				if (current->userID == userID)
-				{
-					cout << "\n" << "User ID:  " << current->userID << endl;
-					cout << "Favourite University:  " << current->uniName << "\n" << endl;
-					cout << string(55, '=') << endl;
-				}
-				current = current->nextAdd;
-
-			}
-		}
-		else {
-			while (current != NULL)
-			{
-				cout << "\n" << "User ID:  " << current->userID << endl;
-				cout << "Favourite University:  " << current->uniName << "\n" << endl;
-				cout << string(55, '=') << endl;
-
-				current = current->nextAdd;
-
-			}
-		}
-	}
-	else {
-		cout << "Not found: " << uniName << endl;
-	}
-}
+//userFavUni* MiddleBinarySearch(userFavUni* start, userFavUni* last, string uniName)
+//{
+//	if (start == nullptr || last == nullptr)
+//		return nullptr;
+//
+//	while (start != last)
+//	{
+//		userFavUni* mid = start;
+//		int count = 0;
+//		while (mid != last)
+//		{
+//			mid = mid->nextAdd;
+//			count++;
+//		}
+//		mid = start;
+//		for (int i = 0; i < count / 2; i++)
+//			mid = mid->nextAdd;
+//
+//		if (mid->uniName == uniName)
+//			return mid;
+//		else if (mid->uniName < uniName)
+//			start = mid->nextAdd;
+//		else
+//			last = mid->prevAdd;
+//	}
+//
+//	return nullptr;
+//}
+//
+//
+//void userFavUniList::BinarySearchFavUni(string userID, string uniName, int usertype) //1.User 2.Admin
+//{
+//	userFavUni* current = head;
+//
+//	userFavUni* result = MiddleBinarySearch(head, tail, uniName);
+//
+//	if (result != nullptr) {
+//		//cout << "Found: " << result->uniName << endl;
+//		if (usertype == 1) {
+//
+//			while (current != NULL)
+//			{
+//				if (current->userID == userID)
+//				{
+//					cout << "\n" << "User ID:  " << current->userID << endl;
+//					cout << "Favourite University:  " << current->uniName << "\n" << endl;
+//					cout << string(55, '=') << endl;
+//				}
+//				current = current->nextAdd;
+//
+//			}
+//		}
+//		else {
+//			while (current != NULL)
+//			{
+//				cout << "\n" << "User ID:  " << current->userID << endl;
+//				cout << "Favourite University:  " << current->uniName << "\n" << endl;
+//				cout << string(55, '=') << endl;
+//
+//				current = current->nextAdd;
+//
+//			}
+//		}
+//	}
+//	else {
+//		cout << "Not found: " << uniName << endl;
+//	}
+//}
 
 
 void userFavUniList::sortUserFavUniList(string sortCondition)

@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <chrono>
+#include <stdio.h>
 #include "university.h"
 #include "registeredUsers.h"
 #include "userFavUni.h"
@@ -41,9 +42,13 @@ int main() {
 
 	favUni.readFavUniFile();
 	//favUni.displayUserFavUniList();
-	string uniName;
-	cout << "Enter the university name to search: ";
-	getline(cin, uniName);
+	//char str[20];
+	string ans;
+	cout << "Press 1 as User, Press 2 as Admin: ";
+	getline(cin, ans);
+	//fgets(str, 20, stdin);
+
+
 	//cin.clear();
 	//cin.ignore();
 	
@@ -52,7 +57,7 @@ int main() {
 	//favUni.insertionSort();
 	//favUni.FavUniQuickSort();
 	//std::cout << "After sorting:" << std::endl;
-
+	favUni.LinearSearchandDisplay(stoi(ans));
 	//favUni.JumpSearchFavUni(uniName);
 	//favUni.BinarySearchFavUni("6", uniName,2);
 	//favUni.displayUserFavUniList();
