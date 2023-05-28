@@ -249,7 +249,7 @@ void userUniReviewList::displayUserUniReviewList()
 
 		current = current->nextAdd;
 	}
-	cout << "List ended here." << endl;
+	cout << "List ended here.\n" << endl;
 }
 
 void userUniReviewList::readUserUniReviewFile()
