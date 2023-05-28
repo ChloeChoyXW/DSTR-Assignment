@@ -150,6 +150,7 @@
     <None Include="favuni.csv" />
     <None Include="regusers.csv" />
     <None Include="UsersLog.csv" />
+    <None Include="userUniReview.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

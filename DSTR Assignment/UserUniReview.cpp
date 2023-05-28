@@ -42,30 +42,31 @@ tm stringReviewToTm(string dateTime, int x)
 	return timeStruct;
 }
 
-string tmRDateToString(const tm& date, int x)
+
+string tmRDateToString(const tm& date)
 {
 	stringstream ss;
 	string format;
 
 	format = "%Y-%m-%d";
 
-	char buffer[80];
-	std::strftime(buffer, sizeof(buffer), format.c_str(), &date);
-	ss << buffer;
+	char bufferR[80];
+	std::strftime(bufferR, sizeof(bufferR), format.c_str(), &date);
+	ss << bufferR;
 
 	return ss.str();
 }
 
-string tmRTimeToString(const tm& time, int x)
+string tmRTimeToString(const tm& time)
 {
 	stringstream ss;
 	string format;
 
 	format = "%H:%M:%S";
 
-	char buffer[80];
-	std::strftime(buffer, sizeof(buffer), format.c_str(), &time);
-	ss << buffer;
+	char bufferR[80];
+	std::strftime(bufferR, sizeof(bufferR), format.c_str(), &time);
+	ss << bufferR;
 
 	return ss.str();
 }
@@ -188,14 +189,13 @@ void userUniReviewList::searchAndDisplayUserUniReviewList(int choice)
 			if (current->userID == userID)
 			{
 				found = true;
-				tm timeStruct{};
-				char buffer[20];
-				strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &current->reviewTime);
-				string dateTime(buffer);
+				string date = tmRDateToString(current->reviewDate);
+				string time = tmRTimeToString(current->reviewTime);
 				cout << "User ID:  " << current->userID << endl;
 				cout << "University Name:  " << current->uniName << endl;
 				cout << "User Review:  " << current->userReview << endl;
-				cout << "Review Timw:  " << dateTime << endl;
+				cout << "Review Date:  " << date << endl;
+				cout << "Review Time:  " << time << endl;
 				cout << "Admin Reply:  " << current->adminReply << endl;
 				cout << string(55, '=') << endl;
 				return;
@@ -212,15 +212,13 @@ void userUniReviewList::searchAndDisplayUserUniReviewList(int choice)
 		{
 			if (current->uniName == name)
 			{
-				found = true;
-				tm timeStruct{};
-				char buffer[20];
-				strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &current->reviewTime);
-				string dateTime(buffer);
+				string date = tmRDateToString(current->reviewDate);
+				string time = tmRTimeToString(current->reviewTime);
 				cout << "User ID:  " << current->userID << endl;
 				cout << "University Name:  " << current->uniName << endl;
 				cout << "User Review:  " << current->userReview << endl;
-				cout << "Review Timw:  " << dateTime << endl;
+				cout << "Review Date:  " << date << endl;
+				cout << "Review Time:  " << time << endl;
 				cout << "Admin Reply:  " << current->adminReply << endl;
 				cout << string(55, '=') << endl;
 				return;
@@ -239,8 +237,8 @@ void userUniReviewList::displayUserUniReviewList()
 
 	while (current != NULL)
 	{
-		string date = tmRDateToString(current->reviewDate, 1);
-		string time = tmRTimeToString(current->reviewTime, 2);
+		string date = tmRDateToString(current->reviewDate);
+		string time = tmRTimeToString(current->reviewTime);
 		cout << "User ID:  " << current->userID << endl;
 		cout << "University Name:  " << current->uniName << endl;
 		cout << "User Review:  " << current->userReview << endl;
@@ -295,12 +293,28 @@ void userUniReviewList::writeUserUniReviewFile()
 
 	while (current != nullptr)
 	{
-		string date = tmRDateToString(current->reviewDate, 1);
-		string time = tmRTimeToString(current->reviewTime, 2);
+		string date = tmRDateToString(current->reviewDate);
+		string time = tmRTimeToString(current->reviewTime);
 
 		file << current->userID << ',' << current->uniName << ',' << current->userReview << ',' << date << ',' << time << ',' << current->adminReply << "\n";
 		current = current->nextAdd;
 	}
 	file.close();
+}
+
+void userUniReviewList::writeUniReview(string userID, string uniName)
+{
+	string review;
+	cout << "Please write you review: ";       
+	cin.ignore();
+	getline(cin, review);
+	cout << review;
+
+
+	string currentDate = getReviewCurrentDate();
+	string currentTime = getReviewCurrentTime();
+	tm date = stringReviewToTm(currentDate, 1);
+	tm time = stringReviewToTm(currentTime, 2);
+	insertToEndOfUserUniReviewList(userID, uniName, review, date, time, "");
 }
 

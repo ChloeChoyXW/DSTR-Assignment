@@ -46,4 +46,6 @@ public:
 	void readUserUniReviewFile();
 
 	void writeUserUniReviewFile();
+
+	void writeUniReview(string userID, string uniName);    //user write review  //got problemmmmm
 };

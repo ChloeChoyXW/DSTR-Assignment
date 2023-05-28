@@ -8,6 +8,9 @@
 //3.7 Based on the list of all customers' favorite universities, summarize the top 10 
 //universities most preferred by parents in Malaysia and generate a report.
 
+//if got time can add search :)
+//modify admin profile
+
 #include <string>
 #include <iostream>
 #include <stdio.h>
@@ -15,6 +18,7 @@
 #include "registeredUsers.h"
 #include "userFavUni.h"
 #include "admin.h"
+#include "userUniReview.h"
 
 using namespace std;
 
@@ -22,6 +26,7 @@ int main() {
 	int ans, searchBy;
 	char option;
 	regUsersList regUsers = regUsersList("Registered Users");
+	userUniReviewList  userReview = userUniReviewList("Users' Review");
 	while (true) {
 		cout << "---ADMIN MENU---" << endl;
 		cout << "1. DISPLAY USERS' DETAILS\n2. MODIFY USER DETAIL\n3. DELETE INACTIVE USERS\n4. VIEW FEEBACKS\n5. REPLY FEEDBACKS\n6. GENERATE REPORT\n";
@@ -61,6 +66,17 @@ int main() {
 			}
 			else
 				break;
+		}
+		case 4:    //here also can add search
+		{
+			userReview.writeUniReview("1", "APU");
+			userReview.writeUniReview("2", "ABC");
+			userReview.writeUniReview("3", "EFG");
+			userReview.writeUserUniReviewFile();
+			//userReview.readUserUniReviewFile();
+			//userReview.displayUserUniReviewList();
+			//userReview.readUserUniReviewFile();
+			//userReview.displayUserUniReviewList();
 		}
 		}
 	}

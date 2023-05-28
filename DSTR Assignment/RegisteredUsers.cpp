@@ -544,7 +544,7 @@ void regUsersList::removeInactiveUsers()
 		}
 		current = nextNode;
 	}
-	cout << "Delete Complete!" << endl;
+	cout << "Delete Complete!\n" << endl;
 }
 
 
