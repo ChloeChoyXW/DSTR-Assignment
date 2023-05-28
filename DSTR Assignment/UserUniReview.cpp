@@ -252,6 +252,63 @@ void userUniReviewList::displayUserUniReviewList()
 	cout << "List ended here.\n" << endl;
 }
 
+void displaySingleReview(userUniReview* node)
+{
+	userUniReview* current = node;
+	string date = tmRDateToString(current->reviewDate);
+	string time = tmRTimeToString(current->reviewTime);
+	cout << "User ID:  " << current->userID << endl;
+	cout << "University Name:  " << current->uniName << endl;
+	cout << "User Review:  " << current->userReview << endl;
+	cout << "Review Timw:  " << date << endl;
+	cout << "Review Timw:  " << time << endl;
+	cout << "Admin Reply:  " << current->adminReply << endl;
+	cout << string(55, '=') << endl;
+}
+
+void userUniReviewList::moveForthBackReviewList()
+{
+	readUserUniReviewFile();
+	userUniReview* current = head;
+
+	const int KEY_LEFT = 75;
+	const int KEY_RIGHT = 77;
+	const int KEY_EXIT = 27;
+
+	displaySingleReview(current);
+
+	char key = 0; 
+
+	while (current != nullptr && key != KEY_EXIT )
+	{
+		cout << "Use left and right arrow to move back and forth\n\n";
+		int key = _getch();
+
+		if (key == 0 || key == 224) {
+			key = _getch();
+
+			if (key == KEY_LEFT)
+			{
+				if (current->prevAdd != nullptr) {
+					current = current->prevAdd;
+					displaySingleReview(current);
+				}
+				else
+					cout << "No more prevous review." << endl;
+			}
+			else if (key == KEY_RIGHT)
+			{
+				if (current->nextAdd != nullptr) {
+					current = current->nextAdd;
+					displaySingleReview(current);
+				}
+				else
+					cout << "No more next review." << endl;
+			}
+		}
+	}
+}
+
 void userUniReviewList::readUserUniReviewFile()
 {
 	string filename = "userUniReview.csv";

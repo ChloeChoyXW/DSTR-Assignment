@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include <ctime>
+#include <conio.h>
 
 using namespace std;
 
@@ -42,6 +43,8 @@ public:
 	void searchAndDisplayUserUniReviewList(int choice);
 
 	void displayUserUniReviewList();
+
+	void moveForthBackReviewList();
 
 	void readUserUniReviewFile();
 

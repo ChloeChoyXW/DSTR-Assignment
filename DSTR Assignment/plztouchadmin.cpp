@@ -10,6 +10,7 @@
 
 //if got time can add search :)
 //modify admin profile
+//search review
 
 #include <string>
 #include <iostream>
@@ -22,67 +23,77 @@
 
 using namespace std;
 
-//int main() {
-//	int ans, searchBy;
-//	char option;
-//	regUsersList regUsers = regUsersList("Registered Users");
-//	userUniReviewList  userReview = userUniReviewList("Users' Review");
-//	while (true) {
-//		cout << "---ADMIN MENU---" << endl;
-//		cout << "1. DISPLAY USERS' DETAILS\n2. MODIFY USER DETAIL\n3. DELETE INACTIVE USERS\n4. VIEW FEEBACKS\n5. REPLY FEEDBACKS\n6. GENERATE REPORT\n";
-//		cout << "Enter your choice: ";
-//		cin >> ans;
-//		if (cin.fail() || ans <= 0 || ans > 6) {
-//			cout << "Invalid Input! Please try again~\n\n";
-//			cin.clear();
-//			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-//		}
-//		switch (ans) 
-//		{
-//		case 1:      //can give options to display all or search if got time
-//		{
-//			cout << endl;
-//			cout << string(55, '=') << endl;
-//			regUsers.readRegUsersFile();
-//			regUsers.displayRegUsersList();
-//			cout << endl;
-//			break;
-//		}
-//		case 2:
-//		{
-//			cout << "\nSearch by:\n1. User ID\t2.User Name\nEnter your selection: ";
-//			cin >> searchBy;
-//			regUsers.linearsearchAndModifyRegistUsersDetails(searchBy);
-//			break;
-//		}
-//		case 3:
-//		{
-//			cout << "\nAre you certain about your intention to delete users (y/n): ";
-//			cin >> option;
-//			if (option == 'y')
-//			{
-//				regUsers.removeInactiveUsers();
-//				break;
-//			}
-//			else
-//				break;
-//		}
-//		case 4:    //here also can add search
-//		{
-//			userReview.readUserUniReviewFile();
-//			cout << string(55, '=') << endl;
-//			userReview.displayUserUniReviewList();
-//			break;
-//		}
-//		case 5:
-//		{
-//
-//		}
-//		}
-//	}
-//
-//
-//
-//	return 0;
-//
-//}
+int main() {
+	int ans, searchBy;
+	char option;
+	regUsersList regUsers = regUsersList("Registered Users");
+	userUniReviewList  userReview = userUniReviewList("Users' Review");
+	while (true) {
+		cout << "---ADMIN MENU---" << endl;
+		cout << "1. DISPLAY USERS' DETAILS\n2. MODIFY USER DETAIL\n3. DELETE INACTIVE USERS\n4. VIEW FEEBACKS\n5. REPLY FEEDBACKS\n6. GENERATE REPORT\n";
+		cout << "Enter your choice: ";
+		cin >> ans;
+		if (cin.fail() || ans <= 0 || ans > 6) {
+			cout << "Invalid Input! Please try again~\n\n";
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+		switch (ans) 
+		{
+		case 1:      //can give options to display all or search if got time
+		{
+			cout << endl;
+			cout << string(55, '=') << endl;
+			regUsers.readRegUsersFile();
+			regUsers.displayRegUsersList();
+			cout << endl;
+			break;
+		}
+		case 2:
+		{
+			while (true) {
+				cout << "\nSearch by:\n1. User ID\t2.User Name\nEnter your selection: ";
+				cin >> searchBy;
+				if (cin.fail() || searchBy < 0 || searchBy > 2)
+				{
+					cout << "Invalid Input! Please try again~\n\n";
+					cin.clear();
+					cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				}
+				else {
+					regUsers.linearsearchAndModifyRegistUsersDetails(searchBy);
+					break;
+				}
+			}
+			break;
+		}
+		case 3:
+		{
+			cout << "\nAre you certain about your intention to delete users (y/n): ";
+			cin >> option;
+			if (option == 'y')
+			{
+				regUsers.removeInactiveUsers();
+				break;
+			}
+			else
+				break;
+		}
+		case 4:    //add sort
+		{
+			cout << endl << string(55, '=') << endl;
+			userReview.moveForthBackReviewList();
+			break;
+		}
+		case 5:  
+		{
+
+		}
+		}
+	}
+
+
+
+	return 0;
+
+}
