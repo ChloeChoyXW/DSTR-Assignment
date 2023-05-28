@@ -28,7 +28,7 @@ public:
 	//constructor
 	regUsersList(string regUsersListName);
 
-	//regUsers* createNewNode(string userID, string name, string pw, string phoneNum, string email);
+	regUsers* createNewNode(string userID, string name, string pw, string phoneNum, string email);
 
 	regUsers* createNewNode(string userID, tm loginDate, tm loginTime);
 
@@ -38,7 +38,7 @@ public:
 
 	//void deleteFromRegUsersList(string userID);
 
-	//void linearsearchAndModifyRegistUsersDetails(string userID);
+	void linearsearchAndModifyRegistUsersDetails(int choice);
 
 	//void linearsearchAndDisplayRegistUsersDetails(int choice);
 

@@ -74,19 +74,19 @@ string tmTimeToString(const tm& time)
 
 ///////////////////////////////////////////////////////////////////
 
-//regUsers* regUsersList::createNewNode(string userID, string name, string pw, string phoneNum, string email)
-//{
-//	regUsers* newnode = new regUsers;
-//	newnode->userID = userID;
-//	newnode->name = name;
-//	newnode->phoneNum = phoneNum;
-//	newnode->email = email;
-//	newnode->pw = pw;
-//	newnode->nextAdd = NULL;
-//	newnode->prevAdd = NULL;
-//	return newnode;
-//}
-//
+regUsers* regUsersList::createNewNode(string userID, string name, string pw, string phoneNum, string email)
+{
+	regUsers* newnode = new regUsers;
+	newnode->userID = userID;
+	newnode->name = name;
+	newnode->phoneNum = phoneNum;
+	newnode->email = email;
+	newnode->pw = pw;
+	newnode->nextAdd = NULL;
+	newnode->prevAdd = NULL;
+	return newnode;
+}
+
 regUsers* regUsersList::createNewNode(string userID, tm loginDate, tm loginTime)
 {
 	regUsers* newnode = new regUsers;
@@ -103,7 +103,7 @@ void regUsersList::insertToEndOfRegUsersList(string userID, string name, string 
 	if (head == NULL)
 	{
 		newnode->nextAdd = NULL;
-		taik = newnode;
+		tail = newnode;
 	}
 	else
 	{
@@ -174,24 +174,116 @@ void regUsersList::insertToFrontOfRegUsersLoginList(string userID, tm loginDate,
 //			cout << userID << " is not in the list!" << endl;
 //	}
 //}
-//
-//void regUsersList::linearsearchAndModifyRegistUsersDetails(string userID)
-//{
-//	if (head == NULL)
-//		return;
-//
-//	regUsers* current = head;
-//	while (current != NULL)
-//	{
-//		if (current->userID == userID)
-//		{
-//			cout << "Please enter name: ";
-//			cin >> current->name;
-//			return;
-//		}
-//		current = current->nextAdd;
-//	}
-//}
+
+void regUsersList::linearsearchAndModifyRegistUsersDetails(int choice)
+{
+	readRegUsersFile();
+	string userID, userName;
+	int ans;
+	if (head == NULL)
+		return;
+
+	regUsers* current = head;
+
+	if (choice == 1) {
+		cout << "Please Enter User ID: ";
+		cin >> userID;
+		while (current != NULL)
+		{
+			if (current->userID == userID)
+			{
+				while (true) {
+					cout << "\nModify:\n1.Name\n2.Password\n3.Phone Number\n4.Email\n5. Exit\nChoice: ";
+					cin >> ans;
+					switch (ans)
+					{
+					case 1:
+					{
+						cout << "Please enter name: ";
+						cin.ignore();
+						getline(cin, current->name);
+						cin.clear();
+						break;
+					}
+					case 2:
+					{
+						cout << "Please enter password: ";
+						cin >> current->pw;
+						break;
+					}
+					case 3:
+					{
+						cout << "Please enter phone number: ";
+						cin >> current->phoneNum;
+						break;
+					}
+					case 4:
+					{
+						cout << "Please enter email: ";
+						cin >> current->email;
+						break;
+					}
+					case 5:
+						return;
+					}
+				}
+			}
+			current = current->nextAdd;
+		}
+		cout << "User ID not found.\n" << endl;
+		return;
+	}
+	else
+	{
+		cout << "Please Enter User Name: ";
+		cin.ignore();
+		getline(cin, userName);
+		while (current != NULL)
+		{
+			if (current->name == userName)
+			{
+				while (true) {
+					cout << "\nModify:\n1.Name\n2.Password\n3.Phone Number\n4.Email\n5. Exit\nChoice: ";
+					cin >> ans;
+					switch (ans)
+					{
+					case 1:
+					{
+						cout << "Please enter name: ";
+						cin.ignore();
+						getline(cin, current->name);
+						cin.clear();
+						break;
+					}
+					case 2:
+					{
+						cout << "Please enter password: ";
+						cin >> current->pw;
+						break;
+					}
+					case 3:
+					{
+						cout << "Please enter phone number: ";
+						cin >> current->phoneNum;
+						break;
+					}
+					case 4:
+					{
+						cout << "Please enter email: ";
+						cin >> current->email;
+						break;
+					}
+					case 5:
+						return;
+					}
+				}
+			}
+			current = current->nextAdd;
+		}
+		cout << "User name not found.\n" << endl;
+		return;
+	}
+}
 //
 //void regUsersList::linearsearchAndDisplayRegistUsersDetails(int choice)
 //{
@@ -322,10 +414,9 @@ void regUsersList::readRegUsersFile()
 		getline(b, email, ',');
 		insertToEndOfRegUsersList(userID, name, pw, phoneNum, email);
 	}
+	file.close();
+}
 
-//	file.close();
-//}
-//
 //void regUsersList::writeRegUsersFile()
 //{
 //	regUsers* current = head;
@@ -343,30 +434,30 @@ void regUsersList::readRegUsersFile()
 //	file.close();
 //}
 
-//void regUsersList::readUsersLogFile()
-//{
-//	string filename = "UsersLog.csv";
-//	ifstream file(filename);
-//
-//	if (!file.is_open())
-//	{
-//		cout << "File " << filename << "unable to found!" << endl;
-//	}
-//
-//	string line;
-//	while (getline(file, line))
-//	{
-//		stringstream b(line);  //used for breaking words
-//		string userID, loginDate, loginTime;
-//		getline(b, userID, ',');
-//		getline(b, loginDate, ',');
-//		getline(b, loginTime, ',');
-//
-//		tm date = stringToTm(loginDate, 1);
-//		tm time = stringToTm(loginTime, 2);
-//		insertToFrontOfRegUsersLoginList(userID, date, time);
-//	}
-//}
+void regUsersList::readUsersLogFile()
+{
+	string filename = "UsersLog.csv";
+	ifstream file(filename);
+
+	if (!file.is_open())
+	{
+		cout << "File " << filename << "unable to found!" << endl;
+	}
+
+	string line;
+	while (getline(file, line))
+	{
+		stringstream b(line);  //used for breaking words
+		string userID, loginDate, loginTime;
+		getline(b, userID, ',');
+		getline(b, loginDate, ',');
+		getline(b, loginTime, ',');
+
+		tm date = stringToTm(loginDate, 1);
+		tm time = stringToTm(loginTime, 2);
+		insertToFrontOfRegUsersLoginList(userID, date, time);
+	}
+}
 
 
 void regUsersList::writeUsersLogFile()

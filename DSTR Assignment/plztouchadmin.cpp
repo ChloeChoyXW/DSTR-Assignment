@@ -19,7 +19,7 @@
 using namespace std;
 
 int main() {
-	int ans;
+	int ans, searchBy;
 	char option;
 	regUsersList regUsers = regUsersList("Registered Users");
 	while (true) {
@@ -34,7 +34,24 @@ int main() {
 		}
 		switch (ans) 
 		{
+		case 1:      //can give options to display all or search if got time
+		{
+			cout << endl;
+			cout << string(55, '=') << endl;
+			regUsers.readRegUsersFile();
+			regUsers.displayRegUsersList();
+			cout << endl;
+			break;
+		}
+		case 2:
+		{
+			cout << "\nSearch by:\n1. User ID\t2.User Name\nEnter your selection: ";
+			cin >> searchBy;
+			regUsers.linearsearchAndModifyRegistUsersDetails(searchBy);
+			break;
+		}
 		case 3:
+		{
 			cout << "\nAre you certain about your intention to delete users (y/n): ";
 			cin >> option;
 			if (option == 'y')
@@ -44,6 +61,7 @@ int main() {
 			}
 			else
 				break;
+		}
 		}
 	}
 
