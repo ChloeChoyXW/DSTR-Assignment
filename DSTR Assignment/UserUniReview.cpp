@@ -266,6 +266,7 @@ void displaySingleReview(userUniReview* node)
 	cout << string(55, '=') << endl;
 }
 
+
 void userUniReviewList::moveForthBackReviewList()
 {
 	readUserUniReviewFile();
@@ -273,15 +274,15 @@ void userUniReviewList::moveForthBackReviewList()
 
 	const int KEY_LEFT = 75;
 	const int KEY_RIGHT = 77;
-	const int KEY_EXIT = 27;
+	const int KEY_EXIT = 13;
 
 	displaySingleReview(current);
 
 	char key = 0; 
 
-	while (current != nullptr && key != KEY_EXIT )
+	while (current != nullptr)
 	{
-		cout << "Use left and right arrow to move back and forth\n\n";
+		cout << "Use left and right arrow to move back and forth (Press ENTER to exit)\n\n";
 		int key = _getch();
 
 		if (key == 0 || key == 224) {
@@ -306,6 +307,8 @@ void userUniReviewList::moveForthBackReviewList()
 					cout << "No more next review." << endl;
 			}
 		}
+		else if (key == KEY_EXIT)
+			break;
 	}
 }
 
