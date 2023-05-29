@@ -1,10 +1,10 @@
 //#include "admin.h"
-//#include <sstream>
+//
 //
 //
 //adminList::adminList(string adminListname) : adminListName(adminListName) {};
 ////create an empty new node
-//admin* adminList::createNewNode(int adminID, string name, string pw, int phoneNum, string email) {
+//admin* adminList::createNewNode(int adminID, string name, string pw, string phoneNum, string email) {
 //	
 //	admin* newnode = new admin;
 //
@@ -20,36 +20,24 @@
 //
 //}
 //
-//void adminList::insertToEndOfAdminList(int adminID, string name, string pw, int phoneNum, string email) {
+//void adminList::insertToEndOfAdminList(int adminID, string name, string pw, string phoneNum, string email) {
 //	
-//	admin* newnode = createNewNode(adminID, name, pw, phoneNum, email);
-//
-//	if (head == NULL) {
-//		head = tail = newnode;
-//	}
-//	else {
-//		newnode->prevAdd = tail;
-//		tail->nextAdd = newnode;
-//		tail = newnode;
-//	}
-//
-//}
-//
-//void adminList::insertToFrontOfAdminList(int adminID, string name, string pw, int phoneNum, string email)
-//{
 //	admin* newnode = createNewNode(adminID, name, pw, phoneNum, email);
 //
 //	if (head == NULL)
 //	{
-//		head = tail = newnode;
+//		newnode->nextAdd = NULL;
+//		tail = newnode;
 //	}
 //	else
 //	{
 //		newnode->nextAdd = head;
 //		head->prevAdd = newnode;
-//		head = newnode;
 //	}
+//	head = newnode;
+//
 //}
+//
 //
 //void adminList::deleteFromAdminList(int adminID)
 //{
@@ -99,22 +87,46 @@
 ////======================================================================================================
 ////Linear search
 //
-//void adminList::linearsearchAndModifyAdminDetails(int adminID)
+//void adminList::linearsearchAndModifyAdminDetails(int choice, int adminID)
 //{
 //	if (head == NULL)
 //		return;
 //
 //	admin* current = head;
 //	while (current != NULL)
-//	{
+//		{
 //		if (current->adminID == adminID)
 //		{
-//			cout << "Please enter name: ";
-//			cin >> current->name;
-//			return;
+//			switch (choice)
+//			{
+//			case 1:
+//			{
+//				cout << "Please enter name: ";
+//				cin >> current->name;
+//				return;
+//			}
+//			case 2:
+//			{
+//				cout << "Please enter password: ";
+//				cin >> current->pw;
+//				return;
+//			}
+//			case 3:
+//			{
+//				cout << "Please enter phone number: ";
+//				cin >> current->phoneNum;
+//				return;
+//			}
+//			case 4:
+//			{
+//				cout << "Please enter email: ";
+//				cin >> current->email;
+//				return;
+//			}
+//			}
 //		}
 //		current = current->nextAdd;
-//	}
+//		}
 //}
 //
 //void adminList::linearsearchAndDisplayAdminDetails(int choice)
@@ -686,39 +698,39 @@
 //	return -1;
 //}
 //
-//int adminList::JumpSearchAdmin(const std::string& name) {
-//
-//
-//	if (head == nullptr) {
-//		std::cout << "The admin list is empty." << std::endl;
-//		return -1;  // List is empty
-//	}
-//
-//	int listSize = Adminsize();
-//	int blockSize = static_cast<int>(std::sqrt(listSize));
-//
-//	admin* current = head;
-//	admin* prev = nullptr;
-//	// Finding the block where the target element belongs
-//	while (current && current->name < name) {
-//		prev = current;
-//		for (int i = 0; current && i < blockSize; ++i) {
-//			current = current->nextAdd;
-//		}
-//	}
-//
-//	// Linear search within the block
-//	while (current && current->name <= name) {
-//		if (current->name == name) {
-//			std::cout << "The admin '" << name << "' is found in the favorite list." << std::endl;
-//			return AdmingetPosition(current);
-//		}
-//		current = current->nextAdd;
-//	}
-//
-//	std::cout << "The admin '" << name << "' is not found in the favorite list." << std::endl;
-//	return -1;  // Target element not found
-//}
+////int adminList::JumpSearchAdmin(const std::string& name) {
+////
+////
+////	if (head == nullptr) {
+////		std::cout << "The admin list is empty." << std::endl;
+////		return -1;  // List is empty
+////	}
+////
+////	int listSize = Adminsize();
+////	int blockSize = static_cast<int>(std::sqrt(listSize));
+////
+////	admin* current = head;
+////	admin* prev = nullptr;
+////	// Finding the block where the target element belongs
+////	while (current && current->name < name) {
+////		prev = current;
+////		for (int i = 0; current && i < blockSize; ++i) {
+////			current = current->nextAdd;
+////		}
+////	}
+////
+////	// Linear search within the block
+////	while (current && current->name <= name) {
+////		if (current->name == name) {
+////			std::cout << "The admin '" << name << "' is found in the favorite list." << std::endl;
+////			return AdmingetPosition(current);
+////		}
+////		current = current->nextAdd;
+////	}
+////
+////	std::cout << "The admin '" << name << "' is not found in the favorite list." << std::endl;
+////	return -1;  // Target element not found
+////}
 //
 //
 //

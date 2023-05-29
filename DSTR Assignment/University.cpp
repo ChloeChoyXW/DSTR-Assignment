@@ -2,8 +2,10 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
+#include <ctime>
 
 using namespace std;
+using namespace std::chrono;
 
 UniList::UniList(string uniListname) : uniListName(uniListName) {};
 
@@ -222,6 +224,7 @@ void UniList::readFromFileArray() {
 
 
 void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
+
 	if (head == NULL) {
 		return;
 	}
@@ -237,6 +240,7 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 		while (current != NULL) {
 			if (current->locationCode == locationCode) {
 				found = true;
+
 				cout << endl << "University Name: " << current->instName << endl;
 				cout << "Rank: " << current->rank << endl;
 				cout << "Location Code: " << current->locationCode << endl;
@@ -261,6 +265,7 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 				cout << string(55, '=') << endl;
 			}
 			current = current->nextAdd;
+
 		}
 		if (!found)
 			cout << "No university is found in " << locationCode << "!" << endl;

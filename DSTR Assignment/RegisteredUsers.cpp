@@ -339,32 +339,33 @@ void regUsersList::linearsearchAndDisplayRegistUsersDetails(int choice)
 }
 
 
-string regUsersList::login() {
-	if (head == NULL) {
-		return NULL;
-	}
-	bool found = false;
-	regUsers* current = head;
-	string userID, name, email, pw;
-
-	//for user login purpo
-	cout << "Enter Email: ";
-	cin >> email;
-	cout << "Enter Password: ";
-	cin >> pw;
-	while (current != NULL)
-	{
-		if (current->email == email && current->pw == pw)
-		{
-			found = true;
-			return current->userID;
-		}
-		current = current->nextAdd;
-	}
-	if (!found){
-		return "User not found";
-	}
-}
+//string regUsersList::login() {
+//
+//	if (head == NULL) {
+//		return NULL;
+//	}
+//	bool found = false;
+//	regUsers* current = head;
+//	string userID, name, email, pw;
+//
+//	//for user login purpo
+//	cout << "Enter Email: ";
+//	cin >> email;
+//	cout << "Enter Password: ";
+//	cin >> pw;
+//	while (current != NULL)
+//	{
+//		if (current->email == email && current->pw == pw)
+//		{
+//			found = true;
+//			return current->userID;
+//		}
+//		current = current->nextAdd;
+//	}
+//	if (!found){
+//		return "User not found";
+//	}
+//}
 
 void regUsersList::sortRegUsersList(string sortCondition)
 {

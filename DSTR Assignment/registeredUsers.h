@@ -54,7 +54,7 @@ public:
 
 	void writeUsersLogFile();
 
-	string login();
+	//string login();
 
 	void displayUsersLog();
 

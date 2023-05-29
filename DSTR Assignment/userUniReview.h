@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -38,13 +36,15 @@ public:
 
 	void deleteFromUserUniReviewList(string userID, string uniName);
 
-	void sortUserUniReviewList(string sortCondition);
+	void sortReviewDateList();
 
 	void searchAndAdminReplyUniReviewList(string userID, string uniName);
 
-	void searchAndDisplayUserUniReviewList(int choice);
+	void searchAndDisplayUserUniReviewList(string uniname);
 
 	void displayUserUniReviewList();
+
+	void displayNoReplyReviewList();
 
 	void moveForthBackReviewList();
 
@@ -52,5 +52,6 @@ public:
 
 	void writeUserUniReviewFile();
 
-	void writeUniReview(string userID, string uniName);    //user write review  
+	void writeUniReview(string userID, string uniName);    //user write review 
+
 };
