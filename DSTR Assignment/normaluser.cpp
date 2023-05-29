@@ -22,7 +22,7 @@ int main() {
 
 	while (true) {
 		cout << "---USER MENU---" << endl;
-		cout << "1. DISPLAY UNIVERSITY DETAILS\n2. VIEW UNIVERSITY DETAILS IN ASCENDING ORDER\n3. SEARCH UNIVERSITY\n4. REGISTER AS CUSTOMER\n";
+		cout << "1. DISPLAY UNIVERSITY DETAILS\n2. VIEW UNIVERSITY DETAILS IN ASCENDING ORDER\n3. SEARCH UNIVERSITY BY NAME\n4. REGISTER AS CUSTOMER\n";
 		cout << "Enter your choice: ";
 		cin >> ans;
 		if (cin.fail() || ans <= 0 || ans > 4) {
@@ -37,7 +37,6 @@ int main() {
 			cout << endl;
 			cout << string(55, '=') << endl;
 			Uni.displayListDoubly();
-            Uni.displayListArray();
 			cout << endl;
 			break;
 		}
@@ -45,16 +44,15 @@ int main() {
 		{
 			cout << endl;
 			cout << string(55, '=') << endl;
-            Uni.linearSearchUniAndDisplayArray();
-            Uni.linearSearchUniAndDisplayDoubly(true);
+			Uni.insertionSortUniDoublyLinkedList(2);
+			void displayListDoubly();
 			break;
 		}
 		case 3:
 		{
 			cout << endl;
 			cout << string(55, '=') << endl;
-            Uni.linearSearchUniAndDisplayArray();
-            Uni.linearSearchUniAndDisplayDoubly(true);
+            Uni.linearSearchUniAndDisplayDoubly(2);
 			break;
 		}
 		case 4:
@@ -65,19 +63,19 @@ int main() {
 
             string userID, name, pw, phoneNum, email;
 
-            cout << "Enter User ID: ";
+            cout << "Enter User ID: " << endl;
             getline(cin, userID);
 
-            cout << "Enter Name: ";
+            cout << "Enter Name: " << endl;;
             getline(cin, name);
 
-            cout << "Enter Password: ";
+            cout << "Enter Password: " << endl;;
             getline(cin, pw);
 
-            cout << "Enter Phone Number: ";
+            cout << "Enter Phone Number: " << endl;;
             getline(cin, phoneNum);
 
-            cout << "Enter Email: ";
+            cout << "Enter Email: " << endl;;
             getline(cin, email);
 
             regUsers.insertToEndOfRegUsersList(userID, name, pw, phoneNum, email);
