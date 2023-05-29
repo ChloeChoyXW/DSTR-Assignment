@@ -9,7 +9,7 @@
 using namespace std;
 
 struct userUniReview {
-	string userID;
+	int userID;
 	string uniName;
 	string userReview;
 	string adminReply;
@@ -30,15 +30,15 @@ public:
 	//constructor
 	userUniReviewList(string userUniReviewListName);
 
-	userUniReview* createNewNode(string userID, string uniName, string userReview, tm reviewDate, tm reviewTime, string adminReply, tm replyDate, tm replyTime);
+	userUniReview* createNewNode(int userID, string uniName, string userReview, tm reviewDate, tm reviewTime, string adminReply, tm replyDate, tm replyTime);
 
-	void insertToEndOfUserUniReviewList(string userID, string uniName, string userReview, tm reviewDate, tm reviewTime, string adminReply, tm replyDate, tm replyTime);
+	void insertToEndOfUserUniReviewList(int userID, string uniName, string userReview, tm reviewDate, tm reviewTime, string adminReply, tm replyDate, tm replyTime);
 
-	void deleteFromUserUniReviewList(string userID, string uniName);
+	void deleteFromUserUniReviewList(int userID, string uniName);
 
 	void sortReviewDateList();
 
-	void searchAndAdminReplyUniReviewList(string userID, string uniName);
+	void searchAndAdminReplyUniReviewList(int userID, string uniName);
 
 	void searchAndDisplayUserUniReviewList(string uniname);
 
@@ -52,6 +52,8 @@ public:
 
 	void writeUserUniReviewFile();
 
-	void writeUniReview(string userID, string uniName);    //user write review 
+	void writeUniReview(int userID, string uniName);    //user write review 
+
+	void displayNoReplyUniReviewList();
 
 };

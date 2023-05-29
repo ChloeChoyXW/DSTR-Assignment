@@ -132,6 +132,7 @@
     <ClCompile Include="donottouchregusers.cpp" />
     <ClCompile Include="example.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="normaluser.cpp" />
     <ClCompile Include="plztouchadmin.cpp" />
     <ClCompile Include="RegisteredUsers.cpp" />
     <ClCompile Include="University.cpp" />
@@ -147,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="2023_QS_World_University_Rankings.csv" />
+    <None Include="admin.csv" />
     <None Include="favuni.csv" />
     <None Include="regusers.csv" />
     <None Include="UsersLog.csv" />

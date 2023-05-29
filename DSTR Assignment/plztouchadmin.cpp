@@ -28,19 +28,19 @@
 //	regUsersList regUsers = regUsersList("Registered Users");
 //	userUniReviewList  userReview = userUniReviewList("Users' Review");
 //	userFavUniList favUni = userFavUniList("Uni  Fav List");
-//	//adminList adList = adminList("Admin List");
+//	adminList adList = adminList("Admin List");
 //
 //	regUsers.readRegUsersFile();
 //	userReview.readUserUniReviewFile();
 //	favUni.readFavUniFile();
-//	//adList.readAdminFile();
+//	adList.readAdminFile();
 //
 //	while (true) {
 //		cout << "---ADMIN MENU---" << endl;
-//		cout << "1. DISPLAY USERS' DETAILS\n2. MODIFY USER DETAIL\n3. DELETE INACTIVE USERS\n4. VIEW FEEBACKS\n5. REPLY FEEDBACKS\n6. GENERATE REPORT\n7. EDIT PROFILE\n";
+//		cout << "1. DISPLAY USERS' DETAILS\n2. MODIFY USER DETAIL\n3. DELETE INACTIVE USERS\n4. VIEW FEEBACKS\n5. REPLY FEEDBACKS\n6. GENERATE REPORT\n7. EDIT PROFILE\n8. LOGOUT\n";
 //		cout << "Enter your choice: ";
 //		cin >> ans;
-//		if (cin.fail() || ans <= 0 || ans > 6) {
+//		if (cin.fail() || ans <= 0 || ans > 8) {
 //			cout << "Invalid Input! Please try again~\n\n";
 //			cin.clear();
 //			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -103,7 +103,8 @@
 //			userReview.searchAndDisplayUserUniReviewList(uniname);
 //			cout << "Enter User ID: ";
 //			getline(cin, userid);
-//			userReview.searchAndAdminReplyUniReviewList(userid, uniname);
+//			int userID = stoi(userid);
+//			userReview.searchAndAdminReplyUniReviewList(userID, uniname);
 //			break;
 //		}
 //		case 6:
@@ -112,10 +113,23 @@
 //		}
 //		case 7:
 //		{
-//			//adList.insertToEndOfAdminList(1, "Peter Pan", "123", "0129390234", "hsdhqoj@gamil.com");
-//			//adList.insertToEndOfAdminList(1, "Wendy Hi", "145", "0129390234", "fwefdhqoj@gamil.com");
-//			//adList.insertToEndOfAdminList(1, "Pirate YB", "1342", "0129390234", "wehfiewhfoj@gamil.com");
-//			//adList.writeAdminFile();
+//			int ans;
+//			cout << "\nModify:\n1. Name\n2. Password\n3. Phone Number\n4. Email\n5. Exit\n";
+//			cout << "Choice: ";
+//			cin >> ans;
+//			if (ans == 5) {
+//				cout << endl;
+//				break;
+//			}
+//			else {
+//				adList.linearsearchAndModifyAdminDetails(ans, 1);
+//				break;
+//			}
+//		}
+//		case 8:
+//		{
+//			adList.insertionSortAdminDoublyLinkedList(1);
+//			adList.displayList();
 //		}
 //		}
 //	}

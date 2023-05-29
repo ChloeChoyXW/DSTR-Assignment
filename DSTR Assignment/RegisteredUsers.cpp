@@ -74,7 +74,7 @@ string tmTimeToString(const tm& time)
 
 ///////////////////////////////////////////////////////////////////
 
-regUsers* regUsersList::createNewNode(string userID, string name, string pw, string phoneNum, string email)
+regUsers* regUsersList::createNewNode(int userID, string name, string pw, string phoneNum, string email)
 {
 	regUsers* newnode = new regUsers;
 	newnode->userID = userID;
@@ -87,7 +87,7 @@ regUsers* regUsersList::createNewNode(string userID, string name, string pw, str
 	return newnode;
 }
 
-regUsers* regUsersList::createNewNode(string userID, tm loginDate, tm loginTime)
+regUsers* regUsersList::createNewNode(int userID, tm loginDate, tm loginTime)
 {
 	regUsers* newnode = new regUsers;
 	newnode->userID = userID;
@@ -96,7 +96,7 @@ regUsers* regUsersList::createNewNode(string userID, tm loginDate, tm loginTime)
 	return newnode; 
 }
 
-void regUsersList::insertToEndOfRegUsersList(string userID, string name, string pw, string phoneNum, string email)
+void regUsersList::insertToEndOfRegUsersList(int userID, string name, string pw, string phoneNum, string email)
 {
 	regUsers* newnode = createNewNode(userID, name, pw, phoneNum, email);
 
@@ -113,7 +113,7 @@ void regUsersList::insertToEndOfRegUsersList(string userID, string name, string 
 	head = newnode;
 }
 
-void regUsersList::insertToFrontOfRegUsersLoginList(string userID, tm loginDate, tm loginTime)
+void regUsersList::insertToFrontOfRegUsersLoginList(int userID, tm loginDate, tm loginTime)
 {
 	regUsers* newnode = createNewNode(userID, loginDate, loginTime);
 
@@ -130,7 +130,7 @@ void regUsersList::insertToFrontOfRegUsersLoginList(string userID, tm loginDate,
 	head = newnode;
 }
 
-void regUsersList::deleteFromRegUsersList(string userID)
+void regUsersList::deleteFromRegUsersList(int userID)
 {
 	if (head == NULL)
 		return;
@@ -177,8 +177,8 @@ void regUsersList::deleteFromRegUsersList(string userID)
 
 void regUsersList::linearsearchAndModifyRegistUsersDetails(int choice)
 {
-	string userID, userName;
-	int ans;
+	string userName;
+	int userID,  ans;
 	if (head == NULL)
 		return;
 
@@ -290,7 +290,8 @@ void regUsersList::linearsearchAndDisplayRegistUsersDetails(int choice)
 		return;
 	bool found = false;
 	regUsers* current = head;
-	string userID, name;
+	string name, userid;
+	int userID;
 	switch (choice)
 	{
 	case 1:
@@ -301,7 +302,8 @@ void regUsersList::linearsearchAndDisplayRegistUsersDetails(int choice)
 			if (current->userID == userID)
 			{
 				found = true;
-				cout << "User ID:  " << current->userID << endl;
+				userid = to_string(current->userID);
+				cout << "User ID:  " << userid << endl;
 				cout << "Name:  " << current->name << endl;
 				cout << "Password:  " << current->pw << endl;
 				cout << "Phone No.:  " << current->phoneNum << endl;
@@ -322,7 +324,8 @@ void regUsersList::linearsearchAndDisplayRegistUsersDetails(int choice)
 			if (current->name == name)
 			{
 				found = true;
-				cout << "User ID:  " << current->userID << endl;
+				userid = to_string(current->userID);
+				cout << "User ID:  " << userid << endl;
 				cout << "Name:  " << current->name << endl;
 				cout << "Password:  " << current->pw << endl;
 				cout << "Phone No.:  " << current->phoneNum << endl;
@@ -379,7 +382,9 @@ void regUsersList::displayRegUsersList()
 
 	while (current != NULL)
 	{
-		cout << "User ID:  " << current->userID << endl;
+		string userid;
+		userid = to_string(current->userID);
+		cout << "User ID:  " << userid << endl;
 		cout << "Name:  " << current->name << endl;
 		cout << "Password:  " << current->pw << endl;
 		cout << "Phone No.:  " << current->phoneNum << endl;
@@ -412,7 +417,9 @@ void regUsersList::readRegUsersFile()
 		getline(b, pw, ',');
 		getline(b, phoneNum, ',');
 		getline(b, email, ',');
-		insertToEndOfRegUsersList(userID, name, pw, phoneNum, email);
+
+		int userid = stoi(userID);
+		insertToEndOfRegUsersList(userid, name, pw, phoneNum, email);
 	}
 	file.close();
 }
@@ -428,7 +435,8 @@ void regUsersList::writeRegUsersFile()
 
 	while (current != nullptr)
 	{
-		file << current->userID << ',' << current->name << ',' << current->pw << ',' << current->phoneNum << ',' << current->email << "\n";
+		string userid = to_string(current->userID);
+		file << userid << ',' << current->name << ',' << current->pw << ',' << current->phoneNum << ',' << current->email << "\n";
 		current = current->nextAdd;
 	}
 	file.close();
@@ -455,7 +463,8 @@ void regUsersList::readUsersLogFile()
 
 		tm date = stringToTm(loginDate, 1);
 		tm time = stringToTm(loginTime, 2);
-		insertToFrontOfRegUsersLoginList(userID, date, time);
+		int userid = stoi(userID);
+		insertToFrontOfRegUsersLoginList(userid, date, time);
 	}
 }
 
@@ -473,7 +482,8 @@ void regUsersList::writeUsersLogFile()
 	{
 		string date = tmDateToString(current->loginDate);
 		string time = tmTimeToString(current->loginTime);
-		file << current->userID << ',' << date << ',' << time << "\n";
+		string userid = to_string(current->userID);
+		file << userid << ',' << date << ',' << time << "\n";
 		current = current->nextAdd;
 	}
 	file.close();
@@ -487,7 +497,8 @@ void regUsersList::displayUsersLog()
 	{
 		string date = tmDateToString(current->loginDate);
 		string time = tmTimeToString(current->loginTime);
-		cout << "User ID:  " << current->userID << endl;
+		string userid = to_string(current->userID);
+		cout << "User ID:  " << userid << endl;
 		cout << "Review Date:  " << date << endl;
 		cout << "Review Time:  " << time << endl;
 		cout << string(55, '=') << endl;
@@ -497,41 +508,68 @@ void regUsersList::displayUsersLog()
 	cout << "List ended here." << endl;
 }
 
-bool checkInactive(tm date)
+//bool checkInactive(tm date)
+//{
+//	string currentDate = getCurrentDate();
+//	tm cDate = stringToTm(currentDate,1);
+//
+//	time_t nowDate = mktime(&cDate);
+//	time_t loginDate = mktime(&date);
+//
+//	double difference = difftime(nowDate, loginDate);
+//
+//	return (difference <= 30);
+//}
+
+bool checkInactive(const std::tm& loginDate)
 {
-	string currentDate = getCurrentDate();
-	tm cDate = stringToTm(currentDate,1);
+	std::time_t currentTime = std::time(nullptr);
+	std::time_t loginTime = std::mktime(const_cast<std::tm*>(&loginDate));
 
-	time_t nowDate = mktime(&cDate);
-	time_t loginDate = mktime(&date);
+	double difference = std::difftime(currentTime, loginTime);
+	double days = difference / (60 * 60 * 24);  // Convert difference to days
 
-	double difference = difftime(nowDate, loginDate);
-
-	return (difference <= 30);
+	return (days > 30);
 }
 
-void deleteLoginNode(regUsers* removeNode)
+void regUsersList::deleteLoginNode(regUsers* nodeToDelete)
 {
-
-	if (removeNode == NULL)  //node is empty
-		return;
-
-	if (removeNode->prevAdd != NULL)  //node is the head 
-		removeNode->prevAdd->nextAdd = removeNode->nextAdd;
-	
-	if (removeNode->nextAdd != NULL)
-		removeNode->nextAdd->prevAdd = removeNode->prevAdd;
-
-	delete removeNode;
+	if (nodeToDelete == head)
+	{
+		head = head->nextAdd;
+		delete nodeToDelete;
+	}
+	else
+	{
+		regUsers* current = head;
+		regUsers* previous = NULL;
+		while (current != NULL && current != nodeToDelete)
+		{
+			previous = current;
+			current = current->nextAdd;
+		}
+		if (current == NULL)
+		{
+			cout << "Node not found." << endl;
+			return;
+		}
+		if (previous != NULL) // Check if previous is not NULL
+		{
+			previous->nextAdd = current->nextAdd;
+		}
+		delete current;
+	}
 }
 
 void regUsersList::removeInactiveUsers()
 {
-	readUsersLogFile();
-
 	regUsers* current = head;
 	regUsers* nextNode = NULL;
 
+	if (head == NULL) {
+		cout << "User list is empty." << endl;
+		return;
+	}
 	
 	while (current != NULL)
 	{
@@ -539,7 +577,8 @@ void regUsersList::removeInactiveUsers()
 		bool status = checkInactive(current->loginDate);
 		if (!status)
 		{
-			cout << "Delete User" << current->userID << endl;
+			string userid = to_string(current->userID);
+			cout << "Delete User " << userid << endl;
 			deleteLoginNode(current);
 		}
 		current = nextNode;
@@ -548,7 +587,7 @@ void regUsersList::removeInactiveUsers()
 }
 
 
-void regUsersList::userLoginlog(string userID)  
+void regUsersList::userLoginlog(int userID)  
 {
 	string currentDate = getCurrentDate();
 	string currentTime = getCurrentTime();
