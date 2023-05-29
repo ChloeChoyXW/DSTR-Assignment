@@ -130,54 +130,53 @@ void regUsersList::insertToFrontOfRegUsersLoginList(string userID, tm loginDate,
 	head = newnode;
 }
 
-//void regUsersList::deleteFromRegUsersList(string userID)
-//{
-//	if (head == NULL)
-//		return;
-//	if (head->userID == userID)
-//	{
-//		regUsers* current = head;
-//		head = head->nextAdd;
-//		cout << "Deleted: Registered User ID of " << current->userID << endl;
-//		delete current;
-//	}
-//	else if (tail->userID == userID)
-//	{
-//		regUsers* current = tail;
-//		tail = tail->prevAdd;
-//		if (tail == NULL)
-//			head = NULL;
-//		else
-//			tail->nextAdd = NULL;
-//		cout << "Deleted: Registered User ID of " << current->userID << endl;
-//		delete current;
-//	}
-//	else
-//	{
-//		regUsers* prev = head->prevAdd;
-//		regUsers* current = head;
-//		bool found = false;
-//		while (current != NULL)
-//		{
-//			if (current->userID == userID)
-//			{
-//				found = true;
-//				prev->nextAdd = current->nextAdd;
-//				cout << "Deleted: Registered User ID of " << current->userID << endl;
-//				delete current;
-//				return;
-//			}
-//			prev = current;
-//			current = current->nextAdd;
-//		}
-//		if(!found)
-//			cout << userID << " is not in the list!" << endl;
-//	}
-//}
+void regUsersList::deleteFromRegUsersList(string userID)
+{
+	if (head == NULL)
+		return;
+	if (head->userID == userID)
+	{
+		regUsers* current = head;
+		head = head->nextAdd;
+		cout << "Deleted: Registered User ID of " << current->userID << endl;
+		delete current;
+	}
+	else if (tail->userID == userID)
+	{
+		regUsers* current = tail;
+		tail = tail->prevAdd;
+		if (tail == NULL)
+			head = NULL;
+		else
+			tail->nextAdd = NULL;
+		cout << "Deleted: Registered User ID of " << current->userID << endl;
+		delete current;
+	}
+	else
+	{
+		regUsers* prev = head->prevAdd;
+		regUsers* current = head;
+		bool found = false;
+		while (current != NULL)
+		{
+			if (current->userID == userID)
+			{
+				found = true;
+				prev->nextAdd = current->nextAdd;
+				cout << "Deleted: Registered User ID of " << current->userID << endl;
+				delete current;
+				return;
+			}
+			prev = current;
+			current = current->nextAdd;
+		}
+		if(!found)
+			cout << userID << " is not in the list!" << endl;
+	}
+}
 
 void regUsersList::linearsearchAndModifyRegistUsersDetails(int choice)
 {
-	readRegUsersFile();
 	string userID, userName;
 	int ans;
 	if (head == NULL)
@@ -284,95 +283,95 @@ void regUsersList::linearsearchAndModifyRegistUsersDetails(int choice)
 		return;
 	}
 }
-//
-//void regUsersList::linearsearchAndDisplayRegistUsersDetails(int choice)
-//{
-//	if (head == NULL)
-//		return;
-//	bool found = false;
-//	regUsers* current = head;
-//	string userID, name;
-//	switch (choice)
-//	{
-//	case 1:
-//		cout << "Enter User ID: ";
-//		cin >> userID;
-//		while (current != NULL)
-//		{
-//			if (current->userID == userID)
-//			{
-//				found = true;
-//				cout << "User ID:  " << current->userID << endl;
-//				cout << "Name:  " << current->name << endl;
-//				cout << "Password:  " << current->pw << endl;
-//				cout << "Phone No.:  " << current->phoneNum << endl;
-//				cout << "Email:  " << current->email << endl;
-//				cout << string(55, '=') << endl;
-//				return;
-//			}
-//			current = current->nextAdd;
-//		}
-//		if (!found)
-//			cout << "User not found" << endl;
-//		break;
-//	case 2:
-//		cout << "Enter User Name: ";
-//		cin >> name;
-//		while (current != NULL)
-//		{
-//			if (current->name == name)
-//			{
-//				found = true;
-//				cout << "User ID:  " << current->userID << endl;
-//				cout << "Name:  " << current->name << endl;
-//				cout << "Password:  " << current->pw << endl;
-//				cout << "Phone No.:  " << current->phoneNum << endl;
-//				cout << "Email:  " << current->email << endl;
-//				cout << string(55, '=') << endl;
-//				return;
-//			}
-//			current = current->nextAdd;
-//		}
-//		if (!found)
-//			cout << "User not found" << endl;
-//		break;
-//	}
-//}
-//
-//
-//string regUsersList::login() {
-//	if (head == NULL) {
-//		return NULL;
-//	}
-//	bool found = false;
-//	regUsers* current = head;
-//	string userID, name, email, pw;
-//
-//	//for user login purpo
-//	cout << "Enter Email: ";
-//	cin >> email;
-//	cout << "Enter Password: ";
-//	cin >> pw;
-//	while (current != NULL)
-//	{
-//		if (current->email == email && current->pw == pw)
-//		{
-//			found = true;
-//			return current->userID;
-//		}
-//		current = current->nextAdd;
-//	}
-//	if (!found){
-//		return "User not found";
-//	}
-//}
-//
-//void regUsersList::sortRegUsersList(string sortCondition)
-//{
-//
-//}
-//
-//
+
+void regUsersList::linearsearchAndDisplayRegistUsersDetails(int choice)
+{
+	if (head == NULL)
+		return;
+	bool found = false;
+	regUsers* current = head;
+	string userID, name;
+	switch (choice)
+	{
+	case 1:
+		cout << "Enter User ID: ";
+		cin >> userID;
+		while (current != NULL)
+		{
+			if (current->userID == userID)
+			{
+				found = true;
+				cout << "User ID:  " << current->userID << endl;
+				cout << "Name:  " << current->name << endl;
+				cout << "Password:  " << current->pw << endl;
+				cout << "Phone No.:  " << current->phoneNum << endl;
+				cout << "Email:  " << current->email << endl;
+				cout << string(55, '=') << endl;
+				return;
+			}
+			current = current->nextAdd;
+		}
+		if (!found)
+			cout << "User not found" << endl;
+		break;
+	case 2:
+		cout << "Enter User Name: ";
+		cin >> name;
+		while (current != NULL)
+		{
+			if (current->name == name)
+			{
+				found = true;
+				cout << "User ID:  " << current->userID << endl;
+				cout << "Name:  " << current->name << endl;
+				cout << "Password:  " << current->pw << endl;
+				cout << "Phone No.:  " << current->phoneNum << endl;
+				cout << "Email:  " << current->email << endl;
+				cout << string(55, '=') << endl;
+				return;
+			}
+			current = current->nextAdd;
+		}
+		if (!found)
+			cout << "User not found" << endl;
+		break;
+	}
+}
+
+
+string regUsersList::login() {
+	if (head == NULL) {
+		return NULL;
+	}
+	bool found = false;
+	regUsers* current = head;
+	string userID, name, email, pw;
+
+	//for user login purpo
+	cout << "Enter Email: ";
+	cin >> email;
+	cout << "Enter Password: ";
+	cin >> pw;
+	while (current != NULL)
+	{
+		if (current->email == email && current->pw == pw)
+		{
+			found = true;
+			return current->userID;
+		}
+		current = current->nextAdd;
+	}
+	if (!found){
+		return "User not found";
+	}
+}
+
+void regUsersList::sortRegUsersList(string sortCondition)
+{
+
+}
+
+
 void regUsersList::displayRegUsersList()
 {
 	regUsers* current = head;
@@ -390,8 +389,8 @@ void regUsersList::displayRegUsersList()
 	}
 	cout << "List ended here." << endl;
 }
-//
-//
+
+
 void regUsersList::readRegUsersFile()
 {
 	string filename = "regusers.csv";
@@ -417,22 +416,22 @@ void regUsersList::readRegUsersFile()
 	file.close();
 }
 
-//void regUsersList::writeRegUsersFile()
-//{
-//	regUsers* current = head;
-//	ofstream file("regusers.csv");
-//	if (!file)
-//	{
-//		cout << "File unable to open!" << endl;
-//	}
-//
-//	while (current != nullptr)
-//	{
-//		file << current->userID << ',' << current->name << ',' << current->pw << ',' << current->phoneNum << ',' << current->email << "\n";
-//		current = current->nextAdd;
-//	}
-//	file.close();
-//}
+void regUsersList::writeRegUsersFile()
+{
+	regUsers* current = head;
+	ofstream file("regusers.csv");
+	if (!file)
+	{
+		cout << "File unable to open!" << endl;
+	}
+
+	while (current != nullptr)
+	{
+		file << current->userID << ',' << current->name << ',' << current->pw << ',' << current->phoneNum << ',' << current->email << "\n";
+		current = current->nextAdd;
+	}
+	file.close();
+}
 
 void regUsersList::readUsersLogFile()
 {

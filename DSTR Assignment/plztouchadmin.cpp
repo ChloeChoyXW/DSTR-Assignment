@@ -28,6 +28,12 @@ int main() {
 	char option;
 	regUsersList regUsers = regUsersList("Registered Users");
 	userUniReviewList  userReview = userUniReviewList("Users' Review");
+	userFavUniList favUni = userFavUniList("Uni  Fav List");
+
+	regUsers.readRegUsersFile();
+	userReview.readUserUniReviewFile();
+	favUni.readFavUniFile();
+
 	while (true) {
 		cout << "---ADMIN MENU---" << endl;
 		cout << "1. DISPLAY USERS' DETAILS\n2. MODIFY USER DETAIL\n3. DELETE INACTIVE USERS\n4. VIEW FEEBACKS\n5. REPLY FEEDBACKS\n6. GENERATE REPORT\n";
@@ -44,7 +50,6 @@ int main() {
 		{
 			cout << endl;
 			cout << string(55, '=') << endl;
-			regUsers.readRegUsersFile();
 			regUsers.displayRegUsersList();
 			cout << endl;
 			break;
@@ -79,15 +84,29 @@ int main() {
 			else
 				break;
 		}
-		case 4:    //add sort
+		case 4:    //add sort by time
 		{
 			cout << endl << string(55, '=') << endl;
 			userReview.moveForthBackReviewList();
 			break;
 		}
-		case 5:  
+		case 5:  //add sort
 		{
-
+			string uniname, userid;
+			//show unreplied feedbacks
+			cout << "\n\nEnter University name: ";
+			cin.ignore();
+			getline(cin, uniname);
+			
+			//here can show filter de uni
+			cout << "Enter User ID: ";
+			getline(cin, userid);
+			userReview.searchAndAdminReplyUniReviewList(userid, uniname);
+			break;
+		}
+		case 6:
+		{
+			favUni.generateReport();
 		}
 		}
 	}

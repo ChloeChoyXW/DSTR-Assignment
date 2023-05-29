@@ -72,7 +72,7 @@ string tmRTimeToString(const tm& time)
 }
 ///////////////////////////////////////////////////////////////////
 
-userUniReview* userUniReviewList::createNewNode(string userID, string uniName,  string userReview, tm reviewDate, tm reviewTime, string adminReply)
+userUniReview* userUniReviewList::createNewNode(string userID, string uniName,  string userReview, tm reviewDate, tm reviewTime, string adminReply, tm replyDate, tm replyTime)
 {
 	userUniReview* newnode = new userUniReview;
 	newnode->userID = userID;
@@ -81,14 +81,16 @@ userUniReview* userUniReviewList::createNewNode(string userID, string uniName,  
 	newnode->reviewDate = reviewDate;
 	newnode->reviewTime = reviewTime;
 	newnode->adminReply = adminReply;
+	newnode->replyDate = replyDate;
+	newnode->replyTime = replyTime;
 	newnode->nextAdd = NULL;
 	newnode->prevAdd = NULL;
 	return newnode;
 }
 
-void userUniReviewList::insertToEndOfUserUniReviewList(string userID, string uniName, string userReview, tm reviewDate, tm reviewTime, string adminReply)
+void userUniReviewList::insertToEndOfUserUniReviewList(string userID, string uniName, string userReview, tm reviewDate, tm reviewTime, string adminReply, tm replyDate, tm replyTime)
 {
-	 userUniReview* newnode = createNewNode(userID, uniName, userReview, reviewDate, reviewTime, adminReply);
+	 userUniReview* newnode = createNewNode(userID, uniName, userReview, reviewDate, reviewTime, adminReply, replyDate, replyTime);
 
 	 if (head == NULL)
 	 {
@@ -154,21 +156,36 @@ void userUniReviewList::sortUserUniReviewList(string sortCondition)
 
 }
 
-void userUniReviewList::searchAndModifyUserUniReviewList(string userID, string uniName)
+void userUniReviewList::searchAndAdminReplyUniReviewList(string userID, string uniName)
 {
+	bool found = false;
+
+	userUniReview* current = head;
+
 	if (head == NULL)
 		return;
 
-	userUniReview* current = head;
 	while (current != NULL)
 	{
-		if (current->userID == userID)
+		if (current->userID == userID && current->uniName == uniName)
 		{
+			found = true;
 			cout << "Please your feedback: ";
 			cin >> current->adminReply;
+			cin.ignore();
+			string currentDate = getReviewCurrentDate();
+			string currentTime = getReviewCurrentTime();
+			tm dateAdmin = stringReviewToTm(currentDate, 1);
+			tm timeAdmin = stringReviewToTm(currentTime, 2);
+			current->replyDate = dateAdmin;
+			current->replyTime = timeAdmin;
 			return;
 		}
 		current = current->nextAdd;
+	}
+	if (!found) {
+		cout << "Record Not Found!\n\n";
+		return;
 	}
 }
 
@@ -191,12 +208,16 @@ void userUniReviewList::searchAndDisplayUserUniReviewList(int choice)
 				found = true;
 				string date = tmRDateToString(current->reviewDate);
 				string time = tmRTimeToString(current->reviewTime);
+				string dateAdmin = tmRDateToString(current->replyDate);
+				string timeAdmin = tmRTimeToString(current->replyTime);
 				cout << "User ID:  " << current->userID << endl;
 				cout << "University Name:  " << current->uniName << endl;
 				cout << "User Review:  " << current->userReview << endl;
 				cout << "Review Date:  " << date << endl;
 				cout << "Review Time:  " << time << endl;
 				cout << "Admin Reply:  " << current->adminReply << endl;
+				cout << "Reply Date:  " << dateAdmin << endl;
+				cout << "Reply Time:  " << timeAdmin << endl;
 				cout << string(55, '=') << endl;
 				return;
 			}
@@ -214,12 +235,16 @@ void userUniReviewList::searchAndDisplayUserUniReviewList(int choice)
 			{
 				string date = tmRDateToString(current->reviewDate);
 				string time = tmRTimeToString(current->reviewTime);
+				string dateAdmin = tmRDateToString(current->replyDate);
+				string timeAdmin = tmRTimeToString(current->replyTime);
 				cout << "User ID:  " << current->userID << endl;
 				cout << "University Name:  " << current->uniName << endl;
 				cout << "User Review:  " << current->userReview << endl;
 				cout << "Review Date:  " << date << endl;
 				cout << "Review Time:  " << time << endl;
 				cout << "Admin Reply:  " << current->adminReply << endl;
+				cout << "Reply Date:  " << dateAdmin << endl;
+				cout << "Reply Time:  " << timeAdmin << endl;
 				cout << string(55, '=') << endl;
 				return;
 			}
@@ -239,12 +264,16 @@ void userUniReviewList::displayUserUniReviewList()
 	{
 		string date = tmRDateToString(current->reviewDate);
 		string time = tmRTimeToString(current->reviewTime);
+		string dateAdmin = tmRDateToString(current->replyDate);
+		string timeAdmin = tmRTimeToString(current->replyTime);
 		cout << "User ID:  " << current->userID << endl;
 		cout << "University Name:  " << current->uniName << endl;
 		cout << "User Review:  " << current->userReview << endl;
 		cout << "Review Timw:  " << date << endl;
 		cout << "Review Timw:  " << time << endl;
 		cout << "Admin Reply:  " << current->adminReply << endl;
+		cout << "Reply Date:  " << dateAdmin << endl;
+		cout << "Reply Time:  " << timeAdmin << endl;
 		cout << string(55, '=') << endl;
 
 		current = current->nextAdd;
@@ -255,21 +284,49 @@ void userUniReviewList::displayUserUniReviewList()
 void displaySingleReview(userUniReview* node)
 {
 	userUniReview* current = node;
-	string date = tmRDateToString(current->reviewDate);
-	string time = tmRTimeToString(current->reviewTime);
-	cout << "User ID:  " << current->userID << endl;
-	cout << "University Name:  " << current->uniName << endl;
-	cout << "User Review:  " << current->userReview << endl;
-	cout << "Review Timw:  " << date << endl;
-	cout << "Review Timw:  " << time << endl;
-	cout << "Admin Reply:  " << current->adminReply << endl;
+	tm emptyDate = {};
+	tm emptyTime = {};
+
+	bool replyEmpty = (current->replyDate.tm_year == emptyDate.tm_year &&
+		current->replyDate.tm_mon == emptyDate.tm_mon &&
+		current->replyDate.tm_mday == emptyDate.tm_mday &&
+		current->replyTime.tm_hour == emptyTime.tm_hour &&
+		current->replyTime.tm_min == emptyTime.tm_min &&
+		current->replyTime.tm_sec == emptyTime.tm_sec);
+
+	if (!replyEmpty) {
+		string date = tmRDateToString(current->reviewDate);
+		string time = tmRTimeToString(current->reviewTime);
+		string dateAdmin = tmRDateToString(current->replyDate);
+		string timeAdmin = tmRTimeToString(current->replyTime);
+		cout << "User ID:  " << current->userID << endl;
+		cout << "University Name:  " << current->uniName << endl;
+		cout << "User Review:  " << current->userReview << endl;
+		cout << "Review Timw:  " << date << endl;
+		cout << "Review Timw:  " << time << endl;
+		cout << "Admin Reply:  " << current->adminReply << endl;
+		cout << "Reply Date:  " << dateAdmin << endl;
+		cout << "Reply Time:  " << timeAdmin << endl;
+	}
+	else {
+		string date = tmRDateToString(current->reviewDate);
+		string time = tmRTimeToString(current->reviewTime);
+		cout << "User ID:  " << current->userID << endl;
+		cout << "University Name:  " << current->uniName << endl;
+		cout << "User Review:  " << current->userReview << endl;
+		cout << "Review Timw:  " << date << endl;
+		cout << "Review Timw:  " << time << endl;
+		cout << "Admin Reply:  " << current->adminReply << endl;
+		cout << "Reply Date:  " << "" << endl;
+		cout << "Reply Time:  " << "" << endl;
+	}
+
 	cout << string(55, '=') << endl;
 }
 
 
 void userUniReviewList::moveForthBackReviewList()
 {
-	readUserUniReviewFile();
 	userUniReview* current = head;
 
 	const int KEY_LEFT = 75;
@@ -326,17 +383,21 @@ void userUniReviewList::readUserUniReviewFile()
 	while (getline(file, line))
 	{
 		stringstream b(line);  //used for breaking words
-		string userID, uniName, userReview, reviewDate, reviewTime, adminReply;
+		string userID, uniName, userReview, reviewDate, reviewTime, adminReply, replyDate, replyTime;
 		getline(b, userID, ',');
 		getline(b, uniName, ',');
 		getline(b, userReview, ',');
 		getline(b, reviewDate, ',');
 		getline(b, reviewTime, ',');
 		getline(b, adminReply, ',');
+		getline(b, replyDate, ',');
+		getline(b, replyTime, ',');
 
 		tm date = stringReviewToTm(reviewDate, 1);
 		tm time = stringReviewToTm(reviewTime, 2);
-		insertToEndOfUserUniReviewList(userID, uniName, userReview, date, time, adminReply);
+		tm dateAdmin = stringReviewToTm(replyDate, 1);
+		tm timeAdmin = stringReviewToTm(replyTime, 2);
+		insertToEndOfUserUniReviewList(userID, uniName, userReview, date, time, adminReply,dateAdmin, timeAdmin);
 	}
 
 	file.close();
@@ -355,8 +416,10 @@ void userUniReviewList::writeUserUniReviewFile()
 	{
 		string date = tmRDateToString(current->reviewDate);
 		string time = tmRTimeToString(current->reviewTime);
+		string dateAdmin = tmRDateToString(current->replyDate);
+		string timeAdmin = tmRTimeToString(current->replyTime);
 
-		file << current->userID << ',' << current->uniName << ',' << current->userReview << ',' << date << ',' << time << ',' << current->adminReply << "\n";
+		file << current->userID << ',' << current->uniName << ',' << current->userReview << ',' << date << ',' << time << ',' << current->adminReply << ',' << dateAdmin << ',' << timeAdmin << "\n";
 		current = current->nextAdd;
 	}
 	file.close();
@@ -370,11 +433,12 @@ void userUniReviewList::writeUniReview(string userID, string uniName)
 	getline(cin, review);
 	cout << review;
 
-
+	tm emptyDate = {};
+	tm emptyTime = {};
 	string currentDate = getReviewCurrentDate();
 	string currentTime = getReviewCurrentTime();
 	tm date = stringReviewToTm(currentDate, 1);
 	tm time = stringReviewToTm(currentTime, 2);
-	insertToEndOfUserUniReviewList(userID, uniName, review, date, time, "");
+	insertToEndOfUserUniReviewList(userID, uniName, review, date, time, "", emptyDate, emptyTime);
 }
 

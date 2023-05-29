@@ -36,25 +36,25 @@ public:
 
 	void insertToFrontOfRegUsersLoginList(string userID, tm loginDate, tm loginTime);
 
-	//void deleteFromRegUsersList(string userID);
+	void deleteFromRegUsersList(string userID);
 
 	void linearsearchAndModifyRegistUsersDetails(int choice);
 
-	//void linearsearchAndDisplayRegistUsersDetails(int choice);
+	void linearsearchAndDisplayRegistUsersDetails(int choice);
 
-	//void sortRegUsersList(string sortCondition);
+	void sortRegUsersList(string sortCondition);
 
 	void displayRegUsersList();
 
 	void readRegUsersFile();
 
-	//void writeRegUsersFile();
+	void writeRegUsersFile();
 
 	void readUsersLogFile();
 
 	void writeUsersLogFile();
 
-	//string login();
+	string login();
 
 	void displayUsersLog();
 
