@@ -6,6 +6,8 @@ using namespace std;
 
 UniList::UniList(string uniListname) : uniListName(uniListName) {};
 
+
+//=====================Read From Excel and Insert to Doubly Linked List=================
 //create an empty new node
 Uni* UniList::createNewNode(int rank, string instName, string locationCode, string location, float academicScore, int academicRank,
 	float employerRepScore, int employerRepRank, float facultyStuRIScore, int facultyStuRIRank, float citePerFacultyScore,
@@ -129,6 +131,7 @@ void UniList::readFromFileDoubly() {
 }
 
 
+//=======================Read From Excel and Insert to Array===========================
 void UniList::insertUniArray(int loopNum, struct Uni array[], int rank, string instName, string locationCode, string location, float academicScore, int academicRank,
 	float employerRepScore, int employerRepRank, float facultyStuRIScore, int facultyStuRIRank, float citePerFacultyScore,
 	int citePerFacultyRank, float intFacultyRIScore, int intFacultyRIRank, float intStuRIScore, int intStuRIRank,
@@ -220,6 +223,9 @@ void UniList::readFromFileArray() {
 }
 
 
+
+
+//============Linear Search Doubly Linked List=================================
 void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 	if (head == NULL) {
 		return;
@@ -231,7 +237,7 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 	switch (searchCondition)
 	{
 	case 1:
-		cout << "Enter Location: ";
+		cout << "Enter Location Code: ";
 		getline(cin, locationCode);
 		while (current != NULL) {
 			if (current->locationCode == locationCode) {
@@ -674,7 +680,7 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 
 
 
-//=============================Linear Search===================================================================
+//=============================Linear Search Array===================================================================
 //from: https://www.geeksforgeeks.org/linear-search/
 void UniList::linearSearchUniAndDisplayArray() {
 	string instName;
@@ -713,7 +719,7 @@ void UniList::linearSearchUniAndDisplayArray() {
 }
 
 
-//=============================Binary Search===================================================================
+//=============================Binary Search Array===================================================================
 //from https://www.geeksforgeeks.org/insertion-sort/ & https://www.geeksforgeeks.org/binary-search-a-string/
 void insertionSortArray(struct Uni uniArray[]){
 	int i, j;
@@ -857,7 +863,7 @@ void UniList::binarySearchUniAndDisplayArray(){
 
 
 
-//============================Insertion Sort==========================================================================
+//============================Insertion Sort Doubly Linked List====================
 // function to insert a new node in sorted way in a sorted doubly linked list
 void sortedInsert(Uni** head, Uni* newNode, int sortCondition){
 	Uni* current;

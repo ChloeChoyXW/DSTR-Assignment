@@ -38,9 +38,9 @@ int main() {
 	//====================================================
 
 	//============search by condition and print===========
-	cout << "Enter the search condition by number: " << endl << "1.University Rank  2.Institution Name  3.Location  4.Academic Rank  5.Employer Reputation Rank" << endl
-		<< "6.Faculty/Student Ratio Rank  7.Citation Per Faculty Rank  8.International Faculty Ratio Rank" << endl 
-		<< "9.International Student Ratio Rank  10.Interational Research Natwork Rank  11.Employment Outcome Rank  12.Score Scale" << endl;
+	cout << "Enter the search condition by number: " << endl << "1.Location Code  2.Institution Name  3.Academic Rank  4.Employer Reputation Rank  5.Faculty/Student Ratio Rank" << endl
+		<< "6.Citation Per Faculty Rank  7.International Faculty Ratio Rank  8.International Student Ratio Rank" << endl 
+		<< "9.Interational Research Natwork Rank  10.Employment Outcome Rank  11.University Rank" << endl;
 	int searchNum;
 	cout << "Enter: ";
 	cin >> searchNum;
