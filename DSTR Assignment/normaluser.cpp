@@ -43,18 +43,18 @@ int main() {
 		}
 		case 2:
 		{
-			// cout << endl;
-			// cout << string(55, '=') << endl;
-            // Uni.linearSearchUniAndDisplayArray();
-            // Uni.linearSearchUniAndDisplayDoubly(searchCondition);
-			// break;
+			cout << endl;
+			cout << string(55, '=') << endl;
+            Uni.linearSearchUniAndDisplayArray();
+            Uni.linearSearchUniAndDisplayDoubly(true);
+			break;
 		}
 		case 3:
 		{
 			cout << endl;
 			cout << string(55, '=') << endl;
             Uni.linearSearchUniAndDisplayArray();
-            Uni.linearSearchUniAndDisplayDoubly();
+            Uni.linearSearchUniAndDisplayDoubly(true);
 			break;
 		}
 		case 4:
