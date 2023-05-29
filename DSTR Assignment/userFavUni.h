@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -28,27 +27,28 @@ public:
 
 	void insertToEndOfUserFavUniList(string userID, string uniName);
 
-	void deleteFromUserFavUniList(string uniName);
+	//void deleteFromUserFavUniList(string uniName);
 
-	void insertionSort();
+	//void insertionSort();
 
-	void FavUniQuickSort();
+	//int size();
 
-	int size();
-
-	int getPosition(userFavUni* node);
+	//int getPosition(userFavUni* node);
 
 	//int JumpSearchFavUni(const std::string& uniName);
 	
+	/*userFavUni* MiddleBinarySearch(userFavUni* start, userFavUni* last, string uniName);
 
-	void BinarySearchFavUni(string userID, string uniName, int usertype);
+	void BinarySearchFavUni(string uniName);*/
 
-	void sortUserFavUniList(string sortCondition);
+	void sortUserFavUniList();
 
 	void displayUserFavUniList();
 
 	void readFavUniFile();
 
 	void writeFavUniFile();
+
+	void generateReport();
 
 };

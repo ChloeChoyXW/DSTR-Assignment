@@ -1,8 +1,11 @@
 #include "university.h"
 #include <fstream>
 #include <sstream>
+#include <chrono>
+#include <ctime>
 
 using namespace std;
+using namespace std::chrono;
 
 UniList::UniList(string uniListname) : uniListName(uniListName) {};
 
@@ -227,6 +230,7 @@ void UniList::readFromFileArray() {
 
 //============Linear Search Doubly Linked List=================================
 void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
+
 	if (head == NULL) {
 		return;
 	}
@@ -242,6 +246,7 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 		while (current != NULL) {
 			if (current->locationCode == locationCode) {
 				found = true;
+
 				cout << endl << "University Name: " << current->instName << endl;
 				cout << "Rank: " << current->rank << endl;
 				cout << "Location Code: " << current->locationCode << endl;
@@ -266,6 +271,7 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 				cout << string(55, '=') << endl;
 			}
 			current = current->nextAdd;
+
 		}
 		if (!found)
 			cout << "No university is found in " << locationCode << "!" << endl;
@@ -1235,7 +1241,7 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition){
 }
 
 void UniList::insertionSortUniDoublyLinkedList(int sortCondition) { 
-
+	auto start = chrono::high_resolution_clock::now();
 		// Initialize a sorted doubly linked list
 	Uni* sorted = NULL;
 
@@ -1249,6 +1255,7 @@ void UniList::insertionSortUniDoublyLinkedList(int sortCondition) {
 		// removing all the links so as to create 'current' as a new node for insertion
 		current->prevAdd = current->nextAdd = NULL;
 
+		
 		// insert current in 'sorted' doubly linked list
 		sortedInsert(&sorted, current, sortCondition);
 
@@ -1258,7 +1265,9 @@ void UniList::insertionSortUniDoublyLinkedList(int sortCondition) {
 
 	// Update head_ref to point to sorted doubly linked list
 	head = sorted;
-
+	auto end = chrono::high_resolution_clock::now();
+	auto duration = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+	cout << "Execution time Insertion Sort: " << duration << " milliseconds" << endl;
 
 }
 
@@ -1544,8 +1553,12 @@ void UniList::uniQuickSort(int searchCondition)
 	// Find last node
 	Uni* h = lastNode(current);
 
+	auto start = chrono::high_resolution_clock::now();
 	// Call the recursive QuickSort
 	_quickSort(current, h, searchCondition);
+	auto end = std::chrono::high_resolution_clock::now();
+	auto duration = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+	cout << "Execution time Quicksort: " << duration << " milliseconds" << endl;
 }
 //=====================================================================================================
 

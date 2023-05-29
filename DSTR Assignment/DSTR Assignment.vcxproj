@@ -132,6 +132,7 @@
     <ClCompile Include="donottouchregusers.cpp" />
     <ClCompile Include="example.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="plztouchadmin.cpp" />
     <ClCompile Include="RegisteredUsers.cpp" />
     <ClCompile Include="University.cpp" />
     <ClCompile Include="UserFavUni.cpp" />
@@ -148,6 +149,8 @@
     <None Include="2023_QS_World_University_Rankings.csv" />
     <None Include="favuni.csv" />
     <None Include="regusers.csv" />
+    <None Include="UsersLog.csv" />
+    <None Include="userUniReview.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

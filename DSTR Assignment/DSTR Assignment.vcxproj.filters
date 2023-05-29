@@ -42,6 +42,9 @@
     <ClCompile Include="donottouchregusers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="plztouchadmin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="registeredUsers.h">
@@ -68,6 +71,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="favuni.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UsersLog.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="userUniReview.csv">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

@@ -1,8 +1,9 @@
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <string>
 #include <sstream>
-
+#include <ctime>
 
 using namespace std;
 
@@ -12,6 +13,7 @@ struct regUsers {
 	string phoneNum;
 	string email;
 	string pw;
+	tm loginDate;
 	tm loginTime;
 	regUsers* nextAdd;
 	regUsers* prevAdd;
@@ -28,15 +30,15 @@ public:
 
 	regUsers* createNewNode(string userID, string name, string pw, string phoneNum, string email);
 
-	regUsers* createNewNode(string userID, tm loginTime);
+	regUsers* createNewNode(string userID, tm loginDate, tm loginTime);
 
 	void insertToEndOfRegUsersList(string userID, string name, string pw, string phoneNum, string email);
 
-	void insertToFrontOfRegUsersLoginList(string userID, tm loginTime);
+	void insertToFrontOfRegUsersLoginList(string userID, tm loginDate, tm loginTime);
 
 	void deleteFromRegUsersList(string userID);
-	
-	void linearsearchAndModifyRegistUsersDetails(string userID);
+
+	void linearsearchAndModifyRegistUsersDetails(int choice);
 
 	void linearsearchAndDisplayRegistUsersDetails(int choice);
 
@@ -48,8 +50,16 @@ public:
 
 	void writeRegUsersFile();
 
+	void readUsersLogFile();
+
 	void writeUsersLogFile();
 
-	string login();
+	//string login();
+
+	void displayUsersLog();
+
+	void removeInactiveUsers();
+
+	void userLoginlog(string userID);  //used to stored users' login date and time
 
 };
