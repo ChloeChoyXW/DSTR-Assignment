@@ -56,4 +56,6 @@ public:
 
 	void displayNoReplyUniReviewList();
 
+	void displayRepliedreview(int userID);
+
 };
