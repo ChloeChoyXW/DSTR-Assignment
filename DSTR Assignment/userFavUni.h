@@ -5,7 +5,7 @@
 using namespace std;
 
 struct userFavUni {
-	string userID;
+	int userID;
 	string uniName;
 	userFavUni* nextAdd;
 	userFavUni* prevAdd;
@@ -21,11 +21,11 @@ public:
 	//constructor
 	userFavUniList(string userFavUniListName);
 
-	userFavUni* createNewNode(string userID, string uniName);
+	userFavUni* createNewNode(int userID, string uniName);
 
-	void insertToFrontOfUserFavUniList(string userID, string uniName);
+	void insertToFrontOfUserFavUniList(int userID, string uniName);
 
-	void insertToEndOfUserFavUniList(string userID, string uniName);
+	void insertToEndOfUserFavUniList(int userID, string uniName);
 
 	//void deleteFromUserFavUniList(string uniName);
 

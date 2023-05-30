@@ -596,110 +596,24 @@ void adminList::insertToEndOfAdminList(int adminID, string name, string pw, stri
 //======================================================================================================
 //Linear search
 
-void adminList::linearsearchAndModifyAdminDetails(int adminID)
-{
-	if (head == NULL)
-		return;
-
-	admin* current = head;
-	while (current != NULL)
-	{
-		if (current->adminID == adminID)
-		{
-			cout << "Please enter name: ";
-			cin >> current->name;
-			return;
-		}
-		current = current->nextAdd;
-	}
-}
-
-void adminList::linearsearchAndDisplayAdminDetails(int choice)
-{
-	if (head == NULL)
-		return;
-	bool found = false;
-	admin* current = head;
-	int adminID;
-	string name;
-	switch (choice)
-	{
-	case 1:
-		cout << "Enter Admin ID: ";
-		cin >> adminID;
-		while (current != NULL)
-		{
-			if (current-> adminID == adminID)
-			{
-				found = true;
-				cout << "Admin ID:  " << current->adminID << endl;
-				cout << "Name:  " << current->name << endl;
-				cout << "Password:  " << current->pw << endl;
-				cout << "Phone No.:  " << current->phoneNum << endl;
-				cout << "Email:  " << current->email << endl;
-				cout << string(55, '=') << endl;
-				return;
-			}
-			current = current->nextAdd;
-		}
-		if (!found)
-			cout << "User not found" << endl;
-		break;
-	case 2:
-		cout << "Enter User Name: ";
-		cin >> name;
-		while (current != NULL)
-		{
-			if (current->name == name)
-			{
-				found = true;
-				cout << "User ID:  " << current->adminID << endl;
-				cout << "Name:  " << current->name << endl;
-				cout << "Password:  " << current->pw << endl;
-				cout << "Phone No.:  " << current->phoneNum << endl;
-				cout << "Email:  " << current->email << endl;
-				cout << string(55, '=') << endl;
-				return;
-			}
-			current = current->nextAdd;
-		}
-		if (!found)
-			cout << "User not found" << endl;
-		break;
-	}
-}
-
-//======================================================================================================
-//Jump search
-
-int adminList::Adminsize() {
-	int count = 0;
-	admin* current = head;
-	while (current != NULL) {
-		count++;
-		current = current->nextAdd;
-	}
-	return count;
-}
-
-int adminList::AdmingetPosition(admin* node) {
-	int position = 0;
-	admin* current = head;
-
-	while (current != nullptr) {
-		if (current == node) {
-			return position;
-		}
-		current = current->nextAdd;
-		position++;
-	}
-
-	// Node not found, return an invalid position
-	return -1;
-}
-
-//int adminList::JumpSearchAdmin(const std::string& name) {
+//void adminList::linearsearchAndModifyAdminDetails(int choice,int adminID)
+//{
+//	if (head == NULL)
+//		return;
 //
+//	admin* current = head;
+//	while (current != NULL)
+//	{
+//		if (current->adminID == adminID)
+//		{
+//			cout << "Please enter name: ";
+//			cin >> current->name;
+//			return;
+//		}
+//		current = current->nextAdd;
+//	}
+//}
+
 ////======================================================================================================
 ////Linear search
 
@@ -1137,7 +1051,7 @@ void adminList::writeAdminFile()
 	file.close();
 }
 
-int adminList::login() {
+int adminList::adminLogin() {
 
 	if (head == NULL) {
 		return NULL;

@@ -15,21 +15,22 @@ using namespace std;
 int main() {
 	int identity;
 	int id = 0; //global id
-	
+	UniList UniDoubly = UniList("Universities");
+	UniList UniArray = UniList("Universities");
+	UniDoubly.readFromFileDoubly();
+	UniArray.readFromFileArray();
 	regUsersList regUsers = regUsersList("Registered Users");
 	userUniReviewList  userReview = userUniReviewList("Users' Review");
 	userFavUniList favUni = userFavUniList("Uni  Fav List");
-	adminList adMin = adminList("Admin List");
+	adminList admin = adminList("Admin List");
+	admin.readAdminFile();
 	loginRecordList logRec = loginRecordList("Users Login Record");
+	//	
+
+//
+//
 
 	while(true) {
-
-		adMin.readAdminFile();
-		regUsers.readRegUsersFile();
-		logRec.readUsersLogFile();
-		userReview.readUserUniReviewFile();
-		favUni.readFavUniFile();
-
 		cout << "TOP UNIVERSITY RECOMMENDATION SYSTEM FOR SECONDARY SCHOOL STUDENTS\n";
 		cout << string(59, '=') << endl;
 		cout << "1. Normal Users\n2. Registered Users\n3. MoHE Admin\n";
@@ -45,7 +46,106 @@ int main() {
 	{
 	case 1:  //normal users
 	{
+		int userID = -1;
+			int ans, searchBy;
+			char option;
 		
+			while (true) {
+				cout << "---------USER MENU---------" << endl;
+				cout << "1. Display University Details\n2. View University Details In Ascending Order\n3. Search University By Name\n4. Register As Customer\n5. Back\n";
+				cout << "Enter your choice: ";
+				cin >> ans;
+				if (cin.fail() || ans <= 0 || ans > 4) {
+					cout << "Invalid Input! Please try again~\n\n";
+					cin.clear();
+					cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				}
+				switch (ans)
+				{
+				case 1: {
+					cout << endl;
+					cout << string(55, '=') << endl;
+					UniDoubly.displayListDoubly();
+					cout << endl;
+					break;
+				}
+				case 2: {
+					cout << endl;
+					cout << string(55, '=') << endl;
+					UniDoubly.insertionSortUniDoublyLinkedList(2);
+					UniDoubly.displayListDoubly();
+					break;
+				}
+				case 3: {
+					string cond;
+					string instName;
+					while (cond!="n") {
+						cout << "Enter Institution Name: ";
+						getline(cin, instName);
+						UniArray.linearSearchUniAndDisplayArray(instName);
+						cout << endl;
+						cout << string(55, '=') << endl;
+						cout << endl<< "Do you want to continue to search? (Any key to continue, n to exit): ";
+						cin >> cond;
+						if (cond == "n") {
+							break;
+						}
+					}
+					break;
+				}
+		
+				case 4:
+				{
+					string cond;
+					while (cond != "y") {
+						try {
+							cin.ignore();
+							cout << endl << string(55, '=') << endl;
+							cout << "REGISTER AS CUSTOMER: " << endl;
+
+							string userID, name, pw, phoneNum, email;
+
+							
+
+							cout << "Enter Name: ";
+							getline(cin, name);
+
+							cout << "Enter Password: ";
+							getline(cin, pw);
+
+							cout << "Enter Phone Number: ";
+							getline(cin, phoneNum);
+
+							cout << "Enter Email: ";
+							getline(cin, email);
+
+							cout << endl << "Are you sure with these details? (Enter y to confirm, n to enter again): " << endl;
+							cout << "Name: " << name << endl;
+							cout << "Password: " << pw << endl;
+							cout << "Phone Number: " << phoneNum << endl;
+							cout << "Email: " << email << endl;
+							cout << endl<< "Enter: ";
+							cin >> cond;
+
+							if (cond == "y") {
+								regUsers.insertToEndOfRegUsersList(stoi(userID), name, pw, phoneNum, email);
+
+								cout << endl << string(55, '=') << endl;
+								cout << "CUSTOMER REGISTERED" << endl;
+								break;
+							}
+						}
+						catch (...) {
+							cout<< endl << "There is an error occured! Please ensure you entered valid details!" << endl;
+							cond = "n";
+						}
+
+							
+					}	
+				}
+		
+				}
+			}
 	}
 	case 2:  //registered users
 	{
@@ -65,7 +165,7 @@ int main() {
 		}
 		if (newAdmin == 1)
 		{
-			id = adMin.login();
+			id = admin.adminLogin();
 			if (id == -1)
 			{
 				cout << "Admin Not Found\n" << endl;
@@ -75,7 +175,7 @@ int main() {
 		else
 		{
 			cout << endl;
-			id = adMin.generateID();
+			id = admin.generateID();
 			string name, pw, phone, email;
 			cout << "Name: ";
 			cin.ignore();
@@ -86,7 +186,7 @@ int main() {
 			getline(cin, phone);
 			cout << "Email: ";
 			getline(cin, email);
-			adMin.insertToEndOfAdminList(id, name, pw, phone, email);
+			admin.insertToEndOfAdminList(id, name, pw, phone, email);
 		}
 		cout << endl;
 		int ans, searchBy;
@@ -181,14 +281,14 @@ int main() {
 					break;
 				}
 				else {
-					adMin.linearsearchAndModifyAdminDetails(ans, id);
+					admin.linearsearchAndModifyAdminDetails(ans, id);
 					break;
 				}
 			}
 			}
 		if(ans == 8) 
 			{
-				adMin.writeAdminFile();
+				admin.writeAdminFile();
 				regUsers.writeRegUsersFile();
 				logRec.writeUsersLogFile();
 				userReview.writeUserUniReviewFile();

@@ -1,12 +1,13 @@
-//#include <string>
-//#include <iostream>
-//#include <chrono>
-//#include "university.h"
-//#include "registeredUsers.h"
-//#include "userFavUni.h"
-//#include "admin.h"
+#include <string>
+#include <iostream>
+#include <chrono>
+#include "university.h"
+#include "registeredUsers.h"
+#include "userFavUni.h"
+#include "admin.h"
+#include "UserUniReview.h"
 //
-//using namespace std;
+using namespace std;
 ////Registered Users(Customer)
 ////2.1 Login and logout. /
 ////2.2 Sort university information in descending order based on academic reputation score, faculty / student ratio score and employer reputation score. /
@@ -19,7 +20,10 @@
 //	regUsersList regUser = regUsersList("Registered Users List");
 //	regUser.readRegUsersFile();
 //	UniList universityDoubly = UniList("University List");
+//	userFavUniList userFavUni = userFavUniList("User Favorite University List: ");
+//	userFavUni.readFavUniFile();
 //	universityDoubly.readFromFileDoubly();
+//	userUniReviewList userUniRev = userUniReviewList("User University Reviews: ");
 //
 //	//=====sort and print==================================
 //	/*cout << "Enter the sorting condition for university information by number :"<<endl<<"1.University Rank  2.Institution Name  3.Location  4.Academic Rank  5.Employer Reputation Rank" << endl
@@ -49,7 +53,26 @@
 //
 //	universityDoubly.displayListDoubly();
 //
-//	//====================================================
+//	//=================save favorite uni================
+	//string favUni;
+	//cout << "Enter Favourite University Name: ";
+	//getline(cin, favUni);
+	//userFavUni.insertToEndOfUserFavUniList(1, favUni);
+	//userFavUni.displayUserFavUniList();
+
+    //=================================================
+	
+	// ===========write uni review=====================
+	/*string uniName;
+	cout << "Enter University Name: ";
+	getline(cin, uniName);
+	userUniRev.writeUniReview(1, uniName);
+	userUniRev.writeUserUniReviewFile();*/
+	// =============================================
+	
+	// =============read feedback==================
+	
+	// =========================================
 //	
 //	//	1 = rank
 //	//	2 = instName,

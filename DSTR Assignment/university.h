@@ -61,7 +61,7 @@ public:
 
 	void linearSearchUniAndDisplayDoubly(int searchCondition);
 
-	void linearSearchUniAndDisplayArray();
+	void linearSearchUniAndDisplayArray(string instName);
 
 	void binarySearchUniAndDisplayArray();
 

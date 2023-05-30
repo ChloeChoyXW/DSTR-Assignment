@@ -259,7 +259,7 @@ int regUsersList::login(string email, string pw) {
 		if (current->email == email && current->pw == pw)
 		{
 			found = true;
-			return stoi(current->userID);
+			return current->userID;
 		}
 		current = current->nextAdd;
 	}

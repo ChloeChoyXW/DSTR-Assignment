@@ -53,7 +53,7 @@ public:
 
 	void writeAdminFile();
 
-	int login();
+	int adminLogin();
 
 	int generateID();
 
