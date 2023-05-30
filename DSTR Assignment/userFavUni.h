@@ -29,19 +29,7 @@ public:
 
 	void LinearSearchandDisplay(int choice);
 
-	//void deleteFromUserFavUniList(string uniName);
-
-	//void insertionSort();
-
-	//int size();
-
-	//int getPosition(userFavUni* node);
-
-	//int JumpSearchFavUni(const std::string& uniName);
-	
-	/*userFavUni* MiddleBinarySearch(userFavUni* start, userFavUni* last, string uniName);
-
-	void BinarySearchFavUni(string uniName);*/
+	void deleteFromUserFavUniList(string uniName);
 
 	void sortUserFavUniList();
 
