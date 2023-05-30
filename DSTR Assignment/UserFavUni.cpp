@@ -6,7 +6,7 @@ using namespace std;
 
 userFavUniList::userFavUniList(string userFavUniListName) : userFavUniListName(userFavUniListName) {};
 
-userFavUni* userFavUniList::createNewNode(string userID, string uniName)
+userFavUni* userFavUniList::createNewNode(int userID, string uniName)
 {
 	userFavUni* newnode = new userFavUni;
 	newnode->userID = userID;
@@ -16,7 +16,7 @@ userFavUni* userFavUniList::createNewNode(string userID, string uniName)
 	return newnode;
 }
 
-void userFavUniList::insertToFrontOfUserFavUniList(string userID, string uniName)
+void userFavUniList::insertToFrontOfUserFavUniList(int userID, string uniName)
 {
 	userFavUni* newnode = createNewNode(userID, uniName);
 
@@ -32,7 +32,7 @@ void userFavUniList::insertToFrontOfUserFavUniList(string userID, string uniName
 	}
 }
 
-void userFavUniList::insertToEndOfUserFavUniList(string userID, string uniName)
+void userFavUniList::insertToEndOfUserFavUniList(int userID, string uniName)
 {
 	userFavUni* newnode = createNewNode(userID, uniName);
 
@@ -101,7 +101,8 @@ void userFavUniList::LinearSearchandDisplay(int choice) //1.User 2.Admin
 		return;
 	bool found = false;
 	userFavUni* current = head;
-	string userID, uniName;
+	string uniName;
+	int  userID;
 
 	switch (choice)
 	{
@@ -244,7 +245,7 @@ void userFavUniList::readFavUniFile()
 		string userID, uniName;
 		getline(d, userID, ',');
 		getline(d, uniName, ',');
-		insertToEndOfUserFavUniList(userID, uniName);
+		insertToEndOfUserFavUniList(stoi(userID), uniName);
 
 		int count = 0;
 		if (count == 0)

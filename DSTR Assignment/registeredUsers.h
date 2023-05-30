@@ -37,7 +37,7 @@ public:
 
 	void linearsearchAndDisplayRegistUsersDetails(int choice);
 
-	void sortRegUsersList(string sortCondition);
+	void insertionSortUsersDoublyLinkedList();
 
 	void displayRegUsersList();
 
@@ -45,7 +45,9 @@ public:
 
 	void writeRegUsersFile();
 
-	//string login();
+	int login(string email, string pw);
 
 	void compareAndDeleteUsers(const int* removedUserIDs, int removedCount);
+
+	int generateUserID();
 };

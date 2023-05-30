@@ -36,7 +36,7 @@ public:
 
 	void deleteFromUserUniReviewList(int userID, string uniName);
 
-	void sortReviewDateList();
+	void sortReviewDateList(int condition);
 
 	void searchAndAdminReplyUniReviewList(int userID, string uniName);
 

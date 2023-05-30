@@ -226,7 +226,26 @@ void UniList::readFromFileArray() {
 }
 
 
+//====linear Search Doubly Inst Name without print
+string UniList::linearSearchDoubly(string instName) {
 
+	if (head == NULL) {
+		cout << "Nothing in the list!";
+	}
+	bool found = false;
+	string available;
+	Uni* current = head;
+
+	while (current != NULL) {
+		if (current->instName == instName) {
+			return "y";
+		}
+		current = current->nextAdd;
+	}
+
+	return "n";
+
+}
 
 //============Linear Search Doubly Linked List=================================
 void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
@@ -688,10 +707,8 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 
 //=============================Linear Search Array===================================================================
 //from: https://www.geeksforgeeks.org/linear-search/
-void UniList::linearSearchUniAndDisplayArray() {
-	string instName;
+void UniList::linearSearchUniAndDisplayArray(string instName) {
 	bool found = false;
-	cout << "Enter Institution Name: ";
 	getline(cin, instName);
 	for (int i = 0; i < 1423; i++) {
 		if (uniArray[i].instName == instName) {

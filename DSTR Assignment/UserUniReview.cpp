@@ -173,34 +173,66 @@ int compareDates(const struct tm& date1, const struct tm& date2) {
 	return 0;
 }
 
-void sortedInsert(userUniReview** head, userUniReview* newNode) {
-	userUniReview* current;
+void sortedInsert(userUniReview** head, userUniReview* newNode, int condition) {
 
-	if (*head == NULL) {
-		*head = newNode;
-	}
-	else if (compareDates((*head)->reviewDate, newNode->reviewDate) <= 0) {
-		newNode->nextAdd = *head;
-		newNode->nextAdd->prevAdd = newNode;
-		*head = newNode;
-	}
-	else {
-		current = *head;
-
-		while (current->nextAdd != NULL && compareDates(current->nextAdd->reviewDate, newNode->reviewDate) > 0)
-			current = current->nextAdd;
-
-		newNode->nextAdd = current->nextAdd;
-
-		if (current->nextAdd != NULL)
+	switch (condition)
+	{
+	case 1:
+	{
+		userUniReview* current;
+		if (*head == NULL) {
+			*head = newNode;
+		}
+		else if (compareDates((*head)->reviewDate, newNode->reviewDate) <= 0) {
+			newNode->nextAdd = *head;
 			newNode->nextAdd->prevAdd = newNode;
+			*head = newNode;
+		}
+		else {
+			current = *head;
 
-		current->nextAdd = newNode;
-		newNode->prevAdd = current;
+			while (current->nextAdd != NULL && compareDates(current->nextAdd->reviewDate, newNode->reviewDate) > 0)
+				current = current->nextAdd;
+
+			newNode->nextAdd = current->nextAdd;
+
+			if (current->nextAdd != NULL)
+				newNode->nextAdd->prevAdd = newNode;
+
+			current->nextAdd = newNode;
+			newNode->prevAdd = current;
+		}
+		break; }
+	case 2:
+	{
+		userUniReview* current;
+		if (*head == NULL) {
+			*head = newNode;
+		}
+		else if (compareDates((*head)->replyDate, newNode->replyDate) <= 0) {
+			newNode->nextAdd = *head;
+			newNode->nextAdd->prevAdd = newNode;
+			*head = newNode;
+		}
+		else {
+			current = *head;
+
+			while (current->nextAdd != NULL && compareDates(current->nextAdd->replyDate, newNode->replyDate) > 0)
+				current = current->nextAdd;
+
+			newNode->nextAdd = current->nextAdd;
+
+			if (current->nextAdd != NULL)
+				newNode->nextAdd->prevAdd = newNode;
+
+			current->nextAdd = newNode;
+			newNode->prevAdd = current;
+		}
+		break; }
 	}
 }
 
-void userUniReviewList::sortReviewDateList() {
+void userUniReviewList::sortReviewDateList(int condition) {
 	// Initialize a sorted doubly linked list
 	userUniReview* sorted = NULL;
 
@@ -215,7 +247,7 @@ void userUniReviewList::sortReviewDateList() {
 		current->prevAdd = current->nextAdd = NULL;
 
 		// insert current in 'sorted' doubly linked list
-		sortedInsert(&sorted, current);
+		sortedInsert(&sorted, current, condition);
 
 		// Update current
 		current = next;
@@ -601,9 +633,7 @@ void userUniReviewList::writeUniReview(int userID, string uniName)
 {
 	string review;
 	cout << "Please write you review: ";       
-	cin.ignore();
 	getline(cin, review);
-	cout << review;
 
 	tm emptyDate = {};
 	tm emptyTime = {};
@@ -656,7 +686,7 @@ void userUniReviewList::displayNoReplyUniReviewList()
 
 void userUniReviewList::displayRepliedreview(int userID)
 {
-	sortReviewDateList();
+	sortReviewDateList(2);
 
 	if (head == NULL)
 		return;
@@ -684,14 +714,16 @@ void userUniReviewList::displayRepliedreview(int userID)
 			cout << "User ID:  " << userid << endl;
 			cout << "University Name:  " << current->uniName << endl;
 			cout << "User Review:  " << current->userReview << endl;
-			cout << "Review Timw:  " << date << endl;
-			cout << "Review Timw:  " << time << endl;
+			cout << "Review Time:  " << date << endl;
+			cout << "Review Time:  " << time << endl;
 			cout << "Admin Reply:  " << current->adminReply << endl;
 			cout << "Reply Date:  " << dateAdmin << endl;
-			cout << "Reply Time:  " << timeAdmin << endl;
+			cout << "Reply Time:  " << timeAdmin << endl<<endl;
 		}
 		current = current->nextAdd;
+
 	}
 }
+
 
 

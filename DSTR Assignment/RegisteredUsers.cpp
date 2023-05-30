@@ -245,33 +245,28 @@ void regUsersList::linearsearchAndDisplayRegistUsersDetails(int choice)
 }
 
 
-//string regUsersList::login() {
-//
-//	if (head == NULL) {
-//		return NULL;
-//	}
-//	bool found = false;
-//	regUsers* current = head;
-//	string userID, name, email, pw;
-//
-//	//for user login purpo
-//	cout << "Enter Email: ";
-//	cin >> email;
-//	cout << "Enter Password: ";
-//	cin >> pw;
-//	while (current != NULL)
-//	{
-//		if (current->email == email && current->pw == pw)
-//		{
-//			found = true;
-//			return current->userID;
-//		}
-//		current = current->nextAdd;
-//	}
-//	if (!found){
-//		return "User not found";
-//	}
-//}
+int regUsersList::login(string email, string pw) {
+
+	if (head == NULL) {
+		return NULL;
+	}
+	bool found = false;
+	regUsers* current = head;
+
+	//for user login purpo
+	while (current != NULL)
+	{
+		if (current->email == email && current->pw == pw)
+		{
+			found = true;
+			return current->userID;
+		}
+		current = current->nextAdd;
+	}
+	if (!found){
+		return NULL;
+	}
+}
 
 void sortedInsert(regUsers** head, regUsers* newNode)
 {
