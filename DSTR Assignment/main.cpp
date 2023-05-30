@@ -399,7 +399,7 @@ int main() {
 		bool correctInput = false, cont=true;
 
 		while (cont ==true) {
-			cout << "\n1. ADMIN LOGIN\n2. REGISTER\n3. EXIT";
+			cout << "\n1. ADMIN LOGIN\n2. REGISTER\n3. EXIT\n";
 			cout << "CHOICE: ";
 			cin >> newAdmin;
 			if (!(cin.fail() || newAdmin <= 0 || newAdmin > 2)) {
