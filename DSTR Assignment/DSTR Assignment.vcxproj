@@ -137,6 +137,7 @@
     <ClCompile Include="RegisteredUsers.cpp" />
     <ClCompile Include="University.cpp" />
     <ClCompile Include="UserFavUni.cpp" />
+    <ClCompile Include="usersloginrecord.cpp" />
     <ClCompile Include="UserUniReview.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,10 +145,12 @@
     <ClInclude Include="registeredUsers.h" />
     <ClInclude Include="university.h" />
     <ClInclude Include="userFavUni.h" />
+    <ClInclude Include="usersloginrecord.h" />
     <ClInclude Include="userUniReview.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="2023_QS_World_University_Rankings.csv" />
+    <None Include="admin.csv" />
     <None Include="favuni.csv" />
     <None Include="regusers.csv" />
     <None Include="UsersLog.csv" />

@@ -1,6 +1,6 @@
 #include "admin.h"
 
-using namespace std;
+
 
 adminList::adminList(string adminListname) : adminListName(adminListName) {};
 //create an empty new node
@@ -700,15 +700,60 @@ int adminList::AdmingetPosition(admin* node) {
 
 //int adminList::JumpSearchAdmin(const std::string& name) {
 //
-//
-//	if (head == nullptr) {
-//		std::cout << "The admin list is empty." << std::endl;
-//		return -1;  // List is empty
-//	}
-//
-//	int listSize = Adminsize();
-//	int blockSize = static_cast<int>(std::sqrt(listSize));
-//
+////======================================================================================================
+////Linear search
+
+void adminList::linearsearchAndModifyAdminDetails(int choice, int adminID)
+{
+	if (head == NULL)
+		return;
+
+	admin* current = head;
+	while (current != NULL)
+	{
+		if (current->adminID == adminID)
+		{
+			switch (choice)
+			{
+			case 1:
+			{
+				cout << "Please enter name: ";
+				cin.ignore();
+				getline(cin, current->name);
+				return;
+			}
+			case 2:
+			{
+				cout << "Please enter password: ";
+				cin.ignore();
+				getline(cin, current->pw);
+				return;
+			}
+			case 3:
+			{
+				cout << "Please enter phone number: ";
+				cin.ignore();
+				getline(cin, current->phoneNum);
+				return;
+			}
+			case 4:
+			{
+				cout << "Please enter email: ";
+				cin.ignore();
+				getline(cin, current->email);
+				return;
+			}
+			}
+		}
+		current = current->nextAdd;
+	}
+}
+
+//void adminList::linearsearchAndDisplayAdminDetails(int choice)
+//{
+//	if (head == NULL)
+//		return;
+//	bool found = false;
 //	admin* current = head;
 //	admin* prev = nullptr;
 //	// Finding the block where the target element belongs
@@ -731,10 +776,44 @@ int adminList::AdmingetPosition(admin* node) {
 //	std::cout << "The admin '" << name << "' is not found in the favorite list." << std::endl;
 //	return -1;  // Target element not found
 //}
-
-
-
-//======================================================================================================
+//
+////int adminList::JumpSearchAdmin(const std::string& name) {
+////
+////
+////	if (head == nullptr) {
+////		std::cout << "The admin list is empty." << std::endl;
+////		return -1;  // List is empty
+////	}
+////
+////	int listSize = Adminsize();
+////	int blockSize = static_cast<int>(std::sqrt(listSize));
+////
+////	admin* current = head;
+////	admin* prev = nullptr;
+////	// Finding the block where the target element belongs
+////	while (current && current->name < name) {
+////		prev = current;
+////		for (int i = 0; current && i < blockSize; ++i) {
+////			current = current->nextAdd;
+////		}
+////	}
+////
+////	// Linear search within the block
+////	while (current && current->name <= name) {
+////		if (current->name == name) {
+////			std::cout << "The admin '" << name << "' is found in the favorite list." << std::endl;
+////			return AdmingetPosition(current);
+////		}
+////		current = current->nextAdd;
+////	}
+////
+////	std::cout << "The admin '" << name << "' is not found in the favorite list." << std::endl;
+////	return -1;  // Target element not found
+////}
+//
+//
+//
+////======================================================================================================
 //Insert a new node in sorted way in a sorted doubly linked list
 void sortedInsert(admin** head, admin* newNode, int sortCondition)
 {
@@ -854,9 +933,9 @@ void sortedInsert(admin** head, admin* newNode, int sortCondition)
 }
 }
 
-//======================================================================================================
-//Insertion sort
-
+////======================================================================================================
+////Insertion sort
+//
 void adminList::insertionSortAdminDoublyLinkedList(int sortCondition) {
 	//	/*1 = adminID
 	//	2 = name,
@@ -897,93 +976,94 @@ void adminList::insertionSortAdminDoublyLinkedList(int sortCondition) {
 //Quick Sort
 //From https://www.geeksforgeeks.org/quicksort-for-linked-list/
 
-/* A utility function to swap two elements */
-void adminswap ( string* a, string* b )
-{ string t = *a; *a = *b; *b = t; }
+///* A utility function to swap two elements */
+//void adminswap ( string* a, string* b )
+//{ string t = *a; *a = *b; *b = t; }
+//
+//void adminswap ( int* a, int* b )
+//{ int t = *a; *a = *b; *b = t; }
+//
+//void adminswapping(admin* i, admin* j){
+//	adminswap(&(i->adminID), &(j->adminID));
+//	adminswap(&(i->name), &(j->name));
+//	adminswap(&(i->pw), &(j->pw));
+//	adminswap(&(i->phoneNum), &(j->phoneNum));
+//	adminswap(&(i->email), &(j->email));
+//}
+//
+//// A utility function to find
+//// last node of linked list
+//admin *lastNode(admin *end)
+//{
+//	while (end && end->nextAdd)
+//		end = end->nextAdd;
+//	return end;
+//}
+//
+///* Considers last element as pivot,
+//places the pivot element at its
+//correct position in sorted array,
+//and places all smaller (smaller than
+//pivot) to left of pivot and all greater
+//elements to right of pivot */
+//admin* partition(admin *l, admin *h)
+//{
+//	// set pivot as h element
+//	string x = h->name;
+//
+//	// similar to i = l-1 for array implementation
+//	admin *i = l->prevAdd;
+//
+//	// Similar to "for (int j = l; j <= h- 1; j++)"
+//	for (admin* j = l; j != h; j = j->nextAdd)
+//	{
+//		if (j->name <= x)
+//		{
+//			// Similar to i++ for array
+//			i = (i == NULL)? l : i->nextAdd;
+//
+//			adminswapping(i, j);
+//		}
+//	}
+//	i = (i == NULL)? l : i->nextAdd; // Similar to i++
+//	adminswapping(i, h);
+//	return i;
+//}
 
-void adminswap ( int* a, int* b )
-{ int t = *a; *a = *b; *b = t; }
+///* A recursive implementation
+//of quicksort for linked list */
+//void _quickSort(admin* l, admin *h)
+//{
+//	if (h != NULL && l != h && l != h->nextAdd)
+//	{
+//		admin *p = partition(l, h);
+//		_quickSort(l, p->prevAdd);
+//		_quickSort(p->nextAdd, h);
+//	}
+//}
 
-void adminswapping(admin* i, admin* j){
-	adminswap(&(i->adminID), &(j->adminID));
-	adminswap(&(i->name), &(j->name));
-	adminswap(&(i->pw), &(j->pw));
-	adminswap(&(i->phoneNum), &(j->phoneNum));
-	adminswap(&(i->email), &(j->email));
-}
-
-// A utility function to find
-// last node of linked list
-admin *lastNode(admin *end)
-{
-	while (end && end->nextAdd)
-		end = end->nextAdd;
-	return end;
-}
-
-/* Considers last element as pivot,
-places the pivot element at its
-correct position in sorted array,
-and places all smaller (smaller than
-pivot) to left of pivot and all greater
-elements to right of pivot */
-admin* partition(admin *l, admin *h)
-{
-	// set pivot as h element
-	string x = h->name;
-
-	// similar to i = l-1 for array implementation
-	admin *i = l->prevAdd;
-
-	// Similar to "for (int j = l; j <= h- 1; j++)"
-	for (admin* j = l; j != h; j = j->nextAdd)
-	{
-		if (j->name <= x)
-		{
-			// Similar to i++ for array
-			i = (i == NULL)? l : i->nextAdd;
-
-			adminswapping(i, j);
-		}
-	}
-	i = (i == NULL)? l : i->nextAdd; // Similar to i++
-	adminswapping(i, h);
-	return i;
-}
-
-/* A recursive implementation
-of quicksort for linked list */
-void _quickSort(admin* l, admin *h)
-{
-	if (h != NULL && l != h && l != h->nextAdd)
-	{
-		admin *p = partition(l, h);
-		_quickSort(l, p->prevAdd);
-		_quickSort(p->nextAdd, h);
-	}
-}
-
-// The main function to sort a linked list.
-// It mainly calls _quickSort()
-void adminList::adminQuickSort()
-{
-	admin* current = head;
-	// Find last node
-	admin *h = lastNode(current);
-
-	// Call the recursive QuickSort
-	_quickSort(current, h);
-}
+//// The main function to sort a linked list.
+//// It mainly calls _quickSort()
+//void adminList::adminQuickSort()
+//{
+//	admin* current = head;
+//	// Find last node
+//	admin *h = lastNode(current);
+//
+//	// Call the recursive QuickSort
+//	_quickSort(current, h);
+//}
 
 
-//======================================================================================================
-//Displaying the list
-
+////======================================================================================================
+////Displaying the list
+//
 void adminList::displayList() {
 	admin* current = head;
 	//check if is last node, else print
 	while (current != NULL) {
-		cout << "Admin ID: " << current->adminID << endl;
+		string adminID = to_string(current->adminID);
+		cout << "Admin ID: " << adminID << endl;
 		cout << "Admin Name: " << current->name << endl;
 		cout << "Admin Password: " << current->pw << endl;
 		cout << "Admin phone number: " << current->phoneNum << endl;
@@ -996,8 +1076,8 @@ void adminList::displayList() {
 	cout << "List ended here."<<endl;
 }
 
-//======================================================================================================
-//Reading from file
+////======================================================================================================
+////Reading from file
 
 void adminList::readAdminFile()
 {
@@ -1013,34 +1093,31 @@ void adminList::readAdminFile()
 	while (getline(file, line))
 	{
 		stringstream b(line);  // used for breaking words
-		//adminID and phoneNum changed into string to read file
-        string adminIDStr, phoneNumStr;
+        string adminID, phoneNum;
         string name, pw, email;
-        getline(b, adminIDStr, ',');
+        getline(b, adminID, ',');
         getline(b, name, ',');
         getline(b, pw, ',');
-        getline(b, phoneNumStr, ',');
+        getline(b, phoneNum, ',');
         getline(b, email, ',');
 
-		if (adminIDStr == "AdminID") {
+		if (adminID == "AdminID") {
 			continue;
 		}
-		if (adminIDStr == "") {
+		if (adminID == "") {
 			break;
 		}
 
-        // Convert adminIDStr and phoneNumStr to integers to insert into the list
-        int adminID = stoi(adminIDStr);
-        int phoneNum = stoi(phoneNumStr);
+		int adID = stoi(adminID);
 
-		insertToEndOfAdminList(adminID, name, pw, phoneNum, email);
+		insertToEndOfAdminList(adID, name, pw, phoneNum, email);
 	}
 
 	file.close();
 }
 
-//======================================================================================================
-//Writing to file
+////======================================================================================================
+////Writing to file
 
 void adminList::writeAdminFile()
 {
@@ -1053,8 +1130,56 @@ void adminList::writeAdminFile()
 
 	while (current != nullptr)
 	{
-		file << current->adminID << ',' << current->name << ',' << current->pw << ',' << current->phoneNum << ',' << current->email << "\n";
+		string adminID = to_string(current->adminID);
+		file << adminID << ',' << current->name << ',' << current->pw << ',' << current->phoneNum << ',' << current->email << "\n";
 		current = current->nextAdd;
 	}
 	file.close();
 }
+
+int adminList::login() {
+
+	if (head == NULL) {
+		return NULL;
+	}
+	bool found = false;
+	admin* current = head;
+	string userID, name, email, pw;
+
+	//for user login purpo
+	cout << "Enter Email: ";
+	cin >> email;
+	cout << "Enter Password: ";
+	cin >> pw;
+	while (current != NULL)
+	{
+		if (current->email == email && current->pw == pw)
+		{
+			found = true;
+			return current->adminID;
+		}
+		current = current->nextAdd;
+	}
+	if (!found) {
+		return -1;
+	}
+}
+
+int adminList::generateID() {
+	
+	insertionSortAdminDoublyLinkedList(1);
+
+	if (head == NULL)
+		return 1;
+
+	admin* current = head;
+
+	while (current->nextAdd != NULL)
+		current = current->nextAdd;
+
+	int lastID = current->adminID;
+	int newID = lastID + 1;
+
+	return newID;
+}
+

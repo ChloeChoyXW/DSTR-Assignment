@@ -48,6 +48,9 @@
     <ClCompile Include="normaluser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="usersloginrecord.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="registeredUsers.h">
@@ -65,6 +68,9 @@
     <ClInclude Include="example.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="usersloginrecord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="regusers.csv">
@@ -80,6 +86,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="userUniReview.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="admin.csv">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

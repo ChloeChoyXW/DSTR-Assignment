@@ -4,17 +4,16 @@
 #include <string>
 #include <sstream>
 #include <ctime>
-
+#include <string>
+#include <chrono>
 using namespace std;
 
 struct regUsers {
-	string userID;
+	int userID;
 	string name;
 	string phoneNum;
 	string email;
 	string pw;
-	tm loginDate;
-	tm loginTime;
 	regUsers* nextAdd;
 	regUsers* prevAdd;
 };
@@ -28,15 +27,11 @@ public:
 	//constructor
 	regUsersList(string regUsersListName);
 
-	regUsers* createNewNode(string userID, string name, string pw, string phoneNum, string email);
+	regUsers* createNewNode(int userID, string name, string pw, string phoneNum, string email);
 
-	regUsers* createNewNode(string userID, tm loginDate, tm loginTime);
+	void insertToEndOfRegUsersList(int userID, string name, string pw, string phoneNum, string email);
 
-	void insertToEndOfRegUsersList(string userID, string name, string pw, string phoneNum, string email);
-
-	void insertToFrontOfRegUsersLoginList(string userID, tm loginDate, tm loginTime);
-
-	void deleteFromRegUsersList(string userID);
+	void deleteFromRegUsersList(int userID);
 
 	void linearsearchAndModifyRegistUsersDetails(int choice);
 
@@ -50,16 +45,7 @@ public:
 
 	void writeRegUsersFile();
 
-	void readUsersLogFile();
+	//string login();
 
-	void writeUsersLogFile();
-
-	int login(string email, string pw);
-
-	void displayUsersLog();
-
-	void removeInactiveUsers();
-
-	void userLoginlog(string userID);  //used to stored users' login date and time
-
+	void compareAndDeleteUsers(const int* removedUserIDs, int removedCount);
 };

@@ -3,78 +3,7 @@
 
 regUsersList::regUsersList(string regUsersListName) : regUsersListName(regUsersListName) {};
 
-//for time & date/////////////////////////////////////////////
-string getCurrentDate()
-{
-	time_t Date;
-	struct tm DateInfo;
-	char buffer[80];
-	time(&Date);
-	localtime_s(&DateInfo, &Date);
-	strftime(buffer, sizeof(buffer), "%Y-%m-%d", &DateInfo);
-	string currentDate(buffer);
-	return currentDate;
-}
-
-string getCurrentTime()
-{
-	time_t Time;
-	struct tm timeInfo;
-	char buffer[80];
-	time(&Time);
-	localtime_s(&timeInfo, &Time);
-	strftime(buffer, sizeof(buffer), "%H:%M:%S", &timeInfo);
-	string currentTime(buffer);
-	return currentTime;
-}
-
-tm stringToTm(string dateTime, int x)
-{
-	tm timeStruct{};
-	istringstream iss(dateTime);
-	if (x == 1)
-	{
-		iss >> get_time(&timeStruct, "%Y-%m-%d");
-	}
-	else
-	{
-		iss >> get_time(&timeStruct, "%H:%M:%S");
-	}
-	return timeStruct;
-}
-
-
-string tmDateToString(const tm& date)
-{
-	stringstream ss;
-	string format;
-
-	format = "%Y-%m-%d";
-
-	char buffer[80];
-	std::strftime(buffer, sizeof(buffer), format.c_str(), &date);
-	ss << buffer;
-
-	return ss.str();
-}
-
-string tmTimeToString(const tm& time)
-{
-	stringstream ss;
-	string format;
-
-	format = "%H:%M:%S";
-
-	char buffer[80];
-	std::strftime(buffer, sizeof(buffer), format.c_str(), &time);
-	ss << buffer;
-
-	return ss.str();
-}
-
-///////////////////////////////////////////////////////////////////
-
-regUsers* regUsersList::createNewNode(string userID, string name, string pw, string phoneNum, string email)
+regUsers* regUsersList::createNewNode(int userID, string name, string pw, string phoneNum, string email)
 {
 	regUsers* newnode = new regUsers;
 	newnode->userID = userID;
@@ -87,16 +16,7 @@ regUsers* regUsersList::createNewNode(string userID, string name, string pw, str
 	return newnode;
 }
 
-regUsers* regUsersList::createNewNode(string userID, tm loginDate, tm loginTime)
-{
-	regUsers* newnode = new regUsers;
-	newnode->userID = userID;
-	newnode->loginDate = loginDate;
-	newnode->loginTime = loginTime;
-	return newnode; 
-}
-
-void regUsersList::insertToEndOfRegUsersList(string userID, string name, string pw, string phoneNum, string email)
+void regUsersList::insertToEndOfRegUsersList(int userID, string name, string pw, string phoneNum, string email)
 {
 	regUsers* newnode = createNewNode(userID, name, pw, phoneNum, email);
 
@@ -113,24 +33,7 @@ void regUsersList::insertToEndOfRegUsersList(string userID, string name, string 
 	head = newnode;
 }
 
-void regUsersList::insertToFrontOfRegUsersLoginList(string userID, tm loginDate, tm loginTime)
-{
-	regUsers* newnode = createNewNode(userID, loginDate, loginTime);
-
-	if (head == NULL)
-	{
-		//head = tail = newnode;
-		newnode->nextAdd = NULL;
-	}
-	else
-	{
-		newnode->nextAdd = head;
-		head->prevAdd = newnode;
-	}
-	head = newnode;
-}
-
-void regUsersList::deleteFromRegUsersList(string userID)
+void regUsersList::deleteFromRegUsersList(int userID)
 {
 	if (head == NULL)
 		return;
@@ -177,8 +80,8 @@ void regUsersList::deleteFromRegUsersList(string userID)
 
 void regUsersList::linearsearchAndModifyRegistUsersDetails(int choice)
 {
-	string userID, userName;
-	int ans;
+	string userName;
+	int userID,  ans;
 	if (head == NULL)
 		return;
 
@@ -290,7 +193,8 @@ void regUsersList::linearsearchAndDisplayRegistUsersDetails(int choice)
 		return;
 	bool found = false;
 	regUsers* current = head;
-	string userID, name;
+	string name, userid;
+	int userID;
 	switch (choice)
 	{
 	case 1:
@@ -301,7 +205,8 @@ void regUsersList::linearsearchAndDisplayRegistUsersDetails(int choice)
 			if (current->userID == userID)
 			{
 				found = true;
-				cout << "User ID:  " << current->userID << endl;
+				userid = to_string(current->userID);
+				cout << "User ID:  " << userid << endl;
 				cout << "Name:  " << current->name << endl;
 				cout << "Password:  " << current->pw << endl;
 				cout << "Phone No.:  " << current->phoneNum << endl;
@@ -322,7 +227,8 @@ void regUsersList::linearsearchAndDisplayRegistUsersDetails(int choice)
 			if (current->name == name)
 			{
 				found = true;
-				cout << "User ID:  " << current->userID << endl;
+				userid = to_string(current->userID);
+				cout << "User ID:  " << userid << endl;
 				cout << "Name:  " << current->name << endl;
 				cout << "Password:  " << current->pw << endl;
 				cout << "Phone No.:  " << current->phoneNum << endl;
@@ -374,7 +280,9 @@ void regUsersList::displayRegUsersList()
 
 	while (current != NULL)
 	{
-		cout << "User ID:  " << current->userID << endl;
+		string userid;
+		userid = to_string(current->userID);
+		cout << "User ID:  " << userid << endl;
 		cout << "Name:  " << current->name << endl;
 		cout << "Password:  " << current->pw << endl;
 		cout << "Phone No.:  " << current->phoneNum << endl;
@@ -407,7 +315,9 @@ void regUsersList::readRegUsersFile()
 		getline(b, pw, ',');
 		getline(b, phoneNum, ',');
 		getline(b, email, ',');
-		insertToEndOfRegUsersList(userID, name, pw, phoneNum, email);
+
+		int userid = stoi(userID);
+		insertToEndOfRegUsersList(userid, name, pw, phoneNum, email);
 	}
 	file.close();
 }
@@ -423,133 +333,48 @@ void regUsersList::writeRegUsersFile()
 
 	while (current != nullptr)
 	{
-		file << current->userID << ',' << current->name << ',' << current->pw << ',' << current->phoneNum << ',' << current->email << "\n";
+		string userid = to_string(current->userID);
+		file << userid << ',' << current->name << ',' << current->pw << ',' << current->phoneNum << ',' << current->email << "\n";
 		current = current->nextAdd;
 	}
 	file.close();
 }
 
-void regUsersList::readUsersLogFile()
-{
-	string filename = "UsersLog.csv";
-	ifstream file(filename);
-
-	if (!file.is_open())
-	{
-		cout << "File " << filename << "unable to found!" << endl;
-	}
-
-	string line;
-	while (getline(file, line))
-	{
-		stringstream b(line);  //used for breaking words
-		string userID, loginDate, loginTime;
-		getline(b, userID, ',');
-		getline(b, loginDate, ',');
-		getline(b, loginTime, ',');
-
-		tm date = stringToTm(loginDate, 1);
-		tm time = stringToTm(loginTime, 2);
-		insertToFrontOfRegUsersLoginList(userID, date, time);
-	}
-}
-
-
-void regUsersList::writeUsersLogFile()
+void regUsersList::compareAndDeleteUsers(const int* removedUserIDs, int removedCount)
 {
 	regUsers* current = head;
-	ofstream file("UsersLog.csv");
-	if (!file)
-	{
-		cout << "File unable to open!" << endl;
-	}
+	regUsers* previous = nullptr;
 
-	while (current != nullptr)
-	{
-		string date = tmDateToString(current->loginDate);
-		string time = tmTimeToString(current->loginTime);
-		file << current->userID << ',' << date << ',' << time << "\n";
-		current = current->nextAdd;
-	}
-	file.close();
-}
-
-void regUsersList::displayUsersLog()
-{
-	regUsers* current = head;
-
-	while (current != NULL)
-	{
-		string date = tmDateToString(current->loginDate);
-		string time = tmTimeToString(current->loginTime);
-		cout << "User ID:  " << current->userID << endl;
-		cout << "Review Date:  " << date << endl;
-		cout << "Review Time:  " << time << endl;
-		cout << string(55, '=') << endl;
-
-		current = current->nextAdd;
-	}
-	cout << "List ended here." << endl;
-}
-
-bool checkInactive(tm date)
-{
-	string currentDate = getCurrentDate();
-	tm cDate = stringToTm(currentDate,1);
-
-	time_t nowDate = mktime(&cDate);
-	time_t loginDate = mktime(&date);
-
-	double difference = difftime(nowDate, loginDate);
-
-	return (difference <= 30);
-}
-
-void deleteLoginNode(regUsers* removeNode)
-{
-
-	if (removeNode == NULL)  //node is empty
-		return;
-
-	if (removeNode->prevAdd != NULL)  //node is the head 
-		removeNode->prevAdd->nextAdd = removeNode->nextAdd;
-	
-	if (removeNode->nextAdd != NULL)
-		removeNode->nextAdd->prevAdd = removeNode->prevAdd;
-
-	delete removeNode;
-}
-
-void regUsersList::removeInactiveUsers()
-{
-	readUsersLogFile();
-
-	regUsers* current = head;
-	regUsers* nextNode = NULL;
-
-	
-	while (current != NULL)
-	{
-		nextNode = current->nextAdd;
-		bool status = checkInactive(current->loginDate);
-		if (!status)
-		{
-			cout << "Delete User" << current->userID << endl;
-			deleteLoginNode(current);
+	while (current != nullptr) {
+		bool found = false;
+		for (int i = 0; i < removedCount; ++i) {
+			if (current->userID == removedUserIDs[i]) {
+				found = true;
+				break;
+			}
 		}
-		current = nextNode;
+
+		if (found) {
+			// Node's user ID is in the removedUserIDs array, delete the node
+			regUsers* temp = current;
+			if (previous == nullptr) {
+				head = current->nextAdd;
+				current = head;
+			}
+			else {
+				previous->nextAdd = current->nextAdd;
+				current = current->nextAdd;
+			}
+			delete temp;
+		}
+		else {
+			previous = current;
+			current = current->nextAdd;
+		}
 	}
-	cout << "Delete Complete!\n" << endl;
 }
 
 
-void regUsersList::userLoginlog(string userID)  
-{
-	string currentDate = getCurrentDate();
-	string currentTime = getCurrentTime();
-	tm date = stringToTm(currentDate, 1);
-	tm time = stringToTm(currentTime, 2);
-	insertToFrontOfRegUsersLoginList(userID, date, time);
-}
+
 
 

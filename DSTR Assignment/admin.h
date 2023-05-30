@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+
+
 using namespace std;
 
 struct admin {
@@ -31,25 +33,29 @@ public:
 
 	void readAdminFile();
 
-	void adminQuickSort();
+	//void adminQuickSort();
 
 	void displayList();
 
-	void deleteFromAdminList(int adminID);
+	//void deleteFromAdminList(int adminID);
 
 	void linearsearchAndModifyAdminDetails(int choice, int adminID);
 
-	void linearsearchAndDisplayAdminDetails(int choice);
+	//void linearsearchAndDisplayAdminDetails(int choice);
 
 	void insertionSortAdminDoublyLinkedList(int sortCondition);
 
-	int Adminsize();
+	//int Adminsize();
 
-	int AdmingetPosition(admin* node);
+	//int AdmingetPosition(admin* node);
 
 	//int JumpSearchAdmin(const std::string& name);
 
 	void writeAdminFile();
+
+	int login();
+
+	int generateID();
 
 
 };
