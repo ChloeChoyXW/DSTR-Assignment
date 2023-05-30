@@ -45,7 +45,7 @@ public:
 
 	void writeRegUsersFile();
 
-	//string login();
+	int login(string email, string pw);
 
 	void compareAndDeleteUsers(const int* removedUserIDs, int removedCount);
 
