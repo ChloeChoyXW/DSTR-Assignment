@@ -714,11 +714,11 @@ void userUniReviewList::displayRepliedreview(int userID)
 			cout << "User ID:  " << userid << endl;
 			cout << "University Name:  " << current->uniName << endl;
 			cout << "User Review:  " << current->userReview << endl;
-			cout << "Review Timw:  " << date << endl;
-			cout << "Review Timw:  " << time << endl;
+			cout << "Review Time:  " << date << endl;
+			cout << "Review Time:  " << time << endl;
 			cout << "Admin Reply:  " << current->adminReply << endl;
 			cout << "Reply Date:  " << dateAdmin << endl;
-			cout << "Reply Time:  " << timeAdmin << endl;
+			cout << "Reply Time:  " << timeAdmin << endl<<endl;
 		}
 		current = current->nextAdd;
 
