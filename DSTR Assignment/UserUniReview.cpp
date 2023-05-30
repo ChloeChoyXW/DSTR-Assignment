@@ -513,22 +513,42 @@ void userUniReviewList::readUserUniReviewFile()
 	while (getline(file, line))
 	{
 		stringstream b(line);  //used for breaking words
-		string userID, uniName, userReview, reviewDate, reviewTime, adminReply, replyDate, replyTime;
+		string userID, uniName, userReview, reviewDate, reviewTime, adminFeedback, replyDate, replyTime;
 		getline(b, userID, ',');
 		getline(b, uniName, ',');
 		getline(b, userReview, ',');
 		getline(b, reviewDate, ',');
 		getline(b, reviewTime, ',');
-		getline(b, adminReply, ',');
+		getline(b, adminFeedback, ',');
 		getline(b, replyDate, ',');
 		getline(b, replyTime, ',');
+		
+		int userid;
+		string adminReply;
+		tm date, time, dateAdmin, timeAdmin;
+		if (userID.empty())
+			return;
 
-		tm date = stringReviewToTm(reviewDate, 1);
-		tm time = stringReviewToTm(reviewTime, 2);
-		tm dateAdmin = stringReviewToTm(replyDate, 1);
-		tm timeAdmin = stringReviewToTm(replyTime, 2);
-		int userid = stoi(userID);
-		insertToEndOfUserUniReviewList(userid, uniName, userReview, date, time, adminReply,dateAdmin, timeAdmin);
+		if (replyDate.empty() && replyTime.empty())
+		{
+			date = stringReviewToTm(reviewDate, 1);
+			time = stringReviewToTm(reviewTime, 2);
+			dateAdmin = {};
+			timeAdmin = {};
+			userid = stoi(userID);
+			adminReply = "";
+		}
+		else
+		{
+			date = stringReviewToTm(reviewDate, 1);
+			time = stringReviewToTm(reviewTime, 2);
+			dateAdmin = stringReviewToTm(replyDate, 1);
+			timeAdmin = stringReviewToTm(replyTime, 2);
+			userid = stoi(userID);
+			adminReply = adminFeedback;
+		}
+	
+		//insertToEndOfUserUniReviewList(userid, uniName, userReview, date, time, adminReply, dateAdmin, timeAdmin);
 	}
 
 	file.close();
@@ -545,11 +565,31 @@ void userUniReviewList::writeUserUniReviewFile()
 
 	while (current != nullptr)
 	{
-		string date = tmRDateToString(current->reviewDate);
-		string time = tmRTimeToString(current->reviewTime);
-		string dateAdmin = tmRDateToString(current->replyDate);
-		string timeAdmin = tmRTimeToString(current->replyTime);
-		string userid = to_string(current->userID);
+		string  userid, date, time, dateAdmin, timeAdmin;
+		tm emptyDate = {};
+		tm emptyTime = {};
+
+		bool replyEmpty = (current->replyDate.tm_year == emptyDate.tm_year &&
+			current->replyDate.tm_mon == emptyDate.tm_mon &&
+			current->replyDate.tm_mday == emptyDate.tm_mday &&
+			current->replyTime.tm_hour == emptyTime.tm_hour &&
+			current->replyTime.tm_min == emptyTime.tm_min &&
+			current->replyTime.tm_sec == emptyTime.tm_sec);
+
+		if (!replyEmpty) {
+			date = tmRDateToString(current->reviewDate);
+			time = tmRTimeToString(current->reviewTime);
+			dateAdmin = tmRDateToString(current->replyDate);
+			timeAdmin = tmRTimeToString(current->replyTime);
+			userid = to_string(current->userID);
+		}
+		else {
+			date = tmRDateToString(current->reviewDate);
+			time = tmRTimeToString(current->reviewTime);
+			dateAdmin = "";
+			timeAdmin = "";
+			userid = to_string(current->userID);
+		}
 
 		file << userid << ',' << current->uniName << ',' << current->userReview << ',' << date << ',' << time << ',' << current->adminReply << ',' << dateAdmin << ',' << timeAdmin << "\n";
 		current = current->nextAdd;

@@ -338,7 +338,6 @@ void userFavUniList::LinearSearchandDisplay(int choice) //1.User 2.Admin
 				cout << "User ID:  " << current->userID << endl;
 				cout << "Favourite University:  " << current->uniName << endl;
 				cout << string(55, '=') << endl;
-				return;
 			}
 			current = current->nextAdd;
 		}
