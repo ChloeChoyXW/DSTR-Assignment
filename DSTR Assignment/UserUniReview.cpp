@@ -548,7 +548,7 @@ void userUniReviewList::readUserUniReviewFile()
 			adminReply = adminFeedback;
 		}
 	
-		//insertToEndOfUserUniReviewList(userid, uniName, userReview, date, time, adminReply, dateAdmin, timeAdmin);
+		insertToEndOfUserUniReviewList(userid, uniName, userReview, date, time, adminReply, dateAdmin, timeAdmin);
 	}
 
 	file.close();
