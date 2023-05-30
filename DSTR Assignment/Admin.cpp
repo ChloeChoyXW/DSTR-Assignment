@@ -1086,7 +1086,7 @@ void adminList::writeAdminFile()
 	file.close();
 }
 
-int adminList::login() {
+int adminList::adminLogin() {
 
 	if (head == NULL) {
 		return NULL;

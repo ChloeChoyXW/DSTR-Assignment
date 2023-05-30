@@ -45,7 +45,8 @@ int main() {
 	{
 	case 1:  //normal users
 	{
-		
+		cin.ignore();
+		favUni.LinearSearchandDisplay(1);
 	}
 	case 2:  //registered users
 	{
@@ -54,18 +55,23 @@ int main() {
 	case 3:  //admin
 	{
 		int newAdmin;
-		cout << "\n1. LOGIN\n2. REGISTER\n";
-		cout << "CHOICE: ";
-		cin >> newAdmin;
-		if (cin.fail() || newAdmin <= 0 || newAdmin > 2) {
-			cout << "Invalid Input! Please try again~\n\n";
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			break;
+		bool correctInput = false;
+		while (true) {
+			cout << "\n1. LOGIN\n2. REGISTER\n";
+			cout << "CHOICE: ";
+			cin >> newAdmin;
+			if (!(cin.fail() || newAdmin <= 0 || newAdmin > 2)) {
+				break;
+			}
+			else {
+				cout << "Invalid Input! Please try again~\n\n";
+				cin.clear();
+				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			}
 		}
 		if (newAdmin == 1)
 		{
-			id = adMin.login();
+			id = adMin.adminLogin();
 			if (id == -1)
 			{
 				cout << "Admin Not Found\n" << endl;
@@ -75,6 +81,7 @@ int main() {
 		else
 		{
 			cout << endl;
+			cout << "--REGISTRATION--\n";
 			id = adMin.generateID();
 			string name, pw, phone, email;
 			cout << "Name: ";

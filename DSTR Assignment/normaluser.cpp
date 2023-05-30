@@ -1,7 +1,7 @@
-////Display all the universities' information from the dataset
-////Sort university information in ascending order by university name
-////Search individual university name
-////Register as customer of the education exhibition
+//Display all the universities' information from the dataset
+//Sort university information in ascending order by university name
+//Search individual university name
+//Register as customer of the education exhibition
 //
 //#include <string>
 //#include <iostream>

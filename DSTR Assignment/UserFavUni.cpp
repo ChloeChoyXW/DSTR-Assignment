@@ -293,60 +293,60 @@ void userFavUniList::insertToEndOfUserFavUniList(string userID, string uniName)
 //
 ////=====================================LINEAR SEARCH============================================
 //
-//void userFavUniList::LinearSearchandDisplay(int choice) //1.User 2.Admin
-//{
-//	if (head == NULL)
-//		return;
-//	bool found = false;
-//	userFavUni* current = head;
-//	string userID, uniName;
-//
-//	switch (choice)
-//	{
-//	case 1:
-//		cout << "Enter User ID: ";
-//		cin >> userID;
-//		while (current != NULL)
-//		{
-//			if (current->userID == userID)
-//			{
-//				found = true;
-//				cout << "User ID:  " << current->userID << endl;
-//				cout << "Favourite University:\n ";
-//				userFavUni* user = current;
-//				while (user != NULL && user->userID == userID)
-//				{
-//					cout << user->uniName << endl;
-//					user = user->nextAdd;
-//				}
-//				cout << string(55, '=') << endl;
-//				return;
-//			}
-//			current = current->nextAdd;
-//		}
-//		if (!found)
-//			cout << "User not found" << endl;
-//		break;
-//	case 2:
-//		cout << "Enter University Name: ";
-//		cin >> uniName;
-//		while (current != NULL)
-//		{
-//			if (current->uniName == uniName)
-//			{
-//				found = true;
-//				cout << "User ID:  " << current->userID << endl;
-//				cout << "Favourite University:  " << current->uniName << endl;
-//				cout << string(55, '=') << endl;
-//				return;
-//			}
-//			current = current->nextAdd;
-//		}
-//		if (!found)
-//			cout << "University not found" << endl;
-//		break;
-//	}
-//}
+void userFavUniList::LinearSearchandDisplay(int choice) //1.User 2.Admin
+{
+	if (head == NULL)
+		return;
+	bool found = false;
+	userFavUni* current = head;
+	string userID, uniName;
+
+	switch (choice)
+	{
+	case 1:
+		cout << "Enter User ID: ";
+		cin >> userID;
+		while (current != NULL)
+		{
+			if (current->userID == userID)
+			{
+				found = true;
+				cout << "User ID:  " << current->userID << endl;
+				cout << "Favourite University:\n ";
+				userFavUni* user = current;
+				while (user != NULL && user->userID == userID)
+				{
+					cout << user->uniName << endl;
+					user = user->nextAdd;
+				}
+				cout << string(55, '=') << endl;
+				/*return;*/
+			}
+			current = current->nextAdd;
+		}
+		if (!found)
+			cout << "User not found" << endl;
+		break;
+	case 2:
+		cout << "Enter University Name: ";
+		getline(cin, uniName);
+		while (current != NULL)
+		{
+			if (current->uniName == uniName)
+			{
+				found = true;
+				cout << "User ID:  " << current->userID << endl;
+				cout << "Favourite University:  " << current->uniName << endl;
+				cout << string(55, '=') << endl;
+				return;
+			}
+			current = current->nextAdd;
+		}
+		if (!found)
+			cout << "University not found" << endl;
+		break;
+	}
+}
 //how to print out multiple uniName when a same "userID" has different favourite university with the code below
 
 //=====================================BINARY SEARCH============================================
