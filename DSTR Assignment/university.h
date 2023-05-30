@@ -59,7 +59,7 @@ public:
 
 	void readFromFileArray();
 
-	void linearSearchUniAndDisplayDoubly(int searchCondition);
+	void linearSearchUniAndDisplayDoubly(int searchCondition, string strparameter, int intparameter1, int intparameter2);
 
 	string linearSearchDoubly(string instName);
 

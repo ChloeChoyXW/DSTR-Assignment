@@ -248,22 +248,19 @@ string UniList::linearSearchDoubly(string instName) {
 }
 
 //============Linear Search Doubly Linked List=================================
-void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
+void UniList::linearSearchUniAndDisplayDoubly(int searchCondition, string strparameter, int intparameter1, int intparameter2) {
 
 	if (head == NULL) {
 		return;
 	}
 	bool found = false;
 	Uni* current = head;
-	string locationCode, instName;
-	int rank1, rank2;
+
 	switch (searchCondition)
 	{
 	case 1:
-		cout << "Enter Location Code: ";
-		getline(cin, locationCode);
 		while (current != NULL) {
-			if (current->locationCode == locationCode) {
+			if (current->locationCode == strparameter) {
 				found = true;
 
 				cout << endl << "University Name: " << current->instName << endl;
@@ -293,13 +290,11 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 
 		}
 		if (!found)
-			cout << "No university is found in " << locationCode << "!" << endl;
+			cout << "No university is found in " << strparameter << "!" << endl;
 		break;
 	case 2:
-		cout << "Enter Institution Name: ";
-		getline(cin, instName);
 		while (current != NULL) {
-			if (current->instName == instName) {
+			if (current->instName == strparameter) {
 				found = true;
 				cout << endl << "University Name: " << current->instName << endl;
 				cout << "Rank: " << current->rank << endl;
@@ -331,16 +326,9 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 		break;
 
 	case 3:
-		cout << "Enter Highest Academic Rank: ";
-		cin >> rank1;
-		cin.clear();
-		cin.ignore(10000, '\n');
-		cout << "Enter Lowest Academic Rank: ";
-		cin >> rank2;
-		cin.clear();
 		cin.ignore(10000, '\n');
 		while (current != NULL) {
-			if (rank1 <= current->academicRank && current->academicRank <= rank2) {
+			if (intparameter1 <= current->academicRank && current->academicRank <= intparameter2) {
 				found = true;
 				cout << endl << "University Name: " << current->instName << endl;
 				cout << "Rank: " << current->rank << endl;
@@ -372,16 +360,8 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 		break;
 
 	case 4:
-		cout << "Enter Highest Employer Reputation Rank: ";
-		cin >> rank1;
-		cin.clear();
-		cin.ignore(10000, '\n');
-		cout << "Enter Lowest Employer Reputation Rank: ";
-		cin >> rank2;
-		cin.clear();
-		cin.ignore(10000, '\n');
 		while (current != NULL) {
-			if (rank1 <= current->employerRepRank && current->employerRepRank <= rank2) {
+			if (intparameter1 <= current->employerRepRank && current->employerRepRank <= intparameter2) {
 				found = true;
 				cout << endl << "University Name: " << current->instName << endl;
 				cout << "Rank: " << current->rank << endl;
@@ -413,16 +393,8 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 		break;
 
 	case 5:
-		cout << "Enter Highest Faculty/Student Ratio Rank: ";
-		cin >> rank1;
-		cin.clear();
-		cin.ignore(10000, '\n');
-		cout << "Enter Lowest Faculty/ZStudent Ratio Rank: ";
-		cin >> rank2;
-		cin.clear();
-		cin.ignore(10000, '\n');
 		while (current != NULL) {
-			if (rank1 <= current->facultyStuRIRank && current->facultyStuRIRank <= rank2) {
+			if (intparameter1 <= current->facultyStuRIRank && current->facultyStuRIRank <= intparameter2) {
 				found = true;
 				cout << endl << "University Name: " << current->instName << endl;
 				cout << "Rank: " << current->rank << endl;
@@ -454,16 +426,8 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 		break;
 
 	case 6:
-		cout << "Enter Highest Cite Per Faculty Rank: ";
-		cin >> rank1;
-		cin.clear();
-		cin.ignore(10000, '\n');
-		cout << "Enter Lowest Cite Per Faculty Rank: ";
-		cin >> rank2;
-		cin.clear();
-		cin.ignore(10000, '\n');
 		while (current != NULL) {
-			if (rank1 <= current->citePerFacultyRank && current->citePerFacultyRank <= rank2) {
+			if (intparameter1 <= current->citePerFacultyRank && current->citePerFacultyRank <= intparameter2) {
 				found = true;
 				cout << endl << "University Name: " << current->instName << endl;
 				cout << "Rank: " << current->rank << endl;
@@ -495,16 +459,8 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 		break;
 
 	case 7:
-		cout << "Enter Highest International Faculty Ratio Rank: ";
-		cin >> rank1;
-		cin.clear();
-		cin.ignore(10000, '\n');
-		cout << "Enter Lowest International Faculty Ratio Rank: ";
-		cin >> rank2;
-		cin.clear();
-		cin.ignore(10000, '\n');
 		while (current != NULL) {
-			if (rank1 <= current->intFacultyRIRank && current->intFacultyRIRank <= rank2) {
+			if (intparameter1 <= current->intFacultyRIRank && current->intFacultyRIRank <= intparameter2) {
 				found = true;
 				cout << endl << "University Name: " << current->instName << endl;
 				cout << "Rank: " << current->rank << endl;
@@ -536,16 +492,8 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 		break;
 
 	case 8:
-		cout << "Enter Highest International Student Ratio Rank: ";
-		cin >> rank1;
-		cin.clear();
-		cin.ignore(10000, '\n');
-		cout << "Enter Lowest International Student Ratio Rank: ";
-		cin >> rank2;
-		cin.clear();
-		cin.ignore(10000, '\n');
 		while (current != NULL) {
-			if (rank1 <= current->intStuRIRank && current->intStuRIRank <= rank2) {
+			if (intparameter1 <= current->intStuRIRank && current->intStuRIRank <= intparameter2) {
 				found = true;
 				cout << endl << "University Name: " << current->instName << endl;
 				cout << "Rank: " << current->rank << endl;
@@ -577,16 +525,8 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 		break;
 
 	case 9:
-		cout << "Enter Highest International Research Network Rank: ";
-		cin >> rank1;
-		cin.clear();
-		cin.ignore(10000, '\n');
-		cout << "Enter Lowest International Research Network Rank: ";
-		cin >> rank2;
-		cin.clear();
-		cin.ignore(10000, '\n');
 		while (current != NULL) {
-			if (rank1 <= current->intResearchNetRank && current->intResearchNetRank <= rank2) {
+			if (intparameter1 <= current->intResearchNetRank && current->intResearchNetRank <= intparameter2) {
 				found = true;
 				cout << endl << "University Name: " << current->instName << endl;
 				cout << "Rank: " << current->rank << endl;
@@ -618,16 +558,8 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 		break;
 
 	case 10:
-		cout << "Enter Highest Employment Outcome Rank: ";
-		cin >> rank1;
-		cin.clear();
-		cin.ignore(10000, '\n');
-		cout << "Enter Lowest Employment Outcome Rank: ";
-		cin >> rank2;
-		cin.clear();
-		cin.ignore(10000, '\n');
 		while (current != NULL) {
-			if (rank1 <= current->employOutcomeRank && current->employOutcomeRank <= rank2) {
+			if (intparameter1 <= current->employOutcomeRank && current->employOutcomeRank <= intparameter2) {
 				found = true;
 				cout << endl << "University Name: " << current->instName << endl;
 				cout << "Rank: " << current->rank << endl;
@@ -660,16 +592,8 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {
 		break;
 
 	case 11:
-		cout << "Enter Highest Rank: ";
-		cin >> rank1;
-		cin.clear();
-		cin.ignore(10000, '\n');
-		cout << "Enter Lowest Rank: ";
-		cin >> rank2;
-		cin.clear();
-		cin.ignore(10000, '\n');
 		while (current != NULL) {
-			if (rank1 <= current->rank && current->rank <= rank2) {
+			if (intparameter1 <= current->rank && current->rank <= intparameter2) {
 				found = true;
 				cout << endl << "University Name: " << current->instName << endl;
 				cout << "Rank: " << current->rank << endl;

@@ -29,27 +29,13 @@ public:
 
 	void insertToEndOfAdminList(int adminID, string name, string pw, string phoneNum, string email);
 
-	//void searchAdmin(int adminID);
-
 	void readAdminFile();
-
-	//void adminQuickSort();
 
 	void displayList();
 
-	//void deleteFromAdminList(int adminID);
-
 	void linearsearchAndModifyAdminDetails(int choice, int adminID);
 
-	//void linearsearchAndDisplayAdminDetails(int choice);
-
 	void insertionSortAdminDoublyLinkedList(int sortCondition);
-
-	//int Adminsize();
-
-	//int AdmingetPosition(admin* node);
-
-	//int JumpSearchAdmin(const std::string& name);
 
 	void writeAdminFile();
 
