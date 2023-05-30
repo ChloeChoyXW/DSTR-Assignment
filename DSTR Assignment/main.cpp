@@ -6,6 +6,7 @@
 #include "userFavUni.h"
 #include "userUniReview.h"
 #include "admin.h"
+#include "usersloginrecord.h"
 
 using namespace std;
 
@@ -19,12 +20,13 @@ int main() {
 	userUniReviewList  userReview = userUniReviewList("Users' Review");
 	userFavUniList favUni = userFavUniList("Uni  Fav List");
 	adminList adMin = adminList("Admin List");
+	loginRecordList logRec = loginRecordList("Users Login Record");
 
 	while(true) {
 
 		adMin.readAdminFile();
 		regUsers.readRegUsersFile();
-		regUsers.readUsersLogFile();
+		logRec.readUsersLogFile();
 		userReview.readUserUniReviewFile();
 		favUni.readFavUniFile();
 
@@ -33,12 +35,17 @@ int main() {
 		cout << "1. Normal Users\n2. Registered Users\n3. MoHE Admin\n";
 		cout << "Identity: ";
 		cin >> identity;
+		if (cin.fail() || identity <= 0 || identity > 3) {
+			cout << "Invalid Input! Please try again~\n\n";
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
 		cout << endl;
 	switch (identity)
 	{
 	case 1:  //normal users
 	{
-
+		
 	}
 	case 2:  //registered users
 	{
@@ -50,6 +57,12 @@ int main() {
 		cout << "\n1. LOGIN\n2. REGISTER\n";
 		cout << "CHOICE: ";
 		cin >> newAdmin;
+		if (cin.fail() || newAdmin <= 0 || newAdmin > 2) {
+			cout << "Invalid Input! Please try again~\n\n";
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			break;
+		}
 		if (newAdmin == 1)
 		{
 			id = adMin.login();
@@ -122,7 +135,9 @@ int main() {
 				cin >> option;
 				if (option == 'y')
 				{
-					regUsers.removeInactiveUsers();
+					int removeCount = 0;
+					int* userIDremoved = logRec.removeInactiveUsers(removeCount);
+					regUsers.compareAndDeleteUsers(userIDremoved, removeCount);
 					break;
 				}
 				else
@@ -153,6 +168,7 @@ int main() {
 			case 6:
 			{
 				favUni.generateReport();
+				break;
 			}
 			case 7:
 			{
@@ -174,7 +190,7 @@ int main() {
 			{
 				adMin.writeAdminFile();
 				regUsers.writeRegUsersFile();
-				regUsers.writeUsersLogFile();
+				logRec.writeUsersLogFile();
 				userReview.writeUserUniReviewFile();
 				cout << endl << endl;
 				break;

@@ -14,8 +14,6 @@ struct regUsers {
 	string phoneNum;
 	string email;
 	string pw;
-	tm loginDate;
-	tm loginTime;
 	regUsers* nextAdd;
 	regUsers* prevAdd;
 };
@@ -31,11 +29,7 @@ public:
 
 	regUsers* createNewNode(int userID, string name, string pw, string phoneNum, string email);
 
-	regUsers* createNewNode(int userID, tm loginDate, tm loginTime);
-
 	void insertToEndOfRegUsersList(int userID, string name, string pw, string phoneNum, string email);
-
-	void insertToFrontOfRegUsersLoginList(int userID, tm loginDate, tm loginTime);
 
 	void deleteFromRegUsersList(int userID);
 
@@ -51,18 +45,7 @@ public:
 
 	void writeRegUsersFile();
 
-	void readUsersLogFile();
-
-	void writeUsersLogFile();
-
 	//string login();
 
-	void displayUsersLog();
-
-	void deleteLoginNode(regUsers* nodeToDelete);
-
-	void removeInactiveUsers();
-
-	void userLoginlog(int userID);  //used to stored users' login date and time
-
+	void compareAndDeleteUsers(const int* removedUserIDs, int removedCount);
 };

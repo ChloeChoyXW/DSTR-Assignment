@@ -137,6 +137,7 @@
     <ClCompile Include="RegisteredUsers.cpp" />
     <ClCompile Include="University.cpp" />
     <ClCompile Include="UserFavUni.cpp" />
+    <ClCompile Include="usersloginrecord.cpp" />
     <ClCompile Include="UserUniReview.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +145,7 @@
     <ClInclude Include="registeredUsers.h" />
     <ClInclude Include="university.h" />
     <ClInclude Include="userFavUni.h" />
+    <ClInclude Include="usersloginrecord.h" />
     <ClInclude Include="userUniReview.h" />
   </ItemGroup>
   <ItemGroup>
