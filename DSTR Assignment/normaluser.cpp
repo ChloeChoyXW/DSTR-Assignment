@@ -11,6 +11,7 @@
 using namespace std;
 
 int main() {
+	int userID=NULL;
 	int ans, searchBy;
 	char option;
 	
@@ -22,7 +23,7 @@ int main() {
 
 	while (true) {
 		cout << "---USER MENU---" << endl;
-		cout << "1. DISPLAY UNIVERSITY DETAILS\n2. VIEW UNIVERSITY DETAILS IN ASCENDING ORDER\n3. SEARCH UNIVERSITY BY NAME\n4. REGISTER AS CUSTOMER\n";
+		cout << "1. DISPLAY UNIVERSITY DETAILS\n2. VIEW UNIVERSITY DETAILS IN ASCENDING ORDER\n3. SEARCH UNIVERSITY BY NAME\n4. LOGIN\n5. REGISTER AS CUSTOMER\n";
 		cout << "Enter your choice: ";
 		cin >> ans;
 		if (cin.fail() || ans <= 0 || ans > 4) {
@@ -45,7 +46,7 @@ int main() {
 			cout << endl;
 			cout << string(55, '=') << endl;
 			Uni.insertionSortUniDoublyLinkedList(2);
-			void displayListDoubly();
+			Uni.displayListDoubly();
 			break;
 		}
 		case 3:
@@ -56,6 +57,47 @@ int main() {
 			break;
 		}
 		case 4:
+		{
+			bool userlogin =false;
+			int loginUser;
+			string email, pw;
+			cout << endl;
+			cout << string(55, '=') << endl;
+			cout << "LOGIN\n1.USER  2.ADMIN"<<endl;
+			cout << "Enter: ";
+			cin>>loginUser;
+			if (loginUser == 1) {
+				cout << "Enter Email: ";
+				cin >> email;
+				cout << "Enter Password: ";
+				cin >> pw;
+
+				while (userID==NULL) {
+					cout << "sdfasdda" << endl;
+					userID = regUsers.login(email, pw);
+					if (userID != NULL) {
+						userlogin = true;
+						break;
+					}
+					else {
+						cout << "No user found! Please try again!" << endl;
+						cout << "Enter Email: ";
+						cin >> email;
+						cout << email << endl;
+						cout << "Enter Password: ";
+						cin >> pw;
+						cout << pw << endl;
+						/*userID = regUsers.login(email, pw);*/
+						
+					}
+				}
+			}
+			else {
+
+			}
+			break;
+		}
+		case 5:
 		{
 			regUsers.readRegUsersFile();
             cout << endl << string(55, '=') << endl;

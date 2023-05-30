@@ -132,6 +132,7 @@
     <ClCompile Include="donottouchregusers.cpp" />
     <ClCompile Include="example.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="normaluser.cpp" />
     <ClCompile Include="plztouchadmin.cpp" />
     <ClCompile Include="RegisteredUsers.cpp" />
     <ClCompile Include="University.cpp" />
