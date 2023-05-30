@@ -52,7 +52,7 @@ int main() {
 		char option;
 		while (true) {
 			cout << "---USER MENU---" << endl;
-			cout << "1. DISPLAY UNIVERSITY DETAILS\n2. VIEW UNIVERSITY DETAILS IN ASCENDING ORDER\n3. SEARCH UNIVERSITY BY NAME\n4. REGISTER AS CUSTOMER\n";
+			cout << "1. DISPLAY UNIVERSITY DETAILS\n2. VIEW UNIVERSITY DETAILS IN ASCENDING ORDER\n3. SEARCH UNIVERSITY BY NAME\n4. REGISTER AS CUSTOMER\n5. EXIT";
 			cout << "Enter your choice: ";
 			cin >> ans;
 			if (cin.fail() || ans <= 0 || ans > 4) {
@@ -91,25 +91,26 @@ int main() {
 				cout << endl << string(55, '=') << endl;
 				cout << "REGISTER AS CUSTOMER: " << endl;
 
-				string userID, name, pw, phoneNum, email;
+				string name, pw, phoneNum, email;
+				int userID;
 
-				cout << "Enter User ID: " << endl;
-				getline(cin, userID);
+				userID = regUsers.generateUserID();
 
-				cout << "Enter Name: " << endl;;
+				cin.ignore(); 
+
+				cout << "Enter Name: ";
 				getline(cin, name);
 
-				cout << "Enter Password: " << endl;;
+				cout << "Enter Password: ";
 				getline(cin, pw);
 
-				cout << "Enter Phone Number: " << endl;;
+				cout << "Enter Phone Number: ";
 				getline(cin, phoneNum);
 
-				cout << "Enter Email: " << endl;;
+				cout << "Enter Email: ";
 				getline(cin, email);
 
-				int userid = stoi(userID);
-				regUsers.insertToEndOfRegUsersList(userid, name, pw, phoneNum, email);
+				regUsers.insertToEndOfRegUsersList(userID, name, pw, phoneNum, email);
 
 				cout << endl << string(55, '=') << endl;
 				cout << "CUSTOMER REGISTERED" << endl;
@@ -121,7 +122,7 @@ int main() {
 	}
 	case 2:  //registered users
 	{
-
+		userReview.displayRepliedreview(3);
 	}
 	case 3:  //admin
 	{
@@ -224,7 +225,7 @@ int main() {
 			case 4:
 			{
 				cout << endl << string(55, '=') << endl;
-				userReview.sortReviewDateList();
+				userReview.sortReviewDateList(1);
 				userReview.moveForthBackReviewList();
 				break;
 			}

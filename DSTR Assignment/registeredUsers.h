@@ -37,7 +37,7 @@ public:
 
 	void linearsearchAndDisplayRegistUsersDetails(int choice);
 
-	void sortRegUsersList(string sortCondition);
+	void insertionSortUsersDoublyLinkedList();
 
 	void displayRegUsersList();
 
@@ -48,4 +48,6 @@ public:
 	//string login();
 
 	void compareAndDeleteUsers(const int* removedUserIDs, int removedCount);
+
+	int generateUserID();
 };
