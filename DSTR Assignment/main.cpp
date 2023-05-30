@@ -154,14 +154,19 @@ int main() {
 	case 3:  //admin
 	{
 		int newAdmin;
-		cout << "\n1. LOGIN\n2. REGISTER\n";
-		cout << "CHOICE: ";
-		cin >> newAdmin;
-		if (cin.fail() || newAdmin <= 0 || newAdmin > 2) {
-			cout << "Invalid Input! Please try again~\n\n";
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			break;
+		bool correctInput = false;
+		while (true) {
+			cout << "\n1. LOGIN\n2. REGISTER\n";
+			cout << "CHOICE: ";
+			cin >> newAdmin;
+			if (!(cin.fail() || newAdmin <= 0 || newAdmin > 2)) {
+				break;
+			}
+			else {
+				cout << "Invalid Input! Please try again~\n\n";
+				cin.clear();
+				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			}
 		}
 		if (newAdmin == 1)
 		{

@@ -2,7 +2,7 @@
 
 
 
-adminList::adminList(string adminListname) : adminListName(adminListName) {};
+adminList::adminList(string adminListName) : adminListName(adminListName) {};
 //create an empty new node
 admin* adminList::createNewNode(int adminID, string name, string pw, string phoneNum, string email) {
 	
