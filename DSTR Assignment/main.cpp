@@ -31,6 +31,7 @@ int main() {
 	logRec.readUsersLogFile();
 
 
+
 	while(true) {
 		cout << endl<< "TOP UNIVERSITY RECOMMENDATION SYSTEM FOR SECONDARY SCHOOL STUDENTS\n";
 		cout << string(59, '=') << endl;
@@ -383,6 +384,10 @@ int main() {
 				break;
 			}
 			case 6: {
+				regUsers.writeRegUsersFile();
+				favUni.writeFavUniFile();
+				userReview.writeUserUniReviewFile();
+				logRec.writeUsersLogFile();
 				id = 0;
 				contPrint = "n";
 
