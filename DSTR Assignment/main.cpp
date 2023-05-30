@@ -74,8 +74,9 @@ int main() {
 			{
 				cout << endl;
 				cout << string(55, '=') << endl;
+				cout << "\n---Universities Sorted by Name in Ascending Order---\n";
 				Uni.insertionSortUniDoublyLinkedList(2);
-				void displayListDoubly();
+				Uni.displayListDoubly();
 				break;
 			}
 			case 3:

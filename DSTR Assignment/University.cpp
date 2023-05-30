@@ -1241,7 +1241,6 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition){
 }
 
 void UniList::insertionSortUniDoublyLinkedList(int sortCondition) { 
-	auto start = chrono::high_resolution_clock::now();
 		// Initialize a sorted doubly linked list
 	Uni* sorted = NULL;
 
@@ -1265,10 +1264,7 @@ void UniList::insertionSortUniDoublyLinkedList(int sortCondition) {
 
 	// Update head_ref to point to sorted doubly linked list
 	head = sorted;
-	auto end = chrono::high_resolution_clock::now();
-	auto duration = chrono::duration_cast<chrono::milliseconds>(end - start).count();
-	cout << "Execution time Insertion Sort: " << duration << " milliseconds" << endl;
-
+	
 }
 
 
@@ -1556,9 +1552,6 @@ void UniList::uniQuickSort(int searchCondition)
 	auto start = chrono::high_resolution_clock::now();
 	// Call the recursive QuickSort
 	_quickSort(current, h, searchCondition);
-	auto end = std::chrono::high_resolution_clock::now();
-	auto duration = chrono::duration_cast<chrono::milliseconds>(end - start).count();
-	cout << "Execution time Quicksort: " << duration << " milliseconds" << endl;
 }
 //=====================================================================================================
 
@@ -1648,8 +1641,6 @@ void UniList::displayListArray() {
 			}
 			i += 1;
 			
-			
 		}
-		
-	//}
+
 }
