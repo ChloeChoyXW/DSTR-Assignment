@@ -101,7 +101,8 @@ void userFavUniList::LinearSearchandDisplay(int choice) //1.User 2.Admin
 		return;
 	bool found = false;
 	userFavUni* current = head;
-	string userID, uniName;
+	string uniName;
+	int  userID;
 
 	switch (choice)
 	{

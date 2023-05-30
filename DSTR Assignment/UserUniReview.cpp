@@ -601,9 +601,7 @@ void userUniReviewList::writeUniReview(int userID, string uniName)
 {
 	string review;
 	cout << "Please write you review: ";       
-	cin.ignore();
 	getline(cin, review);
-	cout << review;
 
 	tm emptyDate = {};
 	tm emptyTime = {};

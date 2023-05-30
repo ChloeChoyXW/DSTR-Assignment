@@ -226,7 +226,26 @@ void UniList::readFromFileArray() {
 }
 
 
+//====linear Search Doubly Inst Name without print
+string UniList::linearSearchDoubly(string instName) {
 
+	if (head == NULL) {
+		cout << "Nothing in the list!";
+	}
+	bool found = false;
+	string available;
+	Uni* current = head;
+
+	while (current != NULL) {
+		if (current->instName == instName) {
+			return "y";
+		}
+		current = current->nextAdd;
+	}
+
+	return "n";
+
+}
 
 //============Linear Search Doubly Linked List=================================
 void UniList::linearSearchUniAndDisplayDoubly(int searchCondition) {

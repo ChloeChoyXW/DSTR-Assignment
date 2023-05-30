@@ -12,18 +12,20 @@ using namespace std;
 ////2.1 Login and logout. /
 ////2.2 Sort university information in descending order based on academic reputation score, faculty / student ratio score and employer reputation score. /
 ////2.3 Search universities details based on customer decision.
-////2.4 Save their favorite universities.
-////2.5 Send feedback to MoHE for further information about the University.
+////2.4 Save their favorite universities./
+////2.5 Send feedback to MoHE for further information about the University./
 ////2.6 Read the feedback reply from the MoHE based on latest date.
 //
-//int main() {
+int main() {
 //	regUsersList regUser = regUsersList("Registered Users List");
 //	regUser.readRegUsersFile();
-//	UniList universityDoubly = UniList("University List");
+	UniList universityDoubly = UniList("University List");
+	universityDoubly.readFromFileDoubly();
 //	userFavUniList userFavUni = userFavUniList("User Favorite University List: ");
 //	userFavUni.readFavUniFile();
-//	universityDoubly.readFromFileDoubly();
-//	userUniReviewList userUniRev = userUniReviewList("User University Reviews: ");
+	//universityDoubly.readFromFileDoubly();
+	userUniReviewList userUniRev = userUniReviewList("User University Reviews: ");
+	userUniRev.readUserUniReviewFile();
 //
 //	//=====sort and print==================================
 //	/*cout << "Enter the sorting condition for university information by number :"<<endl<<"1.University Rank  2.Institution Name  3.Location  4.Academic Rank  5.Employer Reputation Rank" << endl
@@ -63,14 +65,33 @@ using namespace std;
     //=================================================
 	
 	// ===========write uni review=====================
-	/*string uniName;
-	cout << "Enter University Name: ";
-	getline(cin, uniName);
-	userUniRev.writeUniReview(1, uniName);
-	userUniRev.writeUserUniReviewFile();*/
+	string uniName;
+	string found;
+	while (found != "y") {
+		cout << "Enter University Name (n to exit): ";
+		getline(cin, uniName);
+		if (uniName == "n") {
+			break;
+		}
+
+		found = universityDoubly.linearSearchDoubly(uniName);
+		
+		if (found == "y") {
+			userUniRev.writeUniReview(1, uniName);
+			userUniRev.writeUserUniReviewFile();
+			cout << "Review added.";
+			break;
+		}
+		else {
+			cout << "University is not available! Please enter existing university name in the list!"<<endl;
+			found = "n";
+		}
+	}
 	// =============================================
+
 	
 	// =============read feedback==================
+	
 	
 	// =========================================
 //	
@@ -87,5 +108,5 @@ using namespace std;
 //	//	11 = employOutcomeRank
 //	//	12 = scoreScale
 //
-//	return 0;
-//}
+	return 0;
+}
