@@ -689,7 +689,9 @@ void userUniReviewList::displayRepliedreview(int userID)
 			cout << "Reply Time:  " << timeAdmin << endl;
 		}
 		current = current->nextAdd;
+
 	}
 }
+
 
 

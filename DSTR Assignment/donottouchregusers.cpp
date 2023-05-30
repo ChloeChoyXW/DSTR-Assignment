@@ -65,7 +65,7 @@ int main() {
     //=================================================
 	
 	// ===========write uni review=====================
-	string uniName;
+	/*string uniName;
 	string found;
 	while (found != "y") {
 		cout << "Enter University Name (n to exit): ";
@@ -86,12 +86,13 @@ int main() {
 			cout << "University is not available! Please enter existing university name in the list!"<<endl;
 			found = "n";
 		}
-	}
+	}*/
 	// =============================================
 
 	
 	// =============read feedback==================
-	
+	int userID = 1;
+	userUniRev.displayRepliedreview(userID);
 	
 	// =========================================
 //	
