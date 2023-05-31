@@ -132,7 +132,7 @@ int main() {
 
 							if (cond == "y") {
 								regUsers.insertToEndOfRegUsersList(userID, name, pw, phoneNum, email);
-								
+								regUsers.writeRegUsersFile();
 								cout << endl << "CUSTOMER REGISTERED" << endl;
 								cout << endl << string(55, '=') << endl;
 								break;
