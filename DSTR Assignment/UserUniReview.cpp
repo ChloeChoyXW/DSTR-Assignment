@@ -105,55 +105,6 @@ void userUniReviewList::insertToEndOfUserUniReviewList(int userID, string uniNam
 	 head = newnode;
 }
 
-void userUniReviewList::deleteFromUserUniReviewList(int userID, string uniName)
-{
-	if (head == NULL)
-		return;
-
-	if (head->userID == userID && head->uniName == uniName)
-	{
-		userUniReview* current = head;
-		head = head->nextAdd;
-		string userid = to_string(current->userID);
-		cout << "Deleted: Registered User ID of " << userid << endl;
-		delete current;
-	}
-	else if (tail->userID == userID && tail->uniName == uniName)
-	{
-		userUniReview* current = tail;
-		tail = tail->prevAdd;
-		if (tail == NULL)
-			head = NULL;
-		else
-			tail->nextAdd = NULL;
-		string userid = to_string(current->userID);
-		cout << "Deleted: Registered User ID of " << userid << endl;
-		delete current;
-	}
-	else
-	{
-		userUniReview* prev = head->prevAdd;
-		userUniReview* current = head;
-		bool found = false;
-		while (current != NULL)
-		{
-			if (current->userID == userID && current->uniName == uniName)
-			{
-				found = true;
-				prev->nextAdd = current->nextAdd;
-				string userid = to_string(current->userID);
-				cout << "Deleted: Registered User ID of " << userid << endl;
-				delete current;
-				return;
-			}
-			prev = current;
-			current = current->nextAdd;
-		}
-		if (!found)
-			cout << to_string(userID) << " is not in the list!" << endl;
-	}
-}
-
 int compareDates(const struct tm& date1, const struct tm& date2) {
 	if (date1.tm_year < date2.tm_year)
 		return -1;
