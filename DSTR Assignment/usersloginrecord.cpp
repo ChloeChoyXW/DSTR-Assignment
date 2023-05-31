@@ -284,5 +284,17 @@ void loginRecordList::userLoginlog(int userID)
 	string currentTime = getCurrentTime();
 	tm date = stringToTm(currentDate, 1);
 	tm time = stringToTm(currentTime, 2);
+
+	loginRecord* current = head;
+	while (current != NULL)
+	{
+		if (current->userID == userID)
+		{
+			current->loginDate = date;
+			current->loginTime = time;
+			return;
+		}
+		current = current->nextAdd;
+	}
 	insertToFrontOfRegUsersLoginList(userID, date, time);
 }

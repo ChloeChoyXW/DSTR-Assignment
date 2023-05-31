@@ -333,6 +333,6 @@ void userFavUniList::generateReport()
 	}
 
 	for (int i = 0; i < distinctCount; i++) {
-		cout << "Top " << i+1 << " : " << distinctUniversities[i] << std::endl;
+		cout << "Top " << i+1 << " : " << distinctUniversities[i] << endl << endl;
 	}
 }

@@ -34,7 +34,7 @@ int main() {
 
 	while(true) {
 		cout << endl<< "TOP UNIVERSITY RECOMMENDATION SYSTEM FOR SECONDARY SCHOOL STUDENTS\n";
-		cout << string(59, '=') << endl;
+		cout << string(64, '=') << endl;
 		cout << "1. Normal Users\n2. Registered Users\n3. MoHE Admin\n4. Exit\n";
 		cout << "Enter:  ";
 		cin >> identity;
@@ -181,6 +181,7 @@ int main() {
 						else {
 							cout << endl << "Successfully logged in! Welcome back." << endl;
 							loggedIn = "y";
+							logRec.userLoginlog(id);
 							break;
 						}
 					}
@@ -356,10 +357,12 @@ int main() {
 			case 4: {
 				string uniName;
 				string found;
+
 				while (found != "y") {
 					cin.ignore();
 					cout << "Enter University Name (n to exit): ";
 					getline(cin, uniName);
+
 					if (uniName == "n") {
 						break;
 					}
@@ -398,7 +401,7 @@ int main() {
 		break;
 
 	}
-	case 3:  //admin
+	case 3:  //==================admin===================================
 	{
 		int newAdmin;
 		bool correctInput = false, cont=true;
@@ -513,7 +516,6 @@ int main() {
 				cout << "\n\nEnter University name: ";
 				cin.ignore();
 				getline(cin, uniname);
-
 				userReview.searchAndDisplayUserUniReviewList(uniname);
 				cout << "Enter User ID: ";
 				getline(cin, userid);
