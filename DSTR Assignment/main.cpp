@@ -235,7 +235,7 @@ int main() {
 
 				}
 				if (choice == 3) {
-					cont==false;
+					cont=false;
 				}
 				break;
 			}
@@ -340,7 +340,7 @@ int main() {
 							
 					if (found == "y") {
 						favUni.insertToEndOfUserFavUniList(id, favUniName);
-						favUni.displayUserFavUniList(id);
+						favUni.LinearSearchandDisplay(id);
 						cout << "University added! Do you want to continue? (Any key to continue, n to exit): ";
 						cin >> option;
 						if (option == "n") {

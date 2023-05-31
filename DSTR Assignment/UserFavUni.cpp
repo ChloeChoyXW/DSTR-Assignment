@@ -94,61 +94,24 @@ void userFavUniList::deleteFromUserFavUniList(string uniName)
 
 ////=====================================LINEAR SEARCH============================================
 
-void userFavUniList::LinearSearchandDisplay(int choice) //1.User 2.Admin
+void userFavUniList::LinearSearchandDisplay(int userID)
 {
 	if (head == NULL)
 		return;
-	bool found = false;
 	userFavUni* current = head;
-	string uniName;
-	int  userID;
 
-	switch (choice)
+	while (current != NULL)
 	{
-	case 1:
-		cout << "Enter User ID: ";
-		cin >> userID;
-		while (current != NULL)
+		if (current->userID == userID)
 		{
-			if (current->userID == userID)
-			{
-				found = true;
-				cout << "User ID:  " << current->userID << endl;
-				cout << "Favourite University:\n ";
-				userFavUni* user = current;
-				while (user != NULL && user->userID == userID)
-				{
-					cout << user->uniName << endl;
-					user = user->nextAdd;
-				}
-				cout << string(55, '=') << endl;
-				
-			}
-			current = current->nextAdd;
+			cout << "\nFavourite University:\n ";
+			cout << current->uniName << endl;
+			cout << string(55, '=') << endl;
 		}
-		if (!found)
-			cout << "User not found" << endl;
-		break;
-	case 2:
-		cout << "Enter University Name: ";
-		getline(cin, uniName);
-		while (current != NULL)
-		{
-			if (current->uniName == uniName)
-			{
-				found = true;
-				cout << "User ID:  " << current->userID << endl;
-				cout << "Favourite University:  " << current->uniName << endl;
-				cout << string(55, '=') << endl;
-				
-			}
-			current = current->nextAdd;
-		}
-		if (!found)
-			cout << "University not found" << endl;
-		break;
+		current = current->nextAdd;
 	}
 }
+
 
 void sortedInsert(userFavUni** head, userFavUni* newNode) {
 	userFavUni* current;
