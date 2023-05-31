@@ -207,31 +207,6 @@ void loginRecordList::deleteLoginNode(loginRecord* nodeToDelete)
 	}
 }
 
-//void loginRecordList::removeInactiveUsers()
-//{
-//	loginRecord* current = head;
-//	loginRecord* nextNode = NULL;
-//
-//	if (head == NULL) {
-//		cout << "User list is empty." << endl;
-//		return;
-//	}
-//
-//	while (current != NULL)
-//	{
-//		nextNode = current->nextAdd;
-//		bool status = checkInactive(current->loginDate);
-//		if (!status)
-//		{
-//			string userid = to_string(current->userID);
-//			cout << "Delete User " << userid << endl;
-//			deleteLoginNode(current);
-//		}
-//		current = nextNode;
-//	}
-//	cout << "Delete Complete!\n" << endl;
-//}
-
 int* loginRecordList::removeInactiveUsers(int& removedCount) {
 	int size = 10; // Initial size of the array
 	int* userRemove = new int[size];

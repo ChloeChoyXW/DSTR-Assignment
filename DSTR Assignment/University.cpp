@@ -633,7 +633,7 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition, string strpar
 //from: https://www.geeksforgeeks.org/linear-search/
 void UniList::linearSearchUniAndDisplayArray(string instName) {
 	bool found = false;
-	getline(cin, instName);
+	auto start = std::chrono::high_resolution_clock::now();
 	for (int i = 0; i < 1423; i++) {
 		if (uniArray[i].instName == instName) {
 			found = true;
@@ -661,8 +661,12 @@ void UniList::linearSearchUniAndDisplayArray(string instName) {
 			cout << string(55, '=') << endl;
 		}
 	}
-	if (!found)
+	if (!found) {
 		cout << "No university is found!" << endl;
+	}
+	auto end = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+	std::cout << "Execution time: " << duration << " milliseconds" << std::endl;
 }
 
 
@@ -752,14 +756,11 @@ void insertionSortArray(struct Uni uniArray[]){
 
 }
 
-void UniList::binarySearchUniAndDisplayArray(){
+void UniList::binarySearchUniAndDisplayArray(string x){
+	auto start = std::chrono::high_resolution_clock::now();
 	insertionSortArray(uniArray);
 	int r = 1422 - 1;
 	int l = 0;
-	string x;
-	int y;
-	cout << "Enter Institution Name: ";
-	getline(cin, x);
 	while (l <= r)
 	{
 		int mid = l + (r - l) / 2;
@@ -805,6 +806,9 @@ void UniList::binarySearchUniAndDisplayArray(){
 			r = mid - 1;
 		}
 	}
+	auto end = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+	std::cout << "Execution time: " << duration << " milliseconds" << std::endl;
 
 }
 
@@ -1182,6 +1186,7 @@ void sortedInsert(Uni** head, Uni* newNode, int sortCondition){
 }
 
 void UniList::insertionSortUniDoublyLinkedList(int sortCondition) { 
+	auto start = std::chrono::high_resolution_clock::now();
 		// Initialize a sorted doubly linked list
 	Uni* sorted = NULL;
 
@@ -1205,7 +1210,10 @@ void UniList::insertionSortUniDoublyLinkedList(int sortCondition) {
 
 	// Update head_ref to point to sorted doubly linked list
 	head = sorted;
-	
+
+	auto end = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+	std::cout << "Execution time: " << duration << " milliseconds" << std::endl;
 }
 
 
@@ -1490,9 +1498,14 @@ void UniList::uniQuickSort(int searchCondition)
 	// Find last node
 	Uni* h = lastNode(current);
 
-	auto start = chrono::high_resolution_clock::now();
+	auto start = std::chrono::high_resolution_clock::now();
+
 	// Call the recursive QuickSort
 	_quickSort(current, h, searchCondition);
+
+	auto end = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+	std::cout << "Execution time: " << duration << " milliseconds" << std::endl;
 }
 //=====================================================================================================
 
