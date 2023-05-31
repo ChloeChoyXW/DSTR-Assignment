@@ -1,13 +1,13 @@
-#include <string>
-#include <iostream>
-#include <chrono>
-#include "university.h"
-#include "registeredUsers.h"
-#include "userFavUni.h"
-#include "admin.h"
-#include "UserUniReview.h"
+//#include <string>
+//#include <iostream>
+//#include <chrono>
+//#include "university.h"
+//#include "registeredUsers.h"
+//#include "userFavUni.h"
+//#include "admin.h"
+//#include "UserUniReview.h"
 //
-using namespace std;
+//using namespace std;
 ////Registered Users(Customer)
 ////2.1 Login and logout. /
 ////2.2 Sort university information in descending order based on academic reputation score, faculty / student ratio score and employer reputation score. /
@@ -16,16 +16,16 @@ using namespace std;
 ////2.5 Send feedback to MoHE for further information about the University./
 ////2.6 Read the feedback reply from the MoHE based on latest date.
 //
-int main() {
+//int main() {
 //	regUsersList regUser = regUsersList("Registered Users List");
 //	regUser.readRegUsersFile();
-	UniList universityDoubly = UniList("University List");
-	universityDoubly.readFromFileDoubly();
+//	UniList universityDoubly = UniList("University List");
+//	universityDoubly.readFromFileDoubly();
 //	userFavUniList userFavUni = userFavUniList("User Favorite University List: ");
 //	userFavUni.readFavUniFile();
-	//universityDoubly.readFromFileDoubly();
-	userUniReviewList userUniRev = userUniReviewList("User University Reviews: ");
-	userUniRev.readUserUniReviewFile();
+//	universityDoubly.readFromFileDoubly();
+//	userUniReviewList userUniRev = userUniReviewList("User University Reviews: ");
+//	userUniRev.readUserUniReviewFile();
 //
 //	//=====sort and print==================================
 //	/*cout << "Enter the sorting condition for university information by number :"<<endl<<"1.University Rank  2.Institution Name  3.Location  4.Academic Rank  5.Employer Reputation Rank" << endl
@@ -56,45 +56,45 @@ int main() {
 //	universityDoubly.displayListDoubly();
 //
 //	//=================save favorite uni================
-	//string favUni;
-	//cout << "Enter Favourite University Name: ";
-	//getline(cin, favUni);
-	//userFavUni.insertToEndOfUserFavUniList(1, favUni);
-	//userFavUni.displayUserFavUniList();
-
-    //=================================================
-	
-	// ===========write uni review=====================
-	/*string uniName;
-	string found;
-	while (found != "y") {
-		cout << "Enter University Name (n to exit): ";
-		getline(cin, uniName);
-		if (uniName == "n") {
-			break;
-		}
-
-		found = universityDoubly.linearSearchDoubly(uniName);
-		
-		if (found == "y") {
-			userUniRev.writeUniReview(1, uniName);
-			userUniRev.writeUserUniReviewFile();
-			cout << "Review added.";
-			break;
-		}
-		else {
-			cout << "University is not available! Please enter existing university name in the list!"<<endl;
-			found = "n";
-		}
-	}*/
-	// =============================================
-
-	
-	// =============read feedback==================
-	/*int userID = 1;
-	userUniRev.displayRepliedreview(userID);*/
-	
-	// =========================================
+//	string favUni;
+//	cout << "Enter Favourite University Name: ";
+//	getline(cin, favUni);
+//	userFavUni.insertToEndOfUserFavUniList(1, favUni);
+//	userFavUni.displayUserFavUniList();
+//
+//    =================================================
+//	
+//	 ===========write uni review=====================
+//	/*string uniName;
+//	string found;
+//	while (found != "y") {
+//		cout << "Enter University Name (n to exit): ";
+//		getline(cin, uniName);
+//		if (uniName == "n") {
+//			break;
+//		}
+//
+//		found = universityDoubly.linearSearchDoubly(uniName);
+//		
+//		if (found == "y") {
+//			userUniRev.writeUniReview(1, uniName);
+//			userUniRev.writeUserUniReviewFile();
+//			cout << "Review added.";
+//			break;
+//		}
+//		else {
+//			cout << "University is not available! Please enter existing university name in the list!"<<endl;
+//			found = "n";
+//		}
+//	}*/
+//	 =============================================
+//
+//	
+//	 =============read feedback==================
+//	/*int userID = 1;
+//	userUniRev.displayRepliedreview(userID);*/
+//	
+//	 =========================================
 //	
 //	//	1 = rank
 //	//	2 = instName,
@@ -109,5 +109,5 @@ int main() {
 //	//	11 = employOutcomeRank
 //	//	12 = scoreScale
 //
-	return 0;
-}
+//	return 0;
+//}
