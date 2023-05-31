@@ -15,6 +15,7 @@ using namespace std;
 int main() {
 	int identity;
 	int id = 1; //global id
+
 	UniList UniDoubly = UniList("Universities");
 	UniList UniArray = UniList("Universities");
 	UniDoubly.readFromFileDoubly();

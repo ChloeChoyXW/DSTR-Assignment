@@ -723,8 +723,6 @@ void userUniReviewList::displayRepliedreview(int userID)
 			string time = tmRTimeToString(current->reviewTime);
 			string dateAdmin = tmRDateToString(current->replyDate);
 			string timeAdmin = tmRTimeToString(current->replyTime);
-			string userid = to_string(current->userID);
-			cout << "User ID:  " << userid << endl;
 			cout << "University Name:  " << current->uniName << endl;
 			cout << "User Review:  " << current->userReview << endl;
 			cout << "Review Time:  " << date << endl;
