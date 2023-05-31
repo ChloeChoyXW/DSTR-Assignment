@@ -256,7 +256,7 @@ int main() {
 			case 1: {
 				while (true) {
 					
-					cout <<endl<<  "Enter the search condition by number: " << endl << "1.Location Code  2.Institution Name  3.Academic Rank  4.Employer Reputation Rank  5.Faculty/Student Ratio Rank" << endl
+					cout <<endl<<  "Enter the sort condition by number: " << endl << "1.Location Code  2.Institution Name  3.Academic Rank  4.Employer Reputation Rank  5.Faculty/Student Ratio Rank" << endl
 						<< "6.Citation Per Faculty Rank  7.International Faculty Ratio Rank  8.International Student Ratio Rank" << endl 
 						<< "9.Interational Research Natwork Rank  10.Employment Outcome Rank  11.University Rank  12.Exit" << endl;
 					int sortNum;
