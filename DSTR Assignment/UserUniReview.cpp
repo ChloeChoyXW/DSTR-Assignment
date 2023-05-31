@@ -383,8 +383,8 @@ void userUniReviewList::displayUserUniReviewList()
 			cout << "User ID:  " << userid << endl;
 			cout << "University Name:  " << current->uniName << endl;
 			cout << "User Review:  " << current->userReview << endl;
-			cout << "Review Timw:  " << date << endl;
-			cout << "Review Timw:  " << time << endl;
+			cout << "Review Time:  " << date << endl;
+			cout << "Review Time:  " << time << endl;
 			cout << "Admin Reply:  " << current->adminReply << endl;
 			cout << "Reply Date:  " << dateAdmin << endl;
 			cout << "Reply Time:  " << timeAdmin << endl;
@@ -397,8 +397,8 @@ void userUniReviewList::displayUserUniReviewList()
 			cout << "User ID:  " << userid << endl;
 			cout << "University Name:  " << current->uniName << endl;
 			cout << "User Review:  " << current->userReview << endl;
-			cout << "Review Timw:  " << date << endl;
-			cout << "Review Timw:  " << time << endl;
+			cout << "Review Time:  " << date << endl;
+			cout << "Review Time:  " << time << endl;
 			cout << "Admin Reply:  " << current->adminReply << endl;
 			cout << "Reply Date:  " << "" << endl;
 			cout << "Reply Time:  " << "" << endl;
@@ -476,8 +476,8 @@ void displaySingleReview(userUniReview* node)
 		cout << "User ID:  " << userid << endl;
 		cout << "University Name:  " << current->uniName << endl;
 		cout << "User Review:  " << current->userReview << endl;
-		cout << "Review Timw:  " << date << endl;
-		cout << "Review Timw:  " << time << endl;
+		cout << "Review Time:  " << date << endl;
+		cout << "Review Time:  " << time << endl;
 		cout << "Admin Reply:  " << current->adminReply << endl;
 		cout << "Reply Date:  " << dateAdmin << endl;
 		cout << "Reply Time:  " << timeAdmin << endl;
@@ -489,8 +489,8 @@ void displaySingleReview(userUniReview* node)
 		cout << "User ID:  " << userid << endl;
 		cout << "University Name:  " << current->uniName << endl;
 		cout << "User Review:  " << current->userReview << endl;
-		cout << "Review Timw:  " << date << endl;
-		cout << "Review Timw:  " << time << endl;
+		cout << "Review Time:  " << date << endl;
+		cout << "Review Time:  " << time << endl;
 		cout << "Admin Reply:  " << current->adminReply << endl;
 		cout << "Reply Date:  " << "" << endl;
 		cout << "Reply Time:  " << "" << endl;
@@ -687,8 +687,8 @@ void userUniReviewList::displayNoReplyUniReviewList()
 			cout << "User ID:  " << userid << endl;
 			cout << "University Name:  " << current->uniName << endl;
 			cout << "User Review:  " << current->userReview << endl;
-			cout << "Review Timw:  " << date << endl;
-			cout << "Review Timw:  " << time << endl;
+			cout << "Review Time:  " << date << endl;
+			cout << "Review Time:  " << time << endl;
 			cout << "Admin Reply:  " << current->adminReply << endl;
 			cout << "Reply Date:  " << dateAdmin << endl;
 			cout << "Reply Time:  " << timeAdmin << endl;

@@ -195,11 +195,18 @@ int main() {
 				if (choice == 1) {
 					while (cont == true) {
 						string email, pw;
+						cout << "LOGIN (n to exit)" << endl;
 						cin.ignore();
 						cout << "Enter email: ";
 						getline(cin, email);
+						if (email == "n") {
+							break;
+						}
 						cout << "Enter pw: ";
 						getline(cin, pw);
+						if (pw == "n") {
+							break;
+						}
 						id = regUsers.login(email, pw);
 						if (id == NULL) {
 							cout << "Invalid login credentials! Please try again." << endl;

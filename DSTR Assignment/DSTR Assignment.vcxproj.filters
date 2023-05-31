@@ -36,18 +36,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="example.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="donottouchregusers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="plztouchadmin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="normaluser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="usersloginrecord.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -63,9 +51,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="userUniReview.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="example.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="usersloginrecord.h">
