@@ -207,34 +207,6 @@ bool checkInactive(tm date)
 	return (difference <= 30);
 }
 
-void loginRecordList::deleteLoginNode(loginRecord* nodeToDelete)
-{
-	if (nodeToDelete == head)
-	{
-		head = head->nextAdd;
-		delete nodeToDelete;
-	}
-	else
-	{
-		loginRecord* current = head;
-		loginRecord* previous = NULL;
-		while (current != NULL && current != nodeToDelete)
-		{
-			previous = current;
-			current = current->nextAdd;
-		}
-		if (current == NULL)
-		{
-			cout << "Node not found." << endl;
-			return;
-		}
-		if (previous != NULL) // Check if previous is not NULL
-		{
-			previous->nextAdd = current->nextAdd;
-		}
-		delete current;
-	}
-}
 
 int* loginRecordList::removeInactiveUsers(int& removedCount) {
 	int size = 10; // Initial size of the array
