@@ -249,7 +249,7 @@ int main() {
 
 		while (contPrint=="y"&&loggedIn=="y") {
 			cout << endl << "---REGISTERED USER MENU---" << endl;
-			cout << "1. VIEW UNIVERSITIES\n2. SEARCH UNIVERSITIES\n3. SAVE FAVOURITE UNIVERSITIES\n4. SEND FEEDBACKS ON UNIVERSITY\n5. READ FEEDBACK REPLIES\n6. LOGOUT\n";
+			cout << "1. VIEW UNIVERSITIES\n2. SEARCH UNIVERSITIES\n3. SAVE FAVOURITE UNIVERSITIES\n4. SEND FEEDBACKS ON UNIVERSITY\n5. READ FEEDBACK REPLIES\n6. VIEW REVIEW\n7. LOGOUT\n";
 			cout << "Enter your choice: ";
 			cin >> regUsersFuncChoice;
 			switch (regUsersFuncChoice) {
@@ -371,7 +371,6 @@ int main() {
 						
 					if (found == "y") {
 						userReview.writeUniReview(id, uniName);
-						userReview.displayUserUniReviewList();
 						cout << "Review added.";
 						break;
 					}
@@ -386,7 +385,19 @@ int main() {
 				userReview.displayRepliedreview(id);
 				break;
 			}
-			case 6: {
+			case 6:
+			{
+				string exit;
+				cout << endl;
+				userReview.displayUserUniReviewList();
+				cout << "Enter n to exit: ";
+				cin >> exit;
+				if (exit == "n")
+				{
+					break;
+				}
+			}
+			case 7: {
 				regUsers.writeRegUsersFile();
 				favUni.writeFavUniFile();
 				userReview.writeUserUniReviewFile();
