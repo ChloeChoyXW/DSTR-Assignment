@@ -29,8 +29,6 @@ public:
 
 	void LinearSearchandDisplay(int choice);
 
-	void deleteFromUserFavUniList(string uniName);
-
 	void sortUserFavUniList();
 
 	void displayUserFavUniList();
