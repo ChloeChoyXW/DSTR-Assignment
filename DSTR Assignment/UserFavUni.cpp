@@ -47,51 +47,6 @@ void userFavUniList::insertToEndOfUserFavUniList(int userID, string uniName)
 	}
 }
 
-void userFavUniList::deleteFromUserFavUniList(string uniName)
-{
-	if (head == NULL)
-		return;
-	if (head->uniName == uniName)
-	{
-		userFavUni* current = head;
-		head = head->nextAdd;
-		cout << "Deleted Favourite University:  " << current->uniName << endl;
-		delete current;
-	}
-	else if (tail->uniName == uniName)
-	{
-		userFavUni* current = tail;
-		tail = tail->prevAdd;
-		if (tail == NULL)
-			head = NULL;
-		else
-			tail->nextAdd = NULL;
-		cout << "Deleted Favourite University: " << current->uniName << endl;
-		delete current;
-	}
-	else
-	{
-		userFavUni* prev = head->prevAdd;
-		userFavUni* current = head;
-		bool found = false;
-		while (current != NULL)
-		{
-			if (current->uniName == uniName)
-			{
-				found = true;
-				prev->nextAdd = current->nextAdd;
-				cout << "Deleted Favourite University: " << current->uniName << endl;
-				delete current;
-				return;
-			}
-			prev = current;
-			current = current->nextAdd;
-		}
-		if (!found)
-			cout << uniName << " is not found in the list!" << endl;
-	}
-}
-
 ////=====================================LINEAR SEARCH============================================
 
 void userFavUniList::LinearSearchandDisplay(int userID)

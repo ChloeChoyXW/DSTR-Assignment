@@ -371,7 +371,7 @@ int main() {
 						
 					if (found == "y") {
 						userReview.writeUniReview(id, uniName);
-						cout << "Review added.";
+						cout << "Review added.\n";
 						break;
 					}
 					else {
