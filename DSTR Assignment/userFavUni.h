@@ -27,7 +27,7 @@ public:
 
 	void insertToEndOfUserFavUniList(int userID, string uniName);
 
-	void LinearSearchandDisplay(int choice);
+	void LinearSearchandDisplay(int userID);
 
 	void deleteFromUserFavUniList(string uniName);
 
