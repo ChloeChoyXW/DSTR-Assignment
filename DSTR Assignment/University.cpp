@@ -7,7 +7,7 @@
 using namespace std;
 using namespace std::chrono;
 
-UniList::UniList(string uniListname) : uniListName(uniListName) {};
+UniList::UniList(string uniListName) : uniListName(uniListName) {};
 
 
 //=====================Read From Excel and Insert to Doubly Linked List=================

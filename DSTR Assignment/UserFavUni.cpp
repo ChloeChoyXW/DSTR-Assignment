@@ -1,5 +1,4 @@
 #include "userFavUni.h"
-#include <cmath>
 #include <sstream>
 
 using namespace std;
