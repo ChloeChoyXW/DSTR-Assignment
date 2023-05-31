@@ -633,7 +633,6 @@ void UniList::linearSearchUniAndDisplayDoubly(int searchCondition, string strpar
 //from: https://www.geeksforgeeks.org/linear-search/
 void UniList::linearSearchUniAndDisplayArray(string instName) {
 	bool found = false;
-	getline(cin, instName);
 	for (int i = 0; i < 1423; i++) {
 		if (uniArray[i].instName == instName) {
 			found = true;

@@ -34,8 +34,6 @@ public:
 
 	void displayUsersLog();
 
-	void deleteLoginNode(loginRecord* nodeToDelete);
-
 	int* removeInactiveUsers(int& removedCount);
 
 	void userLoginlog(int userID); //used to stored users' login date and time
