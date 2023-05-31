@@ -74,21 +74,47 @@ int main() {
 					break;
 				}
 				case 2: {
+					int sortAlgo;
+					cin.ignore();
+					cout << "Choose search algorithm: 1.Insertion Sort 2.Quick Sort: ";
+					cin >> sortAlgo;
+					if (sortAlgo == 1) {
+						cout << endl << "Insertion Sort: " << endl;
+						UniDoubly.insertionSortUniDoublyLinkedList(2);
+						UniDoubly.displayListDoubly();
+					}
+					else {
+						cout << endl << "Quick Sort: " << endl;
+						UniDoubly.uniQuickSort(2);
+						UniDoubly.displayListDoubly();
+					}
 					cout << endl;
 					cout << string(55, '=') << endl;
-					UniDoubly.insertionSortUniDoublyLinkedList(2);
-					UniDoubly.displayListDoubly();
+					
 					break;
 				}
 				case 3: {
-					string cond;
-					string instName;
+					string cond,instName;
+					int searchAlgo;
 					while (cond!="n") {
+						cin.ignore();
+						cout << "Choose search algorithm: 1.Linear Search 2.Binary Search: ";
+						cin >> searchAlgo;
+						cin.clear();
+						cin.ignore();
 						cout << "Enter Institution Name: ";
 						getline(cin, instName);
-						UniArray.linearSearchUniAndDisplayArray(instName);
+						if (searchAlgo == 1) {
+							cout << endl << "Linear search: " << endl;
+							UniArray.linearSearchUniAndDisplayArray(instName);					
+						}
+						else {
+							cout << endl << "Binary search: " << endl;
+							UniArray.binarySearchUniAndDisplayArray(instName);
+						}
+						
 						cout << endl;
-						cout << string(55, '=') << endl;
+						cout << string(55, '=') << endl;						
 						cout << endl<< "Do you want to continue to search? (Any key to continue, n to exit): ";
 						cin >> cond;
 						if (cond == "n") {
@@ -170,11 +196,18 @@ int main() {
 				if (choice == 1) {
 					while (cont == true) {
 						string email, pw;
+						cout << "LOGIN (n to exit)" << endl;
 						cin.ignore();
 						cout << "Enter email: ";
 						getline(cin, email);
+						if (email == "n") {
+							break;
+						}
 						cout << "Enter pw: ";
 						getline(cin, pw);
+						if (pw == "n") {
+							break;
+						}
 						id = regUsers.login(email, pw);
 						if (id == NULL) {
 							cout << "Invalid login credentials! Please try again." << endl;

@@ -15,6 +15,22 @@ userFavUni* userFavUniList::createNewNode(int userID, string uniName)
 	return newnode;
 }
 
+void userFavUniList::insertToFrontOfUserFavUniList(int userID, string uniName)
+{
+	userFavUni* newnode = createNewNode(userID, uniName);
+
+	if (head == NULL)
+	{
+		head = tail = newnode;
+	}
+	else
+	{
+		newnode->nextAdd = head;
+		head->prevAdd = newnode;
+		head = newnode;
+	}
+}
+
 void userFavUniList::insertToEndOfUserFavUniList(int userID, string uniName)
 {
 	userFavUni* newnode = createNewNode(userID, uniName);

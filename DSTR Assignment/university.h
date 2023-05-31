@@ -65,7 +65,7 @@ public:
 
 	void linearSearchUniAndDisplayArray(string instName);
 
-	void binarySearchUniAndDisplayArray();
+	void binarySearchUniAndDisplayArray(string x);
 
 	void uniQuickSort(int searchCondition);
 
