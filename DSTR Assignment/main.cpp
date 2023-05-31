@@ -340,7 +340,7 @@ int main() {
 							
 					if (found == "y") {
 						favUni.insertToEndOfUserFavUniList(id, favUniName);
-						favUni.displayUserFavUniList();
+						favUni.displayUserFavUniList(id);
 						cout << "University added! Do you want to continue? (Any key to continue, n to exit): ";
 						cin >> option;
 						if (option == "n") {
